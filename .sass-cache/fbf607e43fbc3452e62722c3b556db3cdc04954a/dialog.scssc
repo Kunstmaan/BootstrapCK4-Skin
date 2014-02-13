@@ -1,7 +1,7 @@
 3.2.9 (Media Mark)
-53302055e58f95a3cb91f4e9d8947d942d8c6eae
+ecc3aa3af0281d1d2e4ebed335169e1fcf4a0c60
 o:Sass::Tree::RootNode
-:@template"Êh/*
+:@template"h/*
 Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
 */
@@ -46,36 +46,26 @@ as follows:
 */
 
 /* The outer container of the dialog. */
-.cke_dialog
-{
+.cke_dialog {
     /* Mandatory: Because the dialog.css file is loaded on demand, we avoid
         showing an unstyled dialog by hidding it. Here, we restore its visibility. */
     visibility: visible;
 }
 
 /* The inner boundary container. */
-.cke_dialog_body
-{
+.cke_dialog_body {
     z-index: 1;
-    background: #eaeaea;
-    border: 1px solid #b2b2b2;
-    border-bottom-color: #999;
+    background: $gray-lighter;
+    border: 1px solid $hr-border;
 
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
-    box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+    border-radius: $border-radius;
 }
 
 /* This one is required by Firefox 3.6. Without it,
    dialog tabs and resizer float outside of the dialog.
    Although this rule doesn't seem to break anything on other
    browsers, it doesn't work with broken jQueryUI - #9851. */
-.cke_browser_gecko19 .cke_dialog_body
-{
+.cke_browser_gecko19 .cke_dialog_body {
     position: relative;
 }
 
@@ -1126,57 +1116,58 @@ as follows:
 @tabsi ;[o;
 ;	;
 ;[ ;["ô/* Mandatory: Because the dialog.css file is loaded on demand, we avoid
-    showing an unstyled dialog by hidding it. Here, we restore its visibility. */;@;i5o:Sass::Tree::PropNode;i :
-@name["visibility;[ ;o:Sass::Script::String;	:identifier;"visible;@;@;i7:@prop_syntax:new;@:
-@rule[".cke_dialog;i4:@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;i4:@members[o:Sass::Selector::Sequence;[o:#Sass::Selector::SimpleSequence
+    showing an unstyled dialog by hidding it. Here, we restore its visibility. */;@;i4o:Sass::Tree::PropNode;i :
+@name["visibility;[ ;o:Sass::Script::String;	:identifier;"visible;@;@;i6:@prop_syntax:new;@:
+@rule[".cke_dialog;i3:@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;i3:@members[o:Sass::Selector::Sequence;[o:#Sass::Selector::SimpleSequence
 :@subject0;@+:@sourceso:Set:
-@hash{ ;i4;[o:Sass::Selector::Class;["cke_dialog;@+;i4:@has_childrenTo;
+@hash{ ;i3;[o:Sass::Selector::Class;["cke_dialog;@+;i3:@has_childrenTo;
 ;	;
-;[ ;["(/* The inner boundary container. */;@;i:o;;i ;[o;;i ;["z-index;[ ;o;;	;;"1;@;@;i=;;o;;i ;["background;[ ;o;;	;;"#eaeaea;@;@;i>;;o;;i ;["border;[ ;o;;	;;"1px solid #b2b2b2;@;@;i?;;o;;i ;["border-bottom-color;[ ;o;;	;;"	#999;@;@;i@;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;iB;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;iC;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;iD;;o;;i ;["-moz-box-shadow;[ ;o:Sass::Script::List	:@separator:
-space;[	o:Sass::Script::Number;i ;@:@denominator_units[ ;iF:@numerator_units[ :@original"0o;);i ;@;*@m;iF;+[ ;,"0o;);i;@;*[ ;iF;+["px;,"3pxo:Sass::Script::Funcall;"	rgba;@:@keywords{ ;iF:@splat0:
-@args[	o;);i ;@;*@m;iF;+[ ;,"0o;);i ;@;*@m;iF;+[ ;,"0o;);i ;@;*@m;iF;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;iF;+[ ;,"	0.15;@;iF;@;iF;;o;;i ;["-webkit-box-shadow;[ ;o;&	;';(;[	o;);i ;@;*@m;iG;+[ ;,"0o;);i ;@;*@m;iG;+[ ;,"0o;);i;@;*[ ;iG;+["px;,"3pxo;-;"	rgba;@;.{ ;iG;/0;0[	o;);i ;@;*@m;iG;+[ ;,"0o;);i ;@;*@m;iG;+[ ;,"0o;);i ;@;*@m;iG;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;iG;+[ ;,"	0.15;@;iG;@;iG;;o;;i ;["box-shadow;[ ;o;&	;';(;[	o;);i ;@;*@m;iH;+[ ;,"0o;);i ;@;*@m;iH;+[ ;,"0o;);i;@;*[ ;iH;+["px;,"3pxo;-;"	rgba;@;.{ ;iH;/0;0[	o;);i ;@;*@m;iH;+[ ;,"0o;);i ;@;*@m;iH;+[ ;,"0o;);i ;@;*@m;iH;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;iH;+[ ;,"	0.15;@;iH;@;iH;;;@;[".cke_dialog_body;i<;o;;" ;i<;[o;;[o;
-; 0;@À;!o;";#{ ;i<;[o;$;["cke_dialog_body;@À;i<;%To;
+;[ ;["(/* The inner boundary container. */;@;i9o;;i ;[	o;;i ;["z-index;[ ;o;;	;;"1;@;@;i;;;o;;i ;["background;[ ;o:Sass::Script::Variable	:@underscored_name"gray_lighter;"gray-lighter;@;i<;@;i<;;o;;i ;["border;[ ;o:Sass::Script::List	:@separator:
+space;[o:Sass::Script::Number;i;@:@denominator_units[ ;i=:@numerator_units["px:@original"1pxo;	;	;;"
+solid;@;i=o;&	;'"hr_border;"hr-border;@;i=;@;i=;@;i=;;o;;i ;["border-radius;[ ;o;&	;'"border_radius;"border-radius;@;i?;@;i?;;;@;[".cke_dialog_body;i:;o;;" ;i:;[o;;[o;
+; 0;@c;!o;";#{ ;i:;[o;$;["cke_dialog_body;@c;i:;%To;
 ;	;
 ;[ ;["Á/* This one is required by Firefox 3.6. Without it,
    dialog tabs and resizer float outside of the dialog.
    Although this rule doesn't seem to break anything on other
-   browsers, it doesn't work with broken jQueryUI - #9851. */;@;iKo;;i ;[o;;i ;["position;[ ;o;;	;;"relative;@;@;iQ;;;@;["*.cke_browser_gecko19 .cke_dialog_body;iP;o;;" ;iP;[o;;[o;
-; 0;@Â;!o;";#{ ;iP;[o;$;["cke_browser_gecko19;@Â;iPo;
-; 0;@Â;!o;";#{ ;iP;[o;$;["cke_dialog_body;@Â;iP;%To;
+   browsers, it doesn't work with broken jQueryUI - #9851. */;@;iBo;;i ;[o;;i ;["position;[ ;o;;	;;"relative;@;@;iG;;;@;["*.cke_browser_gecko19 .cke_dialog_body;iF;o;;" ;iF;[o;;[o;
+; 0;@};!o;";#{ ;iF;[o;$;["cke_browser_gecko19;@};iFo;
+; 0;@};!o;";#{ ;iF;[o;$;["cke_dialog_body;@};iF;%To;
 ;	;
-;[ ;["K/* Due to our reset we have to recover the styles of some elements. */;@;iTo;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iW;;;@;[".cke_dialog strong;iV;o;;" ;iV;[o;;[o;
-; 0;@;!o;";#{ ;iV;[o;$;["cke_dialog;@;iVo;
-; 0;@;!o;";#{ ;iV;[o:Sass::Selector::Element	;["strong;@;iV:@namespace0;%To;
+;[ ;["K/* Due to our reset we have to recover the styles of some elements. */;@;iJo;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iM;;;@;[".cke_dialog strong;iL;o;;" ;iL;[o;;[o;
+; 0;@ô;!o;";#{ ;iL;[o;$;["cke_dialog;@ô;iLo;
+; 0;@ô;!o;";#{ ;iL;[o:Sass::Selector::Element	;["strong;@ô;iL:@namespace0;%To;
 ;	;
-;[ ;["/* The dialog title. */;@;iZo;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;i];;o;;i ;["font-size;[ ;o;;	;;"	13px;@;@;i^;;o;;i ;["cursor;[ ;o;;	;;"	move;@;@;i_;;o;;i ;["position;[ ;o;;	;;"relative;@;@;i`;;o;;i ;["
-color;[ ;o;;	;;"#474747;@;@;ib;;o;;i ;["text-shadow;[ ;o;&	;';(;[	o;);i ;@;*@m;ic;+[ ;,"0o;);i;@;*[ ;ic;+["px;,"1pxo;);i ;@;*@m;ic;+[ ;,"0o;-;"	rgba;@;.{ ;ic;/0;0[	o;);iˇ;@;*@m;ic;+[ ;,"255o;);iˇ;@;*@m;ic;+[ ;,"255o;);iˇ;@;*@m;ic;+[ ;,"255o;);f	0.75;@;*@m;ic;+[ ;,"	0.75;@;ic;@;ic;;o;;i ;["border-bottom;[ ;o;;	;;"1px solid #999;@;@;ie;;o;;i ;["padding;[ ;o;;	;;"6px 10px;@;@;if;;o;;i ;["-moz-border-radius;[ ;o;;	;;"2px 2px 0 0;@;@;ih;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"2px 2px 0 0;@;@;ii;;o;;i ;["border-radius;[ ;o;;	;;"2px 2px 0 0;@;@;ij;;o;;i ;["-moz-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;il;;o;;i ;["-webkit-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;im;;o;;i ;["box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;in;;o;;i ;["background;[ ;o;;	;;"#cfd1cf;@;@;ip;;o;;i ;["background-image;[ ;o;-;"-webkit-gradient;@;.{ ;iq;/0;0[
-o;	;	;;"linear;@;iqo;&	;';(;[o;	;	;;"	left;@;iqo;	;	;;"top;@;iq;@;iqo;&	;';(;[o;	;	;;"	left;@;iqo;	;	;;"bottom;@;iq;@;iqo;-;"	from;@;.{ ;iq;/0;0[o:Sass::Script::Color	;0;@;iq:@attrs{	:
+;[ ;["/* The dialog title. */;@;iPo;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iS;;o;;i ;["font-size;[ ;o;;	;;"	13px;@;@;iT;;o;;i ;["cursor;[ ;o;;	;;"	move;@;@;iU;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iV;;o;;i ;["
+color;[ ;o;;	;;"#474747;@;@;iX;;o;;i ;["text-shadow;[ ;o;(	;);*;[	o;+;i ;@;,[ ;iY;-[ ;."0o;+;i;@;,[ ;iY;-["px;."1pxo;+;i ;@;,@÷;iY;-[ ;."0o:Sass::Script::Funcall;"	rgba;@:@keywords{ ;iY:@splat0:
+@args[	o;+;iˇ;@;,@÷;iY;-[ ;."255o;+;iˇ;@;,@÷;iY;-[ ;."255o;+;iˇ;@;,@÷;iY;-[ ;."255o;+;f	0.75;@;,@÷;iY;-[ ;."	0.75;@;iY;@;iY;;o;;i ;["border-bottom;[ ;o;;	;;"1px solid #999;@;@;i[;;o;;i ;["padding;[ ;o;;	;;"6px 10px;@;@;i\;;o;;i ;["-moz-border-radius;[ ;o;;	;;"2px 2px 0 0;@;@;i^;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"2px 2px 0 0;@;@;i_;;o;;i ;["border-radius;[ ;o;;	;;"2px 2px 0 0;@;@;i`;;o;;i ;["-moz-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;ib;;o;;i ;["-webkit-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;ic;;o;;i ;["box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;id;;o;;i ;["background;[ ;o;;	;;"#cfd1cf;@;@;if;;o;;i ;["background-image;[ ;o;1;"-webkit-gradient;@;2{ ;ig;30;4[
+o;	;	;;"linear;@;igo;(	;);*;[o;	;	;;"	left;@;igo;	;	;;"top;@;ig;@;igo;(	;);*;[o;	;	;;"	left;@;igo;	;	;;"bottom;@;ig;@;igo;1;"	from;@;2{ ;ig;30;4[o:Sass::Script::Color	;0;@;ig:@attrs{	:
 alphai:
-greeniı:	blueiı:rediıo;-;"to;@;.{ ;iq;/0;0[o;3	;0;@;iq;4{	;5i;6i—;7iœ;8iœ;@;iq;;o;;i ;["background-image;[ ;o;-;"-moz-linear-gradient;@;.{ ;ir;/0;0[o;	;	;;"top;@;iro;3	;0;@;ir;4{	;5i;6iı;7iı;8iıo;3	;0;@;ir;4{	;5i;6i—;7iœ;8iœ;@;ir;;o;;i ;["background-image;[ ;o;-;"-webkit-linear-gradient;@;.{ ;is;/0;0[o;	;	;;"top;@;iso;3	;0;@;is;4{	;5i;6iı;7iı;8iıo;3	;0;@;is;4{	;5i;6i—;7iœ;8iœ;@;is;;o;;i ;["background-image;[ ;o;-;"-o-linear-gradient;@;.{ ;it;/0;0[o;	;	;;"top;@;ito;3	;0;@;it;4{	;5i;6iı;7iı;8iıo;3	;0;@;it;4{	;5i;6i—;7iœ;8iœ;@;it;;o;;i ;["background-image;[ ;o;-;"-ms-linear-gradient;@;.{ ;iu;/0;0[o;	;	;;"top;@;iuo;3	;0;@;iu;4{	;5i;6iı;7iı;8iıo;3	;0;@;iu;4{	;5i;6i—;7iœ;8iœ;@;iu;;o;;i ;["background-image;[ ;o;-;"linear-gradient;@;.{ ;iv;/0;0[o;	;	;;"top;@;ivo;3	;0;@;iv;4{	;5i;6iı;7iı;8iıo;3	;0;@;iv;4{	;5i;6i—;7iœ;8iœ;@;iv;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f5f5f5', endColorstr='#cfd1cf');@;iw;@;iw;;;@;[".cke_dialog_title;i\;o;;" ;i\;[o;;[o;
-; 0;@;!o;";#{ ;i\;[o;$;["cke_dialog_title;@;i\;%To;
+greeniı:	blueiı:rediıo;1;"to;@;2{ ;ig;30;4[o;5	;0;@;ig;6{	;7i;8i—;9iœ;:iœ;@;ig;;o;;i ;["background-image;[ ;o;1;"-moz-linear-gradient;@;2{ ;ih;30;4[o;	;	;;"top;@;iho;5	;0;@;ih;6{	;7i;8iı;9iı;:iıo;5	;0;@;ih;6{	;7i;8i—;9iœ;:iœ;@;ih;;o;;i ;["background-image;[ ;o;1;"-webkit-linear-gradient;@;2{ ;ii;30;4[o;	;	;;"top;@;iio;5	;0;@;ii;6{	;7i;8iı;9iı;:iıo;5	;0;@;ii;6{	;7i;8i—;9iœ;:iœ;@;ii;;o;;i ;["background-image;[ ;o;1;"-o-linear-gradient;@;2{ ;ij;30;4[o;	;	;;"top;@;ijo;5	;0;@;ij;6{	;7i;8iı;9iı;:iıo;5	;0;@;ij;6{	;7i;8i—;9iœ;:iœ;@;ij;;o;;i ;["background-image;[ ;o;1;"-ms-linear-gradient;@;2{ ;ik;30;4[o;	;	;;"top;@;iko;5	;0;@;ik;6{	;7i;8iı;9iı;:iıo;5	;0;@;ik;6{	;7i;8i—;9iœ;:iœ;@;ik;;o;;i ;["background-image;[ ;o;1;"linear-gradient;@;2{ ;il;30;4[o;	;	;;"top;@;ilo;5	;0;@;il;6{	;7i;8iı;9iı;:iıo;5	;0;@;il;6{	;7i;8i—;9iœ;:iœ;@;il;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f5f5f5', endColorstr='#cfd1cf');@;im;@;im;;;@;[".cke_dialog_title;iR;o;;" ;iR;[o;;[o;
+; 0;@ô;!o;";#{ ;iR;[o;$;["cke_dialog_title;@ô;iR;%To;
 ;	;
 ;[ ;["e/* The outer part of the dialog contants, which contains the contents body
-   and the footer. */;@;izo;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i~;;o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i;;o;;i ;["padding;[ ;o;;	;;"15px 10px 5px 10px;@;@;i{;;o;;i ;["margin-top;[ ;o;;	;;"	30px;@;@;i|;;o;;i ;["border-top;[ ;o;;	;;"1px solid #bfbfbf;@;@;i};;o;;i ;["-moz-border-radius;[ ;o;;	;;"0 0 3px 3px;@;@;i;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"0 0 3px 3px;@;@;iÄ;;o;;i ;["border-radius;[ ;o;;	;;"0 0 3px 3px;@;@;iÅ;;;@;[".cke_dialog_contents;i};o;;" ;i};[o;;[o;
-; 0;@I;!o;";#{ ;i};[o;$;["cke_dialog_contents;@I;i};%To;
+   and the footer. */;@;ipo;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;it;;o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;iu;;o;;i ;["padding;[ ;o;;	;;"15px 10px 5px 10px;@;@;iv;;o;;i ;["margin-top;[ ;o;;	;;"	30px;@;@;iw;;o;;i ;["border-top;[ ;o;;	;;"1px solid #bfbfbf;@;@;ix;;o;;i ;["-moz-border-radius;[ ;o;;	;;"0 0 3px 3px;@;@;iz;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"0 0 3px 3px;@;@;i{;;o;;i ;["border-radius;[ ;o;;	;;"0 0 3px 3px;@;@;i|;;;@;[".cke_dialog_contents;is;o;;" ;is;[o;;[o;
+; 0;@›;!o;";#{ ;is;[o;$;["cke_dialog_contents;@›;is;%To;
 ;	;
-;[ ;["X/* The contents body part, which will hold all elements available in the dialog. */;@;iÑo;;i ;[o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;iá;;o;;i ;["padding;[ ;o;;	;;"17px 10px 5px 10px;@;@;ià;;o;;i ;["margin-top;[ ;o;;	;;"	22px;@;@;iâ;;;@;[".cke_dialog_contents_body;iÜ;o;;" ;iÜ;[o;;[o;
-; 0;@o;!o;";#{ ;iÜ;[o;$;["cke_dialog_contents_body;@o;iÜ;%To;
+;[ ;["X/* The contents body part, which will hold all elements available in the dialog. */;@;io;;i ;[o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i};;o;;i ;["padding;[ ;o;;	;;"17px 10px 5px 10px;@;@;i~;;o;;i ;["margin-top;[ ;o;;	;;"	22px;@;@;i;;;@;[".cke_dialog_contents_body;i|;o;;" ;i|;[o;;[o;
+; 0;@;!o;";#{ ;i|;[o;$;["cke_dialog_contents_body;@;i|;%To;
 ;	;
 ;[ ;["r/* The dialog footer, which usually contains the "Ok" and "Cancel" buttons as
-   well as a resize handler. */;@;iåo;;i ;[o;;i ;["text-align;[ ;o;;	;;"
-right;@;@;iê;;o;;i ;["position;[ ;o;;	;;"relative;@;@;ië;;o;;i ;["border;[ ;o;;	;;"	none;@;@;iì;;o;;i ;["outline;[ ;o;;	;;"1px solid #bfbfbf;@;@;iî;;o;;i ;["-moz-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;iñ;;o;;i ;["-webkit-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;ió;;o;;i ;["box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;iò;;o;;i ;["-moz-border-radius;[ ;o;;	;;"0 0 2px 2px;@;@;iö;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"0 0 2px 2px;@;@;iõ;;o;;i ;["border-radius;[ ;o;;	;;"0 0 2px 2px;@;@;iú;;o;;i ;["background;[ ;o;;	;;"#cfd1cf;@;@;iû;;o;;i ;["background-image;[ ;o;-;"-webkit-gradient;@;.{ ;iü;/0;0[
-o;	;	;;"linear;@;iüo;&	;';(;[o;	;	;;"	left;@;iüo;	;	;;"top;@;iü;@;iüo;&	;';(;[o;	;	;;"	left;@;iüo;	;	;;"bottom;@;iü;@;iüo;-;"	from;@;.{ ;iü;/0;0[o;3	;0;@;iü;4{	;5i;6iÎ;7iÎ;8iÎo;-;"to;@;.{ ;iü;/0;0[o;3	;0;@;iü;4{	;5i;6i—;7iœ;8iœ;@;iü;;o;;i ;["background-image;[ ;o;-;"-moz-linear-gradient;@;.{ ;i†;/0;0[o;	;	;;"top;@;i†o;3	;0;@;i†;4{	;5i;6iÎ;7iÎ;8iÎo;3	;0;@;i†;4{	;5i;6i—;7iœ;8iœ;@;i†;;o;;i ;["background-image;[ ;o;-;"-webkit-linear-gradient;@;.{ ;i°;/0;0[o;	;	;;"top;@;i°o;3	;0;@;i°;4{	;5i;6iÎ;7iÎ;8iÎo;3	;0;@;i°;4{	;5i;6i—;7iœ;8iœ;@;i°;;o;;i ;["background-image;[ ;o;-;"-o-linear-gradient;@;.{ ;i¢;/0;0[o;	;	;;"top;@;i¢o;3	;0;@;i¢;4{	;5i;6iÎ;7iÎ;8iÎo;3	;0;@;i¢;4{	;5i;6i—;7iœ;8iœ;@;i¢;;o;;i ;["background-image;[ ;o;-;"-ms-linear-gradient;@;.{ ;i£;/0;0[o;	;	;;"top;@;i£o;3	;0;@;i£;4{	;5i;6iÎ;7iÎ;8iÎo;3	;0;@;i£;4{	;5i;6i—;7iœ;8iœ;@;i£;;o;;i ;["background-image;[ ;o;-;"linear-gradient;@;.{ ;i§;/0;0[o;	;	;;"top;@;i§o;3	;0;@;i§;4{	;5i;6iÎ;7iÎ;8iÎo;3	;0;@;i§;4{	;5i;6i—;7iœ;8iœ;@;i§;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ebebeb', endColorstr='#cfd1cf');@;i•;@;i•;;;@;[".cke_dialog_footer;iè;o;;" ;iè;[o;;[o;
-; 0;@3;!o;";#{ ;iè;[o;$;["cke_dialog_footer;@3;iè;%To;;i ;[o;;i ;["text-align;[ ;o;;	;;"	left;@;@;i™;;;@;[" .cke_rtl .cke_dialog_footer;i©;o;;" ;i©;[o;;[o;
-; 0;@I;!o;";#{ ;i©;[o;$;["cke_rtl;@I;i©o;
-; 0;@I;!o;";#{ ;i©;[o;$;["cke_dialog_footer;@I;i©;%To;;i ;[o;;i ;["outline;[ ;o;;	;;"	none;@;@;iØ;;o;;i ;["border-top;[ ;o;;	;;"1px solid #fff;@;@;i∞;;;@;[".cke_hc .cke_dialog_footer;iÆ;o;;" ;iÆ;[o;;[o;
-; 0;@l;!o;";#{ ;iÆ;[o;$;["cke_hc;@l;iÆo;
-; 0;@l;!o;";#{ ;iÆ;[o;$;["cke_dialog_footer;@l;iÆ;%To;;i ;[o;;i ;["margin-top;[ ;o;;	;;"	22px;@;@;iµ;;;@;[".cke_dialog .cke_resizer;i¥;o;;" ;i¥;[o;;[o;
-; 0;@â;!o;";#{ ;i¥;[o;$;["cke_dialog;@â;i¥o;
-; 0;@â;!o;";#{ ;i¥;[o;$;["cke_resizer;@â;i¥;%To;;i ;[o;;i ;["margin-left;[ ;o;;	;;"5px;@;@;i∫;;;@;["!.cke_dialog .cke_resizer_rtl;iπ;o;;" ;iπ;[o;;[o;
-; 0;@¶;!o;";#{ ;iπ;[o;$;["cke_dialog;@¶;iπo;
-; 0;@¶;!o;";#{ ;iπ;[o;$;["cke_resizer_rtl;@¶;iπ;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"5px;@;@;iø;;;@;["!.cke_dialog .cke_resizer_ltr;iæ;o;;" ;iæ;[o;;[o;
-; 0;@√;!o;";#{ ;iæ;[o;$;["cke_dialog;@√;iæo;
-; 0;@√;!o;";#{ ;iæ;[o;$;["cke_resizer_ltr;@√;iæ;%To;
+   well as a resize handler. */;@;iÇo;;i ;[o;;i ;["text-align;[ ;o;;	;;"
+right;@;@;iÜ;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iá;;o;;i ;["border;[ ;o;;	;;"	none;@;@;iâ;;o;;i ;["outline;[ ;o;;	;;"1px solid #bfbfbf;@;@;iä;;o;;i ;["-moz-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;iå;;o;;i ;["-webkit-box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;iç;;o;;i ;["box-shadow;[ ;o;;	;;"0 1px 0 #fff inset;@;@;ié;;o;;i ;["-moz-border-radius;[ ;o;;	;;"0 0 2px 2px;@;@;iê;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"0 0 2px 2px;@;@;ië;;o;;i ;["border-radius;[ ;o;;	;;"0 0 2px 2px;@;@;ií;;o;;i ;["background;[ ;o;;	;;"#cfd1cf;@;@;iî;;o;;i ;["background-image;[ ;o;1;"-webkit-gradient;@;2{ ;iï;30;4[
+o;	;	;;"linear;@;iïo;(	;);*;[o;	;	;;"	left;@;iïo;	;	;;"top;@;iï;@;iïo;(	;);*;[o;	;	;;"	left;@;iïo;	;	;;"bottom;@;iï;@;iïo;1;"	from;@;2{ ;iï;30;4[o;5	;0;@;iï;6{	;7i;8iÎ;9iÎ;:iÎo;1;"to;@;2{ ;iï;30;4[o;5	;0;@;iï;6{	;7i;8i—;9iœ;:iœ;@;iï;;o;;i ;["background-image;[ ;o;1;"-moz-linear-gradient;@;2{ ;iñ;30;4[o;	;	;;"top;@;iño;5	;0;@;iñ;6{	;7i;8iÎ;9iÎ;:iÎo;5	;0;@;iñ;6{	;7i;8i—;9iœ;:iœ;@;iñ;;o;;i ;["background-image;[ ;o;1;"-webkit-linear-gradient;@;2{ ;ió;30;4[o;	;	;;"top;@;ióo;5	;0;@;ió;6{	;7i;8iÎ;9iÎ;:iÎo;5	;0;@;ió;6{	;7i;8i—;9iœ;:iœ;@;ió;;o;;i ;["background-image;[ ;o;1;"-o-linear-gradient;@;2{ ;iò;30;4[o;	;	;;"top;@;iòo;5	;0;@;iò;6{	;7i;8iÎ;9iÎ;:iÎo;5	;0;@;iò;6{	;7i;8i—;9iœ;:iœ;@;iò;;o;;i ;["background-image;[ ;o;1;"-ms-linear-gradient;@;2{ ;iô;30;4[o;	;	;;"top;@;iôo;5	;0;@;iô;6{	;7i;8iÎ;9iÎ;:iÎo;5	;0;@;iô;6{	;7i;8i—;9iœ;:iœ;@;iô;;o;;i ;["background-image;[ ;o;1;"linear-gradient;@;2{ ;iö;30;4[o;	;	;;"top;@;iöo;5	;0;@;iö;6{	;7i;8iÎ;9iÎ;:iÎo;5	;0;@;iö;6{	;7i;8i—;9iœ;:iœ;@;iö;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ebebeb', endColorstr='#cfd1cf');@;iõ;@;iõ;;;@;[".cke_dialog_footer;iÖ;o;;" ;iÖ;[o;;[o;
+; 0;@«;!o;";#{ ;iÖ;[o;$;["cke_dialog_footer;@«;iÖ;%To;;i ;[o;;i ;["text-align;[ ;o;;	;;"	left;@;@;i†;;;@;[" .cke_rtl .cke_dialog_footer;iü;o;;" ;iü;[o;;[o;
+; 0;@›;!o;";#{ ;iü;[o;$;["cke_rtl;@›;iüo;
+; 0;@›;!o;";#{ ;iü;[o;$;["cke_dialog_footer;@›;iü;%To;;i ;[o;;i ;["outline;[ ;o;;	;;"	none;@;@;i•;;o;;i ;["border-top;[ ;o;;	;;"1px solid #fff;@;@;i¶;;;@;[".cke_hc .cke_dialog_footer;i§;o;;" ;i§;[o;;[o;
+; 0;@ ;!o;";#{ ;i§;[o;$;["cke_hc;@ ;i§o;
+; 0;@ ;!o;";#{ ;i§;[o;$;["cke_dialog_footer;@ ;i§;%To;;i ;[o;;i ;["margin-top;[ ;o;;	;;"	22px;@;@;i´;;;@;[".cke_dialog .cke_resizer;i™;o;;" ;i™;[o;;[o;
+; 0;@;!o;";#{ ;i™;[o;$;["cke_dialog;@;i™o;
+; 0;@;!o;";#{ ;i™;[o;$;["cke_resizer;@;i™;%To;;i ;[o;;i ;["margin-left;[ ;o;;	;;"5px;@;@;i∞;;;@;["!.cke_dialog .cke_resizer_rtl;iØ;o;;" ;iØ;[o;;[o;
+; 0;@:;!o;";#{ ;iØ;[o;$;["cke_dialog;@:;iØo;
+; 0;@:;!o;";#{ ;iØ;[o;$;["cke_resizer_rtl;@:;iØ;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"5px;@;@;iµ;;;@;["!.cke_dialog .cke_resizer_ltr;i¥;o;;" ;i¥;[o;;[o;
+; 0;@W;!o;";#{ ;i¥;[o;$;["cke_dialog;@W;i¥o;
+; 0;@W;!o;";#{ ;i¥;[o;$;["cke_resizer_ltr;@W;i¥;%To;
 ;	;
 ;[ ;["≠/*
 Dialog tabs
@@ -1197,71 +1188,71 @@ The following is the visual representation of the tabs block:
 +--------------------------------------------------------+
 
 The .cke_dialog_tab_selected class is appended to the active tab.
-*/;@;i¬o;
+*/;@;i∏o;
 ;	;
-;[ ;["#/* The main tabs container. */;@;i◊o;;i ;[o;;i ;["height;[ ;o;;	;;"	24px;@;@;i⁄;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i€;;o;;i ;["margin;[ ;o;;	;;"5px 0 0;@;@;i‹;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;i›;;o;;i ;["z-index;[ ;o;;	;;"2;@;@;iﬁ;;o;;i ;["	left;[ ;o;;	;;"	10px;@;@;iﬂ;;;@;[".cke_dialog_tabs;iŸ;o;;" ;iŸ;[o;;[o;
-; 0;@;!o;";#{ ;iŸ;[o;$;["cke_dialog_tabs;@;iŸ;%To;;i ;[o;;i ;["
-right;[ ;o;;	;;"	10px;@;@;i‰;;;@;[".cke_rtl .cke_dialog_tabs;i„;o;;" ;i„;[o;;[o;
-; 0;@;!o;";#{ ;i„;[o;$;["cke_rtl;@;i„o;
-; 0;@;!o;";#{ ;i„;[o;$;["cke_dialog_tabs;@;i„;%To;
+;[ ;["#/* The main tabs container. */;@;iÕo;;i ;[o;;i ;["height;[ ;o;;	;;"	24px;@;@;i–;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i—;;o;;i ;["margin;[ ;o;;	;;"5px 0 0;@;@;i“;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;i”;;o;;i ;["z-index;[ ;o;;	;;"2;@;@;i‘;;o;;i ;["	left;[ ;o;;	;;"	10px;@;@;i’;;;@;[".cke_dialog_tabs;iœ;o;;" ;iœ;[o;;[o;
+; 0;@ö;!o;";#{ ;iœ;[o;$;["cke_dialog_tabs;@ö;iœ;%To;;i ;[o;;i ;["
+right;[ ;o;;	;;"	10px;@;@;i⁄;;;@;[".cke_rtl .cke_dialog_tabs;iŸ;o;;" ;iŸ;[o;;[o;
+; 0;@∞;!o;";#{ ;iŸ;[o;$;["cke_rtl;@∞;iŸo;
+; 0;@∞;!o;";#{ ;iŸ;[o;$;["cke_dialog_tabs;@∞;iŸ;%To;
 ;	;
-;[ ;[")/* A single tab (an <a> element). */;@;iÁo;;i ;[o;;i ;["height;[ ;o;;	;;"	16px;@;@;iÎ;;o;;i ;["padding;[ ;o;;	;;"4px 8px;@;@;iÏ;;o;;i ;["margin-right;[ ;o;;	;;"3px;@;@;iÌ;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iÓ;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iÔ;;o;;i ;["line-height;[ ;o;;	;;"	16px;@;@;i;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;iÒ;;o;;i ;["
-color;[ ;o;;	;;"#595959;@;@;iÚ;;o;;i ;["border;[ ;o;;	;;"1px solid #bfbfbf;@;@;iÛ;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px 3px 0 0;@;@;iı;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px 3px 0 0;@;@;iˆ;;o;;i ;["border-radius;[ ;o;;	;;"3px 3px 0 0;@;@;i˜;;o;;i ;["background;[ ;o;;	;;"#d4d4d4;@;@;i˘;;o;;i ;["background-image;[ ;o;-;"-webkit-gradient;@;.{ ;i˙;/0;0[
-o;	;	;;"linear;@;i˙o;&	;';(;[o;	;	;;"	left;@;i˙o;	;	;;"top;@;i˙;@;i˙o;&	;';(;[o;	;	;;"	left;@;i˙o;	;	;;"bottom;@;i˙;@;i˙o;-;"	from;@;.{ ;i˙;/0;0[o;3	;0;@;i˙;4{	;5i;6i˙;7i˙;8i˙o;-;"to;@;.{ ;i˙;/0;0[o;3	;0;@;i˙;4{	;5i;6iÌ;7iÌ;8iÌ;@;i˙;;o;;i ;["background-image;[ ;o;-;"-moz-linear-gradient;@;.{ ;i˚;/0;0[o;	;	;;"top;@;i˚o;3	;0;@;i˚;4{	;5i;6i˙;7i˙;8i˙o;3	;0;@;i˚;4{	;5i;6iÌ;7iÌ;8iÌ;@;i˚;;o;;i ;["background-image;[ ;o;-;"-webkit-linear-gradient;@;.{ ;i¸;/0;0[o;	;	;;"top;@;i¸o;3	;0;@;i¸;4{	;5i;6i˙;7i˙;8i˙o;3	;0;@;i¸;4{	;5i;6iÌ;7iÌ;8iÌ;@;i¸;;o;;i ;["background-image;[ ;o;-;"-o-linear-gradient;@;.{ ;i˝;/0;0[o;	;	;;"top;@;i˝o;3	;0;@;i˝;4{	;5i;6i˙;7i˙;8i˙o;3	;0;@;i˝;4{	;5i;6iÌ;7iÌ;8iÌ;@;i˝;;o;;i ;["background-image;[ ;o;-;"-ms-linear-gradient;@;.{ ;i˛;/0;0[o;	;	;;"top;@;i˛o;3	;0;@;i˛;4{	;5i;6i˙;7i˙;8i˙o;3	;0;@;i˛;4{	;5i;6iÌ;7iÌ;8iÌ;@;i˛;;o;;i ;["background-image;[ ;o;-;"linear-gradient;@;.{ ;iˇ;/0;0[o;	;	;;"top;@;iˇo;3	;0;@;iˇ;4{	;5i;6i˙;7i˙;8i˙o;3	;0;@;iˇ;4{	;5i;6iÌ;7iÌ;8iÌ;@;iˇ;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#fafafa', endColorstr='#ededed');@;i ;@;i ;;;@;["a.cke_dialog_tab;iÈ;o;;" ;iÈ;[o;;[o;
-; 0;@Û;!o;";#{ ;iÈ;[o;1	;["a;@Û;iÈ;20o;$;["cke_dialog_tab;@Û;iÈ;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"0;@;@;i;;o;;i ;["margin-left;[ ;o;;	;;"3px;@;@;i;;;@;[".cke_rtl a.cke_dialog_tab;i;o;;" ;i;[o;;[o;
-; 0;@;!o;";#{ ;i;[o;$;["cke_rtl;@;io;
-; 0;@;!o;";#{ ;i;[o;1	;["a;@;i;20o;$;["cke_dialog_tab;@;i;%To;
+;[ ;[")/* A single tab (an <a> element). */;@;i›o;;i ;[o;;i ;["height;[ ;o;;	;;"	16px;@;@;i·;;o;;i ;["padding;[ ;o;;	;;"4px 8px;@;@;i‚;;o;;i ;["margin-right;[ ;o;;	;;"3px;@;@;i„;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i‰;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iÂ;;o;;i ;["line-height;[ ;o;;	;;"	16px;@;@;iÊ;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;iÁ;;o;;i ;["
+color;[ ;o;;	;;"#595959;@;@;iË;;o;;i ;["border;[ ;o;;	;;"1px solid #bfbfbf;@;@;iÈ;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px 3px 0 0;@;@;iÎ;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px 3px 0 0;@;@;iÏ;;o;;i ;["border-radius;[ ;o;;	;;"3px 3px 0 0;@;@;iÌ;;o;;i ;["background;[ ;o;;	;;"#d4d4d4;@;@;iÔ;;o;;i ;["background-image;[ ;o;1;"-webkit-gradient;@;2{ ;i;30;4[
+o;	;	;;"linear;@;io;(	;);*;[o;	;	;;"	left;@;io;	;	;;"top;@;i;@;io;(	;);*;[o;	;	;;"	left;@;io;	;	;;"bottom;@;i;@;io;1;"	from;@;2{ ;i;30;4[o;5	;0;@;i;6{	;7i;8i˙;9i˙;:i˙o;1;"to;@;2{ ;i;30;4[o;5	;0;@;i;6{	;7i;8iÌ;9iÌ;:iÌ;@;i;;o;;i ;["background-image;[ ;o;1;"-moz-linear-gradient;@;2{ ;iÒ;30;4[o;	;	;;"top;@;iÒo;5	;0;@;iÒ;6{	;7i;8i˙;9i˙;:i˙o;5	;0;@;iÒ;6{	;7i;8iÌ;9iÌ;:iÌ;@;iÒ;;o;;i ;["background-image;[ ;o;1;"-webkit-linear-gradient;@;2{ ;iÚ;30;4[o;	;	;;"top;@;iÚo;5	;0;@;iÚ;6{	;7i;8i˙;9i˙;:i˙o;5	;0;@;iÚ;6{	;7i;8iÌ;9iÌ;:iÌ;@;iÚ;;o;;i ;["background-image;[ ;o;1;"-o-linear-gradient;@;2{ ;iÛ;30;4[o;	;	;;"top;@;iÛo;5	;0;@;iÛ;6{	;7i;8i˙;9i˙;:i˙o;5	;0;@;iÛ;6{	;7i;8iÌ;9iÌ;:iÌ;@;iÛ;;o;;i ;["background-image;[ ;o;1;"-ms-linear-gradient;@;2{ ;iÙ;30;4[o;	;	;;"top;@;iÙo;5	;0;@;iÙ;6{	;7i;8i˙;9i˙;:i˙o;5	;0;@;iÙ;6{	;7i;8iÌ;9iÌ;:iÌ;@;iÙ;;o;;i ;["background-image;[ ;o;1;"linear-gradient;@;2{ ;iı;30;4[o;	;	;;"top;@;iıo;5	;0;@;iı;6{	;7i;8i˙;9i˙;:i˙o;5	;0;@;iı;6{	;7i;8iÌ;9iÌ;:iÌ;@;iı;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#fafafa', endColorstr='#ededed');@;iˆ;@;iˆ;;;@;["a.cke_dialog_tab;iﬂ;o;;" ;iﬂ;[o;;[o;
+; 0;@á;!o;";#{ ;iﬂ;[o;/	;["a;@á;iﬂ;00o;$;["cke_dialog_tab;@á;iﬂ;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"0;@;@;i˚;;o;;i ;["margin-left;[ ;o;;	;;"3px;@;@;i¸;;;@;[".cke_rtl a.cke_dialog_tab;i˙;o;;" ;i˙;[o;;[o;
+; 0;@¶;!o;";#{ ;i˙;[o;$;["cke_rtl;@¶;i˙o;
+; 0;@¶;!o;";#{ ;i˙;[o;/	;["a;@¶;i˙;00o;$;["cke_dialog_tab;@¶;i˙;%To;
 ;	;
-;[ ;["3/* A hover state of a regular inactive tab. */;@;i	o;;i ;[o;;i ;["background;[ ;o;;	;;"#ebebeb;@;@;i;;o;;i ;["background;[ ;o;-;"-moz-linear-gradient;@;.{ ;i;/0;0[o;	;	;;"top;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iÎ;7iÎ;8iÎo;);i ;@;*[ ;i;+["%;,"0%;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iﬂ;7iﬂ;8iﬂo;);ii;@;*[ ;i;+["%;,"	100%;@;i;@;i;;o;;i ;["background;[ ;o;-;"-webkit-gradient;@;.{ ;i;/0;0[
-o;	;	;;"linear;@;io;&	;';(;[o;	;	;;"	left;@;io;	;	;;"top;@;i;@;io;&	;';(;[o;	;	;;"	left;@;io;	;	;;"bottom;@;i;@;io;-;"color-stop;@;.{ ;i;/0;0[o;);i ;@;*[ ;i;+["%;,"0%o;3	;0;@;i;4{	;5i;6iÎ;7iÎ;8iÎo;-;"color-stop;@;.{ ;i;/0;0[o;);ii;@;*[ ;i;+["%;,"	100%o;3	;0;@;i;4{	;5i;6iﬂ;7iﬂ;8iﬂ;@;i;;o;;i ;["background;[ ;o;-;"-webkit-linear-gradient;@;.{ ;i;/0;0[o;	;	;;"top;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iÎ;7iÎ;8iÎo;);i ;@;*[ ;i;+["%;,"0%;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iﬂ;7iﬂ;8iﬂo;);ii;@;*[ ;i;+["%;,"	100%;@;i;@;i;;o;;i ;["background;[ ;o;-;"-o-linear-gradient;@;.{ ;i;/0;0[o;	;	;;"top;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iÎ;7iÎ;8iÎo;);i ;@;*[ ;i;+["%;,"0%;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iﬂ;7iﬂ;8iﬂo;);ii;@;*[ ;i;+["%;,"	100%;@;i;@;i;;o;;i ;["background;[ ;o;-;"-ms-linear-gradient;@;.{ ;i;/0;0[o;	;	;;"top;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iÎ;7iÎ;8iÎo;);i ;@;*[ ;i;+["%;,"0%;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iﬂ;7iﬂ;8iﬂo;);ii;@;*[ ;i;+["%;,"	100%;@;i;@;i;;o;;i ;["background;[ ;o;-;"linear-gradient;@;.{ ;i;/0;0[o;&	;';(;[o;	;	;;"to;@;io;	;	;;"bottom;@;i;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iÎ;7iÎ;8iÎo;);i ;@;*[ ;i;+["%;,"0%;@;io;&	;';(;[o;3	;0;@;i;4{	;5i;6iﬂ;7iﬂ;8iﬂo;);ii;@;*[ ;i;+["%;,"	100%;@;i;@;i;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(startColorstr='#ebebeb', endColorstr='#dfdfdf',GradientType=0 );@;i;@;i;;;@;["a.cke_dialog_tab:hover;i;o;;" ;i;[o;;[o;
-; 0;@¯;!o;";#{ ;i;[o;1	;["a;@¯;i;20o;$;["cke_dialog_tab;@¯;io:Sass::Selector::Pseudo
+;[ ;["3/* A hover state of a regular inactive tab. */;@;iˇo;;i ;[o;;i ;["background;[ ;o;;	;;"#ebebeb;@;@;i;;o;;i ;["background;[ ;o;1;"-moz-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÎ;9iÎ;:iÎo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iﬂ;9iﬂ;:iﬂo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"-webkit-gradient;@;2{ ;i;30;4[
+o;	;	;;"linear;@;io;(	;);*;[o;	;	;;"	left;@;io;	;	;;"top;@;i;@;io;(	;);*;[o;	;	;;"	left;@;io;	;	;;"bottom;@;i;@;io;1;"color-stop;@;2{ ;i;30;4[o;+;i ;@;,[ ;i;-["%;."0%o;5	;0;@;i;6{	;7i;8iÎ;9iÎ;:iÎo;1;"color-stop;@;2{ ;i;30;4[o;+;ii;@;,[ ;i;-["%;."	100%o;5	;0;@;i;6{	;7i;8iﬂ;9iﬂ;:iﬂ;@;i;;o;;i ;["background;[ ;o;1;"-webkit-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÎ;9iÎ;:iÎo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iﬂ;9iﬂ;:iﬂo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"-o-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÎ;9iÎ;:iÎo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iﬂ;9iﬂ;:iﬂo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"-ms-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÎ;9iÎ;:iÎo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iﬂ;9iﬂ;:iﬂo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"linear-gradient;@;2{ ;i;30;4[o;(	;);*;[o;	;	;;"to;@;io;	;	;;"bottom;@;i;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÎ;9iÎ;:iÎo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iﬂ;9iﬂ;:iﬂo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(startColorstr='#ebebeb', endColorstr='#dfdfdf',GradientType=0 );@;i	;@;i	;;;@;["a.cke_dialog_tab:hover;i;o;;" ;i;[o;;[o;
+; 0;@å;!o;";#{ ;i;[o;/	;["a;@å;i;00o;$;["cke_dialog_tab;@å;io:Sass::Selector::Pseudo
 ;["
 hover;	:
-class;@¯;i:	@arg0;%To;;i ;[
-o;;i ;["background;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["
-color;[ ;o;;	;;"#383838;@;@;i;;o;;i ;["border-bottom-color;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i;;o;;i ;["filter;[ ;o;;	;;"	none;@;@;i;;;@;["a.cke_dialog_tab_selected;i;o;;" ;i;[o;;[o;
-; 0;@,;!o;";#{ ;i;[o;1	;["a;@,;i;20o;$;["cke_dialog_tab_selected;@,;i;%To;
+class;@å;i:	@arg0;%To;;i ;[
+o;;i ;["background;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["
+color;[ ;o;;	;;"#383838;@;@;i;;o;;i ;["border-bottom-color;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i;;o;;i ;["filter;[ ;o;;	;;"	none;@;@;i;;;@;["a.cke_dialog_tab_selected;i;o;;" ;i;[o;;[o;
+; 0;@¿;!o;";#{ ;i;[o;/	;["a;@¿;i;00o;$;["cke_dialog_tab_selected;@¿;i;%To;
 ;	;
-;[ ;["*/* A hover state for selected tab. */;@;io;;i ;[o;;i ;["background;[ ;o;;	;;"#ededed;@;@;i";;o;;i ;["background;[ ;o;-;"-moz-linear-gradient;@;.{ ;i#;/0;0[o;	;	;;"top;@;i#o;&	;';(;[o;3	;0;@;i#;4{	;5i;6iÌ;7iÌ;8iÌo;);i ;@;*[ ;i#;+["%;,"0%;@;i#o;&	;';(;[o;3	;0;@;i#;4{	;5i;6iˇ;7iˇ;8iˇo;);ii;@;*[ ;i#;+["%;,"	100%;@;i#;@;i#;;o;;i ;["background;[ ;o;-;"-webkit-gradient;@;.{ ;i$;/0;0[
-o;	;	;;"linear;@;i$o;&	;';(;[o;	;	;;"	left;@;i$o;	;	;;"top;@;i$;@;i$o;&	;';(;[o;	;	;;"	left;@;i$o;	;	;;"bottom;@;i$;@;i$o;-;"color-stop;@;.{ ;i$;/0;0[o;);i ;@;*[ ;i$;+["%;,"0%o;3	;0;@;i$;4{	;5i;6iÌ;7iÌ;8iÌo;-;"color-stop;@;.{ ;i$;/0;0[o;);ii;@;*[ ;i$;+["%;,"	100%o;3	;0;@;i$;4{	;5i;6iˇ;7iˇ;8iˇ;@;i$;;o;;i ;["background;[ ;o;-;"-webkit-linear-gradient;@;.{ ;i%;/0;0[o;	;	;;"top;@;i%o;&	;';(;[o;3	;0;@;i%;4{	;5i;6iÌ;7iÌ;8iÌo;);i ;@;*[ ;i%;+["%;,"0%;@;i%o;&	;';(;[o;3	;0;@;i%;4{	;5i;6iˇ;7iˇ;8iˇo;);ii;@;*[ ;i%;+["%;,"	100%;@;i%;@;i%;;o;;i ;["background;[ ;o;-;"-o-linear-gradient;@;.{ ;i&;/0;0[o;	;	;;"top;@;i&o;&	;';(;[o;3	;0;@;i&;4{	;5i;6iÌ;7iÌ;8iÌo;);i ;@;*[ ;i&;+["%;,"0%;@;i&o;&	;';(;[o;3	;0;@;i&;4{	;5i;6iˇ;7iˇ;8iˇo;);ii;@;*[ ;i&;+["%;,"	100%;@;i&;@;i&;;o;;i ;["background;[ ;o;-;"-ms-linear-gradient;@;.{ ;i';/0;0[o;	;	;;"top;@;i'o;&	;';(;[o;3	;0;@;i';4{	;5i;6iÌ;7iÌ;8iÌo;);i ;@;*[ ;i';+["%;,"0%;@;i'o;&	;';(;[o;3	;0;@;i';4{	;5i;6iˇ;7iˇ;8iˇo;);ii;@;*[ ;i';+["%;,"	100%;@;i';@;i';;o;;i ;["background;[ ;o;-;"linear-gradient;@;.{ ;i(;/0;0[o;&	;';(;[o;	;	;;"to;@;i(o;	;	;;"bottom;@;i(;@;i(o;&	;';(;[o;3	;0;@;i(;4{	;5i;6iÌ;7iÌ;8iÌo;);i ;@;*[ ;i(;+["%;,"0%;@;i(o;&	;';(;[o;3	;0;@;i(;4{	;5i;6iˇ;7iˇ;8iˇo;);ii;@;*[ ;i(;+["%;,"	100%;@;i(;@;i(;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff',GradientType=0 );@;i);@;i);;;@;["$a.cke_dialog_tab_selected:hover;i!;o;;" ;i!;[o;;[o;
-; 0;@;!o;";#{ ;i!;[o;1	;["a;@;i!;20o;$;["cke_dialog_tab_selected;@;i!o;9
+;[ ;["*/* A hover state for selected tab. */;@;io;;i ;[o;;i ;["background;[ ;o;;	;;"#ededed;@;@;i;;o;;i ;["background;[ ;o;1;"-moz-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÌ;9iÌ;:iÌo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iˇ;9iˇ;:iˇo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"-webkit-gradient;@;2{ ;i;30;4[
+o;	;	;;"linear;@;io;(	;);*;[o;	;	;;"	left;@;io;	;	;;"top;@;i;@;io;(	;);*;[o;	;	;;"	left;@;io;	;	;;"bottom;@;i;@;io;1;"color-stop;@;2{ ;i;30;4[o;+;i ;@;,[ ;i;-["%;."0%o;5	;0;@;i;6{	;7i;8iÌ;9iÌ;:iÌo;1;"color-stop;@;2{ ;i;30;4[o;+;ii;@;,[ ;i;-["%;."	100%o;5	;0;@;i;6{	;7i;8iˇ;9iˇ;:iˇ;@;i;;o;;i ;["background;[ ;o;1;"-webkit-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÌ;9iÌ;:iÌo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iˇ;9iˇ;:iˇo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"-o-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÌ;9iÌ;:iÌo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iˇ;9iˇ;:iˇo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"-ms-linear-gradient;@;2{ ;i;30;4[o;	;	;;"top;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÌ;9iÌ;:iÌo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iˇ;9iˇ;:iˇo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["background;[ ;o;1;"linear-gradient;@;2{ ;i;30;4[o;(	;);*;[o;	;	;;"to;@;io;	;	;;"bottom;@;i;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iÌ;9iÌ;:iÌo;+;i ;@;,[ ;i;-["%;."0%;@;io;(	;);*;[o;5	;0;@;i;6{	;7i;8iˇ;9iˇ;:iˇo;+;ii;@;,[ ;i;-["%;."	100%;@;i;@;i;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff',GradientType=0 );@;i;@;i;;;@;["$a.cke_dialog_tab_selected:hover;i;o;;" ;i;[o;;[o;
+; 0;@ü;!o;";#{ ;i;[o;/	;["a;@ü;i;00o;$;["cke_dialog_tab_selected;@ü;io;;
 ;["
-hover;	;:;@;i!;;0;%To;;i ;[o;;i ;["border;[ ;o;;	;;"3px solid;@;@;i/;;o;;i ;["padding;[ ;o;;	;;"2px 6px;@;@;i0;;;@;["F.cke_hc a.cke_dialog_tab:hover,
-.cke_hc a.cke_dialog_tab_selected;i.;o;;" ;i.;[o;;[o;
-; 0;@-;!o;";#{ ;i.;[o;$;["cke_hc;@-;i.o;
-; 0;@-;!o;";#{ ;i.;[o;1	;["a;@-;i.;20o;$;["cke_dialog_tab;@-;i.o;9
+hover;	;<;@ü;i;=0;%To;;i ;[o;;i ;["border;[ ;o;;	;;"3px solid;@;@;i%;;o;;i ;["padding;[ ;o;;	;;"2px 6px;@;@;i&;;;@;["F.cke_hc a.cke_dialog_tab:hover,
+.cke_hc a.cke_dialog_tab_selected;i$;o;;" ;i$;[o;;[o;
+; 0;@¡;!o;";#{ ;i$;[o;$;["cke_hc;@¡;i$o;
+; 0;@¡;!o;";#{ ;i$;[o;/	;["a;@¡;i$;00o;$;["cke_dialog_tab;@¡;i$o;;
 ;["
-hover;	;:;@-;i.;;0o;;["
+hover;	;<;@¡;i$;=0o;;["
 o;
-; 0;@-;!o;";#{ ;i.;[o;$;["cke_hc;@-;i.o;
-; 0;@-;!o;";#{ ;i.;[o;1	;["a;@-;i.;20o;$;["cke_dialog_tab_selected;@-;i.;%To;;i ;[o;;i ;["
-color;[ ;o;;	;;"#bababa;@;@;i5;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i6;;;@;["a.cke_dialog_tab_disabled;i4;o;;" ;i4;[o;;[o;
-; 0;@j;!o;";#{ ;i4;[o;1	;["a;@j;i4;20o;$;["cke_dialog_tab_disabled;@j;i4;%To;
+; 0;@¡;!o;";#{ ;i$;[o;$;["cke_hc;@¡;i$o;
+; 0;@¡;!o;";#{ ;i$;[o;/	;["a;@¡;i$;00o;$;["cke_dialog_tab_selected;@¡;i$;%To;;i ;[o;;i ;["
+color;[ ;o;;	;;"#bababa;@;@;i+;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i,;;;@;["a.cke_dialog_tab_disabled;i*;o;;" ;i*;[o;;[o;
+; 0;@˛;!o;";#{ ;i*;[o;/	;["a;@˛;i*;00o;$;["cke_dialog_tab_disabled;@˛;i*;%To;
 ;	;
 ;[ ;["u/* The .cke_single_page class is appended to the dialog outer element in case
-   of dialogs that has no tabs. */;@;i9o;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i=;;;@;["&.cke_single_page .cke_dialog_tabs;i<;o;;" ;i<;[o;;[o;
-; 0;@á;!o;";#{ ;i<;[o;$;["cke_single_page;@á;i<o;
-; 0;@á;!o;";#{ ;i<;[o;$;["cke_dialog_tabs;@á;i<;%To;;i ;[o;;i ;["padding-top;[ ;o;;	;;"5px;@;@;iB;;o;;i ;["margin-top;[ ;o;;	;;"0;@;@;iC;;o;;i ;["border-top;[ ;o;;	;;"	none;@;@;iD;;;@;["*.cke_single_page .cke_dialog_contents;iA;o;;" ;iA;[o;;[o;
-; 0;@∞;!o;";#{ ;iA;[o;$;["cke_single_page;@∞;iAo;
-; 0;@∞;!o;";#{ ;iA;[o;$;["cke_dialog_contents;@∞;iA;%To;
+   of dialogs that has no tabs. */;@;i/o;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i3;;;@;["&.cke_single_page .cke_dialog_tabs;i2;o;;" ;i2;[o;;[o;
+; 0;@;!o;";#{ ;i2;[o;$;["cke_single_page;@;i2o;
+; 0;@;!o;";#{ ;i2;[o;$;["cke_dialog_tabs;@;i2;%To;;i ;[o;;i ;["padding-top;[ ;o;;	;;"5px;@;@;i8;;o;;i ;["margin-top;[ ;o;;	;;"0;@;@;i9;;o;;i ;["border-top;[ ;o;;	;;"	none;@;@;i:;;;@;["*.cke_single_page .cke_dialog_contents;i7;o;;" ;i7;[o;;[o;
+; 0;@D;!o;";#{ ;i7;[o;$;["cke_single_page;@D;i7o;
+; 0;@D;!o;";#{ ;i7;[o;$;["cke_dialog_contents;@D;i7;%To;
 ;	;
-;[ ;["5/* The close button at the top of the dialog. */;@;iGo;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/close.png);@;iK;@;iK;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;iL;;o;;i ;["background-position;[ ;o;;	;;"0 0;@;@;iM;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;iN;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iO;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;iP;;o;;i ;["height;[ ;o;;	;;"	20px;@;@;iQ;;o;;i ;["
-width;[ ;o;;	;;"	20px;@;@;iR;;o;;i ;["top;[ ;o;;	;;"5px;@;@;iS;;o;;i ;["z-index;[ ;o;;	;;"5;@;@;iT;;;@;[".cke_dialog_close_button;iJ;o;;" ;iJ;[o;;[o;
-; 0;@;!o;";#{ ;iJ;[o;$;["cke_dialog_close_button;@;iJ;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;" url(images/hidpi/close.png);@;iX;@;iX;;o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;iY;;;@;["(.cke_hidpi .cke_dialog_close_button;iW;o;;" ;iW;[o;;[o;
-; 0;@#;!o;";#{ ;iW;[o;$;["cke_hidpi;@#;iWo;
-; 0;@#;!o;";#{ ;iW;[o;$;["cke_dialog_close_button;@#;iW;%To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i^;;;@;["".cke_dialog_close_button span;i];o;;" ;i];[o;;[o;
-; 0;@@;!o;";#{ ;i];[o;$;["cke_dialog_close_button;@@;i]o;
-; 0;@@;!o;";#{ ;i];[o;1	;["	span;@@;i];20;%To;;i ;[
-o;;i ;["display;[ ;o;;	;;"inline;@;@;ic;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;id;;o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;ie;;o;;i ;["position;[ ;o;;	;;"relative;@;@;if;;o;;i ;["top;[ ;o;;	;;"3px;@;@;ig;;;@;["*.cke_hc .cke_dialog_close_button span;ib;o;;" ;ib;[o;;[o;
-; 0;@u;!o;";#{ ;ib;[o;$;["cke_hc;@u;ibo;
-; 0;@u;!o;";#{ ;ib;[o;$;["cke_dialog_close_button;@u;ibo;
-; 0;@u;!o;";#{ ;ib;[o;1	;["	span;@u;ib;20;%To;;i ;[o;;i ;["
-right;[ ;o;;	;;"5px;@;@;il;;;@;["&.cke_ltr .cke_dialog_close_button;ik;o;;" ;ik;[o;;[o;
-; 0;@ô;!o;";#{ ;ik;[o;$;["cke_ltr;@ô;iko;
-; 0;@ô;!o;";#{ ;ik;[o;$;["cke_dialog_close_button;@ô;ik;%To;;i ;[o;;i ;["	left;[ ;o;;	;;"6px;@;@;iq;;;@;["&.cke_rtl .cke_dialog_close_button;ip;o;;" ;ip;[o;;[o;
-; 0;@∂;!o;";#{ ;ip;[o;$;["cke_rtl;@∂;ipo;
-; 0;@∂;!o;";#{ ;ip;[o;$;["cke_dialog_close_button;@∂;ip;%To;;i ;[o;;i ;["top;[ ;o;;	;;"4px;@;@;iv;;;@;[".cke_dialog_close_button;iu;o;;" ;iu;[o;;[o;
-; 0;@”;!o;";#{ ;iu;[o;$;["cke_dialog_close_button;@”;iu;%To;
+;[ ;["5/* The close button at the top of the dialog. */;@;i=o;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/close.png);@;iA;@;iA;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;iB;;o;;i ;["background-position;[ ;o;;	;;"0 0;@;@;iC;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;iD;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iE;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;iF;;o;;i ;["height;[ ;o;;	;;"	20px;@;@;iG;;o;;i ;["
+width;[ ;o;;	;;"	20px;@;@;iH;;o;;i ;["top;[ ;o;;	;;"5px;@;@;iI;;o;;i ;["z-index;[ ;o;;	;;"5;@;@;iJ;;;@;[".cke_dialog_close_button;i@;o;;" ;i@;[o;;[o;
+; 0;@õ;!o;";#{ ;i@;[o;$;["cke_dialog_close_button;@õ;i@;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;" url(images/hidpi/close.png);@;iN;@;iN;;o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;iO;;;@;["(.cke_hidpi .cke_dialog_close_button;iM;o;;" ;iM;[o;;[o;
+; 0;@∑;!o;";#{ ;iM;[o;$;["cke_hidpi;@∑;iMo;
+; 0;@∑;!o;";#{ ;iM;[o;$;["cke_dialog_close_button;@∑;iM;%To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;iT;;;@;["".cke_dialog_close_button span;iS;o;;" ;iS;[o;;[o;
+; 0;@‘;!o;";#{ ;iS;[o;$;["cke_dialog_close_button;@‘;iSo;
+; 0;@‘;!o;";#{ ;iS;[o;/	;["	span;@‘;iS;00;%To;;i ;[
+o;;i ;["display;[ ;o;;	;;"inline;@;@;iY;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iZ;;o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;i[;;o;;i ;["position;[ ;o;;	;;"relative;@;@;i\;;o;;i ;["top;[ ;o;;	;;"3px;@;@;i];;;@;["*.cke_hc .cke_dialog_close_button span;iX;o;;" ;iX;[o;;[o;
+; 0;@	;!o;";#{ ;iX;[o;$;["cke_hc;@	;iXo;
+; 0;@	;!o;";#{ ;iX;[o;$;["cke_dialog_close_button;@	;iXo;
+; 0;@	;!o;";#{ ;iX;[o;/	;["	span;@	;iX;00;%To;;i ;[o;;i ;["
+right;[ ;o;;	;;"5px;@;@;ib;;;@;["&.cke_ltr .cke_dialog_close_button;ia;o;;" ;ia;[o;;[o;
+; 0;@-;!o;";#{ ;ia;[o;$;["cke_ltr;@-;iao;
+; 0;@-;!o;";#{ ;ia;[o;$;["cke_dialog_close_button;@-;ia;%To;;i ;[o;;i ;["	left;[ ;o;;	;;"6px;@;@;ig;;;@;["&.cke_rtl .cke_dialog_close_button;if;o;;" ;if;[o;;[o;
+; 0;@J;!o;";#{ ;if;[o;$;["cke_rtl;@J;ifo;
+; 0;@J;!o;";#{ ;if;[o;$;["cke_dialog_close_button;@J;if;%To;;i ;[o;;i ;["top;[ ;o;;	;;"4px;@;@;il;;;@;[".cke_dialog_close_button;ik;o;;" ;ik;[o;;[o;
+; 0;@g;!o;";#{ ;ik;[o;$;["cke_dialog_close_button;@g;ik;%To;
 ;	;
 ;[ ;["â/*
 Dialog UI Elements
@@ -1274,14 +1265,14 @@ Most of the UI elements on dialogs contain a textual label. All of them share
 the same labelling structure, having the label text inside an element with
 .cke_dialog_ui_labeled_label and the element specific part inside the
 .cke_dialog_ui_labeled_content class.
-*/;@;iyo;
+*/;@;ioo;
 ;	;
 ;[ ;["b/* If an element is supposed to be disabled, the .cke_disabled class is
-   appended to it. */;@;iÜo;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#ddd;@;@;iä;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;iã;;;@;[":div.cke_disabled .cke_dialog_ui_labeled_content div *;iâ;o;;" ;iâ;[o;;[	o;
-; 0;@˜;!o;";#{ ;iâ;[o;1	;["div;@˜;iâ;20o;$;["cke_disabled;@˜;iâo;
-; 0;@˜;!o;";#{ ;iâ;[o;$;[""cke_dialog_ui_labeled_content;@˜;iâo;
-; 0;@˜;!o;";#{ ;iâ;[o;1	;["div;@˜;iâ;20o;
-; 0;@˜;!o;";#{ ;iâ;[o:Sass::Selector::Universal;@˜;iâ;20;%To;
+   appended to it. */;@;i|o;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#ddd;@;@;iÄ;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;iÅ;;;@;[":div.cke_disabled .cke_dialog_ui_labeled_content div *;i;o;;" ;i;[o;;[	o;
+; 0;@ã;!o;";#{ ;i;[o;/	;["div;@ã;i;00o;$;["cke_disabled;@ã;io;
+; 0;@ã;!o;";#{ ;i;[o;$;[""cke_dialog_ui_labeled_content;@ã;io;
+; 0;@ã;!o;";#{ ;i;[o;/	;["div;@ã;i;00o;
+; 0;@ã;!o;";#{ ;i;[o:Sass::Selector::Universal;@ã;i;00;%To;
 ;	;
 ;[ ;["\/*
 Horizontal-Box and Vertical-Box
@@ -1299,123 +1290,99 @@ The following is the visual representation of a H-Box:
 +-------------------------------------------------------------------------------------------------------+
 
 It is possible to have nested V/H-Boxes.
-*/;@;iéo;;i ;[o;;i ;["margin;[ ;o;;	;;"	auto;@;@;i£;;;@;["9.cke_dialog_ui_vbox table,
-.cke_dialog_ui_hbox table;i¢;o;;" ;i¢;[o;;[o;
-; 0;@'	;!o;";#{ ;i¢;[o;$;["cke_dialog_ui_vbox;@'	;i¢o;
-; 0;@'	;!o;";#{ ;i¢;[o;1	;["
-table;@'	;i¢;20o;;["
+*/;@;iÑo;;i ;[o;;i ;["margin;[ ;o;;	;;"	auto;@;@;iô;;;@;["9.cke_dialog_ui_vbox table,
+.cke_dialog_ui_hbox table;iò;o;;" ;iò;[o;;[o;
+; 0;@ª;!o;";#{ ;iò;[o;$;["cke_dialog_ui_vbox;@ª;iòo;
+; 0;@ª;!o;";#{ ;iò;[o;/	;["
+table;@ª;iò;00o;;["
 o;
-; 0;@'	;!o;";#{ ;i¢;[o;$;["cke_dialog_ui_hbox;@'	;i¢o;
-; 0;@'	;!o;";#{ ;i¢;[o;1	;["
-table;@'	;i¢;20;%To;;i ;[o;;i ;["padding;[ ;o;;	;;"5px 0px;@;@;i®;;;@;[".cke_dialog_ui_vbox_child;iß;o;;" ;iß;[o;;[o;
-; 0;@U	;!o;";#{ ;iß;[o;$;["cke_dialog_ui_vbox_child;@U	;iß;%To;;i ;[o;;i ;["
-width;[ ;o;;	;;"	100%;@;@;i≠;;;@;[".cke_dialog_ui_hbox;i¨;o;;" ;i¨;[o;;[o;
-; 0;@k	;!o;";#{ ;i¨;[o;$;["cke_dialog_ui_hbox;@k	;i¨;%To;;i ;[o;;i ;["vertical-align;[ ;o;;	;;"top;@;@;i¥;;;@;["S.cke_dialog_ui_hbox_first,
+; 0;@ª;!o;";#{ ;iò;[o;$;["cke_dialog_ui_hbox;@ª;iòo;
+; 0;@ª;!o;";#{ ;iò;[o;/	;["
+table;@ª;iò;00;%To;;i ;[o;;i ;["padding;[ ;o;;	;;"5px 0px;@;@;iû;;;@;[".cke_dialog_ui_vbox_child;iù;o;;" ;iù;[o;;[o;
+; 0;@È;!o;";#{ ;iù;[o;$;["cke_dialog_ui_vbox_child;@È;iù;%To;;i ;[o;;i ;["
+width;[ ;o;;	;;"	100%;@;@;i£;;;@;[".cke_dialog_ui_hbox;i¢;o;;" ;i¢;[o;;[o;
+; 0;@ˇ;!o;";#{ ;i¢;[o;$;["cke_dialog_ui_hbox;@ˇ;i¢;%To;;i ;[o;;i ;["vertical-align;[ ;o;;	;;"top;@;@;i™;;;@;["S.cke_dialog_ui_hbox_first,
 .cke_dialog_ui_hbox_child,
-.cke_dialog_ui_hbox_last;i≥;o;;" ;i≥;[o;;[o;
-; 0;@Å	;!o;";#{ ;i≥;[o;$;["cke_dialog_ui_hbox_first;@Å	;i≥o;;["
+.cke_dialog_ui_hbox_last;i©;o;;" ;i©;[o;;[o;
+; 0;@	;!o;";#{ ;i©;[o;$;["cke_dialog_ui_hbox_first;@	;i©o;;["
 o;
-; 0;@Å	;!o;";#{ ;i≥;[o;$;["cke_dialog_ui_hbox_child;@Å	;i≥o;;["
+; 0;@	;!o;";#{ ;i©;[o;$;["cke_dialog_ui_hbox_child;@	;i©o;;["
 o;
-; 0;@Å	;!o;";#{ ;i≥;[o;$;["cke_dialog_ui_hbox_last;@Å	;i≥;%To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"	10px;@;@;i∫;;;@;["K.cke_ltr .cke_dialog_ui_hbox_first,
-.cke_ltr .cke_dialog_ui_hbox_child;iπ;o;;" ;iπ;[o;;[o;
-; 0;@´	;!o;";#{ ;iπ;[o;$;["cke_ltr;@´	;iπo;
-; 0;@´	;!o;";#{ ;iπ;[o;$;["cke_dialog_ui_hbox_first;@´	;iπo;;["
+; 0;@	;!o;";#{ ;i©;[o;$;["cke_dialog_ui_hbox_last;@	;i©;%To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"	10px;@;@;i∞;;;@;["K.cke_ltr .cke_dialog_ui_hbox_first,
+.cke_ltr .cke_dialog_ui_hbox_child;iØ;o;;" ;iØ;[o;;[o;
+; 0;@?	;!o;";#{ ;iØ;[o;$;["cke_ltr;@?	;iØo;
+; 0;@?	;!o;";#{ ;iØ;[o;$;["cke_dialog_ui_hbox_first;@?	;iØo;;["
 o;
-; 0;@´	;!o;";#{ ;iπ;[o;$;["cke_ltr;@´	;iπo;
-; 0;@´	;!o;";#{ ;iπ;[o;$;["cke_dialog_ui_hbox_child;@´	;iπ;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"	10px;@;@;i¿;;;@;["K.cke_rtl .cke_dialog_ui_hbox_first,
-.cke_rtl .cke_dialog_ui_hbox_child;iø;o;;" ;iø;[o;;[o;
-; 0;@Ÿ	;!o;";#{ ;iø;[o;$;["cke_rtl;@Ÿ	;iøo;
-; 0;@Ÿ	;!o;";#{ ;iø;[o;$;["cke_dialog_ui_hbox_first;@Ÿ	;iøo;;["
+; 0;@?	;!o;";#{ ;iØ;[o;$;["cke_ltr;@?	;iØo;
+; 0;@?	;!o;";#{ ;iØ;[o;$;["cke_dialog_ui_hbox_child;@?	;iØ;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"	10px;@;@;i∂;;;@;["K.cke_rtl .cke_dialog_ui_hbox_first,
+.cke_rtl .cke_dialog_ui_hbox_child;iµ;o;;" ;iµ;[o;;[o;
+; 0;@m	;!o;";#{ ;iµ;[o;$;["cke_rtl;@m	;iµo;
+; 0;@m	;!o;";#{ ;iµ;[o;$;["cke_dialog_ui_hbox_first;@m	;iµo;;["
 o;
-; 0;@Ÿ	;!o;";#{ ;iø;[o;$;["cke_rtl;@Ÿ	;iøo;
-; 0;@Ÿ	;!o;";#{ ;iø;[o;$;["cke_dialog_ui_hbox_child;@Ÿ	;iø;%To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"5px;@;@;i∆;;;@;["|.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
-.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child;i≈;o;;" ;i≈;[o;;[o;
-; 0;@
-;!o;";#{ ;i≈;[o;$;["cke_ltr;@
-;i≈o;
-; 0;@
-;!o;";#{ ;i≈;[o;$;["cke_dialog_footer_buttons;@
-;i≈o;
-; 0;@
-;!o;";#{ ;i≈;[o;$;["cke_dialog_ui_hbox_first;@
-;i≈o;;[	"
+; 0;@m	;!o;";#{ ;iµ;[o;$;["cke_rtl;@m	;iµo;
+; 0;@m	;!o;";#{ ;iµ;[o;$;["cke_dialog_ui_hbox_child;@m	;iµ;%To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"5px;@;@;iº;;;@;["|.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
+.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child;iª;o;;" ;iª;[o;;[o;
+; 0;@õ	;!o;";#{ ;iª;[o;$;["cke_ltr;@õ	;iªo;
+; 0;@õ	;!o;";#{ ;iª;[o;$;["cke_dialog_footer_buttons;@õ	;iªo;
+; 0;@õ	;!o;";#{ ;iª;[o;$;["cke_dialog_ui_hbox_first;@õ	;iªo;;[	"
 o;
-; 0;@
-;!o;";#{ ;i≈;[o;$;["cke_ltr;@
-;i≈o;
-; 0;@
-;!o;";#{ ;i≈;[o;$;["cke_dialog_footer_buttons;@
-;i≈o;
-; 0;@
-;!o;";#{ ;i≈;[o;$;["cke_dialog_ui_hbox_child;@
-;i≈;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"5px;@;@;iÃ;;o;;i ;["padding-right;[ ;o;;	;;"0;@;@;iÕ;;;@;["|.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
-.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child;iÀ;o;;" ;iÀ;[o;;[o;
-; 0;@I
-;!o;";#{ ;iÀ;[o;$;["cke_rtl;@I
-;iÀo;
-; 0;@I
-;!o;";#{ ;iÀ;[o;$;["cke_dialog_footer_buttons;@I
-;iÀo;
-; 0;@I
-;!o;";#{ ;iÀ;[o;$;["cke_dialog_ui_hbox_first;@I
-;iÀo;;[	"
+; 0;@õ	;!o;";#{ ;iª;[o;$;["cke_ltr;@õ	;iªo;
+; 0;@õ	;!o;";#{ ;iª;[o;$;["cke_dialog_footer_buttons;@õ	;iªo;
+; 0;@õ	;!o;";#{ ;iª;[o;$;["cke_dialog_ui_hbox_child;@õ	;iª;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"5px;@;@;i¬;;o;;i ;["padding-right;[ ;o;;	;;"0;@;@;i√;;;@;["|.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
+.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child;i¡;o;;" ;i¡;[o;;[o;
+; 0;@›	;!o;";#{ ;i¡;[o;$;["cke_rtl;@›	;i¡o;
+; 0;@›	;!o;";#{ ;i¡;[o;$;["cke_dialog_footer_buttons;@›	;i¡o;
+; 0;@›	;!o;";#{ ;i¡;[o;$;["cke_dialog_ui_hbox_first;@›	;i¡o;;[	"
 o;
-; 0;@I
-;!o;";#{ ;iÀ;[o;$;["cke_rtl;@I
-;iÀo;
-; 0;@I
-;!o;";#{ ;iÀ;[o;$;["cke_dialog_footer_buttons;@I
-;iÀo;
-; 0;@I
-;!o;";#{ ;iÀ;[o;$;["cke_dialog_ui_hbox_child;@I
-;iÀ;%To;
+; 0;@›	;!o;";#{ ;i¡;[o;$;["cke_rtl;@›	;i¡o;
+; 0;@›	;!o;";#{ ;i¡;[o;$;["cke_dialog_footer_buttons;@›	;i¡o;
+; 0;@›	;!o;";#{ ;i¡;[o;$;["cke_dialog_ui_hbox_child;@›	;i¡;%To;
 ;	;
-;[ ;["//* Applies to all labeled dialog fields */;@;i–o;;i ;[o;;i ;["border;[ ;o;;	;;"1px solid;@;@;i◊;;;@;["∆.cke_hc div.cke_dialog_ui_input_text,
+;[ ;["//* Applies to all labeled dialog fields */;@;i∆o;;i ;[o;;i ;["border;[ ;o;;	;;"1px solid;@;@;iÕ;;;@;["∆.cke_hc div.cke_dialog_ui_input_text,
 .cke_hc div.cke_dialog_ui_input_password,
 .cke_hc div.cke_dialog_ui_input_textarea,
 .cke_hc div.cke_dialog_ui_input_select,
-.cke_hc div.cke_dialog_ui_input_file;i÷;o;;" ;i÷;[
+.cke_hc div.cke_dialog_ui_input_file;iÃ;o;;" ;iÃ;[
 o;;[o;
-; 0;@â
-;!o;";#{ ;i÷;[o;$;["cke_hc;@â
-;i÷o;
-; 0;@â
-;!o;";#{ ;i÷;[o;1	;["div;@â
-;i÷;20o;$;["cke_dialog_ui_input_text;@â
-;i÷o;;["
+; 0;@
+;!o;";#{ ;iÃ;[o;$;["cke_hc;@
+;iÃo;
+; 0;@
+;!o;";#{ ;iÃ;[o;/	;["div;@
+;iÃ;00o;$;["cke_dialog_ui_input_text;@
+;iÃo;;["
 o;
-; 0;@â
-;!o;";#{ ;i÷;[o;$;["cke_hc;@â
-;i÷o;
-; 0;@â
-;!o;";#{ ;i÷;[o;1	;["div;@â
-;i÷;20o;$;["!cke_dialog_ui_input_password;@â
-;i÷o;;["
+; 0;@
+;!o;";#{ ;iÃ;[o;$;["cke_hc;@
+;iÃo;
+; 0;@
+;!o;";#{ ;iÃ;[o;/	;["div;@
+;iÃ;00o;$;["!cke_dialog_ui_input_password;@
+;iÃo;;["
 o;
-; 0;@â
-;!o;";#{ ;i÷;[o;$;["cke_hc;@â
-;i÷o;
-; 0;@â
-;!o;";#{ ;i÷;[o;1	;["div;@â
-;i÷;20o;$;["!cke_dialog_ui_input_textarea;@â
-;i÷o;;["
+; 0;@
+;!o;";#{ ;iÃ;[o;$;["cke_hc;@
+;iÃo;
+; 0;@
+;!o;";#{ ;iÃ;[o;/	;["div;@
+;iÃ;00o;$;["!cke_dialog_ui_input_textarea;@
+;iÃo;;["
 o;
-; 0;@â
-;!o;";#{ ;i÷;[o;$;["cke_hc;@â
-;i÷o;
-; 0;@â
-;!o;";#{ ;i÷;[o;1	;["div;@â
-;i÷;20o;$;["cke_dialog_ui_input_select;@â
-;i÷o;;["
+; 0;@
+;!o;";#{ ;iÃ;[o;$;["cke_hc;@
+;iÃo;
+; 0;@
+;!o;";#{ ;iÃ;[o;/	;["div;@
+;iÃ;00o;$;["cke_dialog_ui_input_select;@
+;iÃo;;["
 o;
-; 0;@â
-;!o;";#{ ;i÷;[o;$;["cke_hc;@â
-;i÷o;
-; 0;@â
-;!o;";#{ ;i÷;[o;1	;["div;@â
-;i÷;20o;$;["cke_dialog_ui_input_file;@â
-;i÷;%To;
+; 0;@
+;!o;";#{ ;iÃ;[o;$;["cke_hc;@
+;iÃo;
+; 0;@
+;!o;";#{ ;iÃ;[o;/	;["div;@
+;iÃ;00o;$;["cke_dialog_ui_input_file;@
+;iÃ;%To;
 ;	;
 ;[ ;["≥/*
 Text Input
@@ -1435,7 +1402,7 @@ The basic text field to input text.
 |  | +----------------------------------------+ | |
 |  +--------------------------------------------+ |
 +-------------------------------------------------+
-*/;@;i⁄o;
+*/;@;i–o;
 ;	;
 ;[ ;["‰/*
 Textarea
@@ -1455,59 +1422,63 @@ The textarea field to input larger text.
 |  | +--------------------------------------------+ | |
 |  +------------------------------------------------+ |
 +-----------------------------------------------------+
-*/;@;iÓo;;i ;[o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i;;o;;i ;["resize;[ ;o;;	;;"	none;@;@;i;;;@;["*textarea.cke_dialog_ui_input_textarea;i;o;;" ;i;[o;;[o;
-; 0;@;!o;";#{ ;i;[o;1	;["textarea;@;i;20o;$;["!cke_dialog_ui_input_textarea;@;i;%To;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["border;[ ;o;;	;;"1px solid #c9cccf;@;@;i;;o;;i ;["border-top-color;[ ;o;;	;;"#aeb3b9;@;@;i;;o;;i ;["padding;[ ;o;;	;;"4px 6px;@;@;i;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i;;o;;i ;["
-width;[ ;o;;	;;"	100%;@;@;i;;o;;i ;["*width;[ ;o;;	;;"95%;@;@;i;;o;;i ;["-moz-box-sizing;[ ;o;;	;;"border-box;@;@;i;;o;;i ;["-webkit-box-sizing;[ ;o;;	;;"border-box;@;@;i;;o;;i ;["box-sizing;[ ;o;;	;;"border-box;@;@;i;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["-moz-box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i;+[ ;,"0o;);i;@;*[ ;i;+["px;,"1pxo;);i;@;*[ ;i;+["px;,"2pxo;-;"	rgba;@;.{ ;i;/0;0[	o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;i;+[ ;,"	0.15o;	;	;;"
-inset;@;i;@;i;@;i;;o;;i ;["-webkit-box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i;+[ ;,"0o;);i;@;*[ ;i;+["px;,"1pxo;);i;@;*[ ;i;+["px;,"2pxo;-;"	rgba;@;.{ ;i;/0;0[	o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;i;+[ ;,"	0.15o;	;	;;"
-inset;@;i;@;i;@;i;;o;;i ;["box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i;+[ ;,"0o;);i;@;*[ ;i;+["px;,"1pxo;);i;@;*[ ;i;+["px;,"2pxo;-;"	rgba;@;.{ ;i;/0;0[	o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;i;+[ ;,"	0.15o;	;	;;"
-inset;@;i;@;i;@;i;;;@;["ninput.cke_dialog_ui_input_text,
+*/;@;i‰o;;i ;[o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i˙;;o;;i ;["resize;[ ;o;;	;;"	none;@;@;i˚;;;@;["*textarea.cke_dialog_ui_input_textarea;i˘;o;;" ;i˘;[o;;[o;
+; 0;@õ
+;!o;";#{ ;i˘;[o;/	;["textarea;@õ
+;i˘;00o;$;["!cke_dialog_ui_input_textarea;@õ
+;i˘;%To;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["border;[ ;o;;	;;"1px solid #c9cccf;@;@;i;;o;;i ;["border-top-color;[ ;o;;	;;"#aeb3b9;@;@;i;;o;;i ;["padding;[ ;o;;	;;"4px 6px;@;@;i;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i;;o;;i ;["
+width;[ ;o;;	;;"	100%;@;@;i;;o;;i ;["*width;[ ;o;;	;;"95%;@;@;i;;o;;i ;["-moz-box-sizing;[ ;o;;	;;"border-box;@;@;i
+;;o;;i ;["-webkit-box-sizing;[ ;o;;	;;"border-box;@;@;i;;o;;i ;["box-sizing;[ ;o;;	;;"border-box;@;@;i;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["-moz-box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;i;-[ ;."0o;+;i;@;,[ ;i;-["px;."1pxo;+;i;@;,[ ;i;-["px;."2pxo;1;"	rgba;@;2{ ;i;30;4[	o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;f0.14999999999999999 33;@;,@÷;i;-[ ;."	0.15o;	;	;;"
+inset;@;i;@;i;@;i;;o;;i ;["-webkit-box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;i;-[ ;."0o;+;i;@;,[ ;i;-["px;."1pxo;+;i;@;,[ ;i;-["px;."2pxo;1;"	rgba;@;2{ ;i;30;4[	o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;f0.14999999999999999 33;@;,@÷;i;-[ ;."	0.15o;	;	;;"
+inset;@;i;@;i;@;i;;o;;i ;["box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;i;-[ ;."0o;+;i;@;,[ ;i;-["px;."1pxo;+;i;@;,[ ;i;-["px;."2pxo;1;"	rgba;@;2{ ;i;30;4[	o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;f0.14999999999999999 33;@;,@÷;i;-[ ;."	0.15o;	;	;;"
+inset;@;i;@;i;@;i;;;@;["ninput.cke_dialog_ui_input_text,
 input.cke_dialog_ui_input_password,
-textarea.cke_dialog_ui_input_textarea;i;o;;" ;i;[o;;[o;
-; 0;@⁄;!o;";#{ ;i;[o;1	;["
-input;@⁄;i;20o;$;["cke_dialog_ui_input_text;@⁄;io;;["
+textarea.cke_dialog_ui_input_textarea;i;o;;" ;i;[o;;[o;
+; 0;@n;!o;";#{ ;i;[o;/	;["
+input;@n;i;00o;$;["cke_dialog_ui_input_text;@n;io;;["
 o;
-; 0;@⁄;!o;";#{ ;i;[o;1	;["
-input;@⁄;i;20o;$;["!cke_dialog_ui_input_password;@⁄;io;;["
+; 0;@n;!o;";#{ ;i;[o;/	;["
+input;@n;i;00o;$;["!cke_dialog_ui_input_password;@n;io;;["
 o;
-; 0;@⁄;!o;";#{ ;i;[o;1	;["textarea;@⁄;i;20o;$;["!cke_dialog_ui_input_textarea;@⁄;i;%To;;i ;[o;;i ;["border;[ ;o;;	;;"1px solid #aeb3b9;@;@;i%;;o;;i ;["border-top-color;[ ;o;;	;;"#a0a6ad;@;@;i&;;;@;["{input.cke_dialog_ui_input_text:hover,
+; 0;@n;!o;";#{ ;i;[o;/	;["textarea;@n;i;00o;$;["!cke_dialog_ui_input_textarea;@n;i;%To;;i ;[o;;i ;["border;[ ;o;;	;;"1px solid #aeb3b9;@;@;i;;o;;i ;["border-top-color;[ ;o;;	;;"#a0a6ad;@;@;i;;;@;["{input.cke_dialog_ui_input_text:hover,
 input.cke_dialog_ui_input_password:hover,
-textarea.cke_dialog_ui_input_textarea:hover;i$;o;;" ;i$;[o;;[o;
-; 0;@;!o;";#{ ;i$;[o;1	;["
-input;@;i$;20o;$;["cke_dialog_ui_input_text;@;i$o;9
+textarea.cke_dialog_ui_input_textarea:hover;i;o;;" ;i;[o;;[o;
+; 0;@ß;!o;";#{ ;i;[o;/	;["
+input;@ß;i;00o;$;["cke_dialog_ui_input_text;@ß;io;;
 ;["
-hover;	;:;@;i$;;0o;;["
+hover;	;<;@ß;i;=0o;;["
 o;
-; 0;@;!o;";#{ ;i$;[o;1	;["
-input;@;i$;20o;$;["!cke_dialog_ui_input_password;@;i$o;9
+; 0;@ß;!o;";#{ ;i;[o;/	;["
+input;@ß;i;00o;$;["!cke_dialog_ui_input_password;@ß;io;;
 ;["
-hover;	;:;@;i$;;0o;;["
+hover;	;<;@ß;i;=0o;;["
 o;
-; 0;@;!o;";#{ ;i$;[o;1	;["textarea;@;i$;20o;$;["!cke_dialog_ui_input_textarea;@;i$o;9
+; 0;@ß;!o;";#{ ;i;[o;/	;["textarea;@ß;i;00o;$;["!cke_dialog_ui_input_textarea;@ß;io;;
 ;["
-hover;	;:;@;i$;;0;%To;;i ;[o;;i ;["outline;[ ;o;;	;;"	none;@;@;i.;;o;;i ;["border;[ ;o;;	;;"1px solid #139ff7;@;@;i/;;o;;i ;["border-top-color;[ ;o;;	;;"#1392e9;@;@;i0;;;@;["§input.cke_dialog_ui_input_text:focus,
+hover;	;<;@ß;i;=0;%To;;i ;[o;;i ;["outline;[ ;o;;	;;"	none;@;@;i$;;o;;i ;["border;[ ;o;;	;;"1px solid #139ff7;@;@;i%;;o;;i ;["border-top-color;[ ;o;;	;;"#1392e9;@;@;i&;;;@;["§input.cke_dialog_ui_input_text:focus,
 input.cke_dialog_ui_input_password:focus,
 textarea.cke_dialog_ui_input_textarea:focus,
-select.cke_dialog_ui_input_select:focus;i-;o;;" ;i-;[	o;;[o;
-; 0;@[;!o;";#{ ;i-;[o;1	;["
-input;@[;i-;20o;$;["cke_dialog_ui_input_text;@[;i-o;9
+select.cke_dialog_ui_input_select:focus;i#;o;;" ;i#;[	o;;[o;
+; 0;@Ô;!o;";#{ ;i#;[o;/	;["
+input;@Ô;i#;00o;$;["cke_dialog_ui_input_text;@Ô;i#o;;
 ;["
-focus;	;:;@[;i-;;0o;;["
+focus;	;<;@Ô;i#;=0o;;["
 o;
-; 0;@[;!o;";#{ ;i-;[o;1	;["
-input;@[;i-;20o;$;["!cke_dialog_ui_input_password;@[;i-o;9
+; 0;@Ô;!o;";#{ ;i#;[o;/	;["
+input;@Ô;i#;00o;$;["!cke_dialog_ui_input_password;@Ô;i#o;;
 ;["
-focus;	;:;@[;i-;;0o;;["
+focus;	;<;@Ô;i#;=0o;;["
 o;
-; 0;@[;!o;";#{ ;i-;[o;1	;["textarea;@[;i-;20o;$;["!cke_dialog_ui_input_textarea;@[;i-o;9
+; 0;@Ô;!o;";#{ ;i#;[o;/	;["textarea;@Ô;i#;00o;$;["!cke_dialog_ui_input_textarea;@Ô;i#o;;
 ;["
-focus;	;:;@[;i-;;0o;;["
+focus;	;<;@Ô;i#;=0o;;["
 o;
-; 0;@[;!o;";#{ ;i-;[o;1	;["select;@[;i-;20o;$;["cke_dialog_ui_input_select;@[;i-o;9
+; 0;@Ô;!o;";#{ ;i#;[o;/	;["select;@Ô;i#;00o;$;["cke_dialog_ui_input_select;@Ô;i#o;;
 ;["
-focus;	;:;@[;i-;;0;%To;
+focus;	;<;@Ô;i#;=0;%To;
 ;	;
 ;[ ;["/*
 Button
@@ -1520,81 +1491,81 @@ The buttons used in the dialog footer or inside the contents.
 |  |                               |  |
 |  +-------------------------------+  |
 +-------------------------------------+
-*/;@;i3o;
+*/;@;i)o;
 ;	;
-;[ ;["(/* The outer part of the button. */;@;i@o;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iC;;o;;i ;["*display;[ ;o;;	;;"inline;@;@;iD;;o;;i ;["
-*zoom;[ ;o;;	;;"1;@;@;iE;;o;;i ;["padding;[ ;o;;	;;"
-3px 0;@;@;iG;;o;;i ;["margin;[ ;o;;	;;"0;@;@;iH;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;iJ;;o;;i ;["
-color;[ ;o;;	;;"	#333;@;@;iK;;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;iL;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iM;;o;;i ;["border;[ ;o;;	;;"1px solid #b6b6b6;@;@;iO;;o;;i ;["border-bottom-color;[ ;o;;	;;"	#999;@;@;iP;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;iR;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;iS;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;iT;;o;;i ;["-moz-box-shadow;[ ;o;&	;':
-comma;[o;&	;';(;[	o;);i ;@;*@m;iV;+[ ;,"0o;);i;@;*[ ;iV;+["px;,"1pxo;);i ;@;*@m;iV;+[ ;,"0o;-;"	rgba;@;.{ ;iV;/0;0[	o;);iˇ;@;*@m;iV;+[ ;,"255o;);iˇ;@;*@m;iV;+[ ;,"255o;);iˇ;@;*@m;iV;+[ ;,"255o;);f0.5;@;*@m;iV;+[ ;,"0.5;@;iVo;&	;';(;[
-o;);i ;@;*@m;iV;+[ ;,"0o;);i ;@;*@m;iV;+[ ;,"0o;);i;@;*[ ;iV;+["px;,"2pxo;-;"	rgba;@;.{ ;iV;/0;0[	o;);iˇ;@;*@m;iV;+[ ;,"255o;);iˇ;@;*@m;iV;+[ ;,"255o;);iˇ;@;*@m;iV;+[ ;,"255o;);f0.14999999999999999 33;@;*@m;iV;+[ ;,"	0.15o;	;	;;"
-inset;@;iV;@;iVo;&	;';(;[
-o;);i ;@;*@m;iV;+[ ;,"0o;);i;@;*[ ;iV;+["px;,"1pxo;);i ;@;*@m;iV;+[ ;,"0o;-;"	rgba;@;.{ ;iV;/0;0[	o;);iˇ;@;*@m;iV;+[ ;,"255o;);iˇ;@;*@m;iV;+[ ;,"255o;);iˇ;@;*@m;iV;+[ ;,"255o;);f0.14999999999999999 33;@;*@m;iV;+[ ;,"	0.15o;	;	;;"
-inset;@;iV;@;iV;@;iV;@;iV;;o;;i ;["-webkit-box-shadow;[ ;o;&	;';=;[o;&	;';(;[	o;);i ;@;*@m;iW;+[ ;,"0o;);i;@;*[ ;iW;+["px;,"1pxo;);i ;@;*@m;iW;+[ ;,"0o;-;"	rgba;@;.{ ;iW;/0;0[	o;);iˇ;@;*@m;iW;+[ ;,"255o;);iˇ;@;*@m;iW;+[ ;,"255o;);iˇ;@;*@m;iW;+[ ;,"255o;);f0.5;@;*@m;iW;+[ ;,"0.5;@;iWo;&	;';(;[
-o;);i ;@;*@m;iW;+[ ;,"0o;);i ;@;*@m;iW;+[ ;,"0o;);i;@;*[ ;iW;+["px;,"2pxo;-;"	rgba;@;.{ ;iW;/0;0[	o;);iˇ;@;*@m;iW;+[ ;,"255o;);iˇ;@;*@m;iW;+[ ;,"255o;);iˇ;@;*@m;iW;+[ ;,"255o;);f0.14999999999999999 33;@;*@m;iW;+[ ;,"	0.15o;	;	;;"
-inset;@;iW;@;iWo;&	;';(;[
-o;);i ;@;*@m;iW;+[ ;,"0o;);i;@;*[ ;iW;+["px;,"1pxo;);i ;@;*@m;iW;+[ ;,"0o;-;"	rgba;@;.{ ;iW;/0;0[	o;);iˇ;@;*@m;iW;+[ ;,"255o;);iˇ;@;*@m;iW;+[ ;,"255o;);iˇ;@;*@m;iW;+[ ;,"255o;);f0.14999999999999999 33;@;*@m;iW;+[ ;,"	0.15o;	;	;;"
-inset;@;iW;@;iW;@;iW;@;iW;;o;;i ;["box-shadow;[ ;o;&	;';=;[o;&	;';(;[	o;);i ;@;*@m;iX;+[ ;,"0o;);i;@;*[ ;iX;+["px;,"1pxo;);i ;@;*@m;iX;+[ ;,"0o;-;"	rgba;@;.{ ;iX;/0;0[	o;);iˇ;@;*@m;iX;+[ ;,"255o;);iˇ;@;*@m;iX;+[ ;,"255o;);iˇ;@;*@m;iX;+[ ;,"255o;);f0.5;@;*@m;iX;+[ ;,"0.5;@;iXo;&	;';(;[
-o;);i ;@;*@m;iX;+[ ;,"0o;);i ;@;*@m;iX;+[ ;,"0o;);i;@;*[ ;iX;+["px;,"2pxo;-;"	rgba;@;.{ ;iX;/0;0[	o;);iˇ;@;*@m;iX;+[ ;,"255o;);iˇ;@;*@m;iX;+[ ;,"255o;);iˇ;@;*@m;iX;+[ ;,"255o;);f0.14999999999999999 33;@;*@m;iX;+[ ;,"	0.15o;	;	;;"
-inset;@;iX;@;iXo;&	;';(;[
-o;);i ;@;*@m;iX;+[ ;,"0o;);i;@;*[ ;iX;+["px;,"1pxo;);i ;@;*@m;iX;+[ ;,"0o;-;"	rgba;@;.{ ;iX;/0;0[	o;);iˇ;@;*@m;iX;+[ ;,"255o;);iˇ;@;*@m;iX;+[ ;,"255o;);iˇ;@;*@m;iX;+[ ;,"255o;);f0.14999999999999999 33;@;*@m;iX;+[ ;,"	0.15o;	;	;;"
-inset;@;iX;@;iX;@;iX;@;iX;;o;;i ;["background;[ ;o;;	;;"#e4e4e4;@;@;iZ;;o;;i ;["background-image;[ ;o;-;"-webkit-gradient;@;.{ ;i[;/0;0[
-o;	;	;;"linear;@;i[o;&	;';(;[o;	;	;;"	left;@;i[o;	;	;;"top;@;i[;@;i[o;&	;';(;[o;	;	;;"	left;@;i[o;	;	;;"bottom;@;i[;@;i[o;-;"	from;@;.{ ;i[;/0;0[o;3	;0;@;i[;4{	;5i;6iˇ;7iˇ;8iˇo;-;"to;@;.{ ;i[;/0;0[o;3	;0;@;i[;4{	;5i;6i‰;7i‰;8i‰;@;i[;;o;;i ;["background-image;[ ;o;-;"-moz-linear-gradient;@;.{ ;i\;/0;0[o;	;	;;"top;@;i\o;3	;0;@;i\;4{	;5i;6iˇ;7iˇ;8iˇo;3	;0;@;i\;4{	;5i;6i‰;7i‰;8i‰;@;i\;;o;;i ;["background-image;[ ;o;-;"-webkit-linear-gradient;@;.{ ;i];/0;0[o;	;	;;"top;@;i]o;3	;0;@;i];4{	;5i;6iˇ;7iˇ;8iˇo;3	;0;@;i];4{	;5i;6i‰;7i‰;8i‰;@;i];;o;;i ;["background-image;[ ;o;-;"-o-linear-gradient;@;.{ ;i^;/0;0[o;	;	;;"top;@;i^o;3	;0;@;i^;4{	;5i;6iˇ;7iˇ;8iˇo;3	;0;@;i^;4{	;5i;6i‰;7i‰;8i‰;@;i^;;o;;i ;["background-image;[ ;o;-;"-ms-linear-gradient;@;.{ ;i_;/0;0[o;	;	;;"top;@;i_o;3	;0;@;i_;4{	;5i;6iˇ;7iˇ;8iˇo;3	;0;@;i_;4{	;5i;6i‰;7i‰;8i‰;@;i_;;o;;i ;["background-image;[ ;o;-;"linear-gradient;@;.{ ;i`;/0;0[o;	;	;;"top;@;i`o;3	;0;@;i`;4{	;5i;6iˇ;7iˇ;8iˇo;3	;0;@;i`;4{	;5i;6i‰;7i‰;8i‰;@;i`;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ffffff', endColorstr='#e4e4e4');@;ia;@;ia;;;@;["a.cke_dialog_ui_button;iB;o;;" ;iB;[o;;[o;
-; 0;@ù;!o;";#{ ;iB;[o;1	;["a;@ù;iB;20o;$;["cke_dialog_ui_button;@ù;iB;%To;;i ;[o;;i ;["padding;[ ;o;;	;;"0 12px;@;@;ig;;;@;["span.cke_dialog_ui_button;if;o;;" ;if;[o;;[o;
-; 0;@∂;!o;";#{ ;if;[o;1	;["	span;@∂;if;20o;$;["cke_dialog_ui_button;@∂;if;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#9e9e9e;@;@;il;;o;;i ;["background;[ ;o;;	;;"	#ccc;@;@;in;;o;;i ;["background-image;[ ;o;-;"-webkit-gradient;@;.{ ;io;/0;0[
-o;	;	;;"linear;@;ioo;&	;';(;[o;	;	;;"	left;@;ioo;	;	;;"top;@;io;@;ioo;&	;';(;[o;	;	;;"	left;@;ioo;	;	;;"bottom;@;io;@;ioo;-;"	from;@;.{ ;io;/0;0[o;3	;0;@;io;4{	;5i;6iÚ;7iÚ;8iÚo;-;"to;@;.{ ;io;/0;0[o;3	;0;@;io;4{	;5i;6iÃ;7iÃ;8iÃ;@;io;;o;;i ;["background-image;[ ;o;-;"-moz-linear-gradient;@;.{ ;ip;/0;0[o;	;	;;"top;@;ipo;3	;0;@;ip;4{	;5i;6iÚ;7iÚ;8iÚo;3	;0;@;ip;4{	;5i;6iÃ;7iÃ;8iÃ;@;ip;;o;;i ;["background-image;[ ;o;-;"-webkit-linear-gradient;@;.{ ;iq;/0;0[o;	;	;;"top;@;iqo;3	;0;@;iq;4{	;5i;6iÚ;7iÚ;8iÚo;3	;0;@;iq;4{	;5i;6iÃ;7iÃ;8iÃ;@;iq;;o;;i ;["background-image;[ ;o;-;"-o-linear-gradient;@;.{ ;ir;/0;0[o;	;	;;"top;@;iro;3	;0;@;ir;4{	;5i;6iÚ;7iÚ;8iÚo;3	;0;@;ir;4{	;5i;6iÃ;7iÃ;8iÃ;@;ir;;o;;i ;["background-image;[ ;o;-;"-ms-linear-gradient;@;.{ ;is;/0;0[o;	;	;;"top;@;iso;3	;0;@;is;4{	;5i;6iÚ;7iÚ;8iÚo;3	;0;@;is;4{	;5i;6iÃ;7iÃ;8iÃ;@;is;;o;;i ;["background-image;[ ;o;-;"linear-gradient;@;.{ ;it;/0;0[o;	;	;;"top;@;ito;3	;0;@;it;4{	;5i;6iÚ;7iÚ;8iÚo;3	;0;@;it;4{	;5i;6iÃ;7iÃ;8iÃ;@;it;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f2f2f2', endColorstr='#cccccc');@;iu;@;iu;;;@;["!a.cke_dialog_ui_button:hover;ik;o;;" ;ik;[o;;[o;
-; 0;@C;!o;";#{ ;ik;[o;1	;["a;@C;ik;20o;$;["cke_dialog_ui_button;@C;iko;9
+;[ ;["(/* The outer part of the button. */;@;i6o;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i9;;o;;i ;["*display;[ ;o;;	;;"inline;@;@;i:;;o;;i ;["
+*zoom;[ ;o;;	;;"1;@;@;i;;;o;;i ;["padding;[ ;o;;	;;"
+3px 0;@;@;i=;;o;;i ;["margin;[ ;o;;	;;"0;@;@;i>;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i@;;o;;i ;["
+color;[ ;o;;	;;"	#333;@;@;iA;;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;iB;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iC;;o;;i ;["border;[ ;o;;	;;"1px solid #b6b6b6;@;@;iE;;o;;i ;["border-bottom-color;[ ;o;;	;;"	#999;@;@;iF;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;iH;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;iI;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;iJ;;o;;i ;["-moz-box-shadow;[ ;o;(	;):
+comma;[o;(	;);*;[	o;+;i ;@;,@÷;iL;-[ ;."0o;+;i;@;,[ ;iL;-["px;."1pxo;+;i ;@;,@÷;iL;-[ ;."0o;1;"	rgba;@;2{ ;iL;30;4[	o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;f0.5;@;,@÷;iL;-[ ;."0.5;@;iLo;(	;);*;[
+o;+;i ;@;,@÷;iL;-[ ;."0o;+;i ;@;,@÷;iL;-[ ;."0o;+;i;@;,[ ;iL;-["px;."2pxo;1;"	rgba;@;2{ ;iL;30;4[	o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;f0.14999999999999999 33;@;,@÷;iL;-[ ;."	0.15o;	;	;;"
+inset;@;iL;@;iLo;(	;);*;[
+o;+;i ;@;,@÷;iL;-[ ;."0o;+;i;@;,[ ;iL;-["px;."1pxo;+;i ;@;,@÷;iL;-[ ;."0o;1;"	rgba;@;2{ ;iL;30;4[	o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;iˇ;@;,@÷;iL;-[ ;."255o;+;f0.14999999999999999 33;@;,@÷;iL;-[ ;."	0.15o;	;	;;"
+inset;@;iL;@;iL;@;iL;@;iL;;o;;i ;["-webkit-box-shadow;[ ;o;(	;);?;[o;(	;);*;[	o;+;i ;@;,@÷;iM;-[ ;."0o;+;i;@;,[ ;iM;-["px;."1pxo;+;i ;@;,@÷;iM;-[ ;."0o;1;"	rgba;@;2{ ;iM;30;4[	o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;f0.5;@;,@÷;iM;-[ ;."0.5;@;iMo;(	;);*;[
+o;+;i ;@;,@÷;iM;-[ ;."0o;+;i ;@;,@÷;iM;-[ ;."0o;+;i;@;,[ ;iM;-["px;."2pxo;1;"	rgba;@;2{ ;iM;30;4[	o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;f0.14999999999999999 33;@;,@÷;iM;-[ ;."	0.15o;	;	;;"
+inset;@;iM;@;iMo;(	;);*;[
+o;+;i ;@;,@÷;iM;-[ ;."0o;+;i;@;,[ ;iM;-["px;."1pxo;+;i ;@;,@÷;iM;-[ ;."0o;1;"	rgba;@;2{ ;iM;30;4[	o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;iˇ;@;,@÷;iM;-[ ;."255o;+;f0.14999999999999999 33;@;,@÷;iM;-[ ;."	0.15o;	;	;;"
+inset;@;iM;@;iM;@;iM;@;iM;;o;;i ;["box-shadow;[ ;o;(	;);?;[o;(	;);*;[	o;+;i ;@;,@÷;iN;-[ ;."0o;+;i;@;,[ ;iN;-["px;."1pxo;+;i ;@;,@÷;iN;-[ ;."0o;1;"	rgba;@;2{ ;iN;30;4[	o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;f0.5;@;,@÷;iN;-[ ;."0.5;@;iNo;(	;);*;[
+o;+;i ;@;,@÷;iN;-[ ;."0o;+;i ;@;,@÷;iN;-[ ;."0o;+;i;@;,[ ;iN;-["px;."2pxo;1;"	rgba;@;2{ ;iN;30;4[	o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;f0.14999999999999999 33;@;,@÷;iN;-[ ;."	0.15o;	;	;;"
+inset;@;iN;@;iNo;(	;);*;[
+o;+;i ;@;,@÷;iN;-[ ;."0o;+;i;@;,[ ;iN;-["px;."1pxo;+;i ;@;,@÷;iN;-[ ;."0o;1;"	rgba;@;2{ ;iN;30;4[	o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;iˇ;@;,@÷;iN;-[ ;."255o;+;f0.14999999999999999 33;@;,@÷;iN;-[ ;."	0.15o;	;	;;"
+inset;@;iN;@;iN;@;iN;@;iN;;o;;i ;["background;[ ;o;;	;;"#e4e4e4;@;@;iP;;o;;i ;["background-image;[ ;o;1;"-webkit-gradient;@;2{ ;iQ;30;4[
+o;	;	;;"linear;@;iQo;(	;);*;[o;	;	;;"	left;@;iQo;	;	;;"top;@;iQ;@;iQo;(	;);*;[o;	;	;;"	left;@;iQo;	;	;;"bottom;@;iQ;@;iQo;1;"	from;@;2{ ;iQ;30;4[o;5	;0;@;iQ;6{	;7i;8iˇ;9iˇ;:iˇo;1;"to;@;2{ ;iQ;30;4[o;5	;0;@;iQ;6{	;7i;8i‰;9i‰;:i‰;@;iQ;;o;;i ;["background-image;[ ;o;1;"-moz-linear-gradient;@;2{ ;iR;30;4[o;	;	;;"top;@;iRo;5	;0;@;iR;6{	;7i;8iˇ;9iˇ;:iˇo;5	;0;@;iR;6{	;7i;8i‰;9i‰;:i‰;@;iR;;o;;i ;["background-image;[ ;o;1;"-webkit-linear-gradient;@;2{ ;iS;30;4[o;	;	;;"top;@;iSo;5	;0;@;iS;6{	;7i;8iˇ;9iˇ;:iˇo;5	;0;@;iS;6{	;7i;8i‰;9i‰;:i‰;@;iS;;o;;i ;["background-image;[ ;o;1;"-o-linear-gradient;@;2{ ;iT;30;4[o;	;	;;"top;@;iTo;5	;0;@;iT;6{	;7i;8iˇ;9iˇ;:iˇo;5	;0;@;iT;6{	;7i;8i‰;9i‰;:i‰;@;iT;;o;;i ;["background-image;[ ;o;1;"-ms-linear-gradient;@;2{ ;iU;30;4[o;	;	;;"top;@;iUo;5	;0;@;iU;6{	;7i;8iˇ;9iˇ;:iˇo;5	;0;@;iU;6{	;7i;8i‰;9i‰;:i‰;@;iU;;o;;i ;["background-image;[ ;o;1;"linear-gradient;@;2{ ;iV;30;4[o;	;	;;"top;@;iVo;5	;0;@;iV;6{	;7i;8iˇ;9iˇ;:iˇo;5	;0;@;iV;6{	;7i;8i‰;9i‰;:i‰;@;iV;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ffffff', endColorstr='#e4e4e4');@;iW;@;iW;;;@;["a.cke_dialog_ui_button;i8;o;;" ;i8;[o;;[o;
+; 0;@1;!o;";#{ ;i8;[o;/	;["a;@1;i8;00o;$;["cke_dialog_ui_button;@1;i8;%To;;i ;[o;;i ;["padding;[ ;o;;	;;"0 12px;@;@;i];;;@;["span.cke_dialog_ui_button;i\;o;;" ;i\;[o;;[o;
+; 0;@J;!o;";#{ ;i\;[o;/	;["	span;@J;i\;00o;$;["cke_dialog_ui_button;@J;i\;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#9e9e9e;@;@;ib;;o;;i ;["background;[ ;o;;	;;"	#ccc;@;@;id;;o;;i ;["background-image;[ ;o;1;"-webkit-gradient;@;2{ ;ie;30;4[
+o;	;	;;"linear;@;ieo;(	;);*;[o;	;	;;"	left;@;ieo;	;	;;"top;@;ie;@;ieo;(	;);*;[o;	;	;;"	left;@;ieo;	;	;;"bottom;@;ie;@;ieo;1;"	from;@;2{ ;ie;30;4[o;5	;0;@;ie;6{	;7i;8iÚ;9iÚ;:iÚo;1;"to;@;2{ ;ie;30;4[o;5	;0;@;ie;6{	;7i;8iÃ;9iÃ;:iÃ;@;ie;;o;;i ;["background-image;[ ;o;1;"-moz-linear-gradient;@;2{ ;if;30;4[o;	;	;;"top;@;ifo;5	;0;@;if;6{	;7i;8iÚ;9iÚ;:iÚo;5	;0;@;if;6{	;7i;8iÃ;9iÃ;:iÃ;@;if;;o;;i ;["background-image;[ ;o;1;"-webkit-linear-gradient;@;2{ ;ig;30;4[o;	;	;;"top;@;igo;5	;0;@;ig;6{	;7i;8iÚ;9iÚ;:iÚo;5	;0;@;ig;6{	;7i;8iÃ;9iÃ;:iÃ;@;ig;;o;;i ;["background-image;[ ;o;1;"-o-linear-gradient;@;2{ ;ih;30;4[o;	;	;;"top;@;iho;5	;0;@;ih;6{	;7i;8iÚ;9iÚ;:iÚo;5	;0;@;ih;6{	;7i;8iÃ;9iÃ;:iÃ;@;ih;;o;;i ;["background-image;[ ;o;1;"-ms-linear-gradient;@;2{ ;ii;30;4[o;	;	;;"top;@;iio;5	;0;@;ii;6{	;7i;8iÚ;9iÚ;:iÚo;5	;0;@;ii;6{	;7i;8iÃ;9iÃ;:iÃ;@;ii;;o;;i ;["background-image;[ ;o;1;"linear-gradient;@;2{ ;ij;30;4[o;	;	;;"top;@;ijo;5	;0;@;ij;6{	;7i;8iÚ;9iÚ;:iÚo;5	;0;@;ij;6{	;7i;8iÃ;9iÃ;:iÃ;@;ij;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f2f2f2', endColorstr='#cccccc');@;ik;@;ik;;;@;["!a.cke_dialog_ui_button:hover;ia;o;;" ;ia;[o;;[o;
+; 0;@◊;!o;";#{ ;ia;[o;/	;["a;@◊;ia;00o;$;["cke_dialog_ui_button;@◊;iao;;
 ;["
-hover;	;:;@C;ik;;0;%To;
+hover;	;<;@◊;ia;=0;%To;
 ;	;
-;[ ;["I/*  :focus/:active styles for dialog buttons: regular and footer. */;@;ixo;;i ;[
-o;;i ;["border-color;[ ;o;;	;;"#969696;@;@;i|;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i};;o;;i ;["-moz-box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i~;+[ ;,"0o;);i ;@;*@m;i~;+[ ;,"0o;);i;@;*[ ;i~;+["px;,"6pxo;-;"	rgba;@;.{ ;i~;/0;0[	o;);i ;@;*@m;i~;+[ ;,"0o;);i ;@;*@m;i~;+[ ;,"0o;);i ;@;*@m;i~;+[ ;,"0o;);f0.40000000000000002 ôö;@;*@m;i~;+[ ;,"0.4o;	;	;;"
-inset;@;i~;@;i~;@;i~;;o;;i ;["-webkit-box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i;@;*[ ;i;+["px;,"6pxo;-;"	rgba;@;.{ ;i;/0;0[	o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);f0.40000000000000002 ôö;@;*@m;i;+[ ;,"0.4o;	;	;;"
-inset;@;i;@;i;@;i;;o;;i ;["box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;iÄ;+[ ;,"0o;);i ;@;*@m;iÄ;+[ ;,"0o;);i;@;*[ ;iÄ;+["px;,"6pxo;-;"	rgba;@;.{ ;iÄ;/0;0[	o;);i ;@;*@m;iÄ;+[ ;,"0o;);i ;@;*@m;iÄ;+[ ;,"0o;);i ;@;*@m;iÄ;+[ ;,"0o;);f0.40000000000000002 ôö;@;*@m;iÄ;+[ ;,"0.4o;	;	;;"
-inset;@;iÄ;@;iÄ;@;iÄ;;;@;["@a.cke_dialog_ui_button:focus,
-a.cke_dialog_ui_button:active;i{;o;;" ;i{;[o;;[o;
-; 0;@’;!o;";#{ ;i{;[o;1	;["a;@’;i{;20o;$;["cke_dialog_ui_button;@’;i{o;9
+;[ ;["I/*  :focus/:active styles for dialog buttons: regular and footer. */;@;ino;;i ;[
+o;;i ;["border-color;[ ;o;;	;;"#969696;@;@;ir;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;is;;o;;i ;["-moz-box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;it;-[ ;."0o;+;i ;@;,@÷;it;-[ ;."0o;+;i;@;,[ ;it;-["px;."6pxo;1;"	rgba;@;2{ ;it;30;4[	o;+;i ;@;,@÷;it;-[ ;."0o;+;i ;@;,@÷;it;-[ ;."0o;+;i ;@;,@÷;it;-[ ;."0o;+;f0.40000000000000002 ôö;@;,@÷;it;-[ ;."0.4o;	;	;;"
+inset;@;it;@;it;@;it;;o;;i ;["-webkit-box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;iu;-[ ;."0o;+;i ;@;,@÷;iu;-[ ;."0o;+;i;@;,[ ;iu;-["px;."6pxo;1;"	rgba;@;2{ ;iu;30;4[	o;+;i ;@;,@÷;iu;-[ ;."0o;+;i ;@;,@÷;iu;-[ ;."0o;+;i ;@;,@÷;iu;-[ ;."0o;+;f0.40000000000000002 ôö;@;,@÷;iu;-[ ;."0.4o;	;	;;"
+inset;@;iu;@;iu;@;iu;;o;;i ;["box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;iv;-[ ;."0o;+;i ;@;,@÷;iv;-[ ;."0o;+;i;@;,[ ;iv;-["px;."6pxo;1;"	rgba;@;2{ ;iv;30;4[	o;+;i ;@;,@÷;iv;-[ ;."0o;+;i ;@;,@÷;iv;-[ ;."0o;+;i ;@;,@÷;iv;-[ ;."0o;+;f0.40000000000000002 ôö;@;,@÷;iv;-[ ;."0.4o;	;	;;"
+inset;@;iv;@;iv;@;iv;;;@;["@a.cke_dialog_ui_button:focus,
+a.cke_dialog_ui_button:active;iq;o;;" ;iq;[o;;[o;
+; 0;@i;!o;";#{ ;iq;[o;/	;["a;@i;iq;00o;$;["cke_dialog_ui_button;@i;iqo;;
 ;["
-focus;	;:;@’;i{;;0o;;["
+focus;	;<;@i;iq;=0o;;["
 o;
-; 0;@’;!o;";#{ ;i{;[o;1	;["a;@’;i{;20o;$;["cke_dialog_ui_button;@’;i{o;9
-;["active;	;:;@’;i{;;0;%To;;i ;[o;;i ;["border;[ ;o;;	;;"3px solid;@;@;iá;;o;;i ;["padding-top;[ ;o;;	;;"1px;@;@;ià;;o;;i ;["padding-bottom;[ ;o;;	;;"1px;@;@;iâ;;;@;["v.cke_hc a.cke_dialog_ui_button:hover,
+; 0;@i;!o;";#{ ;iq;[o;/	;["a;@i;iq;00o;$;["cke_dialog_ui_button;@i;iqo;;
+;["active;	;<;@i;iq;=0;%To;;i ;[o;;i ;["border;[ ;o;;	;;"3px solid;@;@;i};;o;;i ;["padding-top;[ ;o;;	;;"1px;@;@;i~;;o;;i ;["padding-bottom;[ ;o;;	;;"1px;@;@;i;;;@;["v.cke_hc a.cke_dialog_ui_button:hover,
 .cke_hc a.cke_dialog_ui_button:focus,
-.cke_hc a.cke_dialog_ui_button:active;iÜ;o;;" ;iÜ;[o;;[o;
-; 0;@;!o;";#{ ;iÜ;[o;$;["cke_hc;@;iÜo;
-; 0;@;!o;";#{ ;iÜ;[o;1	;["a;@;iÜ;20o;$;["cke_dialog_ui_button;@;iÜo;9
+.cke_hc a.cke_dialog_ui_button:active;i|;o;;" ;i|;[o;;[o;
+; 0;@°;!o;";#{ ;i|;[o;$;["cke_hc;@°;i|o;
+; 0;@°;!o;";#{ ;i|;[o;/	;["a;@°;i|;00o;$;["cke_dialog_ui_button;@°;i|o;;
 ;["
-hover;	;:;@;iÜ;;0o;;["
+hover;	;<;@°;i|;=0o;;["
 o;
-; 0;@;!o;";#{ ;iÜ;[o;$;["cke_hc;@;iÜo;
-; 0;@;!o;";#{ ;iÜ;[o;1	;["a;@;iÜ;20o;$;["cke_dialog_ui_button;@;iÜo;9
+; 0;@°;!o;";#{ ;i|;[o;$;["cke_hc;@°;i|o;
+; 0;@°;!o;";#{ ;i|;[o;/	;["a;@°;i|;00o;$;["cke_dialog_ui_button;@°;i|o;;
 ;["
-focus;	;:;@;iÜ;;0o;;["
+focus;	;<;@°;i|;=0o;;["
 o;
-; 0;@;!o;";#{ ;iÜ;[o;$;["cke_hc;@;iÜo;
-; 0;@;!o;";#{ ;iÜ;[o;1	;["a;@;iÜ;20o;$;["cke_dialog_ui_button;@;iÜo;9
-;["active;	;:;@;iÜ;;0;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"	10px;@;@;iê;;o;;i ;["padding-right;[ ;o;;	;;"	10px;@;@;ië;;;@;["Ä.cke_hc a.cke_dialog_ui_button:hover span,
+; 0;@°;!o;";#{ ;i|;[o;$;["cke_hc;@°;i|o;
+; 0;@°;!o;";#{ ;i|;[o;/	;["a;@°;i|;00o;$;["cke_dialog_ui_button;@°;i|o;;
+;["active;	;<;@°;i|;=0;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"	10px;@;@;iÜ;;o;;i ;["padding-right;[ ;o;;	;;"	10px;@;@;iá;;;@;["Ä.cke_hc a.cke_dialog_ui_button:hover span,
 .cke_hc a.cke_dialog_ui_button:focus span,
-.cke_hc a.cke_dialog_ui_button:active span;iè;o;;" ;iè;[o;;[o;
-; 0;@d;!o;";#{ ;iè;[o;$;["cke_hc;@d;ièo;
-; 0;@d;!o;";#{ ;iè;[o;1	;["a;@d;iè;20o;$;["cke_dialog_ui_button;@d;ièo;9
+.cke_hc a.cke_dialog_ui_button:active span;iÖ;o;;" ;iÖ;[o;;[o;
+; 0;@¯;!o;";#{ ;iÖ;[o;$;["cke_hc;@¯;iÖo;
+; 0;@¯;!o;";#{ ;iÖ;[o;/	;["a;@¯;iÖ;00o;$;["cke_dialog_ui_button;@¯;iÖo;;
 ;["
-hover;	;:;@d;iè;;0o;
-; 0;@d;!o;";#{ ;iè;[o;1	;["	span;@d;iè;20o;;[	"
+hover;	;<;@¯;iÖ;=0o;
+; 0;@¯;!o;";#{ ;iÖ;[o;/	;["	span;@¯;iÖ;00o;;[	"
 o;
-; 0;@d;!o;";#{ ;iè;[o;$;["cke_hc;@d;ièo;
-; 0;@d;!o;";#{ ;iè;[o;1	;["a;@d;iè;20o;$;["cke_dialog_ui_button;@d;ièo;9
+; 0;@¯;!o;";#{ ;iÖ;[o;$;["cke_hc;@¯;iÖo;
+; 0;@¯;!o;";#{ ;iÖ;[o;/	;["a;@¯;iÖ;00o;$;["cke_dialog_ui_button;@¯;iÖo;;
 ;["
-focus;	;:;@d;iè;;0o;
-; 0;@d;!o;";#{ ;iè;[o;1	;["	span;@d;iè;20o;;[	"
+focus;	;<;@¯;iÖ;=0o;
+; 0;@¯;!o;";#{ ;iÖ;[o;/	;["	span;@¯;iÖ;00o;;[	"
 o;
-; 0;@d;!o;";#{ ;iè;[o;$;["cke_hc;@d;ièo;
-; 0;@d;!o;";#{ ;iè;[o;1	;["a;@d;iè;20o;$;["cke_dialog_ui_button;@d;ièo;9
-;["active;	;:;@d;iè;;0o;
-; 0;@d;!o;";#{ ;iè;[o;1	;["	span;@d;iè;20;%To;
+; 0;@¯;!o;";#{ ;iÖ;[o;$;["cke_hc;@¯;iÖo;
+; 0;@¯;!o;";#{ ;iÖ;[o;/	;["a;@¯;iÖ;00o;$;["cke_dialog_ui_button;@¯;iÖo;;
+;["active;	;<;@¯;iÖ;=0o;
+; 0;@¯;!o;";#{ ;iÖ;[o;/	;["	span;@¯;iÖ;00;%To;
 ;	;
 ;[ ;["p/*
 a.cke_dialog_ui_button[style*="width"]
@@ -1602,330 +1573,333 @@ a.cke_dialog_ui_button[style*="width"]
     display: block !important;
     width: auto !important;
 }
-*/;@;iîo;
+*/;@;iäo;
 ;	;
-;[ ;["P/* The inner part of the button (both in dialog tabs and dialog footer). */;@;iõo;;i ;[	o;;i ;["
-color;[ ;o;;	;;"inherit;@;@;iû;;o;;i ;["font-size;[ ;o;;	;;"	12px;@;@;iü;;o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;i†;;o;;i ;["line-height;[ ;o;;	;;"	20px;@;@;i°;;;@;[";.cke_dialog_footer_buttons a.cke_dialog_ui_button span;iù;o;;" ;iù;[o;;[o;
-; 0;@‰;!o;";#{ ;iù;[o;$;["cke_dialog_footer_buttons;@‰;iùo;
-; 0;@‰;!o;";#{ ;iù;[o;1	;["a;@‰;iù;20o;$;["cke_dialog_ui_button;@‰;iùo;
-; 0;@‰;!o;";#{ ;iù;[o;1	;["	span;@‰;iù;20;%To;
+;[ ;["P/* The inner part of the button (both in dialog tabs and dialog footer). */;@;iëo;;i ;[	o;;i ;["
+color;[ ;o;;	;;"inherit;@;@;iî;;o;;i ;["font-size;[ ;o;;	;;"	12px;@;@;iï;;o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iñ;;o;;i ;["line-height;[ ;o;;	;;"	20px;@;@;ió;;;@;[";.cke_dialog_footer_buttons a.cke_dialog_ui_button span;iì;o;;" ;iì;[o;;[o;
+; 0;@x;!o;";#{ ;iì;[o;$;["cke_dialog_footer_buttons;@x;iìo;
+; 0;@x;!o;";#{ ;iì;[o;/	;["a;@x;iì;00o;$;["cke_dialog_ui_button;@x;iìo;
+; 0;@x;!o;";#{ ;iì;[o;/	;["	span;@x;iì;00;%To;
 ;	;
-;[ ;["3/* Special class appended to the Ok button. */;@;i§o;;i ;[o;;i ;["
-color;[ ;o;;	;;"	#fff;@;@;iß;;o;;i ;["text-shadow;[ ;o;;	;;"0 -1px 0 #55830c;@;@;i®;;o;;i ;["border-color;[ ;o;;	;;"#62a60a #62a60a #4d9200;@;@;i©;;o;;i ;["background;[ ;o;;	;;"#69b10b;@;@;i´;;o;;i ;["background-image;[ ;o;-;"-webkit-gradient;@;.{ ;i¨;/0;0[
-o;	;	;;"linear;@;i¨o;&	;';(;[o;);i ;@;*@m;i¨;+[ ;,"0o;);i ;@;*@m;i¨;+[ ;,"0;@;i¨o;&	;';(;[o;);i ;@;*@m;i¨;+[ ;,"0o;);ii;@;*[ ;i¨;+["%;,"	100%;@;i¨o;-;"	from;@;.{ ;i¨;/0;0[o;3	;0;@;i¨;4{	;5i;6i◊;7i;8iöo;-;"to;@;.{ ;i¨;/0;0[o;3	;0;@;i¨;4{	;5i;6i±;7i;8in;@;i¨;;o;;i ;["background-image;[ ;o;-;"-webkit-linear-gradient;@;.{ ;i≠;/0;0[o;	;	;;"top;@;i≠o;3	;0;@;i≠;4{	;5i;6i◊;7i;8iöo;3	;0;@;i≠;4{	;5i;6i±;7i;8in;@;i≠;;o;;i ;["background-image;[ ;o;-;"-o-linear-gradient;@;.{ ;iÆ;/0;0[o;	;	;;"top;@;iÆo;3	;0;@;iÆ;4{	;5i;6i◊;7i;8iöo;3	;0;@;iÆ;4{	;5i;6i±;7i;8in;@;iÆ;;o;;i ;["background-image;[ ;o;-;"linear-gradient;@;.{ ;iØ;/0;0[o;&	;';(;[o;	;	;;"to;@;iØo;	;	;;"bottom;@;iØ;@;iØo;3	;0;@;iØ;4{	;5i;6i◊;7i;8iöo;3	;0;@;iØ;4{	;5i;6i±;7i;8in;@;iØ;;o;;i ;["background-image;[ ;o;-;"-moz-linear-gradient;@;.{ ;i∞;/0;0[o;	;	;;"top;@;i∞o;3	;0;@;i∞;4{	;5i;6i◊;7i;8iöo;3	;0;@;i∞;4{	;5i;6i±;7i;8in;@;i∞;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#9ad717', endColorstr='#69b10b');@;i±;@;i±;;;@;["a.cke_dialog_ui_button_ok;i¶;o;;" ;i¶;[o;;[o;
-; 0;@ã;!o;";#{ ;i¶;[o;1	;["a;@ã;i¶;20o;$;["cke_dialog_ui_button_ok;@ã;i¶;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#5b9909 #5b9909 #478500;@;@;i∂;;o;;i ;["background;[ ;o;;	;;"#88be14;@;@;i∏;;o;;i ;["background;[ ;o;-;"-webkit-gradient;@;.{ ;iπ;/0;0[
-o;	;	;;"linear;@;iπo;&	;';(;[o;	;	;;"	left;@;iπo;	;	;;"top;@;iπ;@;iπo;&	;';(;[o;	;	;;"	left;@;iπo;	;	;;"bottom;@;iπ;@;iπo;-;"color-stop;@;.{ ;iπ;/0;0[o;);i ;@;*[ ;iπ;+["%;,"0%o;3	;0;@;iπ;4{	;5i;6iæ;7i;8iào;-;"color-stop;@;.{ ;iπ;/0;0[o;);ii;@;*[ ;iπ;+["%;,"	100%o;3	;0;@;iπ;4{	;5i;6iú;7i;8ib;@;iπ;;o;;i ;["background;[ ;o;-;"-webkit-linear-gradient;@;.{ ;i∫;/0;0[o;	;	;;"top;@;i∫o;&	;';(;[o;3	;0;@;i∫;4{	;5i;6iæ;7i;8iào;);i ;@;*[ ;i∫;+["%;,"0%;@;i∫o;&	;';(;[o;3	;0;@;i∫;4{	;5i;6iú;7i;8ibo;);ii;@;*[ ;i∫;+["%;,"	100%;@;i∫;@;i∫;;o;;i ;["background;[ ;o;-;"-o-linear-gradient;@;.{ ;iª;/0;0[o;	;	;;"top;@;iªo;&	;';(;[o;3	;0;@;iª;4{	;5i;6iæ;7i;8iào;);i ;@;*[ ;iª;+["%;,"0%;@;iªo;&	;';(;[o;3	;0;@;iª;4{	;5i;6iú;7i;8ibo;);ii;@;*[ ;iª;+["%;,"	100%;@;iª;@;iª;;o;;i ;["background;[ ;o;-;"linear-gradient;@;.{ ;iº;/0;0[o;&	;';(;[o;	;	;;"to;@;iºo;	;	;;"bottom;@;iº;@;iºo;&	;';(;[o;3	;0;@;iº;4{	;5i;6iæ;7i;8iào;);i ;@;*[ ;iº;+["%;,"0%;@;iºo;&	;';(;[o;3	;0;@;iº;4{	;5i;6iú;7i;8ibo;);ii;@;*[ ;iº;+["%;,"	100%;@;iº;@;iº;;o;;i ;["background;[ ;o;-;"-moz-linear-gradient;@;.{ ;iΩ;/0;0[o;	;	;;"top;@;iΩo;&	;';(;[o;3	;0;@;iΩ;4{	;5i;6iæ;7i;8iào;);i ;@;*[ ;iΩ;+["%;,"0%;@;iΩo;&	;';(;[o;3	;0;@;iΩ;4{	;5i;6iú;7i;8ibo;);ii;@;*[ ;iΩ;+["%;,"	100%;@;iΩ;@;iΩ;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(startColorstr='#88be14', endColorstr='#5d9c0a',GradientType=0 );@;iæ;@;iæ;;;@;["$a.cke_dialog_ui_button_ok:hover;iµ;o;;" ;iµ;[o;;[o;
-; 0;@P;!o;";#{ ;iµ;[o;1	;["a;@P;iµ;20o;$;["cke_dialog_ui_button_ok;@P;iµo;9
+;[ ;["3/* Special class appended to the Ok button. */;@;iöo;;i ;[o;;i ;["
+color;[ ;o;;	;;"	#fff;@;@;iù;;o;;i ;["text-shadow;[ ;o;;	;;"0 -1px 0 #55830c;@;@;iû;;o;;i ;["border-color;[ ;o;;	;;"#62a60a #62a60a #4d9200;@;@;iü;;o;;i ;["background;[ ;o;;	;;"#69b10b;@;@;i°;;o;;i ;["background-image;[ ;o;1;"-webkit-gradient;@;2{ ;i¢;30;4[
+o;	;	;;"linear;@;i¢o;(	;);*;[o;+;i ;@;,@÷;i¢;-[ ;."0o;+;i ;@;,@÷;i¢;-[ ;."0;@;i¢o;(	;);*;[o;+;i ;@;,@÷;i¢;-[ ;."0o;+;ii;@;,[ ;i¢;-["%;."	100%;@;i¢o;1;"	from;@;2{ ;i¢;30;4[o;5	;0;@;i¢;6{	;7i;8i◊;9i;:iöo;1;"to;@;2{ ;i¢;30;4[o;5	;0;@;i¢;6{	;7i;8i±;9i;:in;@;i¢;;o;;i ;["background-image;[ ;o;1;"-webkit-linear-gradient;@;2{ ;i£;30;4[o;	;	;;"top;@;i£o;5	;0;@;i£;6{	;7i;8i◊;9i;:iöo;5	;0;@;i£;6{	;7i;8i±;9i;:in;@;i£;;o;;i ;["background-image;[ ;o;1;"-o-linear-gradient;@;2{ ;i§;30;4[o;	;	;;"top;@;i§o;5	;0;@;i§;6{	;7i;8i◊;9i;:iöo;5	;0;@;i§;6{	;7i;8i±;9i;:in;@;i§;;o;;i ;["background-image;[ ;o;1;"linear-gradient;@;2{ ;i•;30;4[o;(	;);*;[o;	;	;;"to;@;i•o;	;	;;"bottom;@;i•;@;i•o;5	;0;@;i•;6{	;7i;8i◊;9i;:iöo;5	;0;@;i•;6{	;7i;8i±;9i;:in;@;i•;;o;;i ;["background-image;[ ;o;1;"-moz-linear-gradient;@;2{ ;i¶;30;4[o;	;	;;"top;@;i¶o;5	;0;@;i¶;6{	;7i;8i◊;9i;:iöo;5	;0;@;i¶;6{	;7i;8i±;9i;:in;@;i¶;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#9ad717', endColorstr='#69b10b');@;iß;@;iß;;;@;["a.cke_dialog_ui_button_ok;iú;o;;" ;iú;[o;;[o;
+; 0;@;!o;";#{ ;iú;[o;/	;["a;@;iú;00o;$;["cke_dialog_ui_button_ok;@;iú;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#5b9909 #5b9909 #478500;@;@;i¨;;o;;i ;["background;[ ;o;;	;;"#88be14;@;@;iÆ;;o;;i ;["background;[ ;o;1;"-webkit-gradient;@;2{ ;iØ;30;4[
+o;	;	;;"linear;@;iØo;(	;);*;[o;	;	;;"	left;@;iØo;	;	;;"top;@;iØ;@;iØo;(	;);*;[o;	;	;;"	left;@;iØo;	;	;;"bottom;@;iØ;@;iØo;1;"color-stop;@;2{ ;iØ;30;4[o;+;i ;@;,[ ;iØ;-["%;."0%o;5	;0;@;iØ;6{	;7i;8iæ;9i;:iào;1;"color-stop;@;2{ ;iØ;30;4[o;+;ii;@;,[ ;iØ;-["%;."	100%o;5	;0;@;iØ;6{	;7i;8iú;9i;:ib;@;iØ;;o;;i ;["background;[ ;o;1;"-webkit-linear-gradient;@;2{ ;i∞;30;4[o;	;	;;"top;@;i∞o;(	;);*;[o;5	;0;@;i∞;6{	;7i;8iæ;9i;:iào;+;i ;@;,[ ;i∞;-["%;."0%;@;i∞o;(	;);*;[o;5	;0;@;i∞;6{	;7i;8iú;9i;:ibo;+;ii;@;,[ ;i∞;-["%;."	100%;@;i∞;@;i∞;;o;;i ;["background;[ ;o;1;"-o-linear-gradient;@;2{ ;i±;30;4[o;	;	;;"top;@;i±o;(	;);*;[o;5	;0;@;i±;6{	;7i;8iæ;9i;:iào;+;i ;@;,[ ;i±;-["%;."0%;@;i±o;(	;);*;[o;5	;0;@;i±;6{	;7i;8iú;9i;:ibo;+;ii;@;,[ ;i±;-["%;."	100%;@;i±;@;i±;;o;;i ;["background;[ ;o;1;"linear-gradient;@;2{ ;i≤;30;4[o;(	;);*;[o;	;	;;"to;@;i≤o;	;	;;"bottom;@;i≤;@;i≤o;(	;);*;[o;5	;0;@;i≤;6{	;7i;8iæ;9i;:iào;+;i ;@;,[ ;i≤;-["%;."0%;@;i≤o;(	;);*;[o;5	;0;@;i≤;6{	;7i;8iú;9i;:ibo;+;ii;@;,[ ;i≤;-["%;."	100%;@;i≤;@;i≤;;o;;i ;["background;[ ;o;1;"-moz-linear-gradient;@;2{ ;i≥;30;4[o;	;	;;"top;@;i≥o;(	;);*;[o;5	;0;@;i≥;6{	;7i;8iæ;9i;:iào;+;i ;@;,[ ;i≥;-["%;."0%;@;i≥o;(	;);*;[o;5	;0;@;i≥;6{	;7i;8iú;9i;:ibo;+;ii;@;,[ ;i≥;-["%;."	100%;@;i≥;@;i≥;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(startColorstr='#88be14', endColorstr='#5d9c0a',GradientType=0 );@;i¥;@;i¥;;;@;["$a.cke_dialog_ui_button_ok:hover;i´;o;;" ;i´;[o;;[o;
+; 0;@‰;!o;";#{ ;i´;[o;/	;["a;@‰;i´;00o;$;["cke_dialog_ui_button_ok;@‰;i´o;;
 ;["
-hover;	;:;@P;iµ;;0;%To;
+hover;	;<;@‰;i´;=0;%To;
 ;	;
-;[ ;["r/* Default text shadow used for inner parts of all dialog buttons (both in dialog tabs and dialog footer). */;@;i¡o;;i ;[o;;i ;["text-shadow;[ ;o;;	;;"0 1px 0 #fff;@;@;iƒ;;;@;[" a.cke_dialog_ui_button span;i√;o;;" ;i√;[o;;[o;
-; 0;@p;!o;";#{ ;i√;[o;1	;["a;@p;i√;20o;$;["cke_dialog_ui_button;@p;i√o;
-; 0;@p;!o;";#{ ;i√;[o;1	;["	span;@p;i√;20;%To;
+;[ ;["r/* Default text shadow used for inner parts of all dialog buttons (both in dialog tabs and dialog footer). */;@;i∑o;;i ;[o;;i ;["text-shadow;[ ;o;;	;;"0 1px 0 #fff;@;@;i∫;;;@;[" a.cke_dialog_ui_button span;iπ;o;;" ;iπ;[o;;[o;
+; 0;@;!o;";#{ ;iπ;[o;/	;["a;@;iπ;00o;$;["cke_dialog_ui_button;@;iπo;
+; 0;@;!o;";#{ ;iπ;[o;/	;["	span;@;iπ;00;%To;
 ;	;
-;[ ;["I/* Text shadow used for inner part of OK dialog button in footer. */;@;i«o;;i ;[o;;i ;["text-shadow;[ ;o;;	;;"0 -1px 0 #55830c;@;@;i ;;;@;["#a.cke_dialog_ui_button_ok span;i…;o;;" ;i…;[o;;[o;
-; 0;@î;!o;";#{ ;i…;[o;1	;["a;@î;i…;20o;$;["cke_dialog_ui_button_ok;@î;i…o;
-; 0;@î;!o;";#{ ;i…;[o;1	;["	span;@î;i…;20;%To;;i ;[o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iœ;;;@;["span.cke_dialog_ui_button;iŒ;o;;" ;iŒ;[o;;[o;
-; 0;@¥;!o;";#{ ;iŒ;[o;1	;["	span;@¥;iŒ;20o;$;["cke_dialog_ui_button;@¥;iŒ;%To;
+;[ ;["I/* Text shadow used for inner part of OK dialog button in footer. */;@;iΩo;;i ;[o;;i ;["text-shadow;[ ;o;;	;;"0 -1px 0 #55830c;@;@;i¿;;;@;["#a.cke_dialog_ui_button_ok span;iø;o;;" ;iø;[o;;[o;
+; 0;@(;!o;";#{ ;iø;[o;/	;["a;@(;iø;00o;$;["cke_dialog_ui_button_ok;@(;iøo;
+; 0;@(;!o;";#{ ;iø;[o;/	;["	span;@(;iø;00;%To;;i ;[o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i≈;;;@;["span.cke_dialog_ui_button;iƒ;o;;" ;iƒ;[o;;[o;
+; 0;@H;!o;";#{ ;iƒ;[o;/	;["	span;@H;iƒ;00o;$;["cke_dialog_ui_button;@H;iƒ;%To;
 ;	;
-;[ ;["I/*  :focus/:active styles for dialog footer buttons (ok & cancel) */;@;i“o;;i ;[o;;i ;["border-width;[ ;o;;	;;"2px;@;@;iÿ;;o;;i ;["padding;[ ;o;;	;;"
-2px 0;@;@;iŸ;;;@;["åa.cke_dialog_ui_button_ok:focus,
+;[ ;["I/*  :focus/:active styles for dialog footer buttons (ok & cancel) */;@;i»o;;i ;[o;;i ;["border-width;[ ;o;;	;;"2px;@;@;iŒ;;o;;i ;["padding;[ ;o;;	;;"
+2px 0;@;@;iœ;;;@;["åa.cke_dialog_ui_button_ok:focus,
 a.cke_dialog_ui_button_ok:active,
 a.cke_dialog_ui_button_cancel:focus,
-a.cke_dialog_ui_button_cancel:active;i◊;o;;" ;i◊;[	o;;[o;
-; 0;@◊;!o;";#{ ;i◊;[o;1	;["a;@◊;i◊;20o;$;["cke_dialog_ui_button_ok;@◊;i◊o;9
+a.cke_dialog_ui_button_cancel:active;iÕ;o;;" ;iÕ;[	o;;[o;
+; 0;@k;!o;";#{ ;iÕ;[o;/	;["a;@k;iÕ;00o;$;["cke_dialog_ui_button_ok;@k;iÕo;;
 ;["
-focus;	;:;@◊;i◊;;0o;;["
+focus;	;<;@k;iÕ;=0o;;["
 o;
-; 0;@◊;!o;";#{ ;i◊;[o;1	;["a;@◊;i◊;20o;$;["cke_dialog_ui_button_ok;@◊;i◊o;9
-;["active;	;:;@◊;i◊;;0o;;["
+; 0;@k;!o;";#{ ;iÕ;[o;/	;["a;@k;iÕ;00o;$;["cke_dialog_ui_button_ok;@k;iÕo;;
+;["active;	;<;@k;iÕ;=0o;;["
 o;
-; 0;@◊;!o;";#{ ;i◊;[o;1	;["a;@◊;i◊;20o;$;[" cke_dialog_ui_button_cancel;@◊;i◊o;9
+; 0;@k;!o;";#{ ;iÕ;[o;/	;["a;@k;iÕ;00o;$;[" cke_dialog_ui_button_cancel;@k;iÕo;;
 ;["
-focus;	;:;@◊;i◊;;0o;;["
+focus;	;<;@k;iÕ;=0o;;["
 o;
-; 0;@◊;!o;";#{ ;i◊;[o;1	;["a;@◊;i◊;20o;$;[" cke_dialog_ui_button_cancel;@◊;i◊o;9
-;["active;	;:;@◊;i◊;;0;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#568C0A;@;@;iﬂ;;;@;["Fa.cke_dialog_ui_button_ok:focus,
-a.cke_dialog_ui_button_ok:active;iﬁ;o;;" ;iﬁ;[o;;[o;
-; 0;@#;!o;";#{ ;iﬁ;[o;1	;["a;@#;iﬁ;20o;$;["cke_dialog_ui_button_ok;@#;iﬁo;9
+; 0;@k;!o;";#{ ;iÕ;[o;/	;["a;@k;iÕ;00o;$;[" cke_dialog_ui_button_cancel;@k;iÕo;;
+;["active;	;<;@k;iÕ;=0;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#568C0A;@;@;i’;;;@;["Fa.cke_dialog_ui_button_ok:focus,
+a.cke_dialog_ui_button_ok:active;i‘;o;;" ;i‘;[o;;[o;
+; 0;@∑;!o;";#{ ;i‘;[o;/	;["a;@∑;i‘;00o;$;["cke_dialog_ui_button_ok;@∑;i‘o;;
 ;["
-focus;	;:;@#;iﬁ;;0o;;["
+focus;	;<;@∑;i‘;=0o;;["
 o;
-; 0;@#;!o;";#{ ;iﬁ;[o;1	;["a;@#;iﬁ;20o;$;["cke_dialog_ui_button_ok;@#;iﬁo;9
-;["active;	;:;@#;iﬁ;;0;%To;
+; 0;@∑;!o;";#{ ;i‘;[o;/	;["a;@∑;i‘;00o;$;["cke_dialog_ui_button_ok;@∑;i‘o;;
+;["active;	;<;@∑;i‘;=0;%To;
 ;	;
-;[ ;["O/*  :focus/:active styles for dialog footer buttons (ok & cancel) spans */;@;i‚o;;i ;[o;;i ;["padding;[ ;o;;	;;"0 11px;@;@;iË;;o;
+;[ ;["O/*  :focus/:active styles for dialog footer buttons (ok & cancel) spans */;@;iÿo;;i ;[o;;i ;["padding;[ ;o;;	;;"0 11px;@;@;iﬁ;;o;
 ;	;
-;[ ;["3/* Thick button border must be compensated. */;@;iË;@;["†a.cke_dialog_ui_button_ok:focus span,
+;[ ;["3/* Thick button border must be compensated. */;@;iﬁ;@;["†a.cke_dialog_ui_button_ok:focus span,
 a.cke_dialog_ui_button_ok:active span,
 a.cke_dialog_ui_button_cancel:focus span,
-a.cke_dialog_ui_button_cancel:active span;iÁ;o;;" ;iÁ;[	o;;[o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["a;@W;iÁ;20o;$;["cke_dialog_ui_button_ok;@W;iÁo;9
+a.cke_dialog_ui_button_cancel:active span;i›;o;;" ;i›;[	o;;[o;
+; 0;@Î;!o;";#{ ;i›;[o;/	;["a;@Î;i›;00o;$;["cke_dialog_ui_button_ok;@Î;i›o;;
 ;["
-focus;	;:;@W;iÁ;;0o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["	span;@W;iÁ;20o;;["
+focus;	;<;@Î;i›;=0o;
+; 0;@Î;!o;";#{ ;i›;[o;/	;["	span;@Î;i›;00o;;["
 o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["a;@W;iÁ;20o;$;["cke_dialog_ui_button_ok;@W;iÁo;9
-;["active;	;:;@W;iÁ;;0o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["	span;@W;iÁ;20o;;["
+; 0;@Î;!o;";#{ ;i›;[o;/	;["a;@Î;i›;00o;$;["cke_dialog_ui_button_ok;@Î;i›o;;
+;["active;	;<;@Î;i›;=0o;
+; 0;@Î;!o;";#{ ;i›;[o;/	;["	span;@Î;i›;00o;;["
 o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["a;@W;iÁ;20o;$;[" cke_dialog_ui_button_cancel;@W;iÁo;9
+; 0;@Î;!o;";#{ ;i›;[o;/	;["a;@Î;i›;00o;$;[" cke_dialog_ui_button_cancel;@Î;i›o;;
 ;["
-focus;	;:;@W;iÁ;;0o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["	span;@W;iÁ;20o;;["
+focus;	;<;@Î;i›;=0o;
+; 0;@Î;!o;";#{ ;i›;[o;/	;["	span;@Î;i›;00o;;["
 o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["a;@W;iÁ;20o;$;[" cke_dialog_ui_button_cancel;@W;iÁo;9
-;["active;	;:;@W;iÁ;;0o;
-; 0;@W;!o;";#{ ;iÁ;[o;1	;["	span;@W;iÁ;20;%To;
+; 0;@Î;!o;";#{ ;i›;[o;/	;["a;@Î;i›;00o;$;[" cke_dialog_ui_button_cancel;@Î;i›o;;
+;["active;	;<;@Î;i›;=0o;
+; 0;@Î;!o;";#{ ;i›;[o;/	;["	span;@Î;i›;00;%To;
 ;	;
-;[ ;["=/* A special container that holds the footer buttons. */;@;iÎo;;i ;[
-o;;i ;["display;[ ;o;;	;;"inline-table;@;@;iÓ;;o;;i ;["margin;[ ;o;;	;;"5px;@;@;iÔ;;o;;i ;["
-width;[ ;o;;	;;"	auto;@;@;i;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iÒ;;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;iÚ;;;@;[".cke_dialog_footer_buttons;iÌ;o;;" ;iÌ;[o;;[o;
-; 0;@€;!o;";#{ ;iÌ;[o;$;["cke_dialog_footer_buttons;@€;iÌ;%To;
+;[ ;["=/* A special container that holds the footer buttons. */;@;i·o;;i ;[
+o;;i ;["display;[ ;o;;	;;"inline-table;@;@;i‰;;o;;i ;["margin;[ ;o;;	;;"5px;@;@;iÂ;;o;;i ;["
+width;[ ;o;;	;;"	auto;@;@;iÊ;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iÁ;;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;iË;;;@;[".cke_dialog_footer_buttons;i„;o;;" ;i„;[o;;[o;
+; 0;@o;!o;";#{ ;i„;[o;$;["cke_dialog_footer_buttons;@o;i„;%To;
 ;	;
 ;[ ;["1/*
 Styles for other dialog element types.
-*/;@;iıo;;i ;[o;;i ;["display;[ ;o;;	;;"
-table;@;@;i˚;;;@;["#div.cke_dialog_ui_input_select;i˙;o;;" ;i˙;[o;;[o;
-; 0;@ı;!o;";#{ ;i˙;[o;1	;["div;@ı;i˙;20o;$;["cke_dialog_ui_input_select;@ı;i˙;%To;;i ;[o;;i ;["height;[ ;o;;	;;"	24px;@;@;i ;;o;;i ;["line-height;[ ;o;;	;;"	24px;@;@;i;;o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["border;[ ;o;;	;;"1px solid #c9cccf;@;@;i;;o;;i ;["border-top-color;[ ;o;;	;;"#aeb3b9;@;@;i;;o;;i ;["padding;[ ;o;;	;;"2px 6px;@;@;i;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;i
-;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["-moz-box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i;+[ ;,"0o;);i;@;*[ ;i;+["px;,"1pxo;);i;@;*[ ;i;+["px;,"2pxo;-;"	rgba;@;.{ ;i;/0;0[	o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;i;+[ ;,"	0.15o;	;	;;"
-inset;@;i;@;i;@;i;;o;;i ;["-webkit-box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i;+[ ;,"0o;);i;@;*[ ;i;+["px;,"1pxo;);i;@;*[ ;i;+["px;,"2pxo;-;"	rgba;@;.{ ;i;/0;0[	o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;i;+[ ;,"	0.15o;	;	;;"
-inset;@;i;@;i;@;i;;o;;i ;["box-shadow;[ ;o;&	;';(;[
-o;);i ;@;*@m;i;+[ ;,"0o;);i;@;*[ ;i;+["px;,"1pxo;);i;@;*[ ;i;+["px;,"2pxo;-;"	rgba;@;.{ ;i;/0;0[	o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);i ;@;*@m;i;+[ ;,"0o;);f0.14999999999999999 33;@;*@m;i;+[ ;,"	0.15o;	;	;;"
-inset;@;i;@;i;@;i;;;@;["&select.cke_dialog_ui_input_select;iˇ;o;;" ;iˇ;[o;;[o;
-; 0;@∂;!o;";#{ ;iˇ;[o;1	;["select;@∂;iˇ;20o;$;["cke_dialog_ui_input_select;@∂;iˇ;%To;;i ;[o;;i ;["
-width;[ ;o;;	;;"	100%;@;@;i;;o;;i ;["height;[ ;o;;	;;"	25px;@;@;i;;;@;[".cke_dialog_ui_input_file;i;o;;" ;i;[o;;[o;
-; 0;@’;!o;";#{ ;i;[o;$;["cke_dialog_ui_input_file;@’;i;%To;;i ;[o;;i ;["outline;[ ;o;;	;;"1px dotted;@;@;i;;;@;["û.cke_hc .cke_dialog_ui_labeled_content input:focus,
+*/;@;iÎo;;i ;[o;;i ;["display;[ ;o;;	;;"
+table;@;@;iÒ;;;@;["#div.cke_dialog_ui_input_select;i;o;;" ;i;[o;;[o;
+; 0;@â;!o;";#{ ;i;[o;/	;["div;@â;i;00o;$;["cke_dialog_ui_input_select;@â;i;%To;;i ;[o;;i ;["height;[ ;o;;	;;"	24px;@;@;iˆ;;o;;i ;["line-height;[ ;o;;	;;"	24px;@;@;i˜;;o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i˘;;o;;i ;["border;[ ;o;;	;;"1px solid #c9cccf;@;@;i˙;;o;;i ;["border-top-color;[ ;o;;	;;"#aeb3b9;@;@;i˚;;o;;i ;["padding;[ ;o;;	;;"2px 6px;@;@;i¸;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i˛;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;i ;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;i;;o;;i ;["-moz-box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;i;-[ ;."0o;+;i;@;,[ ;i;-["px;."1pxo;+;i;@;,[ ;i;-["px;."2pxo;1;"	rgba;@;2{ ;i;30;4[	o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;f0.14999999999999999 33;@;,@÷;i;-[ ;."	0.15o;	;	;;"
+inset;@;i;@;i;@;i;;o;;i ;["-webkit-box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;i;-[ ;."0o;+;i;@;,[ ;i;-["px;."1pxo;+;i;@;,[ ;i;-["px;."2pxo;1;"	rgba;@;2{ ;i;30;4[	o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;f0.14999999999999999 33;@;,@÷;i;-[ ;."	0.15o;	;	;;"
+inset;@;i;@;i;@;i;;o;;i ;["box-shadow;[ ;o;(	;);*;[
+o;+;i ;@;,@÷;i;-[ ;."0o;+;i;@;,[ ;i;-["px;."1pxo;+;i;@;,[ ;i;-["px;."2pxo;1;"	rgba;@;2{ ;i;30;4[	o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;i ;@;,@÷;i;-[ ;."0o;+;f0.14999999999999999 33;@;,@÷;i;-[ ;."	0.15o;	;	;;"
+inset;@;i;@;i;@;i;;;@;["&select.cke_dialog_ui_input_select;iı;o;;" ;iı;[o;;[o;
+; 0;@J;!o;";#{ ;iı;[o;/	;["select;@J;iı;00o;$;["cke_dialog_ui_input_select;@J;iı;%To;;i ;[o;;i ;["
+width;[ ;o;;	;;"	100%;@;@;i;;o;;i ;["height;[ ;o;;	;;"	25px;@;@;i;;;@;[".cke_dialog_ui_input_file;i
+;o;;" ;i
+;[o;;[o;
+; 0;@i;!o;";#{ ;i
+;[o;$;["cke_dialog_ui_input_file;@i;i
+;%To;;i ;[o;;i ;["outline;[ ;o;;	;;"1px dotted;@;@;i;;;@;["û.cke_hc .cke_dialog_ui_labeled_content input:focus,
 .cke_hc .cke_dialog_ui_labeled_content select:focus,
-.cke_hc .cke_dialog_ui_labeled_content textarea:focus;i;o;;" ;i;[o;;[o;
-; 0;@Î;!o;";#{ ;i;[o;$;["cke_hc;@Î;io;
-; 0;@Î;!o;";#{ ;i;[o;$;[""cke_dialog_ui_labeled_content;@Î;io;
-; 0;@Î;!o;";#{ ;i;[o;1	;["
-input;@Î;i;20o;9
+.cke_hc .cke_dialog_ui_labeled_content textarea:focus;i;o;;" ;i;[o;;[o;
+; 0;@;!o;";#{ ;i;[o;$;["cke_hc;@;io;
+; 0;@;!o;";#{ ;i;[o;$;[""cke_dialog_ui_labeled_content;@;io;
+; 0;@;!o;";#{ ;i;[o;/	;["
+input;@;i;00o;;
 ;["
-focus;	;:;@Î;i;;0o;;[	"
+focus;	;<;@;i;=0o;;[	"
 o;
-; 0;@Î;!o;";#{ ;i;[o;$;["cke_hc;@Î;io;
-; 0;@Î;!o;";#{ ;i;[o;$;[""cke_dialog_ui_labeled_content;@Î;io;
-; 0;@Î;!o;";#{ ;i;[o;1	;["select;@Î;i;20o;9
+; 0;@;!o;";#{ ;i;[o;$;["cke_hc;@;io;
+; 0;@;!o;";#{ ;i;[o;$;[""cke_dialog_ui_labeled_content;@;io;
+; 0;@;!o;";#{ ;i;[o;/	;["select;@;i;00o;;
 ;["
-focus;	;:;@Î;i;;0o;;[	"
+focus;	;<;@;i;=0o;;[	"
 o;
-; 0;@Î;!o;";#{ ;i;[o;$;["cke_hc;@Î;io;
-; 0;@Î;!o;";#{ ;i;[o;$;[""cke_dialog_ui_labeled_content;@Î;io;
-; 0;@Î;!o;";#{ ;i;[o;1	;["textarea;@Î;i;20o;9
+; 0;@;!o;";#{ ;i;[o;$;["cke_hc;@;io;
+; 0;@;!o;";#{ ;i;[o;$;[""cke_dialog_ui_labeled_content;@;io;
+; 0;@;!o;";#{ ;i;[o;/	;["textarea;@;i;00o;;
 ;["
-focus;	;:;@Î;i;;0;%To;
+focus;	;<;@;i;=0;%To;
 ;	;
 ;[ ;[";/*
  * Some utility CSS classes for dialog authors.
- */;@;i o;;i ;[o;;i ;["background-color;[ ;o;;	;;"#DEDEDE;@;@;i%;;;@;["%.cke_dialog .cke_dark_background;i$;o;;" ;i$;[o;;[o;
-; 0;@L;!o;";#{ ;i$;[o;$;["cke_dialog;@L;i$o;
-; 0;@L;!o;";#{ ;i$;[o;$;["cke_dark_background;@L;i$;%To;;i ;[o;;i ;["background-color;[ ;o;;	;;"#EBEBEB;@;@;i*;;;@;["&.cke_dialog .cke_light_background;i);o;;" ;i);[o;;[o;
-; 0;@i;!o;";#{ ;i);[o;$;["cke_dialog;@i;i)o;
-; 0;@i;!o;";#{ ;i);[o;$;["cke_light_background;@i;i);%To;;i ;[o;;i ;["text-align;[ ;o;;	;;"center;@;@;i/;;;@;[".cke_dialog .cke_centered;i.;o;;" ;i.;[o;;[o;
-; 0;@Ü;!o;";#{ ;i.;[o;$;["cke_dialog;@Ü;i.o;
-; 0;@Ü;!o;";#{ ;i.;[o;$;["cke_centered;@Ü;i.;%To;;i ;[o;;i ;["
+ */;@;io;;i ;[o;;i ;["background-color;[ ;o;;	;;"#DEDEDE;@;@;i;;;@;["%.cke_dialog .cke_dark_background;i;o;;" ;i;[o;;[o;
+; 0;@‡;!o;";#{ ;i;[o;$;["cke_dialog;@‡;io;
+; 0;@‡;!o;";#{ ;i;[o;$;["cke_dark_background;@‡;i;%To;;i ;[o;;i ;["background-color;[ ;o;;	;;"#EBEBEB;@;@;i ;;;@;["&.cke_dialog .cke_light_background;i;o;;" ;i;[o;;[o;
+; 0;@˝;!o;";#{ ;i;[o;$;["cke_dialog;@˝;io;
+; 0;@˝;!o;";#{ ;i;[o;$;["cke_light_background;@˝;i;%To;;i ;[o;;i ;["text-align;[ ;o;;	;;"center;@;@;i%;;;@;[".cke_dialog .cke_centered;i$;o;;" ;i$;[o;;[o;
+; 0;@;!o;";#{ ;i$;[o;$;["cke_dialog;@;i$o;
+; 0;@;!o;";#{ ;i$;[o;$;["cke_centered;@;i$;%To;;i ;[o;;i ;["
 float;[ ;o;;	;;"
-right;@;@;i4;;o;;i ;["background;[ ;o;&	;';(;[	o;	;	;;"url(images/refresh.png);@;i5o;	;	;;"top;@;i5o;	;	;;"	left;@;i5o;	;	;;"no-repeat;@;i5;@;i5;@;i5;;o;;i ;["
-width;[ ;o;;	;;"	16px;@;@;i6;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;i7;;o;;i ;["border;[ ;o;;	;;"1px none;@;@;i8;;o;;i ;["font-size;[ ;o;;	;;"1px;@;@;i9;;;@;[" .cke_dialog a.cke_btn_reset;i3;o;;" ;i3;[o;;[o;
-; 0;@…;!o;";#{ ;i3;[o;$;["cke_dialog;@…;i3o;
-; 0;@…;!o;";#{ ;i3;[o;1	;["a;@…;i3;20o;$;["cke_btn_reset;@…;i3;%To;;i ;[o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;i=;;o;;i ;["background-image;[ ;o;	;	;;""url(images/hidpi/refresh.png);@;i>;@;i>;;;@;["+.cke_hidpi .cke_dialog a.cke_btn_reset;i<;o;;" ;i<;[o;;[o;
-; 0;@Ô;!o;";#{ ;i<;[o;$;["cke_hidpi;@Ô;i<o;
-; 0;@Ô;!o;";#{ ;i<;[o;$;["cke_dialog;@Ô;i<o;
-; 0;@Ô;!o;";#{ ;i<;[o;1	;["a;@Ô;i<;20o;$;["cke_btn_reset;@Ô;i<;%To;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;iC;;;@;[").cke_rtl .cke_dialog a.cke_btn_reset;iB;o;;" ;iB;[o;;[o;
-; 0;@;!o;";#{ ;iB;[o;$;["cke_rtl;@;iBo;
-; 0;@;!o;";#{ ;iB;[o;$;["cke_dialog;@;iBo;
-; 0;@;!o;";#{ ;iB;[o;1	;["a;@;iB;20o;$;["cke_btn_reset;@;iB;%To;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;iI;;o;;i ;["
-width;[ ;o;;	;;"	16px;@;@;iJ;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;iK;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;iL;;o;;i ;["border;[ ;o;;	;;"none 1px;@;@;iM;;o;;i ;["font-size;[ ;o;;	;;"1px;@;@;iN;;;@;["A.cke_dialog a.cke_btn_locked,
-.cke_dialog a.cke_btn_unlocked;iH;o;;" ;iH;[o;;[o;
-; 0;@[;!o;";#{ ;iH;[o;$;["cke_dialog;@[;iHo;
-; 0;@[;!o;";#{ ;iH;[o;1	;["a;@[;iH;20o;$;["cke_btn_locked;@[;iHo;;["
+right;@;@;i*;;o;;i ;["background;[ ;o;(	;);*;[	o;	;	;;"url(images/refresh.png);@;i+o;	;	;;"top;@;i+o;	;	;;"	left;@;i+o;	;	;;"no-repeat;@;i+;@;i+;@;i+;;o;;i ;["
+width;[ ;o;;	;;"	16px;@;@;i,;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;i-;;o;;i ;["border;[ ;o;;	;;"1px none;@;@;i.;;o;;i ;["font-size;[ ;o;;	;;"1px;@;@;i/;;;@;[" .cke_dialog a.cke_btn_reset;i);o;;" ;i);[o;;[o;
+; 0;@];!o;";#{ ;i);[o;$;["cke_dialog;@];i)o;
+; 0;@];!o;";#{ ;i);[o;/	;["a;@];i);00o;$;["cke_btn_reset;@];i);%To;;i ;[o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;i3;;o;;i ;["background-image;[ ;o;	;	;;""url(images/hidpi/refresh.png);@;i4;@;i4;;;@;["+.cke_hidpi .cke_dialog a.cke_btn_reset;i2;o;;" ;i2;[o;;[o;
+; 0;@É;!o;";#{ ;i2;[o;$;["cke_hidpi;@É;i2o;
+; 0;@É;!o;";#{ ;i2;[o;$;["cke_dialog;@É;i2o;
+; 0;@É;!o;";#{ ;i2;[o;/	;["a;@É;i2;00o;$;["cke_btn_reset;@É;i2;%To;;i ;[o;;i ;["
+float;[ ;o;;	;;"	left;@;@;i9;;;@;[").cke_rtl .cke_dialog a.cke_btn_reset;i8;o;;" ;i8;[o;;[o;
+; 0;@™;!o;";#{ ;i8;[o;$;["cke_rtl;@™;i8o;
+; 0;@™;!o;";#{ ;i8;[o;$;["cke_dialog;@™;i8o;
+; 0;@™;!o;";#{ ;i8;[o;/	;["a;@™;i8;00o;$;["cke_btn_reset;@™;i8;%To;;i ;[o;;i ;["
+float;[ ;o;;	;;"	left;@;@;i?;;o;;i ;["
+width;[ ;o;;	;;"	16px;@;@;i@;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;iA;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;iB;;o;;i ;["border;[ ;o;;	;;"none 1px;@;@;iC;;o;;i ;["font-size;[ ;o;;	;;"1px;@;@;iD;;;@;["A.cke_dialog a.cke_btn_locked,
+.cke_dialog a.cke_btn_unlocked;i>;o;;" ;i>;[o;;[o;
+; 0;@Ô;!o;";#{ ;i>;[o;$;["cke_dialog;@Ô;i>o;
+; 0;@Ô;!o;";#{ ;i>;[o;/	;["a;@Ô;i>;00o;$;["cke_btn_locked;@Ô;i>o;;["
 o;
-; 0;@[;!o;";#{ ;iH;[o;$;["cke_dialog;@[;iHo;
-; 0;@[;!o;";#{ ;iH;[o;1	;["a;@[;iH;20o;$;["cke_btn_unlocked;@[;iH;%To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;iS;;;@;["+.cke_dialog a.cke_btn_locked .cke_icon;iR;o;;" ;iR;[o;;[o;
-; 0;@è;!o;";#{ ;iR;[o;$;["cke_dialog;@è;iRo;
-; 0;@è;!o;";#{ ;iR;[o;1	;["a;@è;iR;20o;$;["cke_btn_locked;@è;iRo;
-; 0;@è;!o;";#{ ;iR;[o;$;["cke_icon;@è;iR;%To;;i ;[o;;i ;["
+; 0;@Ô;!o;";#{ ;i>;[o;$;["cke_dialog;@Ô;i>o;
+; 0;@Ô;!o;";#{ ;i>;[o;/	;["a;@Ô;i>;00o;$;["cke_btn_unlocked;@Ô;i>;%To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;iI;;;@;["+.cke_dialog a.cke_btn_locked .cke_icon;iH;o;;" ;iH;[o;;[o;
+; 0;@#;!o;";#{ ;iH;[o;$;["cke_dialog;@#;iHo;
+; 0;@#;!o;";#{ ;iH;[o;/	;["a;@#;iH;00o;$;["cke_btn_locked;@#;iHo;
+; 0;@#;!o;";#{ ;iH;[o;$;["cke_icon;@#;iH;%To;;i ;[o;;i ;["
 float;[ ;o;;	;;"
-right;@;@;iY;;;@;["S.cke_rtl .cke_dialog a.cke_btn_locked,
-.cke_rtl .cke_dialog a.cke_btn_unlocked;iX;o;;" ;iX;[o;;[o;
-; 0;@∂;!o;";#{ ;iX;[o;$;["cke_rtl;@∂;iXo;
-; 0;@∂;!o;";#{ ;iX;[o;$;["cke_dialog;@∂;iXo;
-; 0;@∂;!o;";#{ ;iX;[o;1	;["a;@∂;iX;20o;$;["cke_btn_locked;@∂;iXo;;[	"
+right;@;@;iO;;;@;["S.cke_rtl .cke_dialog a.cke_btn_locked,
+.cke_rtl .cke_dialog a.cke_btn_unlocked;iN;o;;" ;iN;[o;;[o;
+; 0;@J;!o;";#{ ;iN;[o;$;["cke_rtl;@J;iNo;
+; 0;@J;!o;";#{ ;iN;[o;$;["cke_dialog;@J;iNo;
+; 0;@J;!o;";#{ ;iN;[o;/	;["a;@J;iN;00o;$;["cke_btn_locked;@J;iNo;;[	"
 o;
-; 0;@∂;!o;";#{ ;iX;[o;$;["cke_rtl;@∂;iXo;
-; 0;@∂;!o;";#{ ;iX;[o;$;["cke_dialog;@∂;iXo;
-; 0;@∂;!o;";#{ ;iX;[o;1	;["a;@∂;iX;20o;$;["cke_btn_unlocked;@∂;iX;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/lock.png);@;i^;@;i^;;;@;["!.cke_dialog a.cke_btn_locked;i];o;;" ;i];[o;;[o;
-; 0;@¯;!o;";#{ ;i];[o;$;["cke_dialog;@¯;i]o;
-; 0;@¯;!o;";#{ ;i];[o;1	;["a;@¯;i];20o;$;["cke_btn_locked;@¯;i];%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/lock-open.png);@;ic;@;ic;;;@;["#.cke_dialog a.cke_btn_unlocked;ib;o;;" ;ib;[o;;[o;
-; 0;@;!o;";#{ ;ib;[o;$;["cke_dialog;@;ibo;
-; 0;@;!o;";#{ ;ib;[o;1	;["a;@;ib;20o;$;["cke_btn_unlocked;@;ib;%To;;i ;[o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;ih;;;@;["W.cke_hidpi .cke_dialog a.cke_btn_unlocked,
-.cke_hidpi .cke_dialog a.cke_btn_locked;ig;o;;" ;ig;[o;;[o;
-; 0;@8;!o;";#{ ;ig;[o;$;["cke_hidpi;@8;igo;
-; 0;@8;!o;";#{ ;ig;[o;$;["cke_dialog;@8;igo;
-; 0;@8;!o;";#{ ;ig;[o;1	;["a;@8;ig;20o;$;["cke_btn_unlocked;@8;igo;;[	"
+; 0;@J;!o;";#{ ;iN;[o;$;["cke_rtl;@J;iNo;
+; 0;@J;!o;";#{ ;iN;[o;$;["cke_dialog;@J;iNo;
+; 0;@J;!o;";#{ ;iN;[o;/	;["a;@J;iN;00o;$;["cke_btn_unlocked;@J;iN;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/lock.png);@;iT;@;iT;;;@;["!.cke_dialog a.cke_btn_locked;iS;o;;" ;iS;[o;;[o;
+; 0;@å;!o;";#{ ;iS;[o;$;["cke_dialog;@å;iSo;
+; 0;@å;!o;";#{ ;iS;[o;/	;["a;@å;iS;00o;$;["cke_btn_locked;@å;iS;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/lock-open.png);@;iY;@;iY;;;@;["#.cke_dialog a.cke_btn_unlocked;iX;o;;" ;iX;[o;;[o;
+; 0;@¨;!o;";#{ ;iX;[o;$;["cke_dialog;@¨;iXo;
+; 0;@¨;!o;";#{ ;iX;[o;/	;["a;@¨;iX;00o;$;["cke_btn_unlocked;@¨;iX;%To;;i ;[o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;i^;;;@;["W.cke_hidpi .cke_dialog a.cke_btn_unlocked,
+.cke_hidpi .cke_dialog a.cke_btn_locked;i];o;;" ;i];[o;;[o;
+; 0;@Ã;!o;";#{ ;i];[o;$;["cke_hidpi;@Ã;i]o;
+; 0;@Ã;!o;";#{ ;i];[o;$;["cke_dialog;@Ã;i]o;
+; 0;@Ã;!o;";#{ ;i];[o;/	;["a;@Ã;i];00o;$;["cke_btn_unlocked;@Ã;i]o;;[	"
 o;
-; 0;@8;!o;";#{ ;ig;[o;$;["cke_hidpi;@8;igo;
-; 0;@8;!o;";#{ ;ig;[o;$;["cke_dialog;@8;igo;
-; 0;@8;!o;";#{ ;ig;[o;1	;["a;@8;ig;20o;$;["cke_btn_locked;@8;ig;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/hidpi/lock.png);@;il;@;il;;;@;[",.cke_hidpi .cke_dialog a.cke_btn_locked;ik;o;;" ;ik;[o;;[o;
-; 0;@z;!o;";#{ ;ik;[o;$;["cke_hidpi;@z;iko;
-; 0;@z;!o;";#{ ;ik;[o;$;["cke_dialog;@z;iko;
-; 0;@z;!o;";#{ ;ik;[o;1	;["a;@z;ik;20o;$;["cke_btn_locked;@z;ik;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"$url(images/hidpi/lock-open.png);@;ip;@;ip;;;@;["..cke_hidpi .cke_dialog a.cke_btn_unlocked;io;o;;" ;io;[o;;[o;
-; 0;@°;!o;";#{ ;io;[o;$;["cke_hidpi;@°;ioo;
-; 0;@°;!o;";#{ ;io;[o;$;["cke_dialog;@°;ioo;
-; 0;@°;!o;";#{ ;io;[o;1	;["a;@°;io;20o;$;["cke_btn_unlocked;@°;io;%To;;i ;[o;;i ;["border;[ ;o;;	;;"outset 1px;@;@;iu;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;iv;;;@;[".cke_dialog .cke_btn_over;it;o;;" ;it;[o;;[o;
-; 0;@Œ;!o;";#{ ;it;[o;$;["cke_dialog;@Œ;ito;
-; 0;@Œ;!o;";#{ ;it;[o;$;["cke_btn_over;@Œ;it;%To;
+; 0;@Ã;!o;";#{ ;i];[o;$;["cke_hidpi;@Ã;i]o;
+; 0;@Ã;!o;";#{ ;i];[o;$;["cke_dialog;@Ã;i]o;
+; 0;@Ã;!o;";#{ ;i];[o;/	;["a;@Ã;i];00o;$;["cke_btn_locked;@Ã;i];%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/hidpi/lock.png);@;ib;@;ib;;;@;[",.cke_hidpi .cke_dialog a.cke_btn_locked;ia;o;;" ;ia;[o;;[o;
+; 0;@;!o;";#{ ;ia;[o;$;["cke_hidpi;@;iao;
+; 0;@;!o;";#{ ;ia;[o;$;["cke_dialog;@;iao;
+; 0;@;!o;";#{ ;ia;[o;/	;["a;@;ia;00o;$;["cke_btn_locked;@;ia;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"$url(images/hidpi/lock-open.png);@;if;@;if;;;@;["..cke_hidpi .cke_dialog a.cke_btn_unlocked;ie;o;;" ;ie;[o;;[o;
+; 0;@5;!o;";#{ ;ie;[o;$;["cke_hidpi;@5;ieo;
+; 0;@5;!o;";#{ ;ie;[o;$;["cke_dialog;@5;ieo;
+; 0;@5;!o;";#{ ;ie;[o;/	;["a;@5;ie;00o;$;["cke_btn_unlocked;@5;ie;%To;;i ;[o;;i ;["border;[ ;o;;	;;"outset 1px;@;@;ik;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;il;;;@;[".cke_dialog .cke_btn_over;ij;o;;" ;ij;[o;;[o;
+; 0;@b;!o;";#{ ;ij;[o;$;["cke_dialog;@b;ijo;
+; 0;@b;!o;";#{ ;ij;[o;$;["cke_btn_over;@b;ij;%To;
 ;	;
 ;[ ;["ô/*
 The rest of the file contains style used on several common plugins. There is a
 tendency that these will be moved to the plugins code in the future.
-*/;@;iyo;;i ;[o;;i ;["border;[ ;o;;	;;"2px ridge black;@;@;iÄ;;o;;i ;["overflow;[ ;o;;	;;"scroll;@;@;iÅ;;o;;i ;["height;[ ;o;;	;;"
-200px;@;@;iÇ;;o;;i ;["
+*/;@;ioo;;i ;[o;;i ;["border;[ ;o;;	;;"2px ridge black;@;@;iv;;o;;i ;["overflow;[ ;o;;	;;"scroll;@;@;iw;;o;;i ;["height;[ ;o;;	;;"
+200px;@;@;ix;;o;;i ;["
 width;[ ;o;;	;;"
-300px;@;@;iÉ;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;iÑ;;o;;i ;["background-color;[ ;o;;	;;"
-white;@;@;iÖ;;;@;["!.cke_dialog .ImagePreviewBox;i;o;;" ;i;[o;;[o;
-; 0;@;!o;";#{ ;i;[o;$;["cke_dialog;@;io;
-; 0;@;!o;";#{ ;i;[o;$;["ImagePreviewBox;@;i;%To;;i ;[o;;i ;["white-space;[ ;o;;	;;"normal;@;@;iä;;;@;["*.cke_dialog .ImagePreviewBox table td;iâ;o;;" ;iâ;[o;;[	o;
-; 0;@*;!o;";#{ ;iâ;[o;$;["cke_dialog;@*;iâo;
-; 0;@*;!o;";#{ ;iâ;[o;$;["ImagePreviewBox;@*;iâo;
-; 0;@*;!o;";#{ ;iâ;[o;1	;["
-table;@*;iâ;20o;
-; 0;@*;!o;";#{ ;iâ;[o;1	;["td;@*;iâ;20;%To;;i ;[o;;i ;["position;[ ;o;;	;;"absolute;@;@;iè;;o;;i ;["white-space;[ ;o;;	;;"normal;@;@;iê;;o;;i ;["overflow;[ ;o;;	;;"hidden;@;@;ië;;o;;i ;["height;[ ;o;;	;;"
-160px;@;@;ií;;o;;i ;["
+300px;@;@;iy;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;iz;;o;;i ;["background-color;[ ;o;;	;;"
+white;@;@;i{;;;@;["!.cke_dialog .ImagePreviewBox;iu;o;;" ;iu;[o;;[o;
+; 0;@°;!o;";#{ ;iu;[o;$;["cke_dialog;@°;iuo;
+; 0;@°;!o;";#{ ;iu;[o;$;["ImagePreviewBox;@°;iu;%To;;i ;[o;;i ;["white-space;[ ;o;;	;;"normal;@;@;iÄ;;;@;["*.cke_dialog .ImagePreviewBox table td;i;o;;" ;i;[o;;[	o;
+; 0;@æ;!o;";#{ ;i;[o;$;["cke_dialog;@æ;io;
+; 0;@æ;!o;";#{ ;i;[o;$;["ImagePreviewBox;@æ;io;
+; 0;@æ;!o;";#{ ;i;[o;/	;["
+table;@æ;i;00o;
+; 0;@æ;!o;";#{ ;i;[o;/	;["td;@æ;i;00;%To;;i ;[o;;i ;["position;[ ;o;;	;;"absolute;@;@;iÖ;;o;;i ;["white-space;[ ;o;;	;;"normal;@;@;iÜ;;o;;i ;["overflow;[ ;o;;	;;"hidden;@;@;iá;;o;;i ;["height;[ ;o;;	;;"
+160px;@;@;ià;;o;;i ;["
 width;[ ;o;;	;;"
-230px;@;@;iì;;o;;i ;["margin;[ ;o;;	;;"2px;@;@;iî;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;iï;;o;;i ;["opacity;[ ;o;;	;;"0.9;@;@;iñ;;o;;i ;["filter;[ ;o;-;"
-alpha;@;.{ ;ió;/0;0[o:Sass::Script::Operation
-:@operand1o;	;	;;"opacity;@;ió;@;ió:@operator:single_eq:@operand2o;);i_;@;*@m;ió;+[ ;,"90;@;ió;;o;;i ;["background-color;[ ;o;;	;;"#e4e4e4;@;@;iô;;;@;["$.cke_dialog .ImagePreviewLoader;ié;o;;" ;ié;[o;;[o;
-; 0;@ì;!o;";#{ ;ié;[o;$;["cke_dialog;@ì;iéo;
-; 0;@ì;!o;";#{ ;ié;[o;$;["ImagePreviewLoader;@ì;ié;%To;;i ;[o;;i ;["white-space;[ ;o;;	;;"normal;@;@;iû;;o;;i ;["border;[ ;o;;	;;"2px ridge black;@;@;iü;;o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i†;;o;;i ;["height;[ ;o;;	;;"
-160px;@;@;i°;;o;;i ;["
+230px;@;@;iâ;;o;;i ;["margin;[ ;o;;	;;"2px;@;@;iä;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;iã;;o;;i ;["opacity;[ ;o;;	;;"0.9;@;@;iå;;o;;i ;["filter;[ ;o;1;"
+alpha;@;2{ ;iç;30;4[o:Sass::Script::Operation
+:@operand1o;	;	;;"opacity;@;iç;@;iç:@operator:single_eq:@operand2o;+;i_;@;,@÷;iç;-[ ;."90;@;iç;;o;;i ;["background-color;[ ;o;;	;;"#e4e4e4;@;@;iè;;;@;["$.cke_dialog .ImagePreviewLoader;iÑ;o;;" ;iÑ;[o;;[o;
+; 0;@';!o;";#{ ;iÑ;[o;$;["cke_dialog;@';iÑo;
+; 0;@';!o;";#{ ;iÑ;[o;$;["ImagePreviewLoader;@';iÑ;%To;;i ;[o;;i ;["white-space;[ ;o;;	;;"normal;@;@;iî;;o;;i ;["border;[ ;o;;	;;"2px ridge black;@;@;iï;;o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;iñ;;o;;i ;["height;[ ;o;;	;;"
+160px;@;@;ió;;o;;i ;["
 width;[ ;o;;	;;"
-390px;@;@;i¢;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;i£;;o;;i ;["background-color;[ ;o;;	;;"
-white;@;@;i§;;;@;["!.cke_dialog .FlashPreviewBox;iù;o;;" ;iù;[o;;[o;
-; 0;@‘;!o;";#{ ;iù;[o;$;["cke_dialog;@‘;iùo;
-; 0;@‘;!o;";#{ ;iù;[o;$;["FlashPreviewBox;@‘;iù;%To;;i ;[o;;i ;["
+390px;@;@;iò;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;iô;;o;;i ;["background-color;[ ;o;;	;;"
+white;@;@;iö;;;@;["!.cke_dialog .FlashPreviewBox;iì;o;;" ;iì;[o;;[o;
+; 0;@h;!o;";#{ ;iì;[o;$;["cke_dialog;@h;iìo;
+; 0;@h;!o;";#{ ;iì;[o;$;["FlashPreviewBox;@h;iì;%To;;i ;[o;;i ;["
 width;[ ;o;;	;;"
-346px;@;@;i©;;o;;i ;["height;[ ;o;;	;;"
-170px;@;@;i™;;;@;[".cke_dialog .cke_pastetext;i®;o;;" ;i®;[o;;[o;
-; 0;@˜;!o;";#{ ;i®;[o;$;["cke_dialog;@˜;i®o;
-; 0;@˜;!o;";#{ ;i®;[o;$;["cke_pastetext;@˜;i®;%To;;i ;[o;;i ;["
+346px;@;@;iü;;o;;i ;["height;[ ;o;;	;;"
+170px;@;@;i†;;;@;[".cke_dialog .cke_pastetext;iû;o;;" ;iû;[o;;[o;
+; 0;@ã;!o;";#{ ;iû;[o;$;["cke_dialog;@ã;iûo;
+; 0;@ã;!o;";#{ ;iû;[o;$;["cke_pastetext;@ã;iû;%To;;i ;[o;;i ;["
 width;[ ;o;;	;;"
-340px;@;@;iØ;;o;;i ;["height;[ ;o;;	;;"
-170px;@;@;i∞;;o;;i ;["resize;[ ;o;;	;;"	none;@;@;i±;;;@;["(.cke_dialog .cke_pastetext textarea;iÆ;o;;" ;iÆ;[o;;[o;
-; 0;@ ;!o;";#{ ;iÆ;[o;$;["cke_dialog;@ ;iÆo;
-; 0;@ ;!o;";#{ ;iÆ;[o;$;["cke_pastetext;@ ;iÆo;
-; 0;@ ;!o;";#{ ;iÆ;[o;1	;["textarea;@ ;iÆ;20;%To;;i ;[o;;i ;["
+340px;@;@;i•;;o;;i ;["height;[ ;o;;	;;"
+170px;@;@;i¶;;o;;i ;["resize;[ ;o;;	;;"	none;@;@;iß;;;@;["(.cke_dialog .cke_pastetext textarea;i§;o;;" ;i§;[o;;[o;
+; 0;@¥;!o;";#{ ;i§;[o;$;["cke_dialog;@¥;i§o;
+; 0;@¥;!o;";#{ ;i§;[o;$;["cke_pastetext;@¥;i§o;
+; 0;@¥;!o;";#{ ;i§;[o;/	;["textarea;@¥;i§;00;%To;;i ;[o;;i ;["
 width;[ ;o;;	;;"
-346px;@;@;i∂;;o;;i ;["height;[ ;o;;	;;"
-130px;@;@;i∑;;o;;i ;["background-color;[ ;o;;	;;"
-white;@;@;i∏;;o;;i ;["border;[ ;o;;	;;"1px solid #aeb3b9;@;@;iπ;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;iª;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;iº;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;iΩ;;;@;["&.cke_dialog iframe.cke_pasteframe;iµ;o;;" ;iµ;[o;;[o;
-; 0;@h;!o;";#{ ;iµ;[o;$;["cke_dialog;@h;iµo;
-; 0;@h;!o;";#{ ;iµ;[o;1	;["iframe;@h;iµ;20o;$;["cke_pasteframe;@h;iµ;%To;;i ;[o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i¬;;;@;[".cke_dialog .cke_hand;i¡;o;;" ;i¡;[o;;[o;
-; 0;@à;!o;";#{ ;i¡;[o;$;["cke_dialog;@à;i¡o;
-; 0;@à;!o;";#{ ;i¡;[o;$;["cke_hand;@à;i¡;%To;;i ;[o;;i ;["
-color;[ ;o;;	;;"#a0a0a0;@;@;i«;;;@;[".cke_disabled;i∆;o;;" ;i∆;[o;;[o;
-; 0;@•;!o;";#{ ;i∆;[o;$;["cke_disabled;@•;i∆;%To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;iÃ;;;@;[" .cke_dialog_body .cke_label;iÀ;o;;" ;iÀ;[o;;[o;
-; 0;@ª;!o;";#{ ;iÀ;[o;$;["cke_dialog_body;@ª;iÀo;
-; 0;@ª;!o;";#{ ;iÀ;[o;$;["cke_label;@ª;iÀ;%To;;i ;[o;;i ;["display;[ ;o;;	;;"inline;@;@;i—;;o;;i ;["margin-bottom;[ ;o;;	;;"	auto;@;@;i“;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i”;;;@;[".cke_dialog_body label;i–;o;;" ;i–;[o;;[o;
-; 0;@‰;!o;";#{ ;i–;[o;$;["cke_dialog_body;@‰;i–o;
-; 0;@‰;!o;";#{ ;i–;[o;1	;["
-label;@‰;i–;20;%To;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iÿ;;;@;["(.cke_dialog_body label.cke_required;i◊;o;;" ;i◊;[o;;[o;
-; 0;@;!o;";#{ ;i◊;[o;$;["cke_dialog_body;@;i◊o;
-; 0;@;!o;";#{ ;i◊;[o;1	;["
-label;@;i◊;20o;$;["cke_required;@;i◊;%To;;i ;[	o;;i ;["overflow;[ ;o;;	;;"hidden;@;@;i›;;o;;i ;["display;[ ;o;;	;;"
-block;@;@;iﬁ;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;iﬂ;;o;;i ;["padding;[ ;o;;	;;"0.3em 0;@;@;i‡;;;@;["a.cke_smile;i‹;o;;" ;i‹;[o;;[o;
-; 0;@3;!o;";#{ ;i‹;[o;1	;["a;@3;i‹;20o;$;["cke_smile;@3;i‹;%To;;i ;[o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;iÂ;;;@;["a.cke_smile img;i‰;o;;" ;i‰;[o;;[o;
-; 0;@L;!o;";#{ ;i‰;[o;1	;["a;@L;i‰;20o;$;["cke_smile;@L;i‰o;
-; 0;@L;!o;";#{ ;i‰;[o;1	;["img;@L;i‰;20;%To;;i ;[
-o;;i ;["cursor;[ ;o;;	;;"inherit;@;@;iÍ;;o;;i ;["display;[ ;o;;	;;"
-block;@;@;iÎ;;o;;i ;["height;[ ;o;;	;;"1.25em;@;@;iÏ;;o;;i ;["padding;[ ;o;;	;;"0.2em 0.3em;@;@;iÌ;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;iÓ;;;@;["a.cke_specialchar;iÈ;o;;" ;iÈ;[o;;[o;
-; 0;@Ñ;!o;";#{ ;iÈ;[o;1	;["a;@Ñ;iÈ;20o;$;["cke_specialchar;@Ñ;iÈ;%To;;i ;[o;;i ;["border;[ ;o;;	;;"1px solid transparent;@;@;iÙ;;;@;["#a.cke_smile,
-a.cke_specialchar;iÛ;o;;" ;iÛ;[o;;[o;
-; 0;@ù;!o;";#{ ;iÛ;[o;1	;["a;@ù;iÛ;20o;$;["cke_smile;@ù;iÛo;;["
+346px;@;@;i¨;;o;;i ;["height;[ ;o;;	;;"
+130px;@;@;i≠;;o;;i ;["background-color;[ ;o;;	;;"
+white;@;@;iÆ;;o;;i ;["border;[ ;o;;	;;"1px solid #aeb3b9;@;@;iØ;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;i±;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;i≤;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;i≥;;;@;["&.cke_dialog iframe.cke_pasteframe;i´;o;;" ;i´;[o;;[o;
+; 0;@¸;!o;";#{ ;i´;[o;$;["cke_dialog;@¸;i´o;
+; 0;@¸;!o;";#{ ;i´;[o;/	;["iframe;@¸;i´;00o;$;["cke_pasteframe;@¸;i´;%To;;i ;[o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i∏;;;@;[".cke_dialog .cke_hand;i∑;o;;" ;i∑;[o;;[o;
+; 0;@;!o;";#{ ;i∑;[o;$;["cke_dialog;@;i∑o;
+; 0;@;!o;";#{ ;i∑;[o;$;["cke_hand;@;i∑;%To;;i ;[o;;i ;["
+color;[ ;o;;	;;"#a0a0a0;@;@;iΩ;;;@;[".cke_disabled;iº;o;;" ;iº;[o;;[o;
+; 0;@9;!o;";#{ ;iº;[o;$;["cke_disabled;@9;iº;%To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i¬;;;@;[" .cke_dialog_body .cke_label;i¡;o;;" ;i¡;[o;;[o;
+; 0;@O;!o;";#{ ;i¡;[o;$;["cke_dialog_body;@O;i¡o;
+; 0;@O;!o;";#{ ;i¡;[o;$;["cke_label;@O;i¡;%To;;i ;[o;;i ;["display;[ ;o;;	;;"inline;@;@;i«;;o;;i ;["margin-bottom;[ ;o;;	;;"	auto;@;@;i»;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i…;;;@;[".cke_dialog_body label;i∆;o;;" ;i∆;[o;;[o;
+; 0;@x;!o;";#{ ;i∆;[o;$;["cke_dialog_body;@x;i∆o;
+; 0;@x;!o;";#{ ;i∆;[o;/	;["
+label;@x;i∆;00;%To;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iŒ;;;@;["(.cke_dialog_body label.cke_required;iÕ;o;;" ;iÕ;[o;;[o;
+; 0;@ï;!o;";#{ ;iÕ;[o;$;["cke_dialog_body;@ï;iÕo;
+; 0;@ï;!o;";#{ ;iÕ;[o;/	;["
+label;@ï;iÕ;00o;$;["cke_required;@ï;iÕ;%To;;i ;[	o;;i ;["overflow;[ ;o;;	;;"hidden;@;@;i”;;o;;i ;["display;[ ;o;;	;;"
+block;@;@;i‘;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i’;;o;;i ;["padding;[ ;o;;	;;"0.3em 0;@;@;i÷;;;@;["a.cke_smile;i“;o;;" ;i“;[o;;[o;
+; 0;@«;!o;";#{ ;i“;[o;/	;["a;@«;i“;00o;$;["cke_smile;@«;i“;%To;;i ;[o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;i€;;;@;["a.cke_smile img;i⁄;o;;" ;i⁄;[o;;[o;
+; 0;@‡;!o;";#{ ;i⁄;[o;/	;["a;@‡;i⁄;00o;$;["cke_smile;@‡;i⁄o;
+; 0;@‡;!o;";#{ ;i⁄;[o;/	;["img;@‡;i⁄;00;%To;;i ;[
+o;;i ;["cursor;[ ;o;;	;;"inherit;@;@;i‡;;o;;i ;["display;[ ;o;;	;;"
+block;@;@;i·;;o;;i ;["height;[ ;o;;	;;"1.25em;@;@;i‚;;o;;i ;["padding;[ ;o;;	;;"0.2em 0.3em;@;@;i„;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i‰;;;@;["a.cke_specialchar;iﬂ;o;;" ;iﬂ;[o;;[o;
+; 0;@;!o;";#{ ;iﬂ;[o;/	;["a;@;iﬂ;00o;$;["cke_specialchar;@;iﬂ;%To;;i ;[o;;i ;["border;[ ;o;;	;;"1px solid transparent;@;@;iÍ;;;@;["#a.cke_smile,
+a.cke_specialchar;iÈ;o;;" ;iÈ;[o;;[o;
+; 0;@1;!o;";#{ ;iÈ;[o;/	;["a;@1;iÈ;00o;$;["cke_smile;@1;iÈo;;["
 o;
-; 0;@ù;!o;";#{ ;iÛ;[o;1	;["a;@ù;iÛ;20o;$;["cke_specialchar;@ù;iÛ;%To;;i ;[o;;i ;["background;[ ;o;;	;;"	#fff;@;@;i˛;;o;;i ;["outline;[ ;o;;	;;"0;@;@;iˇ;;;@;["Ña.cke_smile:hover,
+; 0;@1;!o;";#{ ;iÈ;[o;/	;["a;@1;iÈ;00o;$;["cke_specialchar;@1;iÈ;%To;;i ;[o;;i ;["background;[ ;o;;	;;"	#fff;@;@;iÙ;;o;;i ;["outline;[ ;o;;	;;"0;@;@;iı;;;@;["Ña.cke_smile:hover,
 a.cke_smile:focus,
 a.cke_smile:active,
 a.cke_specialchar:hover,
 a.cke_specialchar:focus,
-a.cke_specialchar:active;i˝;o;;" ;i˝;[o;;[o;
-; 0;@…;!o;";#{ ;i˝;[o;1	;["a;@…;i˝;20o;$;["cke_smile;@…;i˝o;9
+a.cke_specialchar:active;iÛ;o;;" ;iÛ;[o;;[o;
+; 0;@];!o;";#{ ;iÛ;[o;/	;["a;@];iÛ;00o;$;["cke_smile;@];iÛo;;
 ;["
-hover;	;:;@…;i˝;;0o;;["
+hover;	;<;@];iÛ;=0o;;["
 o;
-; 0;@…;!o;";#{ ;i˝;[o;1	;["a;@…;i˝;20o;$;["cke_smile;@…;i˝o;9
+; 0;@];!o;";#{ ;iÛ;[o;/	;["a;@];iÛ;00o;$;["cke_smile;@];iÛo;;
 ;["
-focus;	;:;@…;i˝;;0o;;["
+focus;	;<;@];iÛ;=0o;;["
 o;
-; 0;@…;!o;";#{ ;i˝;[o;1	;["a;@…;i˝;20o;$;["cke_smile;@…;i˝o;9
-;["active;	;:;@…;i˝;;0o;;["
+; 0;@];!o;";#{ ;iÛ;[o;/	;["a;@];iÛ;00o;$;["cke_smile;@];iÛo;;
+;["active;	;<;@];iÛ;=0o;;["
 o;
-; 0;@…;!o;";#{ ;i˝;[o;1	;["a;@…;i˝;20o;$;["cke_specialchar;@…;i˝o;9
+; 0;@];!o;";#{ ;iÛ;[o;/	;["a;@];iÛ;00o;$;["cke_specialchar;@];iÛo;;
 ;["
-hover;	;:;@…;i˝;;0o;;["
+hover;	;<;@];iÛ;=0o;;["
 o;
-; 0;@…;!o;";#{ ;i˝;[o;1	;["a;@…;i˝;20o;$;["cke_specialchar;@…;i˝o;9
+; 0;@];!o;";#{ ;iÛ;[o;/	;["a;@];iÛ;00o;$;["cke_specialchar;@];iÛo;;
 ;["
-focus;	;:;@…;i˝;;0o;;["
+focus;	;<;@];iÛ;=0o;;["
 o;
-; 0;@…;!o;";#{ ;i˝;[o;1	;["a;@…;i˝;20o;$;["cke_specialchar;@…;i˝o;9
-;["active;	;:;@…;i˝;;0;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"	#888;@;@;i;;;@;["/a.cke_smile:hover,
-a.cke_specialchar:hover;i;o;;" ;i;[o;;[o;
-; 0;@5;!o;";#{ ;i;[o;1	;["a;@5;i;20o;$;["cke_smile;@5;io;9
+; 0;@];!o;";#{ ;iÛ;[o;/	;["a;@];iÛ;00o;$;["cke_specialchar;@];iÛo;;
+;["active;	;<;@];iÛ;=0;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"	#888;@;@;i˚;;;@;["/a.cke_smile:hover,
+a.cke_specialchar:hover;i˙;o;;" ;i˙;[o;;[o;
+; 0;@…;!o;";#{ ;i˙;[o;/	;["a;@…;i˙;00o;$;["cke_smile;@…;i˙o;;
 ;["
-hover;	;:;@5;i;;0o;;["
+hover;	;<;@…;i˙;=0o;;["
 o;
-; 0;@5;!o;";#{ ;i;[o;1	;["a;@5;i;20o;$;["cke_specialchar;@5;io;9
+; 0;@…;!o;";#{ ;i˙;[o;/	;["a;@…;i˙;00o;$;["cke_specialchar;@…;i˙o;;
 ;["
-hover;	;:;@5;i;;0;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#139FF7;@;@;i;;;@;["]a.cke_smile:focus,
+hover;	;<;@…;i˙;=0;%To;;i ;[o;;i ;["border-color;[ ;o;;	;;"#139FF7;@;@;i;;;@;["]a.cke_smile:focus,
 a.cke_smile:active,
 a.cke_specialchar:focus,
-a.cke_specialchar:active;i;o;;" ;i;[	o;;[o;
-; 0;@a;!o;";#{ ;i;[o;1	;["a;@a;i;20o;$;["cke_smile;@a;io;9
+a.cke_specialchar:active;i;o;;" ;i;[	o;;[o;
+; 0;@ı;!o;";#{ ;i;[o;/	;["a;@ı;i;00o;$;["cke_smile;@ı;io;;
 ;["
-focus;	;:;@a;i;;0o;;["
+focus;	;<;@ı;i;=0o;;["
 o;
-; 0;@a;!o;";#{ ;i;[o;1	;["a;@a;i;20o;$;["cke_smile;@a;io;9
-;["active;	;:;@a;i;;0o;;["
+; 0;@ı;!o;";#{ ;i;[o;/	;["a;@ı;i;00o;$;["cke_smile;@ı;io;;
+;["active;	;<;@ı;i;=0o;;["
 o;
-; 0;@a;!o;";#{ ;i;[o;1	;["a;@a;i;20o;$;["cke_specialchar;@a;io;9
+; 0;@ı;!o;";#{ ;i;[o;/	;["a;@ı;i;00o;$;["cke_specialchar;@ı;io;;
 ;["
-focus;	;:;@a;i;;0o;;["
+focus;	;<;@ı;i;=0o;;["
 o;
-; 0;@a;!o;";#{ ;i;[o;1	;["a;@a;i;20o;$;["cke_specialchar;@a;io;9
-;["active;	;:;@a;i;;0;%To;
+; 0;@ı;!o;";#{ ;i;[o;/	;["a;@ı;i;00o;$;["cke_specialchar;@ı;io;;
+;["active;	;<;@ı;i;=0;%To;
 ;	;
 ;[ ;[";/**
  * Styles specific to "cellProperties" dialog.
- */;@;io;;i ;[	o;;i ;["display;[ ;o;;	;;"
-block;@;@;i;;o;;i ;["margin-top;[ ;o;;	;;"6px;@;@;i;;o;;i ;["margin-left;[ ;o;;	;;"	10px;@;@;i;;o;;i ;["
-width;[ ;o;;	;;"	80px;@;@;i;;;@;["(.cke_dialog_contents a.colorChooser;i;o;;" ;i;[o;;[o;
-; 0;@√;!o;";#{ ;i;[o;$;["cke_dialog_contents;@√;io;
-; 0;@√;!o;";#{ ;i;[o;1	;["a;@√;i;20o;$;["colorChooser;@√;i;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"	10px;@;@;i;;;@;["1.cke_rtl .cke_dialog_contents a.colorChooser;i;o;;" ;i;[o;;[o;
-; 0;@„;!o;";#{ ;i;[o;$;["cke_rtl;@„;io;
-; 0;@„;!o;";#{ ;i;[o;$;["cke_dialog_contents;@„;io;
-; 0;@„;!o;";#{ ;i;[o;1	;["a;@„;i;20o;$;["colorChooser;@„;i;%To;
+ */;@;io;;i ;[	o;;i ;["display;[ ;o;;	;;"
+block;@;@;i;;o;;i ;["margin-top;[ ;o;;	;;"6px;@;@;i;;o;;i ;["margin-left;[ ;o;;	;;"	10px;@;@;i;;o;;i ;["
+width;[ ;o;;	;;"	80px;@;@;i;;;@;["(.cke_dialog_contents a.colorChooser;i;o;;" ;i;[o;;[o;
+; 0;@W;!o;";#{ ;i;[o;$;["cke_dialog_contents;@W;io;
+; 0;@W;!o;";#{ ;i;[o;/	;["a;@W;i;00o;$;["colorChooser;@W;i;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"	10px;@;@;i;;;@;["1.cke_rtl .cke_dialog_contents a.colorChooser;i;o;;" ;i;[o;;[o;
+; 0;@w;!o;";#{ ;i;[o;$;["cke_rtl;@w;io;
+; 0;@w;!o;";#{ ;i;[o;$;["cke_dialog_contents;@w;io;
+; 0;@w;!o;";#{ ;i;[o;/	;["a;@w;i;00o;$;["colorChooser;@w;i;%To;
 ;	;
-;[ ;["D/* Compensate focus outline for some input elements. (#6200) */;@;i!o;;i ;[o;;i ;["outline;[ ;o;;	;;"1px dotted #696969;@;@;i&;;;@;["Y.cke_dialog_ui_checkbox_input:focus,
+;[ ;["D/* Compensate focus outline for some input elements. (#6200) */;@;io;;i ;[o;;i ;["outline;[ ;o;;	;;"1px dotted #696969;@;@;i;;;@;["Y.cke_dialog_ui_checkbox_input:focus,
 .cke_dialog_ui_radio_input:focus,
-.cke_btn_over;i%;o;;" ;i%;[o;;[o;
-; 0;@;!o;";#{ ;i%;[o;$;["!cke_dialog_ui_checkbox_input;@;i%o;9
+.cke_btn_over;i;o;;" ;i;[o;;[o;
+; 0;@¢;!o;";#{ ;i;[o;$;["!cke_dialog_ui_checkbox_input;@¢;io;;
 ;["
-focus;	;:;@;i%;;0o;;["
+focus;	;<;@¢;i;=0o;;["
 o;
-; 0;@;!o;";#{ ;i%;[o;$;["cke_dialog_ui_radio_input;@;i%o;9
+; 0;@¢;!o;";#{ ;i;[o;$;["cke_dialog_ui_radio_input;@¢;io;;
 ;["
-focus;	;:;@;i%;;0o;;["
+focus;	;<;@¢;i;=0o;;["
 o;
-; 0;@;!o;";#{ ;i%;[o;$;["cke_btn_over;@;i%;%To;;i ;[o;;i ;["display;[ ;o;;	;;"
-block;@;@;i+;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;i,;;o;;i ;["top;[ ;o;;	;;"0;@;@;i-;;o;;i ;["	left;[ ;o;;	;;"0;@;@;i.;;o;;i ;["z-index;[ ;o;;	;;"-1;@;@;i/;;o;;i ;["filter;[ ;o;-;"
-alpha;@;.{ ;i0;/0;0[o;>
-;?o;	;	;;"opacity;@;i0;@;i0;@;A;Bo;);i ;@;*@m;i0;+[ ;,"0;@;i0;;o;;i ;["
-width;[ ;o;;	;;"	100%;@;@;i1;;o;;i ;["height;[ ;o;;	;;"	100%;@;@;i2;;;@;[".cke_iframe_shim;i*;o;;" ;i*;[o;;[o;
-; 0;@p;!o;";#{ ;i*;[o;$;["cke_iframe_shim;@p;i*;%T;@;i;%T
+; 0;@¢;!o;";#{ ;i;[o;$;["cke_btn_over;@¢;i;%To;;i ;[o;;i ;["display;[ ;o;;	;;"
+block;@;@;i!;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;i";;o;;i ;["top;[ ;o;;	;;"0;@;@;i#;;o;;i ;["	left;[ ;o;;	;;"0;@;@;i$;;o;;i ;["z-index;[ ;o;;	;;"-1;@;@;i%;;o;;i ;["filter;[ ;o;1;"
+alpha;@;2{ ;i&;30;4[o;@
+;Ao;	;	;;"opacity;@;i&;@;i&;B;C;Do;+;i ;@;,@÷;i&;-[ ;."0;@;i&;;o;;i ;["
+width;[ ;o;;	;;"	100%;@;@;i';;o;;i ;["height;[ ;o;;	;;"	100%;@;@;i(;;;@;[".cke_iframe_shim;i ;o;;" ;i ;[o;;[o;
+; 0;@;!o;";#{ ;i ;[o;$;["cke_iframe_shim;@;i ;%T;@;i;%T

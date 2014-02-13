@@ -43,36 +43,26 @@ as follows:
 */
 
 /* The outer container of the dialog. */
-.cke_dialog
-{
+.cke_dialog {
     /* Mandatory: Because the dialog.css file is loaded on demand, we avoid
         showing an unstyled dialog by hidding it. Here, we restore its visibility. */
     visibility: visible;
 }
 
 /* The inner boundary container. */
-.cke_dialog_body
-{
+.cke_dialog_body {
     z-index: 1;
-    background: #eaeaea;
-    border: 1px solid #b2b2b2;
-    border-bottom-color: #999;
+    background: $gray-lighter;
+    border: 1px solid $hr-border;
 
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
-    box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+    border-radius: $border-radius;
 }
 
 /* This one is required by Firefox 3.6. Without it,
    dialog tabs and resizer float outside of the dialog.
    Although this rule doesn't seem to break anything on other
    browsers, it doesn't work with broken jQueryUI - #9851. */
-.cke_browser_gecko19 .cke_dialog_body
-{
+.cke_browser_gecko19 .cke_dialog_body {
     position: relative;
 }
 
