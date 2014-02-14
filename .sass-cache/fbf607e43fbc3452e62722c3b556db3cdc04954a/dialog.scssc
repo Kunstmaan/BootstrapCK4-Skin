@@ -1,1470 +1,0 @@
-3.2.9 (Media Mark)
-e5d1a95653661cb7b99242d9142ed5137c1d8751
-o:Sass::Tree::RootNode
-:@template"6K/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
-*/
-
-/*
-dialog.css
-============
-
-This file styles dialogs and all widgets available inside of it (tabs, buttons,
-fields, etc.).
-
-Dialogs are a complex system because they're very flexible. The CKEditor API
-makes it easy to create and customize dialogs by code, by making use of several
-different widgets inside its contents.
-
-All dialogs share a main dialog strucuture, which can be visually represented
-as follows:
-
-+-- .cke_dialog -------------------------------------------------+
-| +-- .cke_dialog_body ----------------------------------------+ |
-| | +-- .cke_dialog_title --+ +-- .cke_dialog_close_button --+ | |
-| | |                       | |                              | | |
-| | +-----------------------+ +------------------------------+ | |
-| | +-- .cke_dialog_tabs ------------------------------------+ | |
-| | |                                                        | | |
-| | +--------------------------------------------------------+ | |
-| | +-- .cke_dialog_contents --------------------------------+ | |
-| | | +-- .cke_dialog_contents_body -----------------------+ | | |
-| | | |                                                    | | | |
-| | | +----------------------------------------------------+ | | |
-| | | +-- .cke_dialog_footer ------------------------------+ | | |
-| | | |                                                    | | | |
-| | | +----------------------------------------------------+ | | |
-| | +--------------------------------------------------------+ | |
-| +------------------------------------------------------------+ |
-+----------------------------------------------------------------+
-
-/* Config files, where variables are defined */
-@import "../config/config";
-
-/* Comments in this file will give more details about each of the above blocks.
-*/
-
-/* The outer container of the dialog. */
-.cke_dialog {
-    /* Mandatory: Because the dialog.css file is loaded on demand, we avoid
-        showing an unstyled dialog by hidding it. Here, we restore its visibility. */
-    visibility: visible;
-}
-
-/* The inner boundary container. */
-.cke_dialog_body {
-    z-index: 1;
-    background: $gray-lighter;
-    border: 1px solid $hr-border;
-
-    border-radius: $border-radius;
-}
-
-/* This one is required by Firefox 3.6. Without it,
-   dialog tabs and resizer float outside of the dialog.
-   Although this rule doesn't seem to break anything on other
-   browsers, it doesn't work with broken jQueryUI - #9851. */
-.cke_browser_gecko19 .cke_dialog_body {
-    position: relative;
-}
-
-/* Due to our reset we have to recover the styles of some elements. */
-.cke_dialog strong {
-    font-weight: bold;
-}
-
-/* The dialog title. */
-.cke_dialog_title {
-    font-weight: bold;
-    font-size: 13px;
-    cursor: move;
-    position: relative;
-    color: $text-color;
-    border-bottom: 1px solid $hr-border;
-    padding: 10px 12px;
-    background: $gray-lighter;
-}
-
-/* The outer part of the dialog contants, which contains the contents body
-   and the footer. */
-.cke_dialog_contents {
-    background-color: #fff;
-    overflow: auto;
-    padding: 15px 10px 5px 10px;
-    margin-top: 35px;
-    border-top: 1px solid $hr-border;
-    border-radius: 0 0 $border-radius $border-radius;
-}
-
-/* The contents body part, which will hold all elements available in the dialog. */
-.cke_dialog_contents_body {
-    overflow: auto;
-    padding: 17px 10px 5px 10px;
-    margin-top: 22px;
-}
-
-/* The dialog footer, which usually contains the "Ok" and "Cancel" buttons as
-   well as a resize handler. */
-.cke_dialog_footer {
-    text-align: right;
-    position: relative;
-    border-radius: 0 0 $border-radius $border-radius;
-    border-top: 1px solid $hr-border;
-    background: $gray-lighter;
-}
-
-.cke_rtl .cke_dialog_footer {
-    text-align: left;
-}
-
-.cke_hc .cke_dialog_footer {
-    outline: none;
-    border-top: 1px solid #fff;
-}
-
-.cke_dialog .cke_resizer {
-    margin-top: 28px;
-}
-
-.cke_dialog .cke_resizer_rtl {
-    margin-left: 5px;
-}
-
-.cke_dialog .cke_resizer_ltr {
-    margin-right: 5px;
-}
-
-/*
-Dialog tabs
--------------
-
-Tabs are presented on some of the dialogs to make it possible to have its
-contents split on different groups, visible one after the other.
-
-The main element that holds the tabs can be made hidden, in case of no tabs
-available.
-
-The following is the visual representation of the tabs block:
-
-+-- .cke_dialog_tabs ------------------------------------+
-|  +-- .cke_dialog_tab --+ +-- .cke_dialog_tab --+ ...   |
-|  |                     | |                     |       |
-|  +---------------------+ +---------------------+       |
-+--------------------------------------------------------+
-
-The .cke_dialog_tab_selected class is appended to the active tab.
-*/
-
-/* The main tabs container. */
-.cke_dialog_tabs {
-    height: 24px;
-    display: inline-block;
-    margin: 10px 0 0;
-    position: absolute;
-    z-index: 2;
-    left: 10px;
-}
-
-.cke_rtl .cke_dialog_tabs {
-    right: 10px;
-}
-
-/* A single tab (an <a> element). */
-a.cke_dialog_tab {
-    height: 16px;
-    padding: 4px 8px;
-    margin-right: 3px;
-    display: inline-block;
-    cursor: pointer;
-    line-height: 16px;
-    outline: none;
-    color: $gray-dark;
-    border: 1px solid $hr-border;
-
-    border-radius: 3px 3px 0 0;
-    background: lighten($gray-lighter, 2%);
-}
-
-.cke_rtl a.cke_dialog_tab {
-    margin-right: 0;
-    margin-left: 3px;
-}
-
-/* A hover state of a regular inactive tab. */
-a.cke_dialog_tab:hover {
-    background: $gray-light;
-}
-
-a.cke_dialog_tab_selected
-{
-    background: #fff;
-    color: $text-color;
-    border-bottom-color: #fff;
-    cursor: default;
-    filter: none;
-}
-
-/* A hover state for selected tab. */
-a.cke_dialog_tab_selected:hover {
-    background: #fff;
-}
-
-.cke_hc a.cke_dialog_tab:hover,
-.cke_hc a.cke_dialog_tab_selected
-{
-    border: 3px solid;
-    padding: 2px 6px;
-}
-
-a.cke_dialog_tab_disabled
-{
-    color: #bababa;
-    cursor: default;
-}
-
-/* selectbox inside tabs container */
-.cke_dialog_tabs {
-    .cke_dialog_ui_input_select {
-        top: -7px !important;
-    }
-}
-
-/* The .cke_single_page class is appended to the dialog outer element in case
-   of dialogs that has no tabs. */
-.cke_single_page .cke_dialog_tabs
-{
-    display: none;
-}
-
-.cke_single_page .cke_dialog_contents
-{
-    padding-top: 5px;
-    margin-top: 0;
-    border-top: none;
-}
-
-/* The close button at the top of the dialog. */
-
-.cke_dialog_close_button {
-    background-image: url(images/close.png);
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    position: absolute;
-    cursor: pointer;
-    text-align: center;
-    height: 20px;
-    width: 20px;
-    top: 9px;
-    z-index: 5;
-}
-
-.cke_hidpi .cke_dialog_close_button {
-    background-image: url(images/hidpi/close.png);
-    background-size: 16px;
-}
-
-.cke_dialog_close_button span {
-    display: none;
-}
-
-.cke_hc .cke_dialog_close_button span {
-    display: inline;
-    cursor: pointer;
-    font-weight: bold;
-    position: relative;
-    top: 3px;
-}
-
-.cke_ltr .cke_dialog_close_button {
-    right: 5px;
-}
-
-.cke_rtl .cke_dialog_close_button {
-    left: 6px;
-}
-
-
-/*
-Dialog UI Elements
---------------------
-
-The remaining styles define the UI elements that can be used inside dialog
-contents.
-
-Most of the UI elements on dialogs contain a textual label. All of them share
-the same labelling structure, having the label text inside an element with
-.cke_dialog_ui_labeled_label and the element specific part inside the
-.cke_dialog_ui_labeled_content class.
-*/
-
-/* If an element is supposed to be disabled, the .cke_disabled class is
-   appended to it. */
-div.cke_disabled .cke_dialog_ui_labeled_content div * {
-    background-color: #ddd;
-    cursor: default;
-}
-
-/*
-Horizontal-Box and Vertical-Box
----------------------------------
-
-There are basic layou element used by the editor to properly align elements in
-the dialog. They're basically tables that have each cell filled by UI elements.
-
-The following is the visual representation of a H-Box:
-
-+-- .cke_dialog_ui_hbox --------------------------------------------------------------------------------+
-|  +-- .cke_dialog_ui_hbox_first --+ +-- .cke_dialog_ui_hbox_child --+ +-- .cke_dialog_ui_hbox_last --+ |
-|  +                               + +                               + +                              + |
-|  +-------------------------------+ +-------------------------------+ +------------------------------+ |
-+-------------------------------------------------------------------------------------------------------+
-
-It is possible to have nested V/H-Boxes.
-*/
-
-.cke_dialog_ui_vbox, .cke_dialog_ui_hbox {
-    table {
-        margin: auto;
-    }
-}
-.cke_dialog_ui_vbox {
-    margin-top: 5px;
-}
-.cke_dialog_ui_vbox_child {
-    padding: 5px 0px;
-}
-
-.cke_dialog_ui_hbox {
-    width: 100%;
-}
-
-.cke_dialog_ui_hbox_first,
-.cke_dialog_ui_hbox_child,
-.cke_dialog_ui_hbox_last {
-    vertical-align: top;
-}
-
-/* To center a horizontal label-input (selection field dialog / find and replace) */
-.cke_dialog_ui_hbox_first,
-.cke_dialog_ui_hbox_last {
-    > .cke_dialog_ui_labeled_label, > .cke_dialog_ui_html {
-        line-height: 30px;
-    }
-}
-
-.cke_ltr .cke_dialog_ui_hbox_first,
-.cke_ltr .cke_dialog_ui_hbox_child {
-    padding-right: 10px;
-}
-
-.cke_rtl .cke_dialog_ui_hbox_first,
-.cke_rtl .cke_dialog_ui_hbox_child {
-    padding-left: 10px;
-}
-
-.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
-.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child {
-    padding-right: 5px;
-}
-
-.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
-.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child {
-    padding-left: 5px;
-    padding-right: 0;
-}
-
-/* Applies to all labeled dialog fields */
-.cke_hc div {
-    &.cke_dialog_ui_input_text,
-    &.cke_dialog_ui_input_password,
-    &.cke_dialog_ui_input_textarea,
-    &.cke_dialog_ui_input_select,
-    &.cke_dialog_ui_input_file {
-        border: 1px solid;
-    }
-}
-
-/*
-Text Input
-------------
-
-The basic text field to input text.
-
-+-- .cke_dialog_ui_text --------------------------+
-|  +-- .cke_dialog_ui_labeled_label ------------+ |
-|  |                                            | |
-|  +--------------------------------------------+ |
-|  +-- .cke_dialog_ui_labeled_content ----------+ |
-|  | +-- div.cke_dialog_ui_input_text --------+ | |
-|  | | +-- input.cke_dialog_ui_input_text --+ | | |
-|  | | |                                    | | | |
-|  | | +------------------------------------+ | | |
-|  | +----------------------------------------+ | |
-|  +--------------------------------------------+ |
-+-------------------------------------------------+
-*/
-
-.cke_dialog_ui_text {
-    margin-bottom: 7px;
-}
-.cke_dialog_ui_select {
-    height: auto !important;
-    margin-bottom: 7px;
-}
-
-/*
-Textarea
-----------
-
-The textarea field to input larger text.
-
-+-- .cke_dialog_ui_textarea --------------------------+
-|  +-- .cke_dialog_ui_labeled_label ----------------+ |
-|  |                                                | |
-|  +------------------------------------------------+ |
-|  +-- .cke_dialog_ui_labeled_content --------------+ |
-|  | +-- div.cke_dialog_ui_input_textarea --------+ | |
-|  | | +-- input.cke_dialog_ui_input_textarea --+ | | |
-|  | | |                                        | | | |
-|  | | +----------------------------------------+ | | |
-|  | +--------------------------------------------+ | |
-|  +------------------------------------------------+ |
-+-----------------------------------------------------+
-*/
-
-textarea.cke_dialog_ui_input_textarea {
-    overflow: auto;
-    resize: none;
-}
-
-input.cke_dialog_ui_input_text,
-input.cke_dialog_ui_input_password,
-textarea.cke_dialog_ui_input_textarea {
-    @extend %input-style;
-}
-
-
-/*
-Button
---------
-
-The buttons used in the dialog footer or inside the contents.
-
-+-- a.cke_dialog_ui_button -----------+
-|  +-- span.cke_dialog_ui_button --+  |
-|  |                               |  |
-|  +-------------------------------+  |
-+-------------------------------------+
-*/
-
-/* The outer part of the button. */
-a.cke_dialog_ui_button {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-
-    padding: 3px 0;
-    margin: 0;
-
-    text-align: center;
-    color: $text-color;
-    vertical-align: middle;
-    cursor: pointer;
-
-    border: 1px solid $hr-border;
-    border-radius: $border-radius;
-    background: #fff;
-
-    &:hover, &:focus, &:active {
-        border-color: $gray;
-        background-color: $gray-lighter;
-    }
-}
-
-/* Buttons inside the content */
-.cke_dialog_page_contents {
-    a.cke_dialog_ui_button {
-        height: 22px;
-        line-height: 22px;
-        background-color: #f4f4f4;
-        &:hover, &:focus, &:active {
-            background-color: $gray-lighter;
-        }
-    }
-}
-
-span.cke_dialog_ui_button {
-    padding: 0 12px;
-}
-
-.cke_hc a.cke_dialog_ui_button {
-    &:hover, &:focus, &:active {
-        border: 3px solid;
-        padding-top: 1px;
-        padding-bottom: 1px;
-
-        span {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-    }
-}
-
-/*
-a.cke_dialog_ui_button[style*="width"]
-{
-    display: block !important;
-    width: auto !important;
-}
-*/
-/* The inner part of the button (both in dialog tabs and dialog footer). */
-.cke_dialog_footer_buttons a.cke_dialog_ui_button span {
-    color: inherit;
-    font-size: 12px;
-    line-height: 20px;
-}
-
-/* Special class appended to the Ok button. */
-a.cke_dialog_ui_button_ok {
-    color: #fff;
-    border-color: $success-border;
-    background: $success;
-    &:hover, &:focus, &:active {
-        border-color: $success-border-hover;
-        background: $success-hover;
-    }
-}
-
-/* Special class appended to the Cancel button. */
-a.cke_dialog_ui_button_cancel {
-    background-color: #fff;
-    &:focus {
-        outline: none;
-    }
-}
-
-span.cke_dialog_ui_button {
-    cursor: pointer;
-}
-
-/* A special container that holds the footer buttons. */
-.cke_dialog_footer_buttons {
-    display: inline-table;
-    margin: 10px;
-    width: auto;
-    position: relative;
-    vertical-align: middle;
-}
-
-/*
-Styles for other dialog element types.
-*/
-
-div.cke_dialog_ui_input_select {
-    display: table;
-}
-
-select.cke_dialog_ui_input_select {
-    height: 30px;
-    line-height: 30px;
-
-    background-color: #fff;
-    padding: 4px 10px;
-    border: 1px solid $hr-border;
-
-    outline: none;
-    border-radius: $border-radius;
-
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-
-.cke_dialog_ui_input_file {
-    width: 100%;
-    height: 30px;
-}
-
-.cke_hc .cke_dialog_ui_labeled_content {
-    input, select, textarea {
-        &:focus {
-            outline: 1px dotted;
-        }
-    }
-}
-
-/*
- * Some utility CSS classes for dialog authors.
- */
-.cke_dialog {
-    .cke_dark_background {
-        background-color: $gray-lighter;
-    }
-    .cke_light_background {
-        background-color: $gray-lighter;
-    }
-    .cke_centered {
-        text-align: center;
-    }
-
-    a.cke_btn_reset {
-        float: right;
-        background: url(images/refresh.png) top left no-repeat;
-        width: 16px;
-        height: 16px;
-        border: 1px none;
-        font-size: 1px;
-    }
-
-    a.cke_btn_locked, a.cke_btn_unlocked {
-        float: left;
-        width: 16px;
-        height: 16px;
-        background-repeat: no-repeat;
-        border: none 1px;
-        font-size: 1px;
-    }
-    a.cke_btn_locked {
-        background-image: url(images/lock.png);
-        .cke_icon {
-            display: none;
-        }
-    }
-    a.cke_btn_unlocked {
-        background-image: url(images/lock-open.png);
-    }
-
-    .cke_btn_over {
-        border: outset 1px;
-        cursor: pointer;
-    }
-}
-
-.cke_hidpi .cke_dialog {
-    a.cke_btn_reset {
-        background-size: 16px;
-        background-image: url(images/hidpi/refresh.png);
-    }
-    a.cke_btn_unlocked, a.cke_btn_locked {
-        background-size: 16px;
-    }
-    a.cke_btn_locked {
-        background-image: url(images/hidpi/lock.png);
-    }
-    a.cke_btn_unlocked {
-        background-image: url(images/hidpi/lock-open.png);
-    }
-}
-
-.cke_rtl .cke_dialog {
-    a.cke_btn_reset {
-        float: left;
-    }
-    a.cke_btn_locked, a.cke_btn_unlocked {
-        float: right;
-    }
-}
-
-/*
-The rest of the file contains style used on several common plugins. There is a
-tendency that these will be moved to the plugins code in the future.
-*/
-
-.cke_dialog {
-    .ImagePreviewBox, .FlashPreviewBox {
-        border: 1px solid $gray;
-        border-radius: $border-radius;
-        padding: 6px 10px;
-        margin-top: 5px;
-        background-color: white;
-    }
-    .ImagePreviewBox {
-        overflow: scroll;
-        height: 205px;
-        width: 300px;
-        table td {
-            white-space: normal;
-        }
-    }
-    .FlashPreviewBox {
-        white-space: normal;
-        overflow: auto;
-        height: 160px;
-        width: 390px;
-    }
-    .ImagePreviewLoader {
-        position: absolute;
-        white-space: normal;
-        overflow: hidden;
-        height: 160px;
-        width: 230px;
-        margin: 2px;
-        padding: 2px;
-        opacity: 0.9;
-        filter: alpha(opacity = 90);
-
-        background-color: #e4e4e4;
-    }
-    .cke_pastetext {
-        width: 346px;
-        height: 170px;
-        textarea {
-            width: 340px;
-            height: 170px;
-            resize: none;
-        }
-    }
-    iframe.cke_pasteframe {
-        width: 346px;
-        height: 130px;
-        background-color: white;
-        border: 1px solid #aeb3b9;
-        border-radius: $border-radius;
-    }
-    .cke_hand {
-        cursor: pointer;
-    }
-}
-
-.cke_disabled {
-    color: #a0a0a0;
-}
-
-.cke_dialog_body {
-    .cke_label {
-        display: none;
-    }
-    label {
-        display: inline-block;
-        margin-bottom: 3px;
-        cursor: default;
-        &.cke_required {
-            font-weight: bold;
-        }
-    }
-}
-
-.cke_dialog_ui_html {
-    line-height: 150%;
-}
-
-a.cke_smile {
-    overflow: hidden;
-    display: block;
-    text-align: center;
-    padding: 0.3em 0;
-    img {
-        vertical-align: middle;
-    }
-}
-
-a.cke_specialchar {
-    cursor: inherit;
-    display: block;
-    height: 1.25em;
-    padding: 0.2em 0.3em;
-    text-align: center;
-}
-
-a.cke_smile,
-a.cke_specialchar {
-    background-color: $gray-lighter;
-    border: 1px solid transparent;
-    vertical-align: top;
-    &:hover, &:focus, &:active {
-        background: #fff;
-        outline: 0;
-    }
-    &:hover {
-        border-color: $gray;
-    }
-    &:focus, &:active {
-        border-color: $primary;
-    }
-}
-
-/**
- * Styles specific to "cellProperties" dialog.
- */
-
-.cke_dialog_contents a.colorChooser {
-    display: block;
-    margin-top: 6px;
-    margin-left: 10px;
-    width: 80px;
-}
-
-.cke_rtl .cke_dialog_contents a.colorChooser {
-    margin-right: 10px;
-}
-
-
-.cke_dialog_ui_checkbox {
-    display: inline-block;
-    margin-bottom: 5px;
-}
-
-/* Compensate focus outline for some input elements. (#6200) */
-.cke_dialog_ui_checkbox_input:focus,
-.cke_dialog_ui_radio_input:focus,
-.cke_btn_over {
-    outline: 1px dotted #696969;
-}
-
-.cke_iframe_shim {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: alpha(opacity = 0);
-    width: 100%;
-    height: 100%;
-}
-:@children[xo:Sass::Tree::CommentNode
-:
-@type:normal;[ :@value["é/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
-*/:@options{ :
-@lineio;
-;	;
-;[ ;["Ç/*
-dialog.css
-============
-
-This file styles dialogs and all widgets available inside of it (tabs, buttons,
-fields, etc.).
-
-Dialogs are a complex system because they're very flexible. The CKEditor API
-makes it easy to create and customize dialogs by code, by making use of several
-different widgets inside its contents.
-
-All dialogs share a main dialog strucuture, which can be visually represented
-as follows:
-
-+-- .cke_dialog -------------------------------------------------+
-| +-- .cke_dialog_body ----------------------------------------+ |
-| | +-- .cke_dialog_title --+ +-- .cke_dialog_close_button --+ | |
-| | |                       | |                              | | |
-| | +-----------------------+ +------------------------------+ | |
-| | +-- .cke_dialog_tabs ------------------------------------+ | |
-| | |                                                        | | |
-| | +--------------------------------------------------------+ | |
-| | +-- .cke_dialog_contents --------------------------------+ | |
-| | | +-- .cke_dialog_contents_body -----------------------+ | | |
-| | | |                                                    | | | |
-| | | +----------------------------------------------------+ | | |
-| | | +-- .cke_dialog_footer ------------------------------+ | | |
-| | | |                                                    | | | |
-| | | +----------------------------------------------------+ | | |
-| | +--------------------------------------------------------+ | |
-| +------------------------------------------------------------+ |
-+----------------------------------------------------------------+
-
-/* Config files, where variables are defined */;@;io:Sass::Tree::ImportNode;0:@imported_file0;[ ;@:@imported_filename"../config/config;i-o;
-;	;
-;[ ;["W/* Comments in this file will give more details about each of the above blocks.
-*/;@;i/o;
-;	;
-;[ ;["-/* The outer container of the dialog. */;@;i2o:Sass::Tree::RuleNode:
-@tabsi ;[o;
-;	;
-;[ ;["ô/* Mandatory: Because the dialog.css file is loaded on demand, we avoid
-    showing an unstyled dialog by hidding it. Here, we restore its visibility. */;@;i4o:Sass::Tree::PropNode;i :
-@name["visibility;[ ;o:Sass::Script::String;	:identifier;"visible;@;@;i6:@prop_syntax:new;@:
-@rule[".cke_dialog;i3:@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;i3:@members[o:Sass::Selector::Sequence;[o:#Sass::Selector::SimpleSequence
-:@subject0;@+:@sourceso:Set:
-@hash{ ;i3;[o:Sass::Selector::Class;["cke_dialog;@+;i3:@has_childrenTo;
-;	;
-;[ ;["(/* The inner boundary container. */;@;i9o;;i ;[	o;;i ;["z-index;[ ;o;;	;;"1;@;@;i;;;o;;i ;["background;[ ;o:Sass::Script::Variable	:@underscored_name"gray_lighter;"gray-lighter;@;i<;@;i<;;o;;i ;["border;[ ;o:Sass::Script::List	:@separator:
-space;[o:Sass::Script::Number;i;@:@denominator_units[ ;i=:@numerator_units["px:@original"1pxo;	;	;;"
-solid;@;i=o;&	;'"hr_border;"hr-border;@;i=;@;i=;@;i=;;o;;i ;["border-radius;[ ;o;&	;'"border_radius;"border-radius;@;i?;@;i?;;;@;[".cke_dialog_body;i:;o;;" ;i:;[o;;[o;
-; 0;@c;!o;";#{ ;i:;[o;$;["cke_dialog_body;@c;i:;%To;
-;	;
-;[ ;["Á/* This one is required by Firefox 3.6. Without it,
-   dialog tabs and resizer float outside of the dialog.
-   Although this rule doesn't seem to break anything on other
-   browsers, it doesn't work with broken jQueryUI - #9851. */;@;iBo;;i ;[o;;i ;["position;[ ;o;;	;;"relative;@;@;iG;;;@;["*.cke_browser_gecko19 .cke_dialog_body;iF;o;;" ;iF;[o;;[o;
-; 0;@};!o;";#{ ;iF;[o;$;["cke_browser_gecko19;@};iFo;
-; 0;@};!o;";#{ ;iF;[o;$;["cke_dialog_body;@};iF;%To;
-;	;
-;[ ;["K/* Due to our reset we have to recover the styles of some elements. */;@;iJo;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iL;;;@;[".cke_dialog strong;iK;o;;" ;iK;[o;;[o;
-; 0;@ô;!o;";#{ ;iK;[o;$;["cke_dialog;@ô;iKo;
-; 0;@ô;!o;";#{ ;iK;[o:Sass::Selector::Element	;["strong;@ô;iK:@namespace0;%To;
-;	;
-;[ ;["/* The dialog title. */;@;iOo;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;iQ;;o;;i ;["font-size;[ ;o;;	;;"	13px;@;@;iR;;o;;i ;["cursor;[ ;o;;	;;"	move;@;@;iS;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iT;;o;;i ;["
-color;[ ;o;&	;'"text_color;"text-color;@;iU;@;iU;;o;;i ;["border-bottom;[ ;o;(	;);*;[o;+;i;@;,[ ;iV;-["px;."1pxo;	;	;;"
-solid;@;iVo;&	;'"hr_border;"hr-border;@;iV;@;iV;@;iV;;o;;i ;["padding;[ ;o;;	;;"10px 12px;@;@;iW;;o;;i ;["background;[ ;o;&	;'"gray_lighter;"gray-lighter;@;iX;@;iX;;;@;[".cke_dialog_title;iP;o;;" ;iP;[o;;[o;
-; 0;@;!o;";#{ ;iP;[o;$;["cke_dialog_title;@;iP;%To;
-;	;
-;[ ;["e/* The outer part of the dialog contants, which contains the contents body
-   and the footer. */;@;i[o;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i^;;o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i_;;o;;i ;["padding;[ ;o;;	;;"15px 10px 5px 10px;@;@;i`;;o;;i ;["margin-top;[ ;o;;	;;"	35px;@;@;ia;;o;;i ;["border-top;[ ;o;(	;);*;[o;+;i;@;,[ ;ib;-["px;."1pxo;	;	;;"
-solid;@;ibo;&	;'"hr_border;"hr-border;@;ib;@;ib;@;ib;;o;;i ;["border-radius;[ ;o;(	;);*;[	o;+;i ;@;,[ ;ic;-[ ;."0o;+;i ;@;,@0;ic;-[ ;."0o;&	;'"border_radius;"border-radius;@;ico;&	;'"border_radius;"border-radius;@;ic;@;ic;@;ic;;;@;[".cke_dialog_contents;i];o;;" ;i];[o;;[o;
-; 0;@?;!o;";#{ ;i];[o;$;["cke_dialog_contents;@?;i];%To;
-;	;
-;[ ;["X/* The contents body part, which will hold all elements available in the dialog. */;@;ifo;;i ;[o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;ih;;o;;i ;["padding;[ ;o;;	;;"17px 10px 5px 10px;@;@;ii;;o;;i ;["margin-top;[ ;o;;	;;"	22px;@;@;ij;;;@;[".cke_dialog_contents_body;ig;o;;" ;ig;[o;;[o;
-; 0;@e;!o;";#{ ;ig;[o;$;["cke_dialog_contents_body;@e;ig;%To;
-;	;
-;[ ;["r/* The dialog footer, which usually contains the "Ok" and "Cancel" buttons as
-   well as a resize handler. */;@;imo;;i ;[
-o;;i ;["text-align;[ ;o;;	;;"
-right;@;@;ip;;o;;i ;["position;[ ;o;;	;;"relative;@;@;iq;;o;;i ;["border-radius;[ ;o;(	;);*;[	o;+;i ;@;,@0;ir;-[ ;."0o;+;i ;@;,@0;ir;-[ ;."0o;&	;'"border_radius;"border-radius;@;iro;&	;'"border_radius;"border-radius;@;ir;@;ir;@;ir;;o;;i ;["border-top;[ ;o;(	;);*;[o;+;i;@;,[ ;is;-["px;."1pxo;	;	;;"
-solid;@;iso;&	;'"hr_border;"hr-border;@;is;@;is;@;is;;o;;i ;["background;[ ;o;&	;'"gray_lighter;"gray-lighter;@;it;@;it;;;@;[".cke_dialog_footer;io;o;;" ;io;[o;;[o;
-; 0;@Æ;!o;";#{ ;io;[o;$;["cke_dialog_footer;@Æ;io;%To;;i ;[o;;i ;["text-align;[ ;o;;	;;"	left;@;@;ix;;;@;[" .cke_rtl .cke_dialog_footer;iw;o;;" ;iw;[o;;[o;
-; 0;@ƒ;!o;";#{ ;iw;[o;$;["cke_rtl;@ƒ;iwo;
-; 0;@ƒ;!o;";#{ ;iw;[o;$;["cke_dialog_footer;@ƒ;iw;%To;;i ;[o;;i ;["outline;[ ;o;;	;;"	none;@;@;i|;;o;;i ;["border-top;[ ;o;;	;;"1px solid #fff;@;@;i};;;@;[".cke_hc .cke_dialog_footer;i{;o;;" ;i{;[o;;[o;
-; 0;@Á;!o;";#{ ;i{;[o;$;["cke_hc;@Á;i{o;
-; 0;@Á;!o;";#{ ;i{;[o;$;["cke_dialog_footer;@Á;i{;%To;;i ;[o;;i ;["margin-top;[ ;o;;	;;"	28px;@;@;i|;;;@;[".cke_dialog .cke_resizer;i{;o;;" ;i{;[o;;[o;
-; 0;@;!o;";#{ ;i{;[o;$;["cke_dialog;@;i{o;
-; 0;@;!o;";#{ ;i{;[o;$;["cke_resizer;@;i{;%To;;i ;[o;;i ;["margin-left;[ ;o;;	;;"5px;@;@;iÄ;;;@;["!.cke_dialog .cke_resizer_rtl;i;o;;" ;i;[o;;[o;
-; 0;@!;!o;";#{ ;i;[o;$;["cke_dialog;@!;io;
-; 0;@!;!o;";#{ ;i;[o;$;["cke_resizer_rtl;@!;i;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"5px;@;@;iÑ;;;@;["!.cke_dialog .cke_resizer_ltr;iÉ;o;;" ;iÉ;[o;;[o;
-; 0;@>;!o;";#{ ;iÉ;[o;$;["cke_dialog;@>;iÉo;
-; 0;@>;!o;";#{ ;iÉ;[o;$;["cke_resizer_ltr;@>;iÉ;%To;
-;	;
-;[ ;["≠/*
-Dialog tabs
--------------
-
-Tabs are presented on some of the dialogs to make it possible to have its
-contents split on different groups, visible one after the other.
-
-The main element that holds the tabs can be made hidden, in case of no tabs
-available.
-
-The following is the visual representation of the tabs block:
-
-+-- .cke_dialog_tabs ------------------------------------+
-|  +-- .cke_dialog_tab --+ +-- .cke_dialog_tab --+ ...   |
-|  |                     | |                     |       |
-|  +---------------------+ +---------------------+       |
-+--------------------------------------------------------+
-
-The .cke_dialog_tab_selected class is appended to the active tab.
-*/;@;iáo;
-;	;
-;[ ;["#/* The main tabs container. */;@;iúo;;i ;[o;;i ;["height;[ ;o;;	;;"	24px;@;@;iû;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iü;;o;;i ;["margin;[ ;o;;	;;"10px 0 0;@;@;i†;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;i°;;o;;i ;["z-index;[ ;o;;	;;"2;@;@;i¢;;o;;i ;["	left;[ ;o;;	;;"	10px;@;@;i£;;;@;[".cke_dialog_tabs;iù;o;;" ;iù;[o;;[o;
-; 0;@Å;!o;";#{ ;iù;[o;$;["cke_dialog_tabs;@Å;iù;%To;;i ;[o;;i ;["
-right;[ ;o;;	;;"	10px;@;@;iß;;;@;[".cke_rtl .cke_dialog_tabs;i¶;o;;" ;i¶;[o;;[o;
-; 0;@ó;!o;";#{ ;i¶;[o;$;["cke_rtl;@ó;i¶o;
-; 0;@ó;!o;";#{ ;i¶;[o;$;["cke_dialog_tabs;@ó;i¶;%To;
-;	;
-;[ ;[")/* A single tab (an <a> element). */;@;i™o;;i ;[o;;i ;["height;[ ;o;;	;;"	16px;@;@;i¨;;o;;i ;["padding;[ ;o;;	;;"4px 8px;@;@;i≠;;o;;i ;["margin-right;[ ;o;;	;;"3px;@;@;iÆ;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iØ;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i∞;;o;;i ;["line-height;[ ;o;;	;;"	16px;@;@;i±;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i≤;;o;;i ;["
-color;[ ;o;&	;'"gray_dark;"gray-dark;@;i≥;@;i≥;;o;;i ;["border;[ ;o;(	;);*;[o;+;i;@;,[ ;i¥;-["px;."1pxo;	;	;;"
-solid;@;i¥o;&	;'"hr_border;"hr-border;@;i¥;@;i¥;@;i¥;;o;;i ;["border-radius;[ ;o;;	;;"3px 3px 0 0;@;@;i∂;;o;;i ;["background;[ ;o:Sass::Script::Funcall;"lighten;@:@keywords{ ;i∑:@splat0:
-@args[o;&	;'"gray_lighter;"gray-lighter;@;i∑o;+;i;@;,[ ;i∑;-["%;."2%;@;i∑;;;@;["a.cke_dialog_tab;i´;o;;" ;i´;[o;;[o;
-; 0;@	;!o;";#{ ;i´;[o;/	;["a;@	;i´;00o;$;["cke_dialog_tab;@	;i´;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"0;@;@;iª;;o;;i ;["margin-left;[ ;o;;	;;"3px;@;@;iº;;;@;[".cke_rtl a.cke_dialog_tab;i∫;o;;" ;i∫;[o;;[o;
-; 0;@(;!o;";#{ ;i∫;[o;$;["cke_rtl;@(;i∫o;
-; 0;@(;!o;";#{ ;i∫;[o;/	;["a;@(;i∫;00o;$;["cke_dialog_tab;@(;i∫;%To;
-;	;
-;[ ;["3/* A hover state of a regular inactive tab. */;@;iøo;;i ;[o;;i ;["background;[ ;o;&	;'"gray_light;"gray-light;@;i¡;@;i¡;;;@;["a.cke_dialog_tab:hover;i¿;o;;" ;i¿;[o;;[o;
-; 0;@M;!o;";#{ ;i¿;[o;/	;["a;@M;i¿;00o;$;["cke_dialog_tab;@M;i¿o:Sass::Selector::Pseudo
-;["
-hover;	:
-class;@M;i¿:	@arg0;%To;;i ;[
-o;;i ;["background;[ ;o;;	;;"	#fff;@;@;i∆;;o;;i ;["
-color;[ ;o;&	;'"text_color;"text-color;@;i«;@;i«;;o;;i ;["border-bottom-color;[ ;o;;	;;"	#fff;@;@;i»;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i…;;o;;i ;["filter;[ ;o;;	;;"	none;@;@;i ;;;@;["a.cke_dialog_tab_selected;i≈;o;;" ;i≈;[o;;[o;
-; 0;@Ç;!o;";#{ ;i≈;[o;/	;["a;@Ç;i≈;00o;$;["cke_dialog_tab_selected;@Ç;i≈;%To;
-;	;
-;[ ;["*/* A hover state for selected tab. */;@;iÕo;;i ;[o;;i ;["background;[ ;o;;	;;"	#fff;@;@;iœ;;;@;["$a.cke_dialog_tab_selected:hover;iŒ;o;;" ;iŒ;[o;;[o;
-; 0;@ü;!o;";#{ ;iŒ;[o;/	;["a;@ü;iŒ;00o;$;["cke_dialog_tab_selected;@ü;iŒo;5
-;["
-hover;	;6;@ü;iŒ;70;%To;;i ;[o;;i ;["border;[ ;o;;	;;"3px solid;@;@;i’;;o;;i ;["padding;[ ;o;;	;;"2px 6px;@;@;i÷;;;@;["F.cke_hc a.cke_dialog_tab:hover,
-.cke_hc a.cke_dialog_tab_selected;i‘;o;;" ;i‘;[o;;[o;
-; 0;@¡;!o;";#{ ;i‘;[o;$;["cke_hc;@¡;i‘o;
-; 0;@¡;!o;";#{ ;i‘;[o;/	;["a;@¡;i‘;00o;$;["cke_dialog_tab;@¡;i‘o;5
-;["
-hover;	;6;@¡;i‘;70o;;["
-o;
-; 0;@¡;!o;";#{ ;i‘;[o;$;["cke_hc;@¡;i‘o;
-; 0;@¡;!o;";#{ ;i‘;[o;/	;["a;@¡;i‘;00o;$;["cke_dialog_tab_selected;@¡;i‘;%To;;i ;[o;;i ;["
-color;[ ;o;;	;;"#bababa;@;@;i€;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i‹;;;@;["a.cke_dialog_tab_disabled;i⁄;o;;" ;i⁄;[o;;[o;
-; 0;@˛;!o;";#{ ;i⁄;[o;/	;["a;@˛;i⁄;00o;$;["cke_dialog_tab_disabled;@˛;i⁄;%To;
-;	;
-;[ ;["*/* selectbox inside tabs container */;@;iﬂo;;i ;[o;;i ;[o;;i ;["top;[ ;o;;	;;"-7px !important;@;@;i‚;;;@;[" .cke_dialog_ui_input_select;i·;o;;" ;i·;[o;;[o;
-; 0;@;!o;";#{ ;i·;[o;$;["cke_dialog_ui_input_select;@;i·;%T;@;[".cke_dialog_tabs;i‡;o;;" ;i‡;[o;;[o;
-; 0;@+;!o;";#{ ;i‡;[o;$;["cke_dialog_tabs;@+;i‡;%To;
-;	;
-;[ ;["u/* The .cke_single_page class is appended to the dialog outer element in case
-   of dialogs that has no tabs. */;@;iÊo;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;iÍ;;;@;["&.cke_single_page .cke_dialog_tabs;iÈ;o;;" ;iÈ;[o;;[o;
-; 0;@E;!o;";#{ ;iÈ;[o;$;["cke_single_page;@E;iÈo;
-; 0;@E;!o;";#{ ;iÈ;[o;$;["cke_dialog_tabs;@E;iÈ;%To;;i ;[o;;i ;["padding-top;[ ;o;;	;;"5px;@;@;iÔ;;o;;i ;["margin-top;[ ;o;;	;;"0;@;@;i;;o;;i ;["border-top;[ ;o;;	;;"	none;@;@;iÒ;;;@;["*.cke_single_page .cke_dialog_contents;iÓ;o;;" ;iÓ;[o;;[o;
-; 0;@n;!o;";#{ ;iÓ;[o;$;["cke_single_page;@n;iÓo;
-; 0;@n;!o;";#{ ;iÓ;[o;$;["cke_dialog_contents;@n;iÓ;%To;
-;	;
-;[ ;["5/* The close button at the top of the dialog. */;@;iÙo;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/close.png);@;i˜;@;i˜;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;i¯;;o;;i ;["background-position;[ ;o;;	;;"0 0;@;@;i˘;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;i˙;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i˚;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i¸;;o;;i ;["height;[ ;o;;	;;"	20px;@;@;i˝;;o;;i ;["
-width;[ ;o;;	;;"	20px;@;@;i˛;;o;;i ;["top;[ ;o;;	;;"9px;@;@;iˇ;;o;;i ;["z-index;[ ;o;;	;;"5;@;@;i ;;;@;[".cke_dialog_close_button;iˆ;o;;" ;iˆ;[o;;[o;
-; 0;@≈;!o;";#{ ;iˆ;[o;$;["cke_dialog_close_button;@≈;iˆ;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;" url(images/hidpi/close.png);@;i;@;i;;o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;i;;;@;["(.cke_hidpi .cke_dialog_close_button;i;o;;" ;i;[o;;[o;
-; 0;@·;!o;";#{ ;i;[o;$;["cke_hidpi;@·;io;
-; 0;@·;!o;";#{ ;i;[o;$;["cke_dialog_close_button;@·;i;%To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i	;;;@;["".cke_dialog_close_button span;i;o;;" ;i;[o;;[o;
-; 0;@˛;!o;";#{ ;i;[o;$;["cke_dialog_close_button;@˛;io;
-; 0;@˛;!o;";#{ ;i;[o;/	;["	span;@˛;i;00;%To;;i ;[
-o;;i ;["display;[ ;o;;	;;"inline;@;@;i;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i;;o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;i;;o;;i ;["position;[ ;o;;	;;"relative;@;@;i;;o;;i ;["top;[ ;o;;	;;"3px;@;@;i;;;@;["*.cke_hc .cke_dialog_close_button span;i;o;;" ;i;[o;;[o;
-; 0;@3;!o;";#{ ;i;[o;$;["cke_hc;@3;io;
-; 0;@3;!o;";#{ ;i;[o;$;["cke_dialog_close_button;@3;io;
-; 0;@3;!o;";#{ ;i;[o;/	;["	span;@3;i;00;%To;;i ;[o;;i ;["
-right;[ ;o;;	;;"5px;@;@;i;;;@;["&.cke_ltr .cke_dialog_close_button;i;o;;" ;i;[o;;[o;
-; 0;@W;!o;";#{ ;i;[o;$;["cke_ltr;@W;io;
-; 0;@W;!o;";#{ ;i;[o;$;["cke_dialog_close_button;@W;i;%To;;i ;[o;;i ;["	left;[ ;o;;	;;"6px;@;@;i;;;@;["&.cke_rtl .cke_dialog_close_button;i;o;;" ;i;[o;;[o;
-; 0;@t;!o;";#{ ;i;[o;$;["cke_rtl;@t;io;
-; 0;@t;!o;";#{ ;i;[o;$;["cke_dialog_close_button;@t;i;%To;
-;	;
-;[ ;["â/*
-Dialog UI Elements
---------------------
-
-The remaining styles define the UI elements that can be used inside dialog
-contents.
-
-Most of the UI elements on dialogs contain a textual label. All of them share
-the same labelling structure, having the label text inside an element with
-.cke_dialog_ui_labeled_label and the element specific part inside the
-.cke_dialog_ui_labeled_content class.
-*/;@;io;
-;	;
-;[ ;["b/* If an element is supposed to be disabled, the .cke_disabled class is
-   appended to it. */;@;i*o;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#ddd;@;@;i-;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i.;;;@;[":div.cke_disabled .cke_dialog_ui_labeled_content div *;i,;o;;" ;i,;[o;;[	o;
-; 0;@ü;!o;";#{ ;i,;[o;/	;["div;@ü;i,;00o;$;["cke_disabled;@ü;i,o;
-; 0;@ü;!o;";#{ ;i,;[o;$;[""cke_dialog_ui_labeled_content;@ü;i,o;
-; 0;@ü;!o;";#{ ;i,;[o;/	;["div;@ü;i,;00o;
-; 0;@ü;!o;";#{ ;i,;[o:Sass::Selector::Universal;@ü;i,;00;%To;
-;	;
-;[ ;["\/*
-Horizontal-Box and Vertical-Box
----------------------------------
-
-There are basic layou element used by the editor to properly align elements in
-the dialog. They're basically tables that have each cell filled by UI elements.
-
-The following is the visual representation of a H-Box:
-
-+-- .cke_dialog_ui_hbox --------------------------------------------------------------------------------+
-|  +-- .cke_dialog_ui_hbox_first --+ +-- .cke_dialog_ui_hbox_child --+ +-- .cke_dialog_ui_hbox_last --+ |
-|  +                               + +                               + +                              + |
-|  +-------------------------------+ +-------------------------------+ +------------------------------+ |
-+-------------------------------------------------------------------------------------------------------+
-
-It is possible to have nested V/H-Boxes.
-*/;@;i1o;;i ;[o;;i ;[o;;i ;["margin;[ ;o;;	;;"	auto;@;@;iE;;;@;["
-table;iD;o;;" ;iD;[o;;[o;
-; 0;@—;!o;";#{ ;iD;[o;/	;["
-table;@—;iD;00;%T;@;["-.cke_dialog_ui_vbox, .cke_dialog_ui_hbox;iC;o;;" ;iC;[o;;[o;
-; 0;@ﬂ;!o;";#{ ;iC;[o;$;["cke_dialog_ui_vbox;@ﬂ;iCo;;[o;
-; 0;@ﬂ;!o;";#{ ;iC;[o;$;["cke_dialog_ui_hbox;@ﬂ;iC;%To;;i ;[o;;i ;["margin-top;[ ;o;;	;;"5px;@;@;iI;;;@;[".cke_dialog_ui_vbox;iH;o;;" ;iH;[o;;[o;
-; 0;@˛;!o;";#{ ;iH;[o;$;["cke_dialog_ui_vbox;@˛;iH;%To;;i ;[o;;i ;["padding;[ ;o;;	;;"5px 0px;@;@;iL;;;@;[".cke_dialog_ui_vbox_child;iK;o;;" ;iK;[o;;[o;
-; 0;@;!o;";#{ ;iK;[o;$;["cke_dialog_ui_vbox_child;@;iK;%To;;i ;[o;;i ;["
-width;[ ;o;;	;;"	100%;@;@;iP;;;@;[".cke_dialog_ui_hbox;iO;o;;" ;iO;[o;;[o;
-; 0;@*;!o;";#{ ;iO;[o;$;["cke_dialog_ui_hbox;@*;iO;%To;;i ;[o;;i ;["vertical-align;[ ;o;;	;;"top;@;@;iV;;;@;["S.cke_dialog_ui_hbox_first,
-.cke_dialog_ui_hbox_child,
-.cke_dialog_ui_hbox_last;iU;o;;" ;iU;[o;;[o;
-; 0;@@;!o;";#{ ;iU;[o;$;["cke_dialog_ui_hbox_first;@@;iUo;;["
-o;
-; 0;@@;!o;";#{ ;iU;[o;$;["cke_dialog_ui_hbox_child;@@;iUo;;["
-o;
-; 0;@@;!o;";#{ ;iU;[o;$;["cke_dialog_ui_hbox_last;@@;iU;%To;
-;	;
-;[ ;["Y/* To center a horizontal label-input (selection field dialog / find and replace) */;@;iYo;;i ;[o;;i ;[o;;i ;["line-height;[ ;o;;	;;"	30px;@;@;i];;;@;[":> .cke_dialog_ui_labeled_label, > .cke_dialog_ui_html;i\;o;;" ;i\;[o;;[">o;
-; 0;@p;!o;";#{ ;i\;[o;$;[" cke_dialog_ui_labeled_label;@p;i\o;;[">o;
-; 0;@p;!o;";#{ ;i\;[o;$;["cke_dialog_ui_html;@p;i\;%T;@;["8.cke_dialog_ui_hbox_first,
-.cke_dialog_ui_hbox_last;i[;o;;" ;i[;[o;;[o;
-; 0;@â;!o;";#{ ;i[;[o;$;["cke_dialog_ui_hbox_first;@â;i[o;;["
-o;
-; 0;@â;!o;";#{ ;i[;[o;$;["cke_dialog_ui_hbox_last;@â;i[;%To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"	10px;@;@;ic;;;@;["K.cke_ltr .cke_dialog_ui_hbox_first,
-.cke_ltr .cke_dialog_ui_hbox_child;ib;o;;" ;ib;[o;;[o;
-; 0;@©;!o;";#{ ;ib;[o;$;["cke_ltr;@©;ibo;
-; 0;@©;!o;";#{ ;ib;[o;$;["cke_dialog_ui_hbox_first;@©;ibo;;["
-o;
-; 0;@©;!o;";#{ ;ib;[o;$;["cke_ltr;@©;ibo;
-; 0;@©;!o;";#{ ;ib;[o;$;["cke_dialog_ui_hbox_child;@©;ib;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"	10px;@;@;ih;;;@;["K.cke_rtl .cke_dialog_ui_hbox_first,
-.cke_rtl .cke_dialog_ui_hbox_child;ig;o;;" ;ig;[o;;[o;
-; 0;@◊;!o;";#{ ;ig;[o;$;["cke_rtl;@◊;igo;
-; 0;@◊;!o;";#{ ;ig;[o;$;["cke_dialog_ui_hbox_first;@◊;igo;;["
-o;
-; 0;@◊;!o;";#{ ;ig;[o;$;["cke_rtl;@◊;igo;
-; 0;@◊;!o;";#{ ;ig;[o;$;["cke_dialog_ui_hbox_child;@◊;ig;%To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"5px;@;@;im;;;@;["|.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
-.cke_ltr .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child;il;o;;" ;il;[o;;[o;
-; 0;@;!o;";#{ ;il;[o;$;["cke_ltr;@;ilo;
-; 0;@;!o;";#{ ;il;[o;$;["cke_dialog_footer_buttons;@;ilo;
-; 0;@;!o;";#{ ;il;[o;$;["cke_dialog_ui_hbox_first;@;ilo;;[	"
-o;
-; 0;@;!o;";#{ ;il;[o;$;["cke_ltr;@;ilo;
-; 0;@;!o;";#{ ;il;[o;$;["cke_dialog_footer_buttons;@;ilo;
-; 0;@;!o;";#{ ;il;[o;$;["cke_dialog_ui_hbox_child;@;il;%To;;i ;[o;;i ;["padding-left;[ ;o;;	;;"5px;@;@;ir;;o;;i ;["padding-right;[ ;o;;	;;"0;@;@;is;;;@;["|.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_first,
-.cke_rtl .cke_dialog_footer_buttons .cke_dialog_ui_hbox_child;iq;o;;" ;iq;[o;;[o;
-; 0;@G;!o;";#{ ;iq;[o;$;["cke_rtl;@G;iqo;
-; 0;@G;!o;";#{ ;iq;[o;$;["cke_dialog_footer_buttons;@G;iqo;
-; 0;@G;!o;";#{ ;iq;[o;$;["cke_dialog_ui_hbox_first;@G;iqo;;[	"
-o;
-; 0;@G;!o;";#{ ;iq;[o;$;["cke_rtl;@G;iqo;
-; 0;@G;!o;";#{ ;iq;[o;$;["cke_dialog_footer_buttons;@G;iqo;
-; 0;@G;!o;";#{ ;iq;[o;$;["cke_dialog_ui_hbox_child;@G;iq;%To;
-;	;
-;[ ;["//* Applies to all labeled dialog fields */;@;ivo;;i ;[o;;i ;[o;;i ;["border;[ ;o;;	;;"1px solid;@;@;i};;;@;["§&.cke_dialog_ui_input_text,
-    &.cke_dialog_ui_input_password,
-    &.cke_dialog_ui_input_textarea,
-    &.cke_dialog_ui_input_select,
-    &.cke_dialog_ui_input_file;i|;o;;" ;i|;[
-o;;[o;
-; 0;@â;!o;";#{ ;i|;[o:Sass::Selector::Parent;@â;i|o;$;["cke_dialog_ui_input_text;@â;i|o;;["
-o;
-; 0;@â;!o;";#{ ;i|;[o;9;@â;i|o;$;["!cke_dialog_ui_input_password;@â;i|o;;["
-o;
-; 0;@â;!o;";#{ ;i|;[o;9;@â;i|o;$;["!cke_dialog_ui_input_textarea;@â;i|o;;["
-o;
-; 0;@â;!o;";#{ ;i|;[o;9;@â;i|o;$;["cke_dialog_ui_input_select;@â;i|o;;["
-o;
-; 0;@â;!o;";#{ ;i|;[o;9;@â;i|o;$;["cke_dialog_ui_input_file;@â;i|;%T;@;[".cke_hc div;iw;o;;" ;iw;[o;;[o;
-; 0;@ƒ;!o;";#{ ;iw;[o;$;["cke_hc;@ƒ;iwo;
-; 0;@ƒ;!o;";#{ ;iw;[o;/	;["div;@ƒ;iw;00;%To;
-;	;
-;[ ;["≥/*
-Text Input
-------------
-
-The basic text field to input text.
-
-+-- .cke_dialog_ui_text --------------------------+
-|  +-- .cke_dialog_ui_labeled_label ------------+ |
-|  |                                            | |
-|  +--------------------------------------------+ |
-|  +-- .cke_dialog_ui_labeled_content ----------+ |
-|  | +-- div.cke_dialog_ui_input_text --------+ | |
-|  | | +-- input.cke_dialog_ui_input_text --+ | | |
-|  | | |                                    | | | |
-|  | | +------------------------------------+ | | |
-|  | +----------------------------------------+ | |
-|  +--------------------------------------------+ |
-+-------------------------------------------------+
-*/;@;iÅo;;i ;[o;;i ;["margin-bottom;[ ;o;;	;;"7px;@;@;iñ;;;@;[".cke_dialog_ui_text;iï;o;;" ;iï;[o;;[o;
-; 0;@Â;!o;";#{ ;iï;[o;$;["cke_dialog_ui_text;@Â;iï;%To;;i ;[o;;i ;["height;[ ;o;;	;;"auto !important;@;@;iô;;o;;i ;["margin-bottom;[ ;o;;	;;"7px;@;@;iö;;;@;[".cke_dialog_ui_select;iò;o;;" ;iò;[o;;[o;
-; 0;@;!o;";#{ ;iò;[o;$;["cke_dialog_ui_select;@;iò;%To;
-;	;
-;[ ;["‰/*
-Textarea
-----------
-
-The textarea field to input larger text.
-
-+-- .cke_dialog_ui_textarea --------------------------+
-|  +-- .cke_dialog_ui_labeled_label ----------------+ |
-|  |                                                | |
-|  +------------------------------------------------+ |
-|  +-- .cke_dialog_ui_labeled_content --------------+ |
-|  | +-- div.cke_dialog_ui_input_textarea --------+ | |
-|  | | +-- input.cke_dialog_ui_input_textarea --+ | | |
-|  | | |                                        | | | |
-|  | | +----------------------------------------+ | | |
-|  | +--------------------------------------------+ | |
-|  +------------------------------------------------+ |
-+-----------------------------------------------------+
-*/;@;iùo;;i ;[o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i≤;;o;;i ;["resize;[ ;o;;	;;"	none;@;@;i≥;;;@;["*textarea.cke_dialog_ui_input_textarea;i±;o;;" ;i±;[o;;[o;
-; 0;@!;!o;";#{ ;i±;[o;/	;["textarea;@!;i±;00o;$;["!cke_dialog_ui_input_textarea;@!;i±;%To;;i ;[o:Sass::Tree::ExtendNode
-;[ ;@:@selector["%"input-style;iπ:@optionalF;@;["ninput.cke_dialog_ui_input_text,
-input.cke_dialog_ui_input_password,
-textarea.cke_dialog_ui_input_textarea;i∏;o;;" ;i∏;[o;;[o;
-; 0;@9;!o;";#{ ;i∏;[o;/	;["
-input;@9;i∏;00o;$;["cke_dialog_ui_input_text;@9;i∏o;;["
-o;
-; 0;@9;!o;";#{ ;i∏;[o;/	;["
-input;@9;i∏;00o;$;["!cke_dialog_ui_input_password;@9;i∏o;;["
-o;
-; 0;@9;!o;";#{ ;i∏;[o;/	;["textarea;@9;i∏;00o;$;["!cke_dialog_ui_input_textarea;@9;i∏;%To;
-;	;
-;[ ;["/*
-Button
---------
-
-The buttons used in the dialog footer or inside the contents.
-
-+-- a.cke_dialog_ui_button -----------+
-|  +-- span.cke_dialog_ui_button --+  |
-|  |                               |  |
-|  +-------------------------------+  |
-+-------------------------------------+
-*/;@;iΩo;
-;	;
-;[ ;["(/* The outer part of the button. */;@;i o;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iÃ;;o;;i ;["*display;[ ;o;;	;;"inline;@;@;iÕ;;o;;i ;["
-*zoom;[ ;o;;	;;"1;@;@;iŒ;;o;;i ;["padding;[ ;o;;	;;"
-3px 0;@;@;i–;;o;;i ;["margin;[ ;o;;	;;"0;@;@;i—;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i”;;o;;i ;["
-color;[ ;o;&	;'"text_color;"text-color;@;i‘;@;i‘;;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;i’;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i÷;;o;;i ;["border;[ ;o;(	;);*;[o;+;i;@;,[ ;iÿ;-["px;."1pxo;	;	;;"
-solid;@;iÿo;&	;'"hr_border;"hr-border;@;iÿ;@;iÿ;@;iÿ;;o;;i ;["border-radius;[ ;o;&	;'"border_radius;"border-radius;@;iŸ;@;iŸ;;o;;i ;["background;[ ;o;;	;;"	#fff;@;@;i⁄;;o;;i ;[o;;i ;["border-color;[ ;o;&	;'"	gray;"	gray;@;i›;@;i›;;o;;i ;["background-color;[ ;o;&	;'"gray_lighter;"gray-lighter;@;iﬁ;@;iﬁ;;;@;["&:hover, &:focus, &:active;i‹;o;;" ;i‹;[o;;[o;
-; 0;@“;!o;";#{ ;i‹;[o;9;@“;i‹o;5
-;["
-hover;	;6;@“;i‹;70o;;[o;
-; 0;@“;!o;";#{ ;i‹;[o;9;@“;i‹o;5
-;["
-focus;	;6;@“;i‹;70o;;[o;
-; 0;@“;!o;";#{ ;i‹;[o;9;@“;i‹o;5
-;["active;	;6;@“;i‹;70;%T;@;["a.cke_dialog_ui_button;iÀ;o;;" ;iÀ;[o;;[o;
-; 0;@ı;!o;";#{ ;iÀ;[o;/	;["a;@ı;iÀ;00o;$;["cke_dialog_ui_button;@ı;iÀ;%To;
-;	;
-;[ ;["%/* Buttons inside the content */;@;i‚o;;i ;[o;;i ;[	o;;i ;["height;[ ;o;;	;;"	22px;@;@;iÂ;;o;;i ;["line-height;[ ;o;;	;;"	22px;@;@;iÊ;;o;;i ;["background-color;[ ;o;;	;;"#f4f4f4;@;@;iÁ;;o;;i ;[o;;i ;["background-color;[ ;o;&	;'"gray_lighter;"gray-lighter;@;iÈ;@;iÈ;;;@;["&:hover, &:focus, &:active;iË;o;;" ;iË;[o;;[o;
-; 0;@)	;!o;";#{ ;iË;[o;9;@)	;iËo;5
-;["
-hover;	;6;@)	;iË;70o;;[o;
-; 0;@)	;!o;";#{ ;iË;[o;9;@)	;iËo;5
-;["
-focus;	;6;@)	;iË;70o;;[o;
-; 0;@)	;!o;";#{ ;iË;[o;9;@)	;iËo;5
-;["active;	;6;@)	;iË;70;%T;@;["a.cke_dialog_ui_button;i‰;o;;" ;i‰;[o;;[o;
-; 0;@L	;!o;";#{ ;i‰;[o;/	;["a;@L	;i‰;00o;$;["cke_dialog_ui_button;@L	;i‰;%T;@;[".cke_dialog_page_contents;i„;o;;" ;i„;[o;;[o;
-; 0;@]	;!o;";#{ ;i„;[o;$;["cke_dialog_page_contents;@]	;i„;%To;;i ;[o;;i ;["padding;[ ;o;;	;;"0 12px;@;@;iÔ;;;@;["span.cke_dialog_ui_button;iÓ;o;;" ;iÓ;[o;;[o;
-; 0;@s	;!o;";#{ ;iÓ;[o;/	;["	span;@s	;iÓ;00o;$;["cke_dialog_ui_button;@s	;iÓ;%To;;i ;[o;;i ;[	o;;i ;["border;[ ;o;;	;;"3px solid;@;@;iÙ;;o;;i ;["padding-top;[ ;o;;	;;"1px;@;@;iı;;o;;i ;["padding-bottom;[ ;o;;	;;"1px;@;@;iˆ;;o;;i ;[o;;i ;["padding-left;[ ;o;;	;;"	10px;@;@;i˘;;o;;i ;["padding-right;[ ;o;;	;;"	10px;@;@;i˙;;;@;["	span;i¯;o;;" ;i¯;[o;;[o;
-; 0;@®	;!o;";#{ ;i¯;[o;/	;["	span;@®	;i¯;00;%T;@;["&:hover, &:focus, &:active;iÛ;o;;" ;iÛ;[o;;[o;
-; 0;@∂	;!o;";#{ ;iÛ;[o;9;@∂	;iÛo;5
-;["
-hover;	;6;@∂	;iÛ;70o;;[o;
-; 0;@∂	;!o;";#{ ;iÛ;[o;9;@∂	;iÛo;5
-;["
-focus;	;6;@∂	;iÛ;70o;;[o;
-; 0;@∂	;!o;";#{ ;iÛ;[o;9;@∂	;iÛo;5
-;["active;	;6;@∂	;iÛ;70;%T;@;["#.cke_hc a.cke_dialog_ui_button;iÚ;o;;" ;iÚ;[o;;[o;
-; 0;@Ÿ	;!o;";#{ ;iÚ;[o;$;["cke_hc;@Ÿ	;iÚo;
-; 0;@Ÿ	;!o;";#{ ;iÚ;[o;/	;["a;@Ÿ	;iÚ;00o;$;["cke_dialog_ui_button;@Ÿ	;iÚ;%To;
-;	;
-;[ ;["p/*
-a.cke_dialog_ui_button[style*="width"]
-{
-    display: block !important;
-    width: auto !important;
-}
-*/;@;iˇo;
-;	;
-;[ ;["P/* The inner part of the button (both in dialog tabs and dialog footer). */;@;io;;i ;[o;;i ;["
-color;[ ;o;;	;;"inherit;@;@;i;;o;;i ;["font-size;[ ;o;;	;;"	12px;@;@;i	;;o;;i ;["line-height;[ ;o;;	;;"	20px;@;@;i
-;;;@;[";.cke_dialog_footer_buttons a.cke_dialog_ui_button span;i;o;;" ;i;[o;;[o;
-; 0;@
-;!o;";#{ ;i;[o;$;["cke_dialog_footer_buttons;@
-;io;
-; 0;@
-;!o;";#{ ;i;[o;/	;["a;@
-;i;00o;$;["cke_dialog_ui_button;@
-;io;
-; 0;@
-;!o;";#{ ;i;[o;/	;["	span;@
-;i;00;%To;
-;	;
-;[ ;["3/* Special class appended to the Ok button. */;@;io;;i ;[	o;;i ;["
-color;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["border-color;[ ;o;&	;'"success_border;"success-border;@;i;@;i;;o;;i ;["background;[ ;o;&	;'"success;"success;@;i;@;i;;o;;i ;[o;;i ;["border-color;[ ;o;&	;'"success_border_hover;"success-border-hover;@;i;@;i;;o;;i ;["background;[ ;o;&	;'"success_hover;"success-hover;@;i;@;i;;;@;["&:hover, &:focus, &:active;i;o;;" ;i;[o;;[o;
-; 0;@V
-;!o;";#{ ;i;[o;9;@V
-;io;5
-;["
-hover;	;6;@V
-;i;70o;;[o;
-; 0;@V
-;!o;";#{ ;i;[o;9;@V
-;io;5
-;["
-focus;	;6;@V
-;i;70o;;[o;
-; 0;@V
-;!o;";#{ ;i;[o;9;@V
-;io;5
-;["active;	;6;@V
-;i;70;%T;@;["a.cke_dialog_ui_button_ok;i;o;;" ;i;[o;;[o;
-; 0;@y
-;!o;";#{ ;i;[o;/	;["a;@y
-;i;00o;$;["cke_dialog_ui_button_ok;@y
-;i;%To;
-;	;
-;[ ;["7/* Special class appended to the Cancel button. */;@;io;;i ;[o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;[o;;i ;["outline;[ ;o;;	;;"	none;@;@;i;;;@;["&:focus;i;o;;" ;i;[o;;[o;
-; 0;@û
-;!o;";#{ ;i;[o;9;@û
-;io;5
-;["
-focus;	;6;@û
-;i;70;%T;@;[""a.cke_dialog_ui_button_cancel;i;o;;" ;i;[o;;[o;
-; 0;@≠
-;!o;";#{ ;i;[o;/	;["a;@≠
-;i;00o;$;[" cke_dialog_ui_button_cancel;@≠
-;i;%To;;i ;[o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i!;;;@;["span.cke_dialog_ui_button;i ;o;;" ;i ;[o;;[o;
-; 0;@∆
-;!o;";#{ ;i ;[o;/	;["	span;@∆
-;i ;00o;$;["cke_dialog_ui_button;@∆
-;i ;%To;
-;	;
-;[ ;["=/* A special container that holds the footer buttons. */;@;i$o;;i ;[
-o;;i ;["display;[ ;o;;	;;"inline-table;@;@;i&;;o;;i ;["margin;[ ;o;;	;;"	10px;@;@;i';;o;;i ;["
-width;[ ;o;;	;;"	auto;@;@;i(;;o;;i ;["position;[ ;o;;	;;"relative;@;@;i);;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;i*;;;@;[".cke_dialog_footer_buttons;i%;o;;" ;i%;[o;;[o;
-; 0;@˚
-;!o;";#{ ;i%;[o;$;["cke_dialog_footer_buttons;@˚
-;i%;%To;
-;	;
-;[ ;["1/*
-Styles for other dialog element types.
-*/;@;i-o;;i ;[o;;i ;["display;[ ;o;;	;;"
-table;@;@;i2;;;@;["#div.cke_dialog_ui_input_select;i1;o;;" ;i1;[o;;[o;
-; 0;@;!o;";#{ ;i1;[o;/	;["div;@;i1;00o;$;["cke_dialog_ui_input_select;@;i1;%To;;i ;[o;;i ;["height;[ ;o;;	;;"	30px;@;@;i6;;o;;i ;["line-height;[ ;o;;	;;"	30px;@;@;i7;;o;;i ;["background-color;[ ;o;;	;;"	#fff;@;@;i9;;o;;i ;["padding;[ ;o;;	;;"4px 10px;@;@;i:;;o;;i ;["border;[ ;o;(	;);*;[o;+;i;@;,[ ;i;;-["px;."1pxo;	;	;;"
-solid;@;i;o;&	;'"hr_border;"hr-border;@;i;;@;i;;@;i;;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i=;;o;;i ;["border-radius;[ ;o;&	;'"border_radius;"border-radius;@;i>;@;i>;;o;;i ;["-webkit-box-shadow;[ ;o;(	;);*;[
-o;	;	;;"
-inset;@;i@o;+;i ;@;,@0;i@;-[ ;."0o;+;i;@;,[ ;i@;-["px;."1pxo;+;i;@;,[ ;i@;-["px;."1pxo;1;"	rgba;@;2{ ;i@;30;4[	o;+;i ;@;,@0;i@;-[ ;."0o;+;i ;@;,@0;i@;-[ ;."0o;+;i ;@;,@0;i@;-[ ;."0o;+;f0.074999999999999997 33;@;,@0;i@;-[ ;."
-0.075;@;i@;@;i@;;o;;i ;["box-shadow;[ ;o;(	;);*;[
-o;	;	;;"
-inset;@;iAo;+;i ;@;,@0;iA;-[ ;."0o;+;i;@;,[ ;iA;-["px;."1pxo;+;i;@;,[ ;iA;-["px;."1pxo;1;"	rgba;@;2{ ;iA;30;4[	o;+;i ;@;,@0;iA;-[ ;."0o;+;i ;@;,@0;iA;-[ ;."0o;+;i ;@;,@0;iA;-[ ;."0o;+;f0.074999999999999997 33;@;,@0;iA;-[ ;."
-0.075;@;iA;@;iA;;;@;["&select.cke_dialog_ui_input_select;i5;o;;" ;i5;[o;;[o;
-; 0;@©;!o;";#{ ;i5;[o;/	;["select;@©;i5;00o;$;["cke_dialog_ui_input_select;@©;i5;%To;;i ;[o;;i ;["
-width;[ ;o;;	;;"	100%;@;@;iE;;o;;i ;["height;[ ;o;;	;;"	30px;@;@;iF;;;@;[".cke_dialog_ui_input_file;iD;o;;" ;iD;[o;;[o;
-; 0;@»;!o;";#{ ;iD;[o;$;["cke_dialog_ui_input_file;@»;iD;%To;;i ;[o;;i ;[o;;i ;[o;;i ;["outline;[ ;o;;	;;"1px dotted;@;@;iL;;;@;["&:focus;iK;o;;" ;iK;[o;;[o;
-; 0;@‚;!o;";#{ ;iK;[o;9;@‚;iKo;5
-;["
-focus;	;6;@‚;iK;70;%T;@;["input, select, textarea;iJ;o;;" ;iJ;[o;;[o;
-; 0;@Ò;!o;";#{ ;iJ;[o;/	;["
-input;@Ò;iJ;00o;;[o;
-; 0;@Ò;!o;";#{ ;iJ;[o;/	;["select;@Ò;iJ;00o;;[o;
-; 0;@Ò;!o;";#{ ;iJ;[o;/	;["textarea;@Ò;iJ;00;%T;@;["+.cke_hc .cke_dialog_ui_labeled_content;iI;o;;" ;iI;[o;;[o;
-; 0;@;!o;";#{ ;iI;[o;$;["cke_hc;@;iIo;
-; 0;@;!o;";#{ ;iI;[o;$;[""cke_dialog_ui_labeled_content;@;iI;%To;
-;	;
-;[ ;[";/*
- * Some utility CSS classes for dialog authors.
- */;@;iQo;;i ;[o;;i ;[o;;i ;["background-color;[ ;o;&	;'"gray_lighter;"gray-lighter;@;iV;@;iV;;;@;[".cke_dark_background;iU;o;;" ;iU;[o;;[o;
-; 0;@5;!o;";#{ ;iU;[o;$;["cke_dark_background;@5;iU;%To;;i ;[o;;i ;["background-color;[ ;o;&	;'"gray_lighter;"gray-lighter;@;iY;@;iY;;;@;[".cke_light_background;iX;o;;" ;iX;[o;;[o;
-; 0;@L;!o;";#{ ;iX;[o;$;["cke_light_background;@L;iX;%To;;i ;[o;;i ;["text-align;[ ;o;;	;;"center;@;@;i\;;;@;[".cke_centered;i[;o;;" ;i[;[o;;[o;
-; 0;@b;!o;";#{ ;i[;[o;$;["cke_centered;@b;i[;%To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i`;;o;;i ;["background;[ ;o;(	;);*;[	o;	;	;;"url(images/refresh.png);@;iao;	;	;;"top;@;iao;	;	;;"	left;@;iao;	;	;;"no-repeat;@;ia;@;ia;@;ia;;o;;i ;["
-width;[ ;o;;	;;"	16px;@;@;ib;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;ic;;o;;i ;["border;[ ;o;;	;;"1px none;@;@;id;;o;;i ;["font-size;[ ;o;;	;;"1px;@;@;ie;;;@;["a.cke_btn_reset;i_;o;;" ;i_;[o;;[o;
-; 0;@û;!o;";#{ ;i_;[o;/	;["a;@û;i_;00o;$;["cke_btn_reset;@û;i_;%To;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;ii;;o;;i ;["
-width;[ ;o;;	;;"	16px;@;@;ij;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;ik;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;il;;o;;i ;["border;[ ;o;;	;;"none 1px;@;@;im;;o;;i ;["font-size;[ ;o;;	;;"1px;@;@;in;;;@;[")a.cke_btn_locked, a.cke_btn_unlocked;ih;o;;" ;ih;[o;;[o;
-; 0;@’;!o;";#{ ;ih;[o;/	;["a;@’;ih;00o;$;["cke_btn_locked;@’;iho;;[o;
-; 0;@’;!o;";#{ ;ih;[o;/	;["a;@’;ih;00o;$;["cke_btn_unlocked;@’;ih;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/lock.png);@;iq;@;iq;;o;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;is;;;@;[".cke_icon;ir;o;;" ;ir;[o;;[o;
-; 0;@;!o;";#{ ;ir;[o;$;["cke_icon;@;ir;%T;@;["a.cke_btn_locked;ip;o;;" ;ip;[o;;[o;
-; 0;@;!o;";#{ ;ip;[o;/	;["a;@;ip;00o;$;["cke_btn_locked;@;ip;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/lock-open.png);@;iw;@;iw;;;@;["a.cke_btn_unlocked;iv;o;;" ;iv;[o;;[o;
-; 0;@);!o;";#{ ;iv;[o;/	;["a;@);iv;00o;$;["cke_btn_unlocked;@);iv;%To;;i ;[o;;i ;["border;[ ;o;;	;;"outset 1px;@;@;i{;;o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i|;;;@;[".cke_btn_over;iz;o;;" ;iz;[o;;[o;
-; 0;@H;!o;";#{ ;iz;[o;$;["cke_btn_over;@H;iz;%T;@;[".cke_dialog;iT;o;;" ;iT;[o;;[o;
-; 0;@V;!o;";#{ ;iT;[o;$;["cke_dialog;@V;iT;%To;;i ;[	o;;i ;[o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;iÇ;;o;;i ;["background-image;[ ;o;	;	;;""url(images/hidpi/refresh.png);@;iÉ;@;iÉ;;;@;["a.cke_btn_reset;iÅ;o;;" ;iÅ;[o;;[o;
-; 0;@t;!o;";#{ ;iÅ;[o;/	;["a;@t;iÅ;00o;$;["cke_btn_reset;@t;iÅ;%To;;i ;[o;;i ;["background-size;[ ;o;;	;;"	16px;@;@;iÜ;;;@;[")a.cke_btn_unlocked, a.cke_btn_locked;iÖ;o;;" ;iÖ;[o;;[o;
-; 0;@ç;!o;";#{ ;iÖ;[o;/	;["a;@ç;iÖ;00o;$;["cke_btn_unlocked;@ç;iÖo;;[o;
-; 0;@ç;!o;";#{ ;iÖ;[o;/	;["a;@ç;iÖ;00o;$;["cke_btn_locked;@ç;iÖ;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"url(images/hidpi/lock.png);@;iâ;@;iâ;;;@;["a.cke_btn_locked;ià;o;;" ;ià;[o;;[o;
-; 0;@≤;!o;";#{ ;ià;[o;/	;["a;@≤;ià;00o;$;["cke_btn_locked;@≤;ià;%To;;i ;[o;;i ;["background-image;[ ;o;	;	;;"$url(images/hidpi/lock-open.png);@;iå;@;iå;;;@;["a.cke_btn_unlocked;iã;o;;" ;iã;[o;;[o;
-; 0;@À;!o;";#{ ;iã;[o;/	;["a;@À;iã;00o;$;["cke_btn_unlocked;@À;iã;%T;@;[".cke_hidpi .cke_dialog;iÄ;o;;" ;iÄ;[o;;[o;
-; 0;@‹;!o;";#{ ;iÄ;[o;$;["cke_hidpi;@‹;iÄo;
-; 0;@‹;!o;";#{ ;iÄ;[o;$;["cke_dialog;@‹;iÄ;%To;;i ;[o;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;ií;;;@;["a.cke_btn_reset;ië;o;;" ;ië;[o;;[o;
-; 0;@˚;!o;";#{ ;ië;[o;/	;["a;@˚;ië;00o;$;["cke_btn_reset;@˚;ië;%To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;iï;;;@;[")a.cke_btn_locked, a.cke_btn_unlocked;iî;o;;" ;iî;[o;;[o;
-; 0;@;!o;";#{ ;iî;[o;/	;["a;@;iî;00o;$;["cke_btn_locked;@;iîo;;[o;
-; 0;@;!o;";#{ ;iî;[o;/	;["a;@;iî;00o;$;["cke_btn_unlocked;@;iî;%T;@;[".cke_rtl .cke_dialog;iê;o;;" ;iê;[o;;[o;
-; 0;@1;!o;";#{ ;iê;[o;$;["cke_rtl;@1;iêo;
-; 0;@1;!o;";#{ ;iê;[o;$;["cke_dialog;@1;iê;%To;
-;	;
-;[ ;["ô/*
-The rest of the file contains style used on several common plugins. There is a
-tendency that these will be moved to the plugins code in the future.
-*/;@;iôo;;i ;[o;;i ;[
-o;;i ;["border;[ ;o;(	;);*;[o;+;i;@;,[ ;i†;-["px;."1pxo;	;	;;"
-solid;@;i†o;&	;'"	gray;"	gray;@;i†;@;i†;@;i†;;o;;i ;["border-radius;[ ;o;&	;'"border_radius;"border-radius;@;i°;@;i°;;o;;i ;["padding;[ ;o;;	;;"6px 10px;@;@;i¢;;o;;i ;["margin-top;[ ;o;;	;;"5px;@;@;i£;;o;;i ;["background-color;[ ;o;;	;;"
-white;@;@;i§;;;@;["'.ImagePreviewBox, .FlashPreviewBox;iü;o;;" ;iü;[o;;[o;
-; 0;@w;!o;";#{ ;iü;[o;$;["ImagePreviewBox;@w;iüo;;[o;
-; 0;@w;!o;";#{ ;iü;[o;$;["FlashPreviewBox;@w;iü;%To;;i ;[	o;;i ;["overflow;[ ;o;;	;;"scroll;@;@;iß;;o;;i ;["height;[ ;o;;	;;"
-205px;@;@;i®;;o;;i ;["
-width;[ ;o;;	;;"
-300px;@;@;i©;;o;;i ;[o;;i ;["white-space;[ ;o;;	;;"normal;@;@;i´;;;@;["table td;i™;o;;" ;i™;[o;;[o;
-; 0;@™;!o;";#{ ;i™;[o;/	;["
-table;@™;i™;00o;
-; 0;@™;!o;";#{ ;i™;[o;/	;["td;@™;i™;00;%T;@;[".ImagePreviewBox;i¶;o;;" ;i¶;[o;;[o;
-; 0;@ø;!o;";#{ ;i¶;[o;$;["ImagePreviewBox;@ø;i¶;%To;;i ;[	o;;i ;["white-space;[ ;o;;	;;"normal;@;@;iØ;;o;;i ;["overflow;[ ;o;;	;;"	auto;@;@;i∞;;o;;i ;["height;[ ;o;;	;;"
-160px;@;@;i±;;o;;i ;["
-width;[ ;o;;	;;"
-390px;@;@;i≤;;;@;[".FlashPreviewBox;iÆ;o;;" ;iÆ;[o;;[o;
-; 0;@Á;!o;";#{ ;iÆ;[o;$;["FlashPreviewBox;@Á;iÆ;%To;;i ;[o;;i ;["position;[ ;o;;	;;"absolute;@;@;iµ;;o;;i ;["white-space;[ ;o;;	;;"normal;@;@;i∂;;o;;i ;["overflow;[ ;o;;	;;"hidden;@;@;i∑;;o;;i ;["height;[ ;o;;	;;"
-160px;@;@;i∏;;o;;i ;["
-width;[ ;o;;	;;"
-230px;@;@;iπ;;o;;i ;["margin;[ ;o;;	;;"2px;@;@;i∫;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;iª;;o;;i ;["opacity;[ ;o;;	;;"0.9;@;@;iº;;o;;i ;["filter;[ ;o;1;"
-alpha;@;2{ ;iΩ;30;4[o:Sass::Script::Operation
-:@operand1o;	;	;;"opacity;@;iΩ;@;iΩ:@operator:single_eq:@operand2o;+;i_;@;,@0;iΩ;-[ ;."90;@;iΩ;;o;;i ;["background-color;[ ;o;;	;;"#e4e4e4;@;@;iø;;;@;[".ImagePreviewLoader;i¥;o;;" ;i¥;[o;;[o;
-; 0;@;;!o;";#{ ;i¥;[o;$;["ImagePreviewLoader;@;;i¥;%To;;i ;[o;;i ;["
-width;[ ;o;;	;;"
-346px;@;@;i¬;;o;;i ;["height;[ ;o;;	;;"
-170px;@;@;i√;;o;;i ;[o;;i ;["
-width;[ ;o;;	;;"
-340px;@;@;i≈;;o;;i ;["height;[ ;o;;	;;"
-170px;@;@;i∆;;o;;i ;["resize;[ ;o;;	;;"	none;@;@;i«;;;@;["textarea;iƒ;o;;" ;iƒ;[o;;[o;
-; 0;@k;!o;";#{ ;iƒ;[o;/	;["textarea;@k;iƒ;00;%T;@;[".cke_pastetext;i¡;o;;" ;i¡;[o;;[o;
-; 0;@y;!o;";#{ ;i¡;[o;$;["cke_pastetext;@y;i¡;%To;;i ;[
-o;;i ;["
-width;[ ;o;;	;;"
-346px;@;@;iÀ;;o;;i ;["height;[ ;o;;	;;"
-130px;@;@;iÃ;;o;;i ;["background-color;[ ;o;;	;;"
-white;@;@;iÕ;;o;;i ;["border;[ ;o;;	;;"1px solid #aeb3b9;@;@;iŒ;;o;;i ;["border-radius;[ ;o;&	;'"border_radius;"border-radius;@;iœ;@;iœ;;;@;["iframe.cke_pasteframe;i ;o;;" ;i ;[o;;[o;
-; 0;@®;!o;";#{ ;i ;[o;/	;["iframe;@®;i ;00o;$;["cke_pasteframe;@®;i ;%To;;i ;[o;;i ;["cursor;[ ;o;;	;;"pointer;@;@;i“;;;@;[".cke_hand;i—;o;;" ;i—;[o;;[o;
-; 0;@¡;!o;";#{ ;i—;[o;$;["cke_hand;@¡;i—;%T;@;[".cke_dialog;iû;o;;" ;iû;[o;;[o;
-; 0;@œ;!o;";#{ ;iû;[o;$;["cke_dialog;@œ;iû;%To;;i ;[o;;i ;["
-color;[ ;o;;	;;"#a0a0a0;@;@;i◊;;;@;[".cke_disabled;i÷;o;;" ;i÷;[o;;[o;
-; 0;@Â;!o;";#{ ;i÷;[o;$;["cke_disabled;@Â;i÷;%To;;i ;[o;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i‹;;;@;[".cke_label;i€;o;;" ;i€;[o;;[o;
-; 0;@˝;!o;";#{ ;i€;[o;$;["cke_label;@˝;i€;%To;;i ;[	o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iﬂ;;o;;i ;["margin-bottom;[ ;o;;	;;"3px;@;@;i‡;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i·;;o;;i ;[o;;i ;["font-weight;[ ;o;;	;;"	bold;@;@;i„;;;@;["&.cke_required;i‚;o;;" ;i‚;[o;;[o;
-; 0;@';!o;";#{ ;i‚;[o;9;@';i‚o;$;["cke_required;@';i‚;%T;@;["
-label;iﬁ;o;;" ;iﬁ;[o;;[o;
-; 0;@6;!o;";#{ ;iﬁ;[o;/	;["
-label;@6;iﬁ;00;%T;@;[".cke_dialog_body;i⁄;o;;" ;i⁄;[o;;[o;
-; 0;@D;!o;";#{ ;i⁄;[o;$;["cke_dialog_body;@D;i⁄;%To;;i ;[o;;i ;["line-height;[ ;o;;	;;"	150%;@;@;iÈ;;;@;[".cke_dialog_ui_html;iË;o;;" ;iË;[o;;[o;
-; 0;@Z;!o;";#{ ;iË;[o;$;["cke_dialog_ui_html;@Z;iË;%To;;i ;[
-o;;i ;["overflow;[ ;o;;	;;"hidden;@;@;iÌ;;o;;i ;["display;[ ;o;;	;;"
-block;@;@;iÓ;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;iÔ;;o;;i ;["padding;[ ;o;;	;;"0.3em 0;@;@;i;;o;;i ;[o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;iÚ;;;@;["img;iÒ;o;;" ;iÒ;[o;;[o;
-; 0;@ä;!o;";#{ ;iÒ;[o;/	;["img;@ä;iÒ;00;%T;@;["a.cke_smile;iÏ;o;;" ;iÏ;[o;;[o;
-; 0;@ò;!o;";#{ ;iÏ;[o;/	;["a;@ò;iÏ;00o;$;["cke_smile;@ò;iÏ;%To;;i ;[
-o;;i ;["cursor;[ ;o;;	;;"inherit;@;@;i˜;;o;;i ;["display;[ ;o;;	;;"
-block;@;@;i¯;;o;;i ;["height;[ ;o;;	;;"1.25em;@;@;i˘;;o;;i ;["padding;[ ;o;;	;;"0.2em 0.3em;@;@;i˙;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i˚;;;@;["a.cke_specialchar;iˆ;o;;" ;iˆ;[o;;[o;
-; 0;@…;!o;";#{ ;iˆ;[o;/	;["a;@…;iˆ;00o;$;["cke_specialchar;@…;iˆ;%To;;i ;[o;;i ;["background-color;[ ;o;&	;'"gray_lighter;"gray-lighter;@;i ;@;i ;;o;;i ;["border;[ ;o;;	;;"1px solid transparent;@;@;i;;o;;i ;["vertical-align;[ ;o;;	;;"top;@;@;i;;o;;i ;[o;;i ;["background;[ ;o;;	;;"	#fff;@;@;i;;o;;i ;["outline;[ ;o;;	;;"0;@;@;i;;;@;["&:hover, &:focus, &:active;i;o;;" ;i;[o;;[o;
-; 0;@˝;!o;";#{ ;i;[o;9;@˝;io;5
-;["
-hover;	;6;@˝;i;70o;;[o;
-; 0;@˝;!o;";#{ ;i;[o;9;@˝;io;5
-;["
-focus;	;6;@˝;i;70o;;[o;
-; 0;@˝;!o;";#{ ;i;[o;9;@˝;io;5
-;["active;	;6;@˝;i;70;%To;;i ;[o;;i ;["border-color;[ ;o;&	;'"	gray;"	gray;@;i;@;i;;;@;["&:hover;i;o;;" ;i;[o;;[o;
-; 0;@);!o;";#{ ;i;[o;9;@);io;5
-;["
-hover;	;6;@);i;70;%To;;i ;[o;;i ;["border-color;[ ;o;&	;'"primary;"primary;@;i;@;i;;;@;["&:focus, &:active;i
-;o;;" ;i
-;[o;;[o;
-; 0;@A;!o;";#{ ;i
-;[o;9;@A;i
-o;5
-;["
-focus;	;6;@A;i
-;70o;;[o;
-; 0;@A;!o;";#{ ;i
-;[o;9;@A;i
-o;5
-;["active;	;6;@A;i
-;70;%T;@;["#a.cke_smile,
-a.cke_specialchar;iˇ;o;;" ;iˇ;[o;;[o;
-; 0;@Z;!o;";#{ ;iˇ;[o;/	;["a;@Z;iˇ;00o;$;["cke_smile;@Z;iˇo;;["
-o;
-; 0;@Z;!o;";#{ ;iˇ;[o;/	;["a;@Z;iˇ;00o;$;["cke_specialchar;@Z;iˇ;%To;
-;	;
-;[ ;[";/**
- * Styles specific to "cellProperties" dialog.
- */;@;io;;i ;[	o;;i ;["display;[ ;o;;	;;"
-block;@;@;i;;o;;i ;["margin-top;[ ;o;;	;;"6px;@;@;i;;o;;i ;["margin-left;[ ;o;;	;;"	10px;@;@;i;;o;;i ;["
-width;[ ;o;;	;;"	80px;@;@;i;;;@;["(.cke_dialog_contents a.colorChooser;i;o;;" ;i;[o;;[o;
-; 0;@ñ;!o;";#{ ;i;[o;$;["cke_dialog_contents;@ñ;io;
-; 0;@ñ;!o;";#{ ;i;[o;/	;["a;@ñ;i;00o;$;["colorChooser;@ñ;i;%To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"	10px;@;@;i;;;@;["1.cke_rtl .cke_dialog_contents a.colorChooser;i;o;;" ;i;[o;;[o;
-; 0;@∂;!o;";#{ ;i;[o;$;["cke_rtl;@∂;io;
-; 0;@∂;!o;";#{ ;i;[o;$;["cke_dialog_contents;@∂;io;
-; 0;@∂;!o;";#{ ;i;[o;/	;["a;@∂;i;00o;$;["colorChooser;@∂;i;%To;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i ;;o;;i ;["margin-bottom;[ ;o;;	;;"5px;@;@;i!;;;@;[".cke_dialog_ui_checkbox;i;o;;" ;i;[o;;[o;
-; 0;@„;!o;";#{ ;i;[o;$;["cke_dialog_ui_checkbox;@„;i;%To;
-;	;
-;[ ;["D/* Compensate focus outline for some input elements. (#6200) */;@;i$o;;i ;[o;;i ;["outline;[ ;o;;	;;"1px dotted #696969;@;@;i(;;;@;["Y.cke_dialog_ui_checkbox_input:focus,
-.cke_dialog_ui_radio_input:focus,
-.cke_btn_over;i';o;;" ;i';[o;;[o;
-; 0;@˝;!o;";#{ ;i';[o;$;["!cke_dialog_ui_checkbox_input;@˝;i'o;5
-;["
-focus;	;6;@˝;i';70o;;["
-o;
-; 0;@˝;!o;";#{ ;i';[o;$;["cke_dialog_ui_radio_input;@˝;i'o;5
-;["
-focus;	;6;@˝;i';70o;;["
-o;
-; 0;@˝;!o;";#{ ;i';[o;$;["cke_btn_over;@˝;i';%To;;i ;[o;;i ;["display;[ ;o;;	;;"
-block;@;@;i,;;o;;i ;["position;[ ;o;;	;;"absolute;@;@;i-;;o;;i ;["top;[ ;o;;	;;"0;@;@;i.;;o;;i ;["	left;[ ;o;;	;;"0;@;@;i/;;o;;i ;["z-index;[ ;o;;	;;"-1;@;@;i0;;o;;i ;["filter;[ ;o;1;"
-alpha;@;2{ ;i1;30;4[o;=
-;>o;	;	;;"opacity;@;i1;@;i1;?;@;Ao;+;i ;@;,@0;i1;-[ ;."0;@;i1;;o;;i ;["
-width;[ ;o;;	;;"	100%;@;@;i2;;o;;i ;["height;[ ;o;;	;;"	100%;@;@;i3;;;@;[".cke_iframe_shim;i+;o;;" ;i+;[o;;[o;
-; 0;@_;!o;";#{ ;i+;[o;$;["cke_iframe_shim;@_;i+;%T;@;i;%T

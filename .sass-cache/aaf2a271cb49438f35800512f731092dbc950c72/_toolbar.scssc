@@ -1,552 +1,0 @@
-3.2.9 (Media Mark)
-905a694ed72bf025d2998458f32f615131f0ae70
-o:Sass::Tree::RootNode
-:@template" /*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
-*/
-
-/*
-toolbar.css (part of editor.css)
-==================================
-
-This files styles the CKEditor toolbar and its buttons. For toolbar combo
-styles, check richcombo.css.
-
-The toolbar is rendered as a big container (called toolbox), which contains
-smaller "toolbars". Each toolbar represents a group of items that cannot be
-separated. The following is the visual representation of the toolbox.
-
-+-- .cke_toolbox ----------------------------------------------------------+
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ... +-- .cke_toolbar_break --+ |
-| |                  | |                  |     |                        | |
-| +------------------+ +------------------+     +------------------------+ |
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ...                            |
-| |                  | |                  |                                |
-| +------------------+ +------------------+                                |
-+--------------------------------------------------------------------------+
-
-The following instead is the visual representation of a single toolbar:
-
-+-- .cke_toolbar ----------------------------------------------------------------+
-| +-- .cke_toolbar_start --+ +-- .cke_toolgroup (*) --+ +-- .cke_toolbar_end --+ |
-| |                        | |                        | |                      | |
-| +------------------------+ +------------------------+ +----------------------+ |
-+--------------------------------------------------------------------------------+
-(*) .cke_toolgroup is available only when the toolbar items can be grouped
-    (buttons). If the items can't be group (combos), this box is not available
-    and the items are rendered straight in that place.
-
-This file also styles toolbar buttons, which are rendered inside the above
-.cke_toolgroup containers. This is the visual representation of a button:
-
-+-- .cke_button -------------------------------------+
-| +-- .cke_button_icon --+ +-- .cke_button_label --+ |
-| |                      | |                       | |
-| +----------------------+ +-----------------------+ |
-+----------------------------------------------------+
-
-Special outer level classes used in this file:
-
-    .cke_hc: Available when the editor is rendered on "High Contrast".
-    .cke_rtl: Available when the editor UI is on RTL.
-*/
-
-/* The box that holds each toolbar. */
-.cke_toolbar {
-    float: left;
-}
-
-.cke_rtl .cke_toolbar {
-    float: right;
-}
-
-/* The box that holds buttons. */
-.cke_toolgroup {
-    float: left;
-    margin: 0 6px 5px 0;
-    padding: 2px;
-    border: 1px solid $hr-border;
-
-    border-radius: $border-radius;
-
-    background: #fff;
-}
-
-.cke_hc .cke_toolgroup {
-    border: 0;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-.cke_rtl .cke_toolgroup *:first-child {
-    border-radius: 0 $border-radius $border-radius 0;
-}
-
-.cke_rtl .cke_toolgroup *:last-child {
-    border-radius: $border-radius 0 0 $border-radius;
-}
-
-.cke_rtl .cke_toolgroup {
-    float: right;
-    margin-left: 6px;
-    margin-right: 0;
-}
-
-/* A toolbar button . */
-a.cke_button {
-    display: inline-block;
-    height: 18px;
-    padding: 2px 4px;
-    outline: none;
-    cursor: default;
-    float: left;
-    border: 0;
-    border-radius: 2px;
-}
-
-.cke_rtl .cke_button {
-    float: right;
-}
-
-.cke_hc .cke_button {
-    border: 1px solid black;
-
-    /* Compensate the added border */
-    padding: 3px 5px;
-    margin: -2px 4px 0 -2px;
-}
-
-/* This class is applied to the button when it is "active" (pushed).
-   This style indicates that the feature associated with the button is active
-   i.e. currently writing in bold or when spell checking is enabled. */
-.cke_button_on {
-    background: $primary-light;
-}
-
-.cke_hc {
-    .cke_button_on {
-        border-width: 3px;
-        /* Compensate the border change */
-        padding: 1px 3px;
-    }
-    a.cke_button_off, a.cke_button_disabled {
-        &:hover, &:focus, &:active {
-            border-width: 3px;
-            /* Compensate the border change */
-            padding: 1px 3px;
-        }
-    }
-}
-
-/* This class is applied to the button when the feature associated with the
-   button cannot be used (grayed-out).
-   i.e. paste button remains disabled when there is nothing in the clipboard to
-   be pasted. */
-.cke_button_disabled .cke_button_icon {
-    opacity: 0.3;
-}
-
-.cke_hc .cke_button_disabled {
-    opacity: 0.5;
-}
-
-a.cke_button_on {
-    &:hover, &:focus, &:active {
-    }
-}
-
-a.cke_button_off, a.cke_button_disabled {
-    &:hover, &:focus, &:active {
-        background: $primary-lighter;
-    }
-}
-
-/* The icon which is a visual representation of the button. */
-.cke_button_icon {
-    cursor: inherit;
-    background-repeat: no-repeat;
-    margin-top: 1px;
-    width: 16px;
-    height: 16px;
-    float: left;
-    display: inline-block;
-}
-
-.cke_rtl .cke_button_icon {
-    float: right;
-}
-
-.cke_hc .cke_button_icon {
-    display: none;
-}
-
-/* The label of the button that stores the name of the feature. By default,
-   labels are invisible. They can be revealed on demand though. */
-.cke_button_label {
-    display: none;
-    padding-left: 3px;
-    margin-top: 1px;
-    line-height: 18px;
-    vertical-align: middle;
-    float: left;
-    cursor: default;
-    color: $gray-dark;
-}
-
-.cke_rtl .cke_button_label {
-    padding-right: 3px;
-    padding-left: 0;
-    float: right;
-}
-
-.cke_hc .cke_button_label {
-    padding: 0;
-    display: inline-block;
-    font-size: 12px;
-}
-
-/* The small arrow available on buttons that can be expanded
-   (e.g. the color buttons). */
-.cke_button_arrow {
-    /* Arrow in CSS */
-    display: inline-block;
-    margin: 8px 0 0 1px;
-    width: 0;
-    height: 0;
-    cursor: default;
-    vertical-align: top;
-    border-left: 3px solid transparent;
-    border-right: 3px solid transparent;
-    border-top: 3px solid #474747;
-}
-
-.cke_rtl .cke_button_arrow {
-    margin-right: 5px;
-    margin-left: 0;
-}
-
-.cke_hc .cke_button_arrow {
-    font-size: 10px;
-    margin: 3px -2px 0 3px;
-    width: auto;
-    border: 0;
-}
-
-/* The vertical separator which is used within a single toolbar to split
-   buttons into sub-groups. */
-.cke_toolbar_separator {
-    float: left;
-    background-color: $hr-border;
-    margin: 4px 2px 0;
-    height: 16px;
-    width: 1px;
-}
-
-.cke_rtl .cke_toolbar_separator {
-    float: right;
-}
-
-.cke_hc .cke_toolbar_separator {
-    width: 0;
-    border-left: 1px solid;
-    margin: 1px 5px 0 0px;
-}
-
-/* The dummy element that breaks toolbars.
-   Once it is placed, the very next toolbar is moved to the new row. */
-.cke_toolbar_break {
-    display: block;
-    clear: left;
-}
-
-.cke_rtl .cke_toolbar_break {
-    clear: right;
-}
-
-/* The button, which when clicked hides (collapses) all the toolbars. */
-.cke_toolbox_collapser {
-    width: 12px;
-    height: 11px;
-    float: right;
-    margin: 11px 0 0;
-    font-size: 0;
-    cursor: default;
-    text-align: center;
-
-    border: 1px solid #a6a6a6;
-    border-bottom-color: #979797;
-
-    border-radius: $border-radius;
-
-    background: #e4e4e4;
-    &:hover {
-        background: #ccc;
-    }
-    &.cke_toolbox_collapser_min {
-        margin: 0 2px 4px;
-        .cke_arrow {
-            margin-top: 4px;
-            border-bottom-color: transparent;
-            border-top-color: #474747;
-        }
-    }
-    /* The CSS arrow, which belongs to the toolbar collapser. */
-    .cke_arrow {
-        display: inline-block;
-
-        /* Pure CSS Arrow */
-        height: 0;
-        width: 0;
-        font-size: 0;
-        margin-top: 1px;
-        border-left: 3px solid transparent;
-        border-right: 3px solid transparent;
-        border-bottom: 3px solid #474747;
-        border-top: 3px solid transparent;
-    }
-}
-
-.cke_rtl .cke_toolbox_collapser {
-    float: left;
-}
-
-.cke_hc .cke_toolbox_collapser .cke_arrow {
-    font-size: 8px;
-    width: auto;
-    border: 0;
-    margin-top: 0;
-    margin-right: 2px;
-}
-:@children[3o:Sass::Tree::CommentNode
-:
-@type:normal;[ :@value["é/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
-*/:@options{ :
-@lineio;
-;	;
-;[ ;["	/*
-toolbar.css (part of editor.css)
-==================================
-
-This files styles the CKEditor toolbar and its buttons. For toolbar combo
-styles, check richcombo.css.
-
-The toolbar is rendered as a big container (called toolbox), which contains
-smaller "toolbars". Each toolbar represents a group of items that cannot be
-separated. The following is the visual representation of the toolbox.
-
-+-- .cke_toolbox ----------------------------------------------------------+
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ... +-- .cke_toolbar_break --+ |
-| |                  | |                  |     |                        | |
-| +------------------+ +------------------+     +------------------------+ |
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ...                            |
-| |                  | |                  |                                |
-| +------------------+ +------------------+                                |
-+--------------------------------------------------------------------------+
-
-The following instead is the visual representation of a single toolbar:
-
-+-- .cke_toolbar ----------------------------------------------------------------+
-| +-- .cke_toolbar_start --+ +-- .cke_toolgroup (*) --+ +-- .cke_toolbar_end --+ |
-| |                        | |                        | |                      | |
-| +------------------------+ +------------------------+ +----------------------+ |
-+--------------------------------------------------------------------------------+
-(*) .cke_toolgroup is available only when the toolbar items can be grouped
-    (buttons). If the items can't be group (combos), this box is not available
-    and the items are rendered straight in that place.
-
-This file also styles toolbar buttons, which are rendered inside the above
-.cke_toolgroup containers. This is the visual representation of a button:
-
-+-- .cke_button -------------------------------------+
-| +-- .cke_button_icon --+ +-- .cke_button_label --+ |
-| |                      | |                       | |
-| +----------------------+ +-----------------------+ |
-+----------------------------------------------------+
-
-Special outer level classes used in this file:
-
-    .cke_hc: Available when the editor is rendered on "High Contrast".
-    .cke_rtl: Available when the editor UI is on RTL.
-*/;@;io;
-;	;
-;[ ;["+/* The box that holds each toolbar. */;@;i9o:Sass::Tree::RuleNode:
-@tabsi ;[o:Sass::Tree::PropNode;i :
-@name["
-float;[ ;o:Sass::Script::String;	:identifier;"	left;@;@;i;:@prop_syntax:new;@:
-@rule[".cke_toolbar;i::@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;i::@members[o:Sass::Selector::Sequence;[o:#Sass::Selector::SimpleSequence
-:@subject0;@ :@sourceso:Set:
-@hash{ ;i:;[o:Sass::Selector::Class;["cke_toolbar;@ ;i::@has_childrenTo;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i?;;;@;[".cke_rtl .cke_toolbar;i>;o;;" ;i>;[o;;[o;
-;0;@6;o;; { ;i>;[o;!;["cke_rtl;@6;i>o;
-;0;@6;o;; { ;i>;[o;!;["cke_toolbar;@6;i>;"To;
-;	;
-;[ ;["&/* The box that holds buttons. */;@;iBo;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;iD;;o;;i ;["margin;[ ;o;;	;;"0 6px 5px 0;@;@;iE;;o;;i ;["padding;[ ;o;;	;;"2px;@;@;iF;;o;;i ;["border;[ ;o:Sass::Script::List	:@separator:
-space;[o:Sass::Script::Number;i;@:@denominator_units[ ;iG:@numerator_units["px:@original"1pxo;	;	;;"
-solid;@;iGo:Sass::Script::Variable	:@underscored_name"hr_border;"hr-border;@;iG;@;iG;@;iG;;o;;i ;["border-radius;[ ;o;*	;+"border_radius;"border-radius;@;iI;@;iI;;o;;i ;["background;[ ;o;;	;;"	#fff;@;@;iK;;;@;[".cke_toolgroup;iC;o;;" ;iC;[o;;[o;
-;0;@{;o;; { ;iC;[o;!;["cke_toolgroup;@{;iC;"To;;i ;[o;;i ;["border;[ ;o;;	;;"0;@;@;iO;;o;;i ;["margin-right;[ ;o;;	;;"	10px;@;@;iP;;o;;i ;["margin-bottom;[ ;o;;	;;"	10px;@;@;iQ;;;@;[".cke_hc .cke_toolgroup;iN;o;;" ;iN;[o;;[o;
-;0;@ù;o;; { ;iN;[o;!;["cke_hc;@ù;iNo;
-;0;@ù;o;; { ;iN;[o;!;["cke_toolgroup;@ù;iN;"To;;i ;[o;;i ;["border-radius;[ ;o;#	;$;%;[	o;&;i ;@;'[ ;iU;([ ;)"0o;*	;+"border_radius;"border-radius;@;iUo;*	;+"border_radius;"border-radius;@;iUo;&;i ;@;'@∏;iU;([ ;)"0;@;iU;@;iU;;;@;["*.cke_rtl .cke_toolgroup *:first-child;iT;o;;" ;iT;[o;;[o;
-;0;@«;o;; { ;iT;[o;!;["cke_rtl;@«;iTo;
-;0;@«;o;; { ;iT;[o;!;["cke_toolgroup;@«;iTo;
-;0;@«;o;; { ;iT;[o:Sass::Selector::Universal;@«;iT:@namespace0o:Sass::Selector::Pseudo
-;["first-child;	:
-class;@«;iT:	@arg0;"To;;i ;[o;;i ;["border-radius;[ ;o;#	;$;%;[	o;*	;+"border_radius;"border-radius;@;iYo;&;i ;@;'@∏;iY;([ ;)"0o;&;i ;@;'@∏;iY;([ ;)"0o;*	;+"border_radius;"border-radius;@;iY;@;iY;@;iY;;;@;[").cke_rtl .cke_toolgroup *:last-child;iX;o;;" ;iX;[o;;[o;
-;0;@¯;o;; { ;iX;[o;!;["cke_rtl;@¯;iXo;
-;0;@¯;o;; { ;iX;[o;!;["cke_toolgroup;@¯;iXo;
-;0;@¯;o;; { ;iX;[o;,;@¯;iX;-0o;.
-;["last-child;	;/;@¯;iX;00;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i];;o;;i ;["margin-left;[ ;o;;	;;"6px;@;@;i^;;o;;i ;["margin-right;[ ;o;;	;;"0;@;@;i_;;;@;[".cke_rtl .cke_toolgroup;i\;o;;" ;i\;[o;;[o;
-;0;@);o;; { ;i\;[o;!;["cke_rtl;@);i\o;
-;0;@);o;; { ;i\;[o;!;["cke_toolgroup;@);i\;"To;
-;	;
-;[ ;["/* A toolbar button . */;@;ibo;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;id;;o;;i ;["height;[ ;o;;	;;"	18px;@;@;ie;;o;;i ;["padding;[ ;o;;	;;"2px 4px;@;@;if;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;ig;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;ih;;o;;i ;["
-float;[ ;o;;	;;"	left;@;@;ii;;o;;i ;["border;[ ;o;;	;;"0;@;@;ij;;o;;i ;["border-radius;[ ;o;;	;;"2px;@;@;ik;;;@;["a.cke_button;ic;o;;" ;ic;[o;;[o;
-;0;@t;o;; { ;ic;[o:Sass::Selector::Element	;["a;@t;ic;-0o;!;["cke_button;@t;ic;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;io;;;@;[".cke_rtl .cke_button;in;o;;" ;in;[o;;[o;
-;0;@ç;o;; { ;in;[o;!;["cke_rtl;@ç;ino;
-;0;@ç;o;; { ;in;[o;!;["cke_button;@ç;in;"To;;i ;[	o;;i ;["border;[ ;o;;	;;"1px solid black;@;@;is;;o;
-;	;
-;[ ;["&/* Compensate the added border */;@;iuo;;i ;["padding;[ ;o;;	;;"3px 5px;@;@;iv;;o;;i ;["margin;[ ;o;;	;;"-2px 4px 0 -2px;@;@;iw;;;@;[".cke_hc .cke_button;ir;o;;" ;ir;[o;;[o;
-;0;@∫;o;; { ;ir;[o;!;["cke_hc;@∫;iro;
-;0;@∫;o;; { ;ir;[o;!;["cke_button;@∫;ir;"To;
-;	;
-;[ ;["⁄/* This class is applied to the button when it is "active" (pushed).
-   This style indicates that the feature associated with the button is active
-   i.e. currently writing in bold or when spell checking is enabled. */;@;izo;;i ;[o;;i ;["background;[ ;o;*	;+"primary_light;"primary-light;@;i~;@;i~;;;@;[".cke_button_on;i};o;;" ;i};[o;;[o;
-;0;@‹;o;; { ;i};[o;!;["cke_button_on;@‹;i};"To;;i ;[o;;i ;[o;;i ;["border-width;[ ;o;;	;;"3px;@;@;i~;;o;
-;	;
-;[ ;["'/* Compensate the border change */;@;io;;i ;["padding;[ ;o;;	;;"1px 3px;@;@;iÄ;;;@;[".cke_button_on;i};o;;" ;i};[o;;[o;
-;0;@˛;o;; { ;i};[o;!;["cke_button_on;@˛;i};"To;;i ;[o;;i ;[o;;i ;["border-width;[ ;o;;	;;"3px;@;@;iÑ;;o;
-;	;
-;[ ;["'/* Compensate the border change */;@;iÖo;;i ;["padding;[ ;o;;	;;"1px 3px;@;@;iÜ;;;@;["&:hover, &:focus, &:active;iÉ;o;;" ;iÉ;[o;;[o;
-;0;@ ;o;; { ;iÉ;[o:Sass::Selector::Parent;@ ;iÉo;.
-;["
-hover;	;/;@ ;iÉ;00o;;[o;
-;0;@ ;o;; { ;iÉ;[o;2;@ ;iÉo;.
-;["
-focus;	;/;@ ;iÉ;00o;;[o;
-;0;@ ;o;; { ;iÉ;[o;2;@ ;iÉo;.
-;["active;	;/;@ ;iÉ;00;"T;@;[",a.cke_button_off, a.cke_button_disabled;iÇ;o;;" ;iÇ;[o;;[o;
-;0;@C;o;; { ;iÇ;[o;1	;["a;@C;iÇ;-0o;!;["cke_button_off;@C;iÇo;;[o;
-;0;@C;o;; { ;iÇ;[o;1	;["a;@C;iÇ;-0o;!;["cke_button_disabled;@C;iÇ;"T;@;[".cke_hc;i|;o;;" ;i|;[o;;[o;
-;0;@`;o;; { ;i|;[o;!;["cke_hc;@`;i|;"To;
-;	;
-;[ ;["”/* This class is applied to the button when the feature associated with the
-   button cannot be used (grayed-out).
-   i.e. paste button remains disabled when there is nothing in the clipboard to
-   be pasted. */;@;ião;;i ;[o;;i ;["opacity;[ ;o;;	;;"0.3;@;@;iê;;;@;["*.cke_button_disabled .cke_button_icon;iè;o;;" ;iè;[o;;[o;
-;0;@z;o;; { ;iè;[o;!;["cke_button_disabled;@z;ièo;
-;0;@z;o;; { ;iè;[o;!;["cke_button_icon;@z;iè;"To;;i ;[o;;i ;["opacity;[ ;o;;	;;"0.5;@;@;iî;;;@;["!.cke_hc .cke_button_disabled;iì;o;;" ;iì;[o;;[o;
-;0;@ó;o;; { ;iì;[o;!;["cke_hc;@ó;iìo;
-;0;@ó;o;; { ;iì;[o;!;["cke_button_disabled;@ó;iì;"To;;i ;[o;;i ;[ ;@;["&:hover, &:focus, &:active;iò;o;;" ;iò;[o;;[o;
-;0;@∞;o;; { ;iò;[o;2;@∞;iòo;.
-;["
-hover;	;/;@∞;iò;00o;;[o;
-;0;@∞;o;; { ;iò;[o;2;@∞;iòo;.
-;["
-focus;	;/;@∞;iò;00o;;[o;
-;0;@∞;o;; { ;iò;[o;2;@∞;iòo;.
-;["active;	;/;@∞;iò;00;"T;@;["a.cke_button_on;ió;o;;" ;ió;[o;;[o;
-;0;@”;o;; { ;ió;[o;1	;["a;@”;ió;-0o;!;["cke_button_on;@”;ió;"To;;i ;[o;;i ;[o;;i ;["background;[ ;o;*	;+"primary_lighter;"primary-lighter;@;iû;@;iû;;;@;["&:hover, &:focus, &:active;iù;o;;" ;iù;[o;;[o;
-;0;@Ô;o;; { ;iù;[o;2;@Ô;iùo;.
-;["
-hover;	;/;@Ô;iù;00o;;[o;
-;0;@Ô;o;; { ;iù;[o;2;@Ô;iùo;.
-;["
-focus;	;/;@Ô;iù;00o;;[o;
-;0;@Ô;o;; { ;iù;[o;2;@Ô;iùo;.
-;["active;	;/;@Ô;iù;00;"T;@;[",a.cke_button_off, a.cke_button_disabled;iú;o;;" ;iú;[o;;[o;
-;0;@;o;; { ;iú;[o;1	;["a;@;iú;-0o;!;["cke_button_off;@;iúo;;[o;
-;0;@;o;; { ;iú;[o;1	;["a;@;iú;-0o;!;["cke_button_disabled;@;iú;"To;
-;	;
-;[ ;["C/* The icon which is a visual representation of the button. */;@;i¢o;;i ;[o;;i ;["cursor;[ ;o;;	;;"inherit;@;@;i§;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;i•;;o;;i ;["margin-top;[ ;o;;	;;"1px;@;@;i¶;;o;;i ;["
-width;[ ;o;;	;;"	16px;@;@;iß;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;i®;;o;;i ;["
-float;[ ;o;;	;;"	left;@;@;i©;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i™;;;@;[".cke_button_icon;i£;o;;" ;i£;[o;;[o;
-;0;@_;o;; { ;i£;[o;!;["cke_button_icon;@_;i£;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;iÆ;;;@;[".cke_rtl .cke_button_icon;i≠;o;;" ;i≠;[o;;[o;
-;0;@u;o;; { ;i≠;[o;!;["cke_rtl;@u;i≠o;
-;0;@u;o;; { ;i≠;[o;!;["cke_button_icon;@u;i≠;"To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i≤;;;@;[".cke_hc .cke_button_icon;i±;o;;" ;i±;[o;;[o;
-;0;@í;o;; { ;i±;[o;!;["cke_hc;@í;i±o;
-;0;@í;o;; { ;i±;[o;!;["cke_button_icon;@í;i±;"To;
-;	;
-;[ ;["é/* The label of the button that stores the name of the feature. By default,
-   labels are invisible. They can be revealed on demand though. */;@;iµo;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;i∏;;o;;i ;["padding-left;[ ;o;;	;;"3px;@;@;iπ;;o;;i ;["margin-top;[ ;o;;	;;"1px;@;@;i∫;;o;;i ;["line-height;[ ;o;;	;;"	18px;@;@;iª;;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;iº;;o;;i ;["
-float;[ ;o;;	;;"	left;@;@;iΩ;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;iæ;;o;;i ;["
-color;[ ;o;*	;+"gray_dark;"gray-dark;@;iø;@;iø;;;@;[".cke_button_label;i∑;o;;" ;i∑;[o;;[o;
-;0;@ﬁ;o;; { ;i∑;[o;!;["cke_button_label;@ﬁ;i∑;"To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"3px;@;@;i√;;o;;i ;["padding-left;[ ;o;;	;;"0;@;@;iƒ;;o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i≈;;;@;[".cke_rtl .cke_button_label;i¬;o;;" ;i¬;[o;;[o;
-;0;@ ;o;; { ;i¬;[o;!;["cke_rtl;@ ;i¬o;
-;0;@ ;o;; { ;i¬;[o;!;["cke_button_label;@ ;i¬;"To;;i ;[o;;i ;["padding;[ ;o;;	;;"0;@;@;i…;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i ;;o;;i ;["font-size;[ ;o;;	;;"	12px;@;@;iÀ;;;@;[".cke_hc .cke_button_label;i»;o;;" ;i»;[o;;[o;
-;0;@);o;; { ;i»;[o;!;["cke_hc;@);i»o;
-;0;@);o;; { ;i»;[o;!;["cke_button_label;@);i»;"To;
-;	;
-;[ ;["a/* The small arrow available on buttons that can be expanded
-   (e.g. the color buttons). */;@;iŒo;;i ;[o;
-;	;
-;[ ;["/* Arrow in CSS */;@;i—o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i“;;o;;i ;["margin;[ ;o;;	;;"8px 0 0 1px;@;@;i”;;o;;i ;["
-width;[ ;o;;	;;"0;@;@;i‘;;o;;i ;["height;[ ;o;;	;;"0;@;@;i’;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i÷;;o;;i ;["vertical-align;[ ;o;;	;;"top;@;@;i◊;;o;;i ;["border-left;[ ;o;;	;;"3px solid transparent;@;@;iÿ;;o;;i ;["border-right;[ ;o;;	;;"3px solid transparent;@;@;iŸ;;o;;i ;["border-top;[ ;o;;	;;"3px solid #474747;@;@;i⁄;;;@;[".cke_button_arrow;i–;o;;" ;i–;[o;;[o;
-;0;@~;o;; { ;i–;[o;!;["cke_button_arrow;@~;i–;"To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"5px;@;@;iﬁ;;o;;i ;["margin-left;[ ;o;;	;;"0;@;@;iﬂ;;;@;[".cke_rtl .cke_button_arrow;i›;o;;" ;i›;[o;;[o;
-;0;@ö;o;; { ;i›;[o;!;["cke_rtl;@ö;i›o;
-;0;@ö;o;; { ;i›;[o;!;["cke_button_arrow;@ö;i›;"To;;i ;[	o;;i ;["font-size;[ ;o;;	;;"	10px;@;@;i„;;o;;i ;["margin;[ ;o;;	;;"3px -2px 0 3px;@;@;i‰;;o;;i ;["
-width;[ ;o;;	;;"	auto;@;@;iÂ;;o;;i ;["border;[ ;o;;	;;"0;@;@;iÊ;;;@;[".cke_hc .cke_button_arrow;i‚;o;;" ;i‚;[o;;[o;
-;0;@…;o;; { ;i‚;[o;!;["cke_hc;@…;i‚o;
-;0;@…;o;; { ;i‚;[o;!;["cke_button_arrow;@…;i‚;"To;
-;	;
-;[ ;["l/* The vertical separator which is used within a single toolbar to split
-   buttons into sub-groups. */;@;iÈo;;i ;[
-o;;i ;["
-float;[ ;o;;	;;"	left;@;@;iÏ;;o;;i ;["background-color;[ ;o;*	;+"hr_border;"hr-border;@;iÌ;@;iÌ;;o;;i ;["margin;[ ;o;;	;;"4px 2px 0;@;@;iÓ;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;iÔ;;o;;i ;["
-width;[ ;o;;	;;"1px;@;@;i;;;@;[".cke_toolbar_separator;iÎ;o;;" ;iÎ;[o;;[o;
-;0;@;o;; { ;iÎ;[o;!;["cke_toolbar_separator;@;iÎ;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;iÙ;;;@;["$.cke_rtl .cke_toolbar_separator;iÛ;o;;" ;iÛ;[o;;[o;
-;0;@;o;; { ;iÛ;[o;!;["cke_rtl;@;iÛo;
-;0;@;o;; { ;iÛ;[o;!;["cke_toolbar_separator;@;iÛ;"To;;i ;[o;;i ;["
-width;[ ;o;;	;;"0;@;@;i¯;;o;;i ;["border-left;[ ;o;;	;;"1px solid;@;@;i˘;;o;;i ;["margin;[ ;o;;	;;"1px 5px 0 0px;@;@;i˙;;;@;["#.cke_hc .cke_toolbar_separator;i˜;o;;" ;i˜;[o;;[o;
-;0;@B;o;; { ;i˜;[o;!;["cke_hc;@B;i˜o;
-;0;@B;o;; { ;i˜;[o;!;["cke_toolbar_separator;@B;i˜;"To;
-;	;
-;[ ;["w/* The dummy element that breaks toolbars.
-   Once it is placed, the very next toolbar is moved to the new row. */;@;i˝o;;i ;[o;;i ;["display;[ ;o;;	;;"
-block;@;@;i ;;o;;i ;["
-clear;[ ;o;;	;;"	left;@;@;i;;;@;[".cke_toolbar_break;iˇ;o;;" ;iˇ;[o;;[o;
-;0;@i;o;; { ;iˇ;[o;!;["cke_toolbar_break;@i;iˇ;"To;;i ;[o;;i ;["
-clear;[ ;o;;	;;"
-right;@;@;i;;;@;[" .cke_rtl .cke_toolbar_break;i;o;;" ;i;[o;;[o;
-;0;@;o;; { ;i;[o;!;["cke_rtl;@;io;
-;0;@;o;; { ;i;[o;!;["cke_toolbar_break;@;i;"To;
-;	;
-;[ ;["M/* The button, which when clicked hides (collapses) all the toolbars. */;@;io;;i ;[o;;i ;["
-width;[ ;o;;	;;"	12px;@;@;i
-;;o;;i ;["height;[ ;o;;	;;"	11px;@;@;i;;o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i;;o;;i ;["margin;[ ;o;;	;;"11px 0 0;@;@;i;;o;;i ;["font-size;[ ;o;;	;;"0;@;@;i;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;i;;o;;i ;["border;[ ;o;;	;;"1px solid #a6a6a6;@;@;i;;o;;i ;["border-bottom-color;[ ;o;;	;;"#979797;@;@;i;;o;;i ;["border-radius;[ ;o;*	;+"border_radius;"border-radius;@;i;@;i;;o;;i ;["background;[ ;o;;	;;"#e4e4e4;@;@;i;;o;;i ;[o;;i ;["background;[ ;o;;	;;"	#ccc;@;@;i;;;@;["&:hover;i;o;;" ;i;[o;;[o;
-;0;@Â;o;; { ;i;[o;2;@Â;io;.
-;["
-hover;	;/;@Â;i;00;"To;;i ;[o;;i ;["margin;[ ;o;;	;;"0 2px 4px;@;@;i;;o;;i ;[o;;i ;["margin-top;[ ;o;;	;;"4px;@;@;i;;o;;i ;["border-bottom-color;[ ;o;;	;;"transparent;@;@;i;;o;;i ;["border-top-color;[ ;o;;	;;"#474747;@;@;i ;;;@;[".cke_arrow;i;o;;" ;i;[o;;[o;
-;0;@;o;; { ;i;[o;!;["cke_arrow;@;i;"T;@;[" &.cke_toolbox_collapser_min;i;o;;" ;i;[o;;[o;
-;0;@;o;; { ;i;[o;2;@;io;!;["cke_toolbox_collapser_min;@;i;"To;
-;	;
-;[ ;["A/* The CSS arrow, which belongs to the toolbar collapser. */;@;i#o;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i%;;o;
-;	;
-;[ ;["/* Pure CSS Arrow */;@;i'o;;i ;["height;[ ;o;;	;;"0;@;@;i(;;o;;i ;["
-width;[ ;o;;	;;"0;@;@;i);;o;;i ;["font-size;[ ;o;;	;;"0;@;@;i*;;o;;i ;["margin-top;[ ;o;;	;;"1px;@;@;i+;;o;;i ;["border-left;[ ;o;;	;;"3px solid transparent;@;@;i,;;o;;i ;["border-right;[ ;o;;	;;"3px solid transparent;@;@;i-;;o;;i ;["border-bottom;[ ;o;;	;;"3px solid #474747;@;@;i.;;o;;i ;["border-top;[ ;o;;	;;"3px solid transparent;@;@;i/;;;@;[".cke_arrow;i$;o;;" ;i$;[o;;[o;
-;0;@m;o;; { ;i$;[o;!;["cke_arrow;@m;i$;"T;@;[".cke_toolbox_collapser;i	;o;;" ;i	;[o;;[o;
-;0;@{;o;; { ;i	;[o;!;["cke_toolbox_collapser;@{;i	;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;i4;;;@;["$.cke_rtl .cke_toolbox_collapser;i3;o;;" ;i3;[o;;[o;
-;0;@ë;o;; { ;i3;[o;!;["cke_rtl;@ë;i3o;
-;0;@ë;o;; { ;i3;[o;!;["cke_toolbox_collapser;@ë;i3;"To;;i ;[
-o;;i ;["font-size;[ ;o;;	;;"8px;@;@;i8;;o;;i ;["
-width;[ ;o;;	;;"	auto;@;@;i9;;o;;i ;["border;[ ;o;;	;;"0;@;@;i:;;o;;i ;["margin-top;[ ;o;;	;;"0;@;@;i;;;o;;i ;["margin-right;[ ;o;;	;;"2px;@;@;i<;;;@;["..cke_hc .cke_toolbox_collapser .cke_arrow;i7;o;;" ;i7;[o;;[o;
-;0;@∆;o;; { ;i7;[o;!;["cke_hc;@∆;i7o;
-;0;@∆;o;; { ;i7;[o;!;["cke_toolbox_collapser;@∆;i7o;
-;0;@∆;o;; { ;i7;[o;!;["cke_arrow;@∆;i7;"T;@;i;"T

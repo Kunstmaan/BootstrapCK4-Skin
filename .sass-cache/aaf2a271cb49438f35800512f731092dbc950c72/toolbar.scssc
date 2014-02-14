@@ -1,766 +1,0 @@
-3.2.9 (Media Mark)
-27a3ca8cac660b4d178e9942b59351140d2b15e7
-o:Sass::Tree::RootNode
-:@template"N//*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
-*/
-
-/*
-toolbar.css (part of editor.css)
-==================================
-
-This files styles the CKEditor toolbar and its buttons. For toolbar combo
-styles, check richcombo.css.
-
-The toolbar is rendered as a big container (called toolbox), which contains
-smaller "toolbars". Each toolbar represents a group of items that cannot be
-separated. The following is the visual representation of the toolbox.
-
-+-- .cke_toolbox ----------------------------------------------------------+
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ... +-- .cke_toolbar_break --+ |
-| |                  | |                  |     |                        | |
-| +------------------+ +------------------+     +------------------------+ |
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ...                            |
-| |                  | |                  |                                |
-| +------------------+ +------------------+                                |
-+--------------------------------------------------------------------------+
-
-The following instead is the visual representation of a single toolbar:
-
-+-- .cke_toolbar ----------------------------------------------------------------+
-| +-- .cke_toolbar_start --+ +-- .cke_toolgroup (*) --+ +-- .cke_toolbar_end --+ |
-| |                        | |                        | |                      | |
-| +------------------------+ +------------------------+ +----------------------+ |
-+--------------------------------------------------------------------------------+
-(*) .cke_toolgroup is available only when the toolbar items can be grouped
-    (buttons). If the items can't be group (combos), this box is not available
-	and the items are rendered straight in that place.
-
-This file also styles toolbar buttons, which are rendered inside the above
-.cke_toolgroup containers. This is the visual representation of a button:
-
-+-- .cke_button -------------------------------------+
-| +-- .cke_button_icon --+ +-- .cke_button_label --+ |
-| |                      | |                       | |
-| +----------------------+ +-----------------------+ |
-+----------------------------------------------------+
-
-Special outer level classes used in this file:
-
-	.cke_hc: Available when the editor is rendered on "High Contrast".
-	.cke_rtl: Available when the editor UI is on RTL.
-*/
-
-/* The box that holds each toolbar. */
-.cke_toolbar
-{
-	float: left;
-}
-
-.cke_rtl .cke_toolbar
-{
-	float: right;
-}
-
-/* The box that holds buttons. */
-.cke_toolgroup
-{
-	float: left;
-	margin: 0 6px 5px 0;
-	border: 1px solid #a6a6a6;
-	border-bottom-color: #979797;
-
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-
-	-moz-box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 0 2px rgba(255,255,255,.15) inset, 0 1px 0 rgba(255,255,255,.15) inset;
-	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 0 2px rgba(255,255,255,.15) inset, 0 1px 0 rgba(255,255,255,.15) inset;
-	box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 0 2px rgba(255,255,255,.15) inset, 0 1px 0 rgba(255,255,255,.15) inset;
-
-	background: #e4e4e4;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e4e4e4));
-	background-image: -moz-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: -webkit-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: -o-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: -ms-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: linear-gradient(top, #ffffff, #e4e4e4);
-	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ffffff', endColorstr='#e4e4e4');
-}
-
-.cke_hc .cke_toolgroup
-{
-	border: 0;
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
-
-.cke_rtl .cke_toolgroup *:first-child
-{
-	-moz-border-radius: 0 2px 2px 0;
-	-webkit-border-radius: 0 2px 2px 0;
-	border-radius: 0 2px 2px 0;
-}
-
-.cke_rtl .cke_toolgroup *:last-child
-{
-	-moz-border-radius: 2px 0 0 2px;
-	-webkit-border-radius: 2px 0 0 2px;
-	border-radius: 2px 0 0 2px;
-}
-
-.cke_rtl .cke_toolgroup
-{
-	float: right;
-	margin-left: 6px;
-	margin-right: 0;
-}
-
-/* A toolbar button . */
-a.cke_button
-{
-	display: inline-block;
-	height: 18px;
-	padding: 4px 6px;
-	outline: none;
-	cursor: default;
-	float: left;
-	border: 0;
-}
-
-.cke_rtl .cke_button
-{
-	float: right;
-}
-
-.cke_hc .cke_button
-{
-	border: 1px solid black;
-
-	/* Compensate the added border */
-	padding: 3px 5px;
-	margin: -2px 4px 0 -2px;
-}
-
-/* This class is applied to the button when it is "active" (pushed).
-   This style indicates that the feature associated with the button is active
-   i.e. currently writing in bold or when spell checking is enabled. */
-.cke_button_on
-{
-	-moz-box-shadow: 0 1px 5px rgba(0,0,0,.6) inset, 0 1px 0 rgba(0,0,0,.2);
-	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.6) inset, 0 1px 0 rgba(0,0,0,.2);
-	box-shadow: 0 1px 5px rgba(0,0,0,.6) inset, 0 1px 0 rgba(0,0,0,.2);
-
-	background: #b5b5b5;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#cacaca));
-	background-image: -moz-linear-gradient(top, #aaa, #cacaca);
-	background-image: -webkit-linear-gradient(top, #aaa, #cacaca);
-	background-image: -o-linear-gradient(top, #aaa, #cacaca);
-	background-image: -ms-linear-gradient(top, #aaa, #cacaca);
-	background-image: linear-gradient(top, #aaa, #cacaca);
-	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#aaaaaa', endColorstr='#cacaca');
-}
-
-.cke_hc .cke_button_on,
-.cke_hc a.cke_button_off:hover,
-.cke_hc a.cke_button_off:focus,
-.cke_hc a.cke_button_off:active,
-.cke_hc a.cke_button_disabled:hover,
-.cke_hc a.cke_button_disabled:focus,
-.cke_hc a.cke_button_disabled:active
-{
-	border-width: 3px;
-
-	/* Compensate the border change */
-	padding: 1px 3px;
-}
-
-/* This class is applied to the button when the feature associated with the
-   button cannot be used (grayed-out).
-   i.e. paste button remains disabled when there is nothing in the clipboard to
-   be pasted. */
-.cke_button_disabled .cke_button_icon
-{
-	opacity: 0.3;
-}
-
-.cke_hc .cke_button_disabled
-{
-	opacity: 0.5;
-}
-
-a.cke_button_on:hover,
-a.cke_button_on:focus,
-a.cke_button_on:active
-{
-	-moz-box-shadow: 0 1px 6px rgba(0,0,0,.7) inset, 0 1px 0 rgba(0,0,0,.2);
-	-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.7) inset, 0 1px 0 rgba(0,0,0,.2);
-	box-shadow: 0 1px 6px rgba(0,0,0,.7) inset, 0 1px 0 rgba(0,0,0,.2);
-}
-
-a.cke_button_off:hover,
-a.cke_button_off:focus,
-a.cke_button_off:active,
-a.cke_button_disabled:hover,
-a.cke_button_disabled:focus,
-a.cke_button_disabled:active
-{
-	-moz-box-shadow: 0 0 1px rgba(0,0,0,.3) inset;
-	-webkit-box-shadow: 0 0 1px rgba(0,0,0,.3) inset;
-	box-shadow: 0 0 1px rgba(0,0,0,.3) inset;
-
-	background: #ccc;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#ccc));
-	background-image: -moz-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: -webkit-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: -o-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: -ms-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: linear-gradient(top, #f2f2f2, #ccc);
-	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f2f2f2', endColorstr='#cccccc');
-}
-
-/* The icon which is a visual representation of the button. */
-.cke_button_icon
-{
-	cursor: inherit;
-	background-repeat: no-repeat;
-	margin-top: 1px;
-	width: 16px;
-	height: 16px;
-	float: left;
-	display: inline-block;
-}
-
-.cke_rtl .cke_button_icon
-{
-	float: right;
-}
-
-.cke_hc .cke_button_icon
-{
-	display: none;
-}
-
-/* The label of the button that stores the name of the feature. By default,
-   labels are invisible. They can be revealed on demand though. */
-.cke_button_label
-{
-	display: none;
-	padding-left: 3px;
-	margin-top: 1px;
-	line-height: 17px;
-	vertical-align: middle;
-	float: left;
-	cursor: default;
-	color: #474747;
-	text-shadow: 0 1px 0 rgba(255,255,255,.5);
-}
-
-.cke_rtl .cke_button_label
-{
-	padding-right: 3px;
-	padding-left: 0;
-	float: right;
-}
-
-.cke_hc .cke_button_label
-{
-	padding: 0;
-	display: inline-block;
-	font-size: 12px;
-}
-
-/* The small arrow available on buttons that can be expanded
-   (e.g. the color buttons). */
-.cke_button_arrow
-{
-	/* Arrow in CSS */
-	display: inline-block;
-	margin: 8px 0 0 1px;
-	width: 0;
-	height: 0;
-	cursor: default;
-	vertical-align: top;
-	border-left: 3px solid transparent;
-	border-right: 3px solid transparent;
-	border-top: 3px solid #474747;
-}
-
-.cke_rtl .cke_button_arrow
-{
-	margin-right: 5px;
-	margin-left: 0;
-}
-
-.cke_hc .cke_button_arrow
-{
-	font-size: 10px;
-	margin: 3px -2px 0 3px;
-	width: auto;
-	border: 0;
-}
-
-/* The vertical separator which is used within a single toolbar to split
-   buttons into sub-groups. */
-.cke_toolbar_separator
-{
-	float: left;
-	background-color: #c0c0c0;
-	background-color: rgba(0,0,0,.2);
-	margin: 5px 2px 0;
-	height: 18px;
-	width: 1px;
-
-	-webkit-box-shadow: 1px 0 1px rgba(255,255,255,.5);
-	-moz-box-shadow: 1px 0 1px rgba(255,255,255,.5);
-	box-shadow: 1px 0 1px rgba(255,255,255,.5);
-}
-
-.cke_rtl .cke_toolbar_separator
-{
-	float: right;
-
-	-webkit-box-shadow: -1px 0 1px rgba(255,255,255,.1);
-	-moz-box-shadow: -1px 0 1px rgba(255,255,255,.1);
-	box-shadow: -1px 0 1px rgba(255,255,255,.1);
-}
-
-.cke_hc .cke_toolbar_separator
-{
-	width: 0;
-	border-left: 1px solid;
-	margin: 1px 5px 0 0px;
-}
-
-/* The dummy element that breaks toolbars.
-   Once it is placed, the very next toolbar is moved to the new row. */
-.cke_toolbar_break
-{
-	display: block;
-	clear: left;
-}
-
-.cke_rtl .cke_toolbar_break
-{
-	clear: right;
-}
-
-/* The button, which when clicked hides (collapses) all the toolbars. */
-.cke_toolbox_collapser
-{
-	width: 12px;
-	height: 11px;
-	float: right;
-	margin: 11px 0 0;
-	font-size: 0;
-	cursor: default;
-	text-align: center;
-
-	border: 1px solid #a6a6a6;
-	border-bottom-color: #979797;
-
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-
-	-moz-box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 0 2px rgba(255,255,255,.15) inset, 0 1px 0 rgba(255,255,255,.15) inset;
-	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 0 2px rgba(255,255,255,.15) inset, 0 1px 0 rgba(255,255,255,.15) inset;
-	box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 0 2px rgba(255,255,255,.15) inset, 0 1px 0 rgba(255,255,255,.15) inset;
-
-	background: #e4e4e4;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e4e4e4));
-	background-image: -moz-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: -webkit-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: -o-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: -ms-linear-gradient(top, #ffffff, #e4e4e4);
-	background-image: linear-gradient(top, #ffffff, #e4e4e4);
-	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ffffff', endColorstr='#e4e4e4');
-}
-
-.cke_toolbox_collapser:hover
-{
-	background: #ccc;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#ccc));
-	background-image: -moz-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: -webkit-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: -o-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: -ms-linear-gradient(top, #f2f2f2, #ccc);
-	background-image: linear-gradient(top, #f2f2f2, #ccc);
-	filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f2f2f2', endColorstr='#cccccc');
-}
-
-.cke_toolbox_collapser.cke_toolbox_collapser_min
-{
-	margin: 0 2px 4px;
-}
-
-.cke_rtl .cke_toolbox_collapser
-{
-	float: left;
-}
-
-/* The CSS arrow, which belongs to the toolbar collapser. */
-.cke_toolbox_collapser .cke_arrow
-{
-	display: inline-block;
-
-	/* Pure CSS Arrow */
-	height: 0;
-	width: 0;
-	font-size: 0;
-	margin-top: 1px;
-	border-left: 3px solid transparent;
-	border-right: 3px solid transparent;
-	border-bottom: 3px solid #474747;
-	border-top: 3px solid transparent;
-}
-
-.cke_toolbox_collapser.cke_toolbox_collapser_min .cke_arrow
-{
-	margin-top: 4px;
-	border-bottom-color: transparent;
-	border-top-color: #474747;
-}
-
-.cke_hc .cke_toolbox_collapser .cke_arrow
-{
-	font-size: 8px;
-	width: auto;
-	border: 0;
-	margin-top: 0;
-	margin-right: 2px;
-}
-:@children[8o:Sass::Tree::CommentNode
-:
-@type:normal;[ :@value["é/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
-*/:@options{ :
-@lineio;
-;	;
-;[ ;["	/*
-toolbar.css (part of editor.css)
-==================================
-
-This files styles the CKEditor toolbar and its buttons. For toolbar combo
-styles, check richcombo.css.
-
-The toolbar is rendered as a big container (called toolbox), which contains
-smaller "toolbars". Each toolbar represents a group of items that cannot be
-separated. The following is the visual representation of the toolbox.
-
-+-- .cke_toolbox ----------------------------------------------------------+
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ... +-- .cke_toolbar_break --+ |
-| |                  | |                  |     |                        | |
-| +------------------+ +------------------+     +------------------------+ |
-| +-- .cke_toolbar --+ +-- .cke_toolbar --+ ...                            |
-| |                  | |                  |                                |
-| +------------------+ +------------------+                                |
-+--------------------------------------------------------------------------+
-
-The following instead is the visual representation of a single toolbar:
-
-+-- .cke_toolbar ----------------------------------------------------------------+
-| +-- .cke_toolbar_start --+ +-- .cke_toolgroup (*) --+ +-- .cke_toolbar_end --+ |
-| |                        | |                        | |                      | |
-| +------------------------+ +------------------------+ +----------------------+ |
-+--------------------------------------------------------------------------------+
-(*) .cke_toolgroup is available only when the toolbar items can be grouped
-    (buttons). If the items can't be group (combos), this box is not available
-	and the items are rendered straight in that place.
-
-This file also styles toolbar buttons, which are rendered inside the above
-.cke_toolgroup containers. This is the visual representation of a button:
-
-+-- .cke_button -------------------------------------+
-| +-- .cke_button_icon --+ +-- .cke_button_label --+ |
-| |                      | |                       | |
-| +----------------------+ +-----------------------+ |
-+----------------------------------------------------+
-
-Special outer level classes used in this file:
-
-	.cke_hc: Available when the editor is rendered on "High Contrast".
-	.cke_rtl: Available when the editor UI is on RTL.
-*/;@;io;
-;	;
-;[ ;["+/* The box that holds each toolbar. */;@;i9o:Sass::Tree::RuleNode:
-@tabsi ;[o:Sass::Tree::PropNode;i :
-@name["
-float;[ ;o:Sass::Script::String;	:identifier;"	left;@;@;i<:@prop_syntax:new;@:
-@rule[".cke_toolbar;i;:@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;i;:@members[o:Sass::Selector::Sequence;[o:#Sass::Selector::SimpleSequence
-:@subject0;@ :@sourceso:Set:
-@hash{ ;i;;[o:Sass::Selector::Class;["cke_toolbar;@ ;i;:@has_childrenTo;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;iA;;;@;[".cke_rtl .cke_toolbar;i@;o;;" ;i@;[o;;[o;
-;0;@6;o;; { ;i@;[o;!;["cke_rtl;@6;i@o;
-;0;@6;o;; { ;i@;[o;!;["cke_toolbar;@6;i@;"To;
-;	;
-;[ ;["&/* The box that holds buttons. */;@;iDo;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;iG;;o;;i ;["margin;[ ;o;;	;;"0 6px 5px 0;@;@;iH;;o;;i ;["border;[ ;o;;	;;"1px solid #a6a6a6;@;@;iI;;o;;i ;["border-bottom-color;[ ;o;;	;;"#979797;@;@;iJ;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;iL;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;iM;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;iN;;o;;i ;["-moz-box-shadow;[ ;o:Sass::Script::List	:@separator:
-comma;[o;#	;$:
-space;[	o:Sass::Script::Number;i ;@:@denominator_units[ ;iP:@numerator_units[ :@original"0o;';i;@;([ ;iP;)["px;*"1pxo;';i ;@;(@|;iP;)[ ;*"0o:Sass::Script::Funcall;"	rgba;@:@keywords{ ;iP:@splat0:
-@args[	o;';iˇ;@;(@|;iP;)[ ;*"255o;';iˇ;@;(@|;iP;)[ ;*"255o;';iˇ;@;(@|;iP;)[ ;*"255o;';f0.5;@;(@|;iP;)[ ;*"0.5;@;iPo;#	;$;&;[
-o;';i ;@;(@|;iP;)[ ;*"0o;';i ;@;(@|;iP;)[ ;*"0o;';i;@;([ ;iP;)["px;*"2pxo;+;"	rgba;@;,{ ;iP;-0;.[	o;';iˇ;@;(@|;iP;)[ ;*"255o;';iˇ;@;(@|;iP;)[ ;*"255o;';iˇ;@;(@|;iP;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;iP;)[ ;*"	0.15o;	;	;;"
-inset;@;iP;@;iPo;#	;$;&;[
-o;';i ;@;(@|;iP;)[ ;*"0o;';i;@;([ ;iP;)["px;*"1pxo;';i ;@;(@|;iP;)[ ;*"0o;+;"	rgba;@;,{ ;iP;-0;.[	o;';iˇ;@;(@|;iP;)[ ;*"255o;';iˇ;@;(@|;iP;)[ ;*"255o;';iˇ;@;(@|;iP;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;iP;)[ ;*"	0.15o;	;	;;"
-inset;@;iP;@;iP;@;iP;@;iP;;o;;i ;["-webkit-box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[	o;';i ;@;(@|;iQ;)[ ;*"0o;';i;@;([ ;iQ;)["px;*"1pxo;';i ;@;(@|;iQ;)[ ;*"0o;+;"	rgba;@;,{ ;iQ;-0;.[	o;';iˇ;@;(@|;iQ;)[ ;*"255o;';iˇ;@;(@|;iQ;)[ ;*"255o;';iˇ;@;(@|;iQ;)[ ;*"255o;';f0.5;@;(@|;iQ;)[ ;*"0.5;@;iQo;#	;$;&;[
-o;';i ;@;(@|;iQ;)[ ;*"0o;';i ;@;(@|;iQ;)[ ;*"0o;';i;@;([ ;iQ;)["px;*"2pxo;+;"	rgba;@;,{ ;iQ;-0;.[	o;';iˇ;@;(@|;iQ;)[ ;*"255o;';iˇ;@;(@|;iQ;)[ ;*"255o;';iˇ;@;(@|;iQ;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;iQ;)[ ;*"	0.15o;	;	;;"
-inset;@;iQ;@;iQo;#	;$;&;[
-o;';i ;@;(@|;iQ;)[ ;*"0o;';i;@;([ ;iQ;)["px;*"1pxo;';i ;@;(@|;iQ;)[ ;*"0o;+;"	rgba;@;,{ ;iQ;-0;.[	o;';iˇ;@;(@|;iQ;)[ ;*"255o;';iˇ;@;(@|;iQ;)[ ;*"255o;';iˇ;@;(@|;iQ;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;iQ;)[ ;*"	0.15o;	;	;;"
-inset;@;iQ;@;iQ;@;iQ;@;iQ;;o;;i ;["box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[	o;';i ;@;(@|;iR;)[ ;*"0o;';i;@;([ ;iR;)["px;*"1pxo;';i ;@;(@|;iR;)[ ;*"0o;+;"	rgba;@;,{ ;iR;-0;.[	o;';iˇ;@;(@|;iR;)[ ;*"255o;';iˇ;@;(@|;iR;)[ ;*"255o;';iˇ;@;(@|;iR;)[ ;*"255o;';f0.5;@;(@|;iR;)[ ;*"0.5;@;iRo;#	;$;&;[
-o;';i ;@;(@|;iR;)[ ;*"0o;';i ;@;(@|;iR;)[ ;*"0o;';i;@;([ ;iR;)["px;*"2pxo;+;"	rgba;@;,{ ;iR;-0;.[	o;';iˇ;@;(@|;iR;)[ ;*"255o;';iˇ;@;(@|;iR;)[ ;*"255o;';iˇ;@;(@|;iR;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;iR;)[ ;*"	0.15o;	;	;;"
-inset;@;iR;@;iRo;#	;$;&;[
-o;';i ;@;(@|;iR;)[ ;*"0o;';i;@;([ ;iR;)["px;*"1pxo;';i ;@;(@|;iR;)[ ;*"0o;+;"	rgba;@;,{ ;iR;-0;.[	o;';iˇ;@;(@|;iR;)[ ;*"255o;';iˇ;@;(@|;iR;)[ ;*"255o;';iˇ;@;(@|;iR;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;iR;)[ ;*"	0.15o;	;	;;"
-inset;@;iR;@;iR;@;iR;@;iR;;o;;i ;["background;[ ;o;;	;;"#e4e4e4;@;@;iT;;o;;i ;["background-image;[ ;o;+;"-webkit-gradient;@;,{ ;iU;-0;.[
-o;	;	;;"linear;@;iUo;#	;$;&;[o;	;	;;"	left;@;iUo;	;	;;"top;@;iU;@;iUo;#	;$;&;[o;	;	;;"	left;@;iUo;	;	;;"bottom;@;iU;@;iUo;+;"	from;@;,{ ;iU;-0;.[o:Sass::Script::Color	;0;@;iU:@attrs{	:
-alphai:
-greeniˇ:	blueiˇ:rediˇo;+;"to;@;,{ ;iU;-0;.[o;/	;0;@;iU;0{	;1i;2i‰;3i‰;4i‰;@;iU;;o;;i ;["background-image;[ ;o;+;"-moz-linear-gradient;@;,{ ;iV;-0;.[o;	;	;;"top;@;iVo;/	;0;@;iV;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;iV;0{	;1i;2i‰;3i‰;4i‰;@;iV;;o;;i ;["background-image;[ ;o;+;"-webkit-linear-gradient;@;,{ ;iW;-0;.[o;	;	;;"top;@;iWo;/	;0;@;iW;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;iW;0{	;1i;2i‰;3i‰;4i‰;@;iW;;o;;i ;["background-image;[ ;o;+;"-o-linear-gradient;@;,{ ;iX;-0;.[o;	;	;;"top;@;iXo;/	;0;@;iX;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;iX;0{	;1i;2i‰;3i‰;4i‰;@;iX;;o;;i ;["background-image;[ ;o;+;"-ms-linear-gradient;@;,{ ;iY;-0;.[o;	;	;;"top;@;iYo;/	;0;@;iY;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;iY;0{	;1i;2i‰;3i‰;4i‰;@;iY;;o;;i ;["background-image;[ ;o;+;"linear-gradient;@;,{ ;iZ;-0;.[o;	;	;;"top;@;iZo;/	;0;@;iZ;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;iZ;0{	;1i;2i‰;3i‰;4i‰;@;iZ;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ffffff', endColorstr='#e4e4e4');@;i[;@;i[;;;@;[".cke_toolgroup;iF;o;;" ;iF;[o;;[o;
-;0;@;o;; { ;iF;[o;!;["cke_toolgroup;@;iF;"To;;i ;[o;;i ;["border;[ ;o;;	;;"0;@;@;i`;;o;;i ;["margin-right;[ ;o;;	;;"	10px;@;@;ia;;o;;i ;["margin-bottom;[ ;o;;	;;"	10px;@;@;ib;;;@;[".cke_hc .cke_toolgroup;i_;o;;" ;i_;[o;;[o;
-;0;@9;o;; { ;i_;[o;!;["cke_hc;@9;i_o;
-;0;@9;o;; { ;i_;[o;!;["cke_toolgroup;@9;i_;"To;;i ;[o;;i ;["-moz-border-radius;[ ;o;;	;;"0 2px 2px 0;@;@;ig;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"0 2px 2px 0;@;@;ih;;o;;i ;["border-radius;[ ;o;;	;;"0 2px 2px 0;@;@;ii;;;@;["*.cke_rtl .cke_toolgroup *:first-child;if;o;;" ;if;[o;;[o;
-;0;@b;o;; { ;if;[o;!;["cke_rtl;@b;ifo;
-;0;@b;o;; { ;if;[o;!;["cke_toolgroup;@b;ifo;
-;0;@b;o;; { ;if;[o:Sass::Selector::Universal;@b;if:@namespace0o:Sass::Selector::Pseudo
-;["first-child;	:
-class;@b;if:	@arg0;"To;;i ;[o;;i ;["-moz-border-radius;[ ;o;;	;;"2px 0 0 2px;@;@;in;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"2px 0 0 2px;@;@;io;;o;;i ;["border-radius;[ ;o;;	;;"2px 0 0 2px;@;@;ip;;;@;[").cke_rtl .cke_toolgroup *:last-child;im;o;;" ;im;[o;;[o;
-;0;@ì;o;; { ;im;[o;!;["cke_rtl;@ì;imo;
-;0;@ì;o;; { ;im;[o;!;["cke_toolgroup;@ì;imo;
-;0;@ì;o;; { ;im;[o;5;@ì;im;60o;7
-;["last-child;	;8;@ì;im;90;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;iu;;o;;i ;["margin-left;[ ;o;;	;;"6px;@;@;iv;;o;;i ;["margin-right;[ ;o;;	;;"0;@;@;iw;;;@;[".cke_rtl .cke_toolgroup;it;o;;" ;it;[o;;[o;
-;0;@ƒ;o;; { ;it;[o;!;["cke_rtl;@ƒ;ito;
-;0;@ƒ;o;; { ;it;[o;!;["cke_toolgroup;@ƒ;it;"To;
-;	;
-;[ ;["/* A toolbar button . */;@;izo;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i};;o;;i ;["height;[ ;o;;	;;"	18px;@;@;i~;;o;;i ;["padding;[ ;o;;	;;"4px 6px;@;@;i;;o;;i ;["outline;[ ;o;;	;;"	none;@;@;i{;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i|;;o;;i ;["
-float;[ ;o;;	;;"	left;@;@;i};;o;;i ;["border;[ ;o;;	;;"0;@;@;i~;;;@;["a.cke_button;i|;o;;" ;i|;[o;;[o;
-;0;@	;o;; { ;i|;[o:Sass::Selector::Element	;["a;@	;i|;60o;!;["cke_button;@	;i|;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;iÉ;;;@;[".cke_rtl .cke_button;iÇ;o;;" ;iÇ;[o;;[o;
-;0;@";o;; { ;iÇ;[o;!;["cke_rtl;@";iÇo;
-;0;@";o;; { ;iÇ;[o;!;["cke_button;@";iÇ;"To;;i ;[	o;;i ;["border;[ ;o;;	;;"1px solid black;@;@;ià;;o;
-;	;
-;[ ;["&/* Compensate the added border */;@;iäo;;i ;["padding;[ ;o;;	;;"3px 5px;@;@;iã;;o;;i ;["margin;[ ;o;;	;;"-2px 4px 0 -2px;@;@;iå;;;@;[".cke_hc .cke_button;iá;o;;" ;iá;[o;;[o;
-;0;@O;o;; { ;iá;[o;!;["cke_hc;@O;iáo;
-;0;@O;o;; { ;iá;[o;!;["cke_button;@O;iá;"To;
-;	;
-;[ ;["⁄/* This class is applied to the button when it is "active" (pushed).
-   This style indicates that the feature associated with the button is active
-   i.e. currently writing in bold or when spell checking is enabled. */;@;ièo;;i ;[o;;i ;["-moz-box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[
-o;';i ;@;(@|;iî;)[ ;*"0o;';i;@;([ ;iî;)["px;*"1pxo;';i
-;@;([ ;iî;)["px;*"5pxo;+;"	rgba;@;,{ ;iî;-0;.[	o;';i ;@;(@|;iî;)[ ;*"0o;';i ;@;(@|;iî;)[ ;*"0o;';i ;@;(@|;iî;)[ ;*"0o;';f0.59999999999999998 33;@;(@|;iî;)[ ;*"0.6o;	;	;;"
-inset;@;iî;@;iîo;#	;$;&;[	o;';i ;@;(@|;iî;)[ ;*"0o;';i;@;([ ;iî;)["px;*"1pxo;';i ;@;(@|;iî;)[ ;*"0o;+;"	rgba;@;,{ ;iî;-0;.[	o;';i ;@;(@|;iî;)[ ;*"0o;';i ;@;(@|;iî;)[ ;*"0o;';i ;@;(@|;iî;)[ ;*"0o;';f0.20000000000000001 ôö;@;(@|;iî;)[ ;*"0.2;@;iî;@;iî;@;iî;;o;;i ;["-webkit-box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[
-o;';i ;@;(@|;iï;)[ ;*"0o;';i;@;([ ;iï;)["px;*"1pxo;';i
-;@;([ ;iï;)["px;*"5pxo;+;"	rgba;@;,{ ;iï;-0;.[	o;';i ;@;(@|;iï;)[ ;*"0o;';i ;@;(@|;iï;)[ ;*"0o;';i ;@;(@|;iï;)[ ;*"0o;';f0.59999999999999998 33;@;(@|;iï;)[ ;*"0.6o;	;	;;"
-inset;@;iï;@;iïo;#	;$;&;[	o;';i ;@;(@|;iï;)[ ;*"0o;';i;@;([ ;iï;)["px;*"1pxo;';i ;@;(@|;iï;)[ ;*"0o;+;"	rgba;@;,{ ;iï;-0;.[	o;';i ;@;(@|;iï;)[ ;*"0o;';i ;@;(@|;iï;)[ ;*"0o;';i ;@;(@|;iï;)[ ;*"0o;';f0.20000000000000001 ôö;@;(@|;iï;)[ ;*"0.2;@;iï;@;iï;@;iï;;o;;i ;["box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[
-o;';i ;@;(@|;iñ;)[ ;*"0o;';i;@;([ ;iñ;)["px;*"1pxo;';i
-;@;([ ;iñ;)["px;*"5pxo;+;"	rgba;@;,{ ;iñ;-0;.[	o;';i ;@;(@|;iñ;)[ ;*"0o;';i ;@;(@|;iñ;)[ ;*"0o;';i ;@;(@|;iñ;)[ ;*"0o;';f0.59999999999999998 33;@;(@|;iñ;)[ ;*"0.6o;	;	;;"
-inset;@;iñ;@;iño;#	;$;&;[	o;';i ;@;(@|;iñ;)[ ;*"0o;';i;@;([ ;iñ;)["px;*"1pxo;';i ;@;(@|;iñ;)[ ;*"0o;+;"	rgba;@;,{ ;iñ;-0;.[	o;';i ;@;(@|;iñ;)[ ;*"0o;';i ;@;(@|;iñ;)[ ;*"0o;';i ;@;(@|;iñ;)[ ;*"0o;';f0.20000000000000001 ôö;@;(@|;iñ;)[ ;*"0.2;@;iñ;@;iñ;@;iñ;;o;;i ;["background;[ ;o;;	;;"#b5b5b5;@;@;iò;;o;;i ;["background-image;[ ;o;+;"-webkit-gradient;@;,{ ;iô;-0;.[
-o;	;	;;"linear;@;iôo;#	;$;&;[o;	;	;;"	left;@;iôo;	;	;;"top;@;iô;@;iôo;#	;$;&;[o;	;	;;"	left;@;iôo;	;	;;"bottom;@;iô;@;iôo;+;"	from;@;,{ ;iô;-0;.[o;/	;0;@;iô;0{	;1i;2i™;3i™;4i™o;+;"to;@;,{ ;iô;-0;.[o;/	;0;@;iô;0{	;1i;2i ;3i ;4i ;@;iô;;o;;i ;["background-image;[ ;o;+;"-moz-linear-gradient;@;,{ ;iö;-0;.[o;	;	;;"top;@;iöo;/	;0;@;iö;0{	;1i;2i™;3i™;4i™o;/	;0;@;iö;0{	;1i;2i ;3i ;4i ;@;iö;;o;;i ;["background-image;[ ;o;+;"-webkit-linear-gradient;@;,{ ;iõ;-0;.[o;	;	;;"top;@;iõo;/	;0;@;iõ;0{	;1i;2i™;3i™;4i™o;/	;0;@;iõ;0{	;1i;2i ;3i ;4i ;@;iõ;;o;;i ;["background-image;[ ;o;+;"-o-linear-gradient;@;,{ ;iú;-0;.[o;	;	;;"top;@;iúo;/	;0;@;iú;0{	;1i;2i™;3i™;4i™o;/	;0;@;iú;0{	;1i;2i ;3i ;4i ;@;iú;;o;;i ;["background-image;[ ;o;+;"-ms-linear-gradient;@;,{ ;iù;-0;.[o;	;	;;"top;@;iùo;/	;0;@;iù;0{	;1i;2i™;3i™;4i™o;/	;0;@;iù;0{	;1i;2i ;3i ;4i ;@;iù;;o;;i ;["background-image;[ ;o;+;"linear-gradient;@;,{ ;iû;-0;.[o;	;	;;"top;@;iûo;/	;0;@;iû;0{	;1i;2i™;3i™;4i™o;/	;0;@;iû;0{	;1i;2i ;3i ;4i ;@;iû;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#aaaaaa', endColorstr='#cacaca');@;iü;@;iü;;;@;[".cke_button_on;iì;o;;" ;iì;[o;;[o;
-;0;@∞;o;; { ;iì;[o;!;["cke_button_on;@∞;iì;"To;;i ;[o;;i ;["border-width;[ ;o;;	;;"3px;@;@;i™;;o;
-;	;
-;[ ;["'/* Compensate the border change */;@;i¨o;;i ;["padding;[ ;o;;	;;"1px 3px;@;@;i≠;;;@;["Á.cke_hc .cke_button_on,
-.cke_hc a.cke_button_off:hover,
-.cke_hc a.cke_button_off:focus,
-.cke_hc a.cke_button_off:active,
-.cke_hc a.cke_button_disabled:hover,
-.cke_hc a.cke_button_disabled:focus,
-.cke_hc a.cke_button_disabled:active;i©;o;;" ;i©;[o;;[o;
-;0;@–;o;; { ;i©;[o;!;["cke_hc;@–;i©o;
-;0;@–;o;; { ;i©;[o;!;["cke_button_on;@–;i©o;;["
-o;
-;0;@–;o;; { ;i©;[o;!;["cke_hc;@–;i©o;
-;0;@–;o;; { ;i©;[o;:	;["a;@–;i©;60o;!;["cke_button_off;@–;i©o;7
-;["
-hover;	;8;@–;i©;90o;;["
-o;
-;0;@–;o;; { ;i©;[o;!;["cke_hc;@–;i©o;
-;0;@–;o;; { ;i©;[o;:	;["a;@–;i©;60o;!;["cke_button_off;@–;i©o;7
-;["
-focus;	;8;@–;i©;90o;;["
-o;
-;0;@–;o;; { ;i©;[o;!;["cke_hc;@–;i©o;
-;0;@–;o;; { ;i©;[o;:	;["a;@–;i©;60o;!;["cke_button_off;@–;i©o;7
-;["active;	;8;@–;i©;90o;;["
-o;
-;0;@–;o;; { ;i©;[o;!;["cke_hc;@–;i©o;
-;0;@–;o;; { ;i©;[o;:	;["a;@–;i©;60o;!;["cke_button_disabled;@–;i©o;7
-;["
-hover;	;8;@–;i©;90o;;["
-o;
-;0;@–;o;; { ;i©;[o;!;["cke_hc;@–;i©o;
-;0;@–;o;; { ;i©;[o;:	;["a;@–;i©;60o;!;["cke_button_disabled;@–;i©o;7
-;["
-focus;	;8;@–;i©;90o;;["
-o;
-;0;@–;o;; { ;i©;[o;!;["cke_hc;@–;i©o;
-;0;@–;o;; { ;i©;[o;:	;["a;@–;i©;60o;!;["cke_button_disabled;@–;i©o;7
-;["active;	;8;@–;i©;90;"To;
-;	;
-;[ ;["”/* This class is applied to the button when the feature associated with the
-   button cannot be used (grayed-out).
-   i.e. paste button remains disabled when there is nothing in the clipboard to
-   be pasted. */;@;i∞o;;i ;[o;;i ;["opacity;[ ;o;;	;;"0.3;@;@;i∂;;;@;["*.cke_button_disabled .cke_button_icon;iµ;o;;" ;iµ;[o;;[o;
-;0;@{;o;; { ;iµ;[o;!;["cke_button_disabled;@{;iµo;
-;0;@{;o;; { ;iµ;[o;!;["cke_button_icon;@{;iµ;"To;;i ;[o;;i ;["opacity;[ ;o;;	;;"0.5;@;@;iª;;;@;["!.cke_hc .cke_button_disabled;i∫;o;;" ;i∫;[o;;[o;
-;0;@ò;o;; { ;i∫;[o;!;["cke_hc;@ò;i∫o;
-;0;@ò;o;; { ;i∫;[o;!;["cke_button_disabled;@ò;i∫;"To;;i ;[o;;i ;["-moz-box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[
-o;';i ;@;(@|;i¬;)[ ;*"0o;';i;@;([ ;i¬;)["px;*"1pxo;';i;@;([ ;i¬;)["px;*"6pxo;+;"	rgba;@;,{ ;i¬;-0;.[	o;';i ;@;(@|;i¬;)[ ;*"0o;';i ;@;(@|;i¬;)[ ;*"0o;';i ;@;(@|;i¬;)[ ;*"0o;';f0.69999999999999996 ff;@;(@|;i¬;)[ ;*"0.7o;	;	;;"
-inset;@;i¬;@;i¬o;#	;$;&;[	o;';i ;@;(@|;i¬;)[ ;*"0o;';i;@;([ ;i¬;)["px;*"1pxo;';i ;@;(@|;i¬;)[ ;*"0o;+;"	rgba;@;,{ ;i¬;-0;.[	o;';i ;@;(@|;i¬;)[ ;*"0o;';i ;@;(@|;i¬;)[ ;*"0o;';i ;@;(@|;i¬;)[ ;*"0o;';f0.20000000000000001 ôö;@;(@|;i¬;)[ ;*"0.2;@;i¬;@;i¬;@;i¬;;o;;i ;["-webkit-box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[
-o;';i ;@;(@|;i√;)[ ;*"0o;';i;@;([ ;i√;)["px;*"1pxo;';i;@;([ ;i√;)["px;*"6pxo;+;"	rgba;@;,{ ;i√;-0;.[	o;';i ;@;(@|;i√;)[ ;*"0o;';i ;@;(@|;i√;)[ ;*"0o;';i ;@;(@|;i√;)[ ;*"0o;';f0.69999999999999996 ff;@;(@|;i√;)[ ;*"0.7o;	;	;;"
-inset;@;i√;@;i√o;#	;$;&;[	o;';i ;@;(@|;i√;)[ ;*"0o;';i;@;([ ;i√;)["px;*"1pxo;';i ;@;(@|;i√;)[ ;*"0o;+;"	rgba;@;,{ ;i√;-0;.[	o;';i ;@;(@|;i√;)[ ;*"0o;';i ;@;(@|;i√;)[ ;*"0o;';i ;@;(@|;i√;)[ ;*"0o;';f0.20000000000000001 ôö;@;(@|;i√;)[ ;*"0.2;@;i√;@;i√;@;i√;;o;;i ;["box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[
-o;';i ;@;(@|;iƒ;)[ ;*"0o;';i;@;([ ;iƒ;)["px;*"1pxo;';i;@;([ ;iƒ;)["px;*"6pxo;+;"	rgba;@;,{ ;iƒ;-0;.[	o;';i ;@;(@|;iƒ;)[ ;*"0o;';i ;@;(@|;iƒ;)[ ;*"0o;';i ;@;(@|;iƒ;)[ ;*"0o;';f0.69999999999999996 ff;@;(@|;iƒ;)[ ;*"0.7o;	;	;;"
-inset;@;iƒ;@;iƒo;#	;$;&;[	o;';i ;@;(@|;iƒ;)[ ;*"0o;';i;@;([ ;iƒ;)["px;*"1pxo;';i ;@;(@|;iƒ;)[ ;*"0o;+;"	rgba;@;,{ ;iƒ;-0;.[	o;';i ;@;(@|;iƒ;)[ ;*"0o;';i ;@;(@|;iƒ;)[ ;*"0o;';i ;@;(@|;iƒ;)[ ;*"0o;';f0.20000000000000001 ôö;@;(@|;iƒ;)[ ;*"0.2;@;iƒ;@;iƒ;@;iƒ;;;@;["Ia.cke_button_on:hover,
-a.cke_button_on:focus,
-a.cke_button_on:active;i¡;o;;" ;i¡;[o;;[o;
-;0;@Å;o;; { ;i¡;[o;:	;["a;@Å;i¡;60o;!;["cke_button_on;@Å;i¡o;7
-;["
-hover;	;8;@Å;i¡;90o;;["
-o;
-;0;@Å;o;; { ;i¡;[o;:	;["a;@Å;i¡;60o;!;["cke_button_on;@Å;i¡o;7
-;["
-focus;	;8;@Å;i¡;90o;;["
-o;
-;0;@Å;o;; { ;i¡;[o;:	;["a;@Å;i¡;60o;!;["cke_button_on;@Å;i¡o;7
-;["active;	;8;@Å;i¡;90;"To;;i ;[o;;i ;["-moz-box-shadow;[ ;o;#	;$;&;[
-o;';i ;@;(@|;iŒ;)[ ;*"0o;';i ;@;(@|;iŒ;)[ ;*"0o;';i;@;([ ;iŒ;)["px;*"1pxo;+;"	rgba;@;,{ ;iŒ;-0;.[	o;';i ;@;(@|;iŒ;)[ ;*"0o;';i ;@;(@|;iŒ;)[ ;*"0o;';i ;@;(@|;iŒ;)[ ;*"0o;';f0.29999999999999999 33;@;(@|;iŒ;)[ ;*"0.3o;	;	;;"
-inset;@;iŒ;@;iŒ;@;iŒ;;o;;i ;["-webkit-box-shadow;[ ;o;#	;$;&;[
-o;';i ;@;(@|;iœ;)[ ;*"0o;';i ;@;(@|;iœ;)[ ;*"0o;';i;@;([ ;iœ;)["px;*"1pxo;+;"	rgba;@;,{ ;iœ;-0;.[	o;';i ;@;(@|;iœ;)[ ;*"0o;';i ;@;(@|;iœ;)[ ;*"0o;';i ;@;(@|;iœ;)[ ;*"0o;';f0.29999999999999999 33;@;(@|;iœ;)[ ;*"0.3o;	;	;;"
-inset;@;iœ;@;iœ;@;iœ;;o;;i ;["box-shadow;[ ;o;#	;$;&;[
-o;';i ;@;(@|;i–;)[ ;*"0o;';i ;@;(@|;i–;)[ ;*"0o;';i;@;([ ;i–;)["px;*"1pxo;+;"	rgba;@;,{ ;i–;-0;.[	o;';i ;@;(@|;i–;)[ ;*"0o;';i ;@;(@|;i–;)[ ;*"0o;';i ;@;(@|;i–;)[ ;*"0o;';f0.29999999999999999 33;@;(@|;i–;)[ ;*"0.3o;	;	;;"
-inset;@;i–;@;i–;@;i–;;o;;i ;["background;[ ;o;;	;;"	#ccc;@;@;i“;;o;;i ;["background-image;[ ;o;+;"-webkit-gradient;@;,{ ;i”;-0;.[
-o;	;	;;"linear;@;i”o;#	;$;&;[o;	;	;;"	left;@;i”o;	;	;;"top;@;i”;@;i”o;#	;$;&;[o;	;	;;"	left;@;i”o;	;	;;"bottom;@;i”;@;i”o;+;"	from;@;,{ ;i”;-0;.[o;/	;0;@;i”;0{	;1i;2iÚ;3iÚ;4iÚo;+;"to;@;,{ ;i”;-0;.[o;/	;0;@;i”;0{	;1i;2iÃ;3iÃ;4iÃ;@;i”;;o;;i ;["background-image;[ ;o;+;"-moz-linear-gradient;@;,{ ;i‘;-0;.[o;	;	;;"top;@;i‘o;/	;0;@;i‘;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;i‘;0{	;1i;2iÃ;3iÃ;4iÃ;@;i‘;;o;;i ;["background-image;[ ;o;+;"-webkit-linear-gradient;@;,{ ;i’;-0;.[o;	;	;;"top;@;i’o;/	;0;@;i’;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;i’;0{	;1i;2iÃ;3iÃ;4iÃ;@;i’;;o;;i ;["background-image;[ ;o;+;"-o-linear-gradient;@;,{ ;i÷;-0;.[o;	;	;;"top;@;i÷o;/	;0;@;i÷;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;i÷;0{	;1i;2iÃ;3iÃ;4iÃ;@;i÷;;o;;i ;["background-image;[ ;o;+;"-ms-linear-gradient;@;,{ ;i◊;-0;.[o;	;	;;"top;@;i◊o;/	;0;@;i◊;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;i◊;0{	;1i;2iÃ;3iÃ;4iÃ;@;i◊;;o;;i ;["background-image;[ ;o;+;"linear-gradient;@;,{ ;iÿ;-0;.[o;	;	;;"top;@;iÿo;/	;0;@;iÿ;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;iÿ;0{	;1i;2iÃ;3iÃ;4iÃ;@;iÿ;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f2f2f2', endColorstr='#cccccc');@;iŸ;@;iŸ;;;@;["üa.cke_button_off:hover,
-a.cke_button_off:focus,
-a.cke_button_off:active,
-a.cke_button_disabled:hover,
-a.cke_button_disabled:focus,
-a.cke_button_disabled:active;iÕ;o;;" ;iÕ;[o;;[o;
-;0;@ó;o;; { ;iÕ;[o;:	;["a;@ó;iÕ;60o;!;["cke_button_off;@ó;iÕo;7
-;["
-hover;	;8;@ó;iÕ;90o;;["
-o;
-;0;@ó;o;; { ;iÕ;[o;:	;["a;@ó;iÕ;60o;!;["cke_button_off;@ó;iÕo;7
-;["
-focus;	;8;@ó;iÕ;90o;;["
-o;
-;0;@ó;o;; { ;iÕ;[o;:	;["a;@ó;iÕ;60o;!;["cke_button_off;@ó;iÕo;7
-;["active;	;8;@ó;iÕ;90o;;["
-o;
-;0;@ó;o;; { ;iÕ;[o;:	;["a;@ó;iÕ;60o;!;["cke_button_disabled;@ó;iÕo;7
-;["
-hover;	;8;@ó;iÕ;90o;;["
-o;
-;0;@ó;o;; { ;iÕ;[o;:	;["a;@ó;iÕ;60o;!;["cke_button_disabled;@ó;iÕo;7
-;["
-focus;	;8;@ó;iÕ;90o;;["
-o;
-;0;@ó;o;; { ;iÕ;[o;:	;["a;@ó;iÕ;60o;!;["cke_button_disabled;@ó;iÕo;7
-;["active;	;8;@ó;iÕ;90;"To;
-;	;
-;[ ;["C/* The icon which is a visual representation of the button. */;@;i‹o;;i ;[o;;i ;["cursor;[ ;o;;	;;"inherit;@;@;iﬂ;;o;;i ;["background-repeat;[ ;o;;	;;"no-repeat;@;@;i‡;;o;;i ;["margin-top;[ ;o;;	;;"1px;@;@;i·;;o;;i ;["
-width;[ ;o;;	;;"	16px;@;@;i‚;;o;;i ;["height;[ ;o;;	;;"	16px;@;@;i„;;o;;i ;["
-float;[ ;o;;	;;"	left;@;@;i‰;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iÂ;;;@;[".cke_button_icon;iﬁ;o;;" ;iﬁ;[o;;[o;
-;0;@+;o;; { ;iﬁ;[o;!;["cke_button_icon;@+;iﬁ;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;iÍ;;;@;[".cke_rtl .cke_button_icon;iÈ;o;;" ;iÈ;[o;;[o;
-;0;@A;o;; { ;iÈ;[o;!;["cke_rtl;@A;iÈo;
-;0;@A;o;; { ;iÈ;[o;!;["cke_button_icon;@A;iÈ;"To;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;iÔ;;;@;[".cke_hc .cke_button_icon;iÓ;o;;" ;iÓ;[o;;[o;
-;0;@^;o;; { ;iÓ;[o;!;["cke_hc;@^;iÓo;
-;0;@^;o;; { ;iÓ;[o;!;["cke_button_icon;@^;iÓ;"To;
-;	;
-;[ ;["é/* The label of the button that stores the name of the feature. By default,
-   labels are invisible. They can be revealed on demand though. */;@;iÚo;;i ;[o;;i ;["display;[ ;o;;	;;"	none;@;@;iˆ;;o;;i ;["padding-left;[ ;o;;	;;"3px;@;@;i˜;;o;;i ;["margin-top;[ ;o;;	;;"1px;@;@;i¯;;o;;i ;["line-height;[ ;o;;	;;"	17px;@;@;i˘;;o;;i ;["vertical-align;[ ;o;;	;;"middle;@;@;i˙;;o;;i ;["
-float;[ ;o;;	;;"	left;@;@;i˚;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i¸;;o;;i ;["
-color;[ ;o;;	;;"#474747;@;@;i˝;;o;;i ;["text-shadow;[ ;o;#	;$;&;[	o;';i ;@;(@|;i˛;)[ ;*"0o;';i;@;([ ;i˛;)["px;*"1pxo;';i ;@;(@|;i˛;)[ ;*"0o;+;"	rgba;@;,{ ;i˛;-0;.[	o;';iˇ;@;(@|;i˛;)[ ;*"255o;';iˇ;@;(@|;i˛;)[ ;*"255o;';iˇ;@;(@|;i˛;)[ ;*"255o;';f0.5;@;(@|;i˛;)[ ;*"0.5;@;i˛;@;i˛;;;@;[".cke_button_label;iı;o;;" ;iı;[o;;[o;
-;0;@À;o;; { ;iı;[o;!;["cke_button_label;@À;iı;"To;;i ;[o;;i ;["padding-right;[ ;o;;	;;"3px;@;@;i;;o;;i ;["padding-left;[ ;o;;	;;"0;@;@;i;;o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i;;;@;[".cke_rtl .cke_button_label;i;o;;" ;i;[o;;[o;
-;0;@Ì;o;; { ;i;[o;!;["cke_rtl;@Ì;io;
-;0;@Ì;o;; { ;i;[o;!;["cke_button_label;@Ì;i;"To;;i ;[o;;i ;["padding;[ ;o;;	;;"0;@;@;i
-;;o;;i ;["display;[ ;o;;	;;"inline-block;@;@;i;;o;;i ;["font-size;[ ;o;;	;;"	12px;@;@;i;;;@;[".cke_hc .cke_button_label;i	;o;;" ;i	;[o;;[o;
-;0;@	;o;; { ;i	;[o;!;["cke_hc;@	;i	o;
-;0;@	;o;; { ;i	;[o;!;["cke_button_label;@	;i	;"To;
-;	;
-;[ ;["a/* The small arrow available on buttons that can be expanded
-   (e.g. the color buttons). */;@;io;;i ;[o;
-;	;
-;[ ;["/* Arrow in CSS */;@;io;;i ;["display;[ ;o;;	;;"inline-block;@;@;i;;o;;i ;["margin;[ ;o;;	;;"8px 0 0 1px;@;@;i;;o;;i ;["
-width;[ ;o;;	;;"0;@;@;i;;o;;i ;["height;[ ;o;;	;;"0;@;@;i;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;i;;o;;i ;["vertical-align;[ ;o;;	;;"top;@;@;i;;o;;i ;["border-left;[ ;o;;	;;"3px solid transparent;@;@;i;;o;;i ;["border-right;[ ;o;;	;;"3px solid transparent;@;@;i;;o;;i ;["border-top;[ ;o;;	;;"3px solid #474747;@;@;i;;;@;[".cke_button_arrow;i;o;;" ;i;[o;;[o;
-;0;@k	;o;; { ;i;[o;!;["cke_button_arrow;@k	;i;"To;;i ;[o;;i ;["margin-right;[ ;o;;	;;"5px;@;@;i!;;o;;i ;["margin-left;[ ;o;;	;;"0;@;@;i";;;@;[".cke_rtl .cke_button_arrow;i ;o;;" ;i ;[o;;[o;
-;0;@á	;o;; { ;i ;[o;!;["cke_rtl;@á	;i o;
-;0;@á	;o;; { ;i ;[o;!;["cke_button_arrow;@á	;i ;"To;;i ;[	o;;i ;["font-size;[ ;o;;	;;"	10px;@;@;i';;o;;i ;["margin;[ ;o;;	;;"3px -2px 0 3px;@;@;i(;;o;;i ;["
-width;[ ;o;;	;;"	auto;@;@;i);;o;;i ;["border;[ ;o;;	;;"0;@;@;i*;;;@;[".cke_hc .cke_button_arrow;i&;o;;" ;i&;[o;;[o;
-;0;@∂	;o;; { ;i&;[o;!;["cke_hc;@∂	;i&o;
-;0;@∂	;o;; { ;i&;[o;!;["cke_button_arrow;@∂	;i&;"To;
-;	;
-;[ ;["l/* The vertical separator which is used within a single toolbar to split
-   buttons into sub-groups. */;@;i-o;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;i1;;o;;i ;["background-color;[ ;o;;	;;"#c0c0c0;@;@;i2;;o;;i ;["background-color;[ ;o;+;"	rgba;@;,{ ;i3;-0;.[	o;';i ;@;(@|;i3;)[ ;*"0o;';i ;@;(@|;i3;)[ ;*"0o;';i ;@;(@|;i3;)[ ;*"0o;';f0.20000000000000001 ôö;@;(@|;i3;)[ ;*"0.2;@;i3;;o;;i ;["margin;[ ;o;;	;;"5px 2px 0;@;@;i4;;o;;i ;["height;[ ;o;;	;;"	18px;@;@;i5;;o;;i ;["
-width;[ ;o;;	;;"1px;@;@;i6;;o;;i ;["-webkit-box-shadow;[ ;o;#	;$;&;[	o;';i;@;([ ;i8;)["px;*"1pxo;';i ;@;(@|;i8;)[ ;*"0o;';i;@;([ ;i8;)["px;*"1pxo;+;"	rgba;@;,{ ;i8;-0;.[	o;';iˇ;@;(@|;i8;)[ ;*"255o;';iˇ;@;(@|;i8;)[ ;*"255o;';iˇ;@;(@|;i8;)[ ;*"255o;';f0.5;@;(@|;i8;)[ ;*"0.5;@;i8;@;i8;;o;;i ;["-moz-box-shadow;[ ;o;#	;$;&;[	o;';i;@;([ ;i9;)["px;*"1pxo;';i ;@;(@|;i9;)[ ;*"0o;';i;@;([ ;i9;)["px;*"1pxo;+;"	rgba;@;,{ ;i9;-0;.[	o;';iˇ;@;(@|;i9;)[ ;*"255o;';iˇ;@;(@|;i9;)[ ;*"255o;';iˇ;@;(@|;i9;)[ ;*"255o;';f0.5;@;(@|;i9;)[ ;*"0.5;@;i9;@;i9;;o;;i ;["box-shadow;[ ;o;#	;$;&;[	o;';i;@;([ ;i:;)["px;*"1pxo;';i ;@;(@|;i:;)[ ;*"0o;';i;@;([ ;i:;)["px;*"1pxo;+;"	rgba;@;,{ ;i:;-0;.[	o;';iˇ;@;(@|;i:;)[ ;*"255o;';iˇ;@;(@|;i:;)[ ;*"255o;';iˇ;@;(@|;i:;)[ ;*"255o;';f0.5;@;(@|;i:;)[ ;*"0.5;@;i:;@;i:;;;@;[".cke_toolbar_separator;i0;o;;" ;i0;[o;;[o;
-;0;@p
-;o;; { ;i0;[o;!;["cke_toolbar_separator;@p
-;i0;"To;;i ;[	o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i?;;o;;i ;["-webkit-box-shadow;[ ;o;#	;$;&;[	o;';i˙;@;([ ;iA;)["px;*"	-1pxo;';i ;@;(@|;iA;)[ ;*"0o;';i;@;([ ;iA;)["px;*"1pxo;+;"	rgba;@;,{ ;iA;-0;.[	o;';iˇ;@;(@|;iA;)[ ;*"255o;';iˇ;@;(@|;iA;)[ ;*"255o;';iˇ;@;(@|;iA;)[ ;*"255o;';f0.10000000000000001 ôö;@;(@|;iA;)[ ;*"0.1;@;iA;@;iA;;o;;i ;["-moz-box-shadow;[ ;o;#	;$;&;[	o;';i˙;@;([ ;iB;)["px;*"	-1pxo;';i ;@;(@|;iB;)[ ;*"0o;';i;@;([ ;iB;)["px;*"1pxo;+;"	rgba;@;,{ ;iB;-0;.[	o;';iˇ;@;(@|;iB;)[ ;*"255o;';iˇ;@;(@|;iB;)[ ;*"255o;';iˇ;@;(@|;iB;)[ ;*"255o;';f0.10000000000000001 ôö;@;(@|;iB;)[ ;*"0.1;@;iB;@;iB;;o;;i ;["box-shadow;[ ;o;#	;$;&;[	o;';i˙;@;([ ;iC;)["px;*"	-1pxo;';i ;@;(@|;iC;)[ ;*"0o;';i;@;([ ;iC;)["px;*"1pxo;+;"	rgba;@;,{ ;iC;-0;.[	o;';iˇ;@;(@|;iC;)[ ;*"255o;';iˇ;@;(@|;iC;)[ ;*"255o;';iˇ;@;(@|;iC;)[ ;*"255o;';f0.10000000000000001 ôö;@;(@|;iC;)[ ;*"0.1;@;iC;@;iC;;;@;["$.cke_rtl .cke_toolbar_separator;i>;o;;" ;i>;[o;;[o;
-;0;@Ú
-;o;; { ;i>;[o;!;["cke_rtl;@Ú
-;i>o;
-;0;@Ú
-;o;; { ;i>;[o;!;["cke_toolbar_separator;@Ú
-;i>;"To;;i ;[o;;i ;["
-width;[ ;o;;	;;"0;@;@;iH;;o;;i ;["border-left;[ ;o;;	;;"1px solid;@;@;iI;;o;;i ;["margin;[ ;o;;	;;"1px 5px 0 0px;@;@;iJ;;;@;["#.cke_hc .cke_toolbar_separator;iG;o;;" ;iG;[o;;[o;
-;0;@;o;; { ;iG;[o;!;["cke_hc;@;iGo;
-;0;@;o;; { ;iG;[o;!;["cke_toolbar_separator;@;iG;"To;
-;	;
-;[ ;["w/* The dummy element that breaks toolbars.
-   Once it is placed, the very next toolbar is moved to the new row. */;@;iMo;;i ;[o;;i ;["display;[ ;o;;	;;"
-block;@;@;iQ;;o;;i ;["
-clear;[ ;o;;	;;"	left;@;@;iR;;;@;[".cke_toolbar_break;iP;o;;" ;iP;[o;;[o;
-;0;@B;o;; { ;iP;[o;!;["cke_toolbar_break;@B;iP;"To;;i ;[o;;i ;["
-clear;[ ;o;;	;;"
-right;@;@;iW;;;@;[" .cke_rtl .cke_toolbar_break;iV;o;;" ;iV;[o;;[o;
-;0;@X;o;; { ;iV;[o;!;["cke_rtl;@X;iVo;
-;0;@X;o;; { ;iV;[o;!;["cke_toolbar_break;@X;iV;"To;
-;	;
-;[ ;["M/* The button, which when clicked hides (collapses) all the toolbars. */;@;iZo;;i ;[o;;i ;["
-width;[ ;o;;	;;"	12px;@;@;i];;o;;i ;["height;[ ;o;;	;;"	11px;@;@;i^;;o;;i ;["
-float;[ ;o;;	;;"
-right;@;@;i_;;o;;i ;["margin;[ ;o;;	;;"11px 0 0;@;@;i`;;o;;i ;["font-size;[ ;o;;	;;"0;@;@;ia;;o;;i ;["cursor;[ ;o;;	;;"default;@;@;ib;;o;;i ;["text-align;[ ;o;;	;;"center;@;@;ic;;o;;i ;["border;[ ;o;;	;;"1px solid #a6a6a6;@;@;ie;;o;;i ;["border-bottom-color;[ ;o;;	;;"#979797;@;@;if;;o;;i ;["-moz-border-radius;[ ;o;;	;;"3px;@;@;ih;;o;;i ;["-webkit-border-radius;[ ;o;;	;;"3px;@;@;ii;;o;;i ;["border-radius;[ ;o;;	;;"3px;@;@;ij;;o;;i ;["-moz-box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[	o;';i ;@;(@|;il;)[ ;*"0o;';i;@;([ ;il;)["px;*"1pxo;';i ;@;(@|;il;)[ ;*"0o;+;"	rgba;@;,{ ;il;-0;.[	o;';iˇ;@;(@|;il;)[ ;*"255o;';iˇ;@;(@|;il;)[ ;*"255o;';iˇ;@;(@|;il;)[ ;*"255o;';f0.5;@;(@|;il;)[ ;*"0.5;@;ilo;#	;$;&;[
-o;';i ;@;(@|;il;)[ ;*"0o;';i ;@;(@|;il;)[ ;*"0o;';i;@;([ ;il;)["px;*"2pxo;+;"	rgba;@;,{ ;il;-0;.[	o;';iˇ;@;(@|;il;)[ ;*"255o;';iˇ;@;(@|;il;)[ ;*"255o;';iˇ;@;(@|;il;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;il;)[ ;*"	0.15o;	;	;;"
-inset;@;il;@;ilo;#	;$;&;[
-o;';i ;@;(@|;il;)[ ;*"0o;';i;@;([ ;il;)["px;*"1pxo;';i ;@;(@|;il;)[ ;*"0o;+;"	rgba;@;,{ ;il;-0;.[	o;';iˇ;@;(@|;il;)[ ;*"255o;';iˇ;@;(@|;il;)[ ;*"255o;';iˇ;@;(@|;il;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;il;)[ ;*"	0.15o;	;	;;"
-inset;@;il;@;il;@;il;@;il;;o;;i ;["-webkit-box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[	o;';i ;@;(@|;im;)[ ;*"0o;';i;@;([ ;im;)["px;*"1pxo;';i ;@;(@|;im;)[ ;*"0o;+;"	rgba;@;,{ ;im;-0;.[	o;';iˇ;@;(@|;im;)[ ;*"255o;';iˇ;@;(@|;im;)[ ;*"255o;';iˇ;@;(@|;im;)[ ;*"255o;';f0.5;@;(@|;im;)[ ;*"0.5;@;imo;#	;$;&;[
-o;';i ;@;(@|;im;)[ ;*"0o;';i ;@;(@|;im;)[ ;*"0o;';i;@;([ ;im;)["px;*"2pxo;+;"	rgba;@;,{ ;im;-0;.[	o;';iˇ;@;(@|;im;)[ ;*"255o;';iˇ;@;(@|;im;)[ ;*"255o;';iˇ;@;(@|;im;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;im;)[ ;*"	0.15o;	;	;;"
-inset;@;im;@;imo;#	;$;&;[
-o;';i ;@;(@|;im;)[ ;*"0o;';i;@;([ ;im;)["px;*"1pxo;';i ;@;(@|;im;)[ ;*"0o;+;"	rgba;@;,{ ;im;-0;.[	o;';iˇ;@;(@|;im;)[ ;*"255o;';iˇ;@;(@|;im;)[ ;*"255o;';iˇ;@;(@|;im;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;im;)[ ;*"	0.15o;	;	;;"
-inset;@;im;@;im;@;im;@;im;;o;;i ;["box-shadow;[ ;o;#	;$;%;[o;#	;$;&;[	o;';i ;@;(@|;in;)[ ;*"0o;';i;@;([ ;in;)["px;*"1pxo;';i ;@;(@|;in;)[ ;*"0o;+;"	rgba;@;,{ ;in;-0;.[	o;';iˇ;@;(@|;in;)[ ;*"255o;';iˇ;@;(@|;in;)[ ;*"255o;';iˇ;@;(@|;in;)[ ;*"255o;';f0.5;@;(@|;in;)[ ;*"0.5;@;ino;#	;$;&;[
-o;';i ;@;(@|;in;)[ ;*"0o;';i ;@;(@|;in;)[ ;*"0o;';i;@;([ ;in;)["px;*"2pxo;+;"	rgba;@;,{ ;in;-0;.[	o;';iˇ;@;(@|;in;)[ ;*"255o;';iˇ;@;(@|;in;)[ ;*"255o;';iˇ;@;(@|;in;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;in;)[ ;*"	0.15o;	;	;;"
-inset;@;in;@;ino;#	;$;&;[
-o;';i ;@;(@|;in;)[ ;*"0o;';i;@;([ ;in;)["px;*"1pxo;';i ;@;(@|;in;)[ ;*"0o;+;"	rgba;@;,{ ;in;-0;.[	o;';iˇ;@;(@|;in;)[ ;*"255o;';iˇ;@;(@|;in;)[ ;*"255o;';iˇ;@;(@|;in;)[ ;*"255o;';f0.14999999999999999 33;@;(@|;in;)[ ;*"	0.15o;	;	;;"
-inset;@;in;@;in;@;in;@;in;;o;;i ;["background;[ ;o;;	;;"#e4e4e4;@;@;ip;;o;;i ;["background-image;[ ;o;+;"-webkit-gradient;@;,{ ;iq;-0;.[
-o;	;	;;"linear;@;iqo;#	;$;&;[o;	;	;;"	left;@;iqo;	;	;;"top;@;iq;@;iqo;#	;$;&;[o;	;	;;"	left;@;iqo;	;	;;"bottom;@;iq;@;iqo;+;"	from;@;,{ ;iq;-0;.[o;/	;0;@;iq;0{	;1i;2iˇ;3iˇ;4iˇo;+;"to;@;,{ ;iq;-0;.[o;/	;0;@;iq;0{	;1i;2i‰;3i‰;4i‰;@;iq;;o;;i ;["background-image;[ ;o;+;"-moz-linear-gradient;@;,{ ;ir;-0;.[o;	;	;;"top;@;iro;/	;0;@;ir;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;ir;0{	;1i;2i‰;3i‰;4i‰;@;ir;;o;;i ;["background-image;[ ;o;+;"-webkit-linear-gradient;@;,{ ;is;-0;.[o;	;	;;"top;@;iso;/	;0;@;is;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;is;0{	;1i;2i‰;3i‰;4i‰;@;is;;o;;i ;["background-image;[ ;o;+;"-o-linear-gradient;@;,{ ;it;-0;.[o;	;	;;"top;@;ito;/	;0;@;it;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;it;0{	;1i;2i‰;3i‰;4i‰;@;it;;o;;i ;["background-image;[ ;o;+;"-ms-linear-gradient;@;,{ ;iu;-0;.[o;	;	;;"top;@;iuo;/	;0;@;iu;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;iu;0{	;1i;2i‰;3i‰;4i‰;@;iu;;o;;i ;["background-image;[ ;o;+;"linear-gradient;@;,{ ;iv;-0;.[o;	;	;;"top;@;ivo;/	;0;@;iv;0{	;1i;2iˇ;3iˇ;4iˇo;/	;0;@;iv;0{	;1i;2i‰;3i‰;4i‰;@;iv;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#ffffff', endColorstr='#e4e4e4');@;iw;@;iw;;;@;[".cke_toolbox_collapser;i\;o;;" ;i\;[o;;[o;
-;0;@[;o;; { ;i\;[o;!;["cke_toolbox_collapser;@[;i\;"To;;i ;[o;;i ;["background;[ ;o;;	;;"	#ccc;@;@;i|;;o;;i ;["background-image;[ ;o;+;"-webkit-gradient;@;,{ ;i};-0;.[
-o;	;	;;"linear;@;i}o;#	;$;&;[o;	;	;;"	left;@;i}o;	;	;;"top;@;i};@;i}o;#	;$;&;[o;	;	;;"	left;@;i}o;	;	;;"bottom;@;i};@;i}o;+;"	from;@;,{ ;i};-0;.[o;/	;0;@;i};0{	;1i;2iÚ;3iÚ;4iÚo;+;"to;@;,{ ;i};-0;.[o;/	;0;@;i};0{	;1i;2iÃ;3iÃ;4iÃ;@;i};;o;;i ;["background-image;[ ;o;+;"-moz-linear-gradient;@;,{ ;i~;-0;.[o;	;	;;"top;@;i~o;/	;0;@;i~;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;i~;0{	;1i;2iÃ;3iÃ;4iÃ;@;i~;;o;;i ;["background-image;[ ;o;+;"-webkit-linear-gradient;@;,{ ;i;-0;.[o;	;	;;"top;@;io;/	;0;@;i;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;i;0{	;1i;2iÃ;3iÃ;4iÃ;@;i;;o;;i ;["background-image;[ ;o;+;"-o-linear-gradient;@;,{ ;iÄ;-0;.[o;	;	;;"top;@;iÄo;/	;0;@;iÄ;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;iÄ;0{	;1i;2iÃ;3iÃ;4iÃ;@;iÄ;;o;;i ;["background-image;[ ;o;+;"-ms-linear-gradient;@;,{ ;iÅ;-0;.[o;	;	;;"top;@;iÅo;/	;0;@;iÅ;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;iÅ;0{	;1i;2iÃ;3iÃ;4iÃ;@;iÅ;;o;;i ;["background-image;[ ;o;+;"linear-gradient;@;,{ ;iÇ;-0;.[o;	;	;;"top;@;iÇo;/	;0;@;iÇ;0{	;1i;2iÚ;3iÚ;4iÚo;/	;0;@;iÇ;0{	;1i;2iÃ;3iÃ;4iÃ;@;iÇ;;o;;i ;["filter;[ ;o;	;	;;"oprogid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#f2f2f2', endColorstr='#cccccc');@;iÉ;@;iÉ;;;@;["!.cke_toolbox_collapser:hover;i{;o;;" ;i{;[o;;[o;
-;0;@ﬂ;o;; { ;i{;[o;!;["cke_toolbox_collapser;@ﬂ;i{o;7
-;["
-hover;	;8;@ﬂ;i{;90;"To;;i ;[o;;i ;["margin;[ ;o;;	;;"0 2px 4px;@;@;ià;;;@;["5.cke_toolbox_collapser.cke_toolbox_collapser_min;iá;o;;" ;iá;[o;;[o;
-;0;@¯;o;; { ;iá;[o;!;["cke_toolbox_collapser;@¯;iáo;!;["cke_toolbox_collapser_min;@¯;iá;"To;;i ;[o;;i ;["
-float;[ ;o;;	;;"	left;@;@;iç;;;@;["$.cke_rtl .cke_toolbox_collapser;iå;o;;" ;iå;[o;;[o;
-;0;@;o;; { ;iå;[o;!;["cke_rtl;@;iåo;
-;0;@;o;; { ;iå;[o;!;["cke_toolbox_collapser;@;iå;"To;
-;	;
-;[ ;["A/* The CSS arrow, which belongs to the toolbar collapser. */;@;iêo;;i ;[o;;i ;["display;[ ;o;;	;;"inline-block;@;@;iì;;o;
-;	;
-;[ ;["/* Pure CSS Arrow */;@;iïo;;i ;["height;[ ;o;;	;;"0;@;@;iñ;;o;;i ;["
-width;[ ;o;;	;;"0;@;@;ió;;o;;i ;["font-size;[ ;o;;	;;"0;@;@;iò;;o;;i ;["margin-top;[ ;o;;	;;"1px;@;@;iô;;o;;i ;["border-left;[ ;o;;	;;"3px solid transparent;@;@;iö;;o;;i ;["border-right;[ ;o;;	;;"3px solid transparent;@;@;iõ;;o;;i ;["border-bottom;[ ;o;;	;;"3px solid #474747;@;@;iú;;o;;i ;["border-top;[ ;o;;	;;"3px solid transparent;@;@;iù;;;@;["&.cke_toolbox_collapser .cke_arrow;ií;o;;" ;ií;[o;;[o;
-;0;@f;o;; { ;ií;[o;!;["cke_toolbox_collapser;@f;iío;
-;0;@f;o;; { ;ií;[o;!;["cke_arrow;@f;ií;"To;;i ;[o;;i ;["margin-top;[ ;o;;	;;"4px;@;@;i¢;;o;;i ;["border-bottom-color;[ ;o;;	;;"transparent;@;@;i£;;o;;i ;["border-top-color;[ ;o;;	;;"#474747;@;@;i§;;;@;["@.cke_toolbox_collapser.cke_toolbox_collapser_min .cke_arrow;i°;o;;" ;i°;[o;;[o;
-;0;@è;o;; { ;i°;[o;!;["cke_toolbox_collapser;@è;i°o;!;["cke_toolbox_collapser_min;@è;i°o;
-;0;@è;o;; { ;i°;[o;!;["cke_arrow;@è;i°;"To;;i ;[
-o;;i ;["font-size;[ ;o;;	;;"8px;@;@;i©;;o;;i ;["
-width;[ ;o;;	;;"	auto;@;@;i™;;o;;i ;["border;[ ;o;;	;;"0;@;@;i´;;o;;i ;["margin-top;[ ;o;;	;;"0;@;@;i¨;;o;;i ;["margin-right;[ ;o;;	;;"2px;@;@;i≠;;;@;["..cke_hc .cke_toolbox_collapser .cke_arrow;i®;o;;" ;i®;[o;;[o;
-;0;@«;o;; { ;i®;[o;!;["cke_hc;@«;i®o;
-;0;@«;o;; { ;i®;[o;!;["cke_toolbox_collapser;@«;i®o;
-;0;@«;o;; { ;i®;[o;!;["cke_arrow;@«;i®;"T;@;i;"T
