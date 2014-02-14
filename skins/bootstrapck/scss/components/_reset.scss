@@ -93,7 +93,11 @@ http://docs.cksource.com/CKEditor_4.x/Skin_SDK/Reset
     }
     fieldset {
         padding: 10px;
-        border: 2px groove #E0DFE3;
+        margin-top: 10px;
+        border: 1px solid $hr-border;
+        legend {
+            padding: 0 5px;
+        }
     }
     select {
         box-sizing: border-box;

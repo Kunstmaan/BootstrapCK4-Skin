@@ -20,14 +20,21 @@ $primary:               #428bca;
 $primary-light:         #92bce0;
 $primary-lighter:       #e1edf7;
 
-// Brand colors
+// Forms
+// -------------------------
+$form-blue:             #66afe9;
+
+// States
 // -------------------------
 
-$brand-primary:         #428bca;
-$brand-success:         #5cb85c;
-$brand-warning:         #f0ad4e;
-$brand-danger:          #d9534f;
-$brand-info:            #5bc0de;
+$success:               #5cb85c;
+$success-hover:         #47a447;
+$success-border:        #4cae4c;
+$success-border-hover:  #398439;
+
+$warning:               #f0ad4e;
+$danger:                #d9534f;
+$info:                  #5bc0de;
 
 // Scaffolding
 // -------------------------
@@ -38,7 +45,7 @@ $text-color:            $gray-darker;
 // Links
 // -------------------------
 
-$link-color:            $brand-primary;
+$link-color:            $primary;
 $link-hover-color:      darken($link-color, 15%);
 
 // Hr border color
