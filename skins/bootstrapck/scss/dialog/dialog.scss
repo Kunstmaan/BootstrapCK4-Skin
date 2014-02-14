@@ -220,6 +220,13 @@ a.cke_dialog_tab_disabled
     cursor: default;
 }
 
+/* selectbox inside tabs container */
+.cke_dialog_tabs {
+    .cke_dialog_ui_input_select {
+        top: -7px !important;
+    }
+}
+
 /* The .cke_single_page class is appended to the dialog outer element in case
    of dialogs that has no tabs. */
 .cke_single_page .cke_dialog_tabs
@@ -333,6 +340,14 @@ It is possible to have nested V/H-Boxes.
 .cke_dialog_ui_hbox_child,
 .cke_dialog_ui_hbox_last {
     vertical-align: top;
+}
+
+/* To center a horizontal label-input (selection field dialog / find and replace) */
+.cke_dialog_ui_hbox_first,
+.cke_dialog_ui_hbox_last {
+    > .cke_dialog_ui_labeled_label, > .cke_dialog_ui_html {
+        line-height: 30px;
+    }
 }
 
 .cke_ltr .cke_dialog_ui_hbox_first,
@@ -515,6 +530,14 @@ a.cke_dialog_ui_button_ok {
     &:hover, &:focus, &:active {
         border-color: $success-border-hover;
         background: $success-hover;
+    }
+}
+
+/* Special class appended to the Cancel button. */
+a.cke_dialog_ui_button_cancel {
+    background-color: #fff;
+    &:focus {
+        outline: none;
     }
 }
 
@@ -716,6 +739,10 @@ tendency that these will be moved to the plugins code in the future.
             font-weight: bold;
         }
     }
+}
+
+.cke_dialog_ui_html {
+    line-height: 150%;
 }
 
 a.cke_smile {

@@ -54,6 +54,10 @@ Special outer level classes used in this file:
     display: block;
 }
 
+.cke_button_icon {
+    opacity: .7;
+}
+
 .cke_menuitem span {
     /* Avoid the text selection cursor inside menu items. */
     cursor: default;
