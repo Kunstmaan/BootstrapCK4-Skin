@@ -11,16 +11,16 @@ documentation.
 
 ## Installation
 
-### Just skin please
+#### Just skin please
 
 Add the whole bootstrapck folder to the skin folder.
 In ckeditor.js and config.js change the skin name to "bootstrapck".
 Done!
 
-### The whole skin - sass - grunt package
+#### The whole skin - sass - grunt package
 
 All the sass files are included in the bootstrapck folder.
-So follow the 'just skin please'-steps and add the Gruntfile.js to de ckeditor folder
+So follow the 'just skin please'-steps and add the Gruntfile.js to de ckeditor folder.
 You can start tampering now.
 
 ## Demo
