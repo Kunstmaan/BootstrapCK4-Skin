@@ -1,39 +1,33 @@
-CKEditor 4
-==========
+BootstrapCK Skin
+====================
 
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.  
-http://ckeditor.com - See LICENSE.md for license information.
+The BootstrapCK-Skin is a skin for [CKEditor4](http://ckeditor.com/) based on [Twitter Bootstrap3](http://getbootstrap.com/) styles.
 
-CKEditor is a text editor to be used inside web pages. It's not a replacement
-for desktop text editors like Word or OpenOffice, but a component to be used as
-part of web applications and websites.
+[Sass](http://sass-lang.com/) is used to rewrite the editor's styles and [Grunt](http://gruntjs.com/) to be able to watch, convert and minify the sass into css files. These files aren't really needed for the simple use of the skin, but handy if you want to make some adjustments to it.
 
-## Documentation
-
-The full editor documentation is available online at the following address:
-http://docs.ckeditor.com
+For more information about skins, please check the [CKEditor Skin SDK](http://docs.cksource.com/CKEditor_4.x/Skin_SDK)
+documentation.
 
 ## Installation
 
-Installing CKEditor is an easy task. Just follow these simple steps:
+**Just skin please**
 
- 1. **Download** the latest version from the CKEditor website:
-    http://ckeditor.com. You should have already completed this step, but be
-    sure you have the very latest version.
- 2. **Extract** (decompress) the downloaded file into the root of your website.
+Add the whole bootstrapck folder to the skin folder.<br />
+In ckeditor.js and config.js change the skin name to "bootstrapck".<br />
+Done!
 
-**Note:** CKEditor is by default installed in the `ckeditor` folder. You can
-place the files in whichever you want though.
+**The whole skin - sass - grunt package**
 
-## Checking Your Installation
+All the sass files are included in the bootstrapck folder, so first follow the 'just skin please'-steps<br />
+Now add the Gruntfile.js and the package.json to de ckeditor folder.
 
-The editor comes with a few sample pages that can be used to verify that
-installation proceeded properly. Take a look at the `samples` directory.
+    npm install
+    grunt build
 
-To test your installation, just call the following page at your website:
+You can start tampering now.
 
-	http://<your site>/<CKEditor installation path>/samples/index.html
+## Demo
 
-For example:
+### Previous version
 
-	http://www.example.com/ckeditor/samples/index.html
+If you would like to get the Bootstrap2 skin for CKeditor3, [here](https://github.com/Kunstmaan/BootstrapCK-Skin)'s the previous version.
