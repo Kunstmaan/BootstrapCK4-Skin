@@ -19,9 +19,11 @@ Done!
 **The whole skin - sass - grunt package**
 
 All the sass files are included in the bootstrapck folder, so first follow the 'just skin please'-steps<br />
-Now add the Gruntfile.js and the package.json to de ckeditor folder.<br />
+Now add the Gruntfile.js and the package.json to de ckeditor folder.
+
     npm install
     grunt build
+
 You can start tampering now.
 
 ## Demo
