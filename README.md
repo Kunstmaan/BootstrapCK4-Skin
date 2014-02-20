@@ -1,39 +1,31 @@
-CKEditor 4
-==========
+"BootstrapCK" Skin
+====================
 
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.  
-http://ckeditor.com - See LICENSE.md for license information.
+The BootstrapCK-Skin is a skin for CKEditor4 based on Twitter Bootstrap3 styles.
 
-CKEditor is a text editor to be used inside web pages. It's not a replacement
-for desktop text editors like Word or OpenOffice, but a component to be used as
-part of web applications and websites.
+If you would like to get the Bootstrap2 skin for CKeditor3, here's the previous version.
 
-## Documentation
+For more information about skins, please check the [CKEditor Skin SDK](http://docs.cksource.com/CKEditor_4.x/Skin_SDK)
+documentation.
 
-The full editor documentation is available online at the following address:
-http://docs.ckeditor.com
 
-## Installation
+Authors
+-------------------
 
-Installing CKEditor is an easy task. Just follow these simple steps:
+Indri Kenens (indri.kenens@kunstmaan.be)
 
- 1. **Download** the latest version from the CKEditor website:
-    http://ckeditor.com. You should have already completed this step, but be
-    sure you have the very latest version.
- 2. **Extract** (decompress) the downloaded file into the root of your website.
 
-**Note:** CKEditor is by default installed in the `ckeditor` folder. You can
-place the files in whichever you want though.
+Contact
+-------------------
 
-## Checking Your Installation
+Kunstmaan (support@kunstmaan.be)
 
-The editor comes with a few sample pages that can be used to verify that
-installation proceeded properly. Take a look at the `samples` directory.
 
-To test your installation, just call the following page at your website:
+Download
+-------------------
 
-	http://<your site>/<CKEditor installation path>/samples/index.html
+You can download this project in either zip or tar formats.
 
-For example:
+You can also clone the project with Git by running:
 
-	http://www.example.com/ckeditor/samples/index.html
+    $ git clone git://github.com/Kunstmaan/BootstrapCK-Skin
