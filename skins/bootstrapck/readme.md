@@ -28,6 +28,8 @@ You can start tampering now.
 
 ## Demo
 
+http://kunstmaan.github.io/BootstrapCK4-Skin/
+
 ### Previous version
 
 If you would like to get the Bootstrap2 skin for CKeditor3, [here](https://github.com/Kunstmaan/BootstrapCK-Skin)'s the previous version.
