@@ -191,6 +191,7 @@ a.cke_dialog_tab {
 /* A hover state of a regular inactive tab. */
 a.cke_dialog_tab:hover {
     background: $gray-light;
+    text-decoration: none;
 }
 
 a.cke_dialog_tab_selected
@@ -476,6 +477,7 @@ a.cke_dialog_ui_button {
     &:hover, &:focus, &:active {
         border-color: $gray;
         background-color: $gray-lighter;
+        text-decoration: none;
     }
 }
 
