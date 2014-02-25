@@ -24,13 +24,20 @@ $primary-lighter:       #e1edf7;
 // -------------------------
 $form-blue:             #66afe9;
 
+// Blues
+// -------------------------
+$blue-dark:             #2274c9;
+$blue-dark-hover:       #1e68b4;
+$blue:                  #3F8EDF;
+$blue-hover:            #2981db;
+
 // States
 // -------------------------
 
-$success:               #5cb85c;
-$success-hover:         #47a447;
-$success-border:        #4cae4c;
-$success-border-hover:  #398439;
+$success:               $blue;
+$success-hover:         $blue-hover;
+$success-border:        $blue-dark;
+$success-border-hover:  $blue-dark-hover;
 
 $warning:               #f0ad4e;
 $danger:                #d9534f;

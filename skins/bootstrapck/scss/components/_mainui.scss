@@ -51,7 +51,7 @@ Special outer level classes used in this file:
     display: block;
     border: 1px solid $hr-border;
     border-radius: $border-radius;
-    padding: 0 10px;
+    padding: 0 3px;
     background: $gray-lighter;
 }
 
@@ -93,7 +93,7 @@ Special outer level classes used in this file:
 }
 
 .cke_top, .cke_bottom {
-    padding: 10px 0 4px;
+    padding: 3px 0 0;
     background: $gray-lighter;
 }
 
