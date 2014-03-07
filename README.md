@@ -26,6 +26,9 @@ Now add the Gruntfile.js and the package.json to de ckeditor folder.
 
 You can start tampering now.
 
+
+Or if you'd like to adjust the icons, use the bootstrapck-dev folder instead.
+
 ## Demo
 
 http://kunstmaan.github.io/BootstrapCK4-Skin/
